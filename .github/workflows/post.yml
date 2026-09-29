@@ -1,0 +1,48 @@
+name: Schedule Escape Cup matches
+
+on:
+  schedule:
+    # Runs early; Buffer publishes at the UK-evening slots in main.SLOTS, so
+    # GitHub's multi-hour cron delays don't move the posting time.
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: escape-cup-post
+  cancel-in-progress: false
+
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write      # push the media branch + commit tournament_state.json
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: System packages
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg libcairo2-dev pkg-config
+
+      - run: pip install -r requirements.txt
+
+      - name: Render and schedule
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python main.py
+
+      - name: Commit bracket state
+        if: always()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tournament_state.json
+          git diff --staged --quiet || git commit -m "state: $(date -u +%Y-%m-%dT%H:%M)"
+          git push || true

@@ -1,0 +1,296 @@
+{
+ "edition": 1,
+ "rounds": [
+  [
+   {
+    "a": "gb-sct",
+    "b": "sa",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "pl",
+    "b": "uy",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "ph",
+    "b": "ng",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "ma",
+    "b": "ua",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "au",
+    "b": "vn",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "us",
+    "b": "hr",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "mx",
+    "b": "nl",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "co",
+    "b": "pt",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "id",
+    "b": "tr",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "kr",
+    "b": "jp",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "es",
+    "b": "br",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "sn",
+    "b": "it",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "ca",
+    "b": "de",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "fr",
+    "b": "gb-eng",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "ar",
+    "b": "be",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "ie",
+    "b": "eg",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   }
+  ],
+  [
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   }
+  ],
+  [
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   }
+  ],
+  [
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   }
+  ],
+  [
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   }
+  ]
+ ],
+ "titles": {},
+ "posts": 0
+}
