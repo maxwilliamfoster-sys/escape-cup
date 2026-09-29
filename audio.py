@@ -1,38 +1,45 @@
 """
-Soundtrack for a match: a CC0 background track + soft sound effects in its key.
+ASMR-style soundtrack for a match - no music, just the physics.
 
-v1 played a fixed public-domain melody an octave up with a hard 4 ms attack and
-bright overtones; it was "sharp and annoying". v2 (this):
-  - background music from assets/music (OpenGameArt, CC0 only - see tracks.json),
-  - every bounce is a soft mallet note (slow attack, almost no upper partials,
-    low-passed) chosen from the TRACK'S pentatonic scale, so the plinks sit in
-    tune with whatever is playing. Each ball has its own register and wanders
-    by small steps, so the two teams sound different but never clash,
-  - ring breaks are a warm chime chord plus a low-passed "whoosh", not white noise,
-  - the win fanfare is an arpeggio in the same key.
+History: v1 played a fixed melody an octave up with a hard attack ("sharp and
+annoying"); v2 added CC0 background music, which the user then didn't want.
+v3 (this) makes the collisions themselves the satisfying part:
+
+  - bounce = a soft, crisp "tap" (band-limited click, no harsh top end) on top
+    of a short rounded kalimba-like "plink" from a pentatonic scale,
+  - loudness AND brightness follow the real impact speed, so hard hits are
+    full and glancing touches are barely-there - that variation is what makes
+    it feel physical rather than a looping sample,
+  - every sound is panned to where it happens on screen (binaural-ish on
+    headphones),
+  - ball-on-ball is a glassy marble "clack"; a ring shattering is a soft
+    granular crackle over a low sine "whump"; the win is a gentle chime.
+
+Everything is synthesised in numpy: no samples, nothing to license.
 """
-import json
-import os
 import random
-import subprocess
 import wave
 
 import numpy as np
 
 SR = 44100
-ROOT = os.path.dirname(os.path.abspath(__file__))
-MUSIC_DIR = os.path.join(ROOT, "assets", "music")
-MUSIC_GAIN = 0.50          # music bed relative to the effects bus (after both are normalised)
-OUT_RMS = 0.13             # ~ -14 LUFS, where TikTok normalises anyway
+OUT_PEAK = 0.89
+LIFT = 1.26                                # +2 dB; bare transients measured -17 LUFS
+KNEE = 0.70
+KEYS = [48, 50, 51, 53, 55, 56, 57]       # C, D, Eb, F, G, Ab, A - varies per video
 
 
-def tracks():
-    with open(os.path.join(MUSIC_DIR, "tracks.json"), encoding="utf-8") as f:
-        return json.load(f)
+def _band(noise, lo, hi):
+    spec = np.fft.rfft(noise)
+    f = np.fft.rfftfreq(len(noise), 1 / SR)
+    spec *= 1 / np.sqrt(1 + (lo / np.maximum(f, 1)) ** 4) / np.sqrt(1 + (f / hi) ** 4)
+    return np.fft.irfft(spec, len(noise))
 
 
-def _hz(midi):
-    return 440.0 * 2 ** ((midi - 69) / 12)
+def _lowpass(x, fc):
+    spec = np.fft.rfft(x)
+    f = np.fft.rfftfreq(len(x), 1 / SR)
+    return np.fft.irfft(spec / np.sqrt(1 + (f / fc) ** 4), len(x))
 
 
 def _tone(freq, dur, partials, attack):
@@ -42,147 +49,145 @@ def _tone(freq, dur, partials, attack):
         f = freq * ratio
         if f < SR / 2:
             out += amp * np.sin(2 * np.pi * f * t) * np.exp(-decay * t)
-    return out * (1 - np.exp(-t / attack))          # smooth exponential attack, no click
+    return out * (1 - np.exp(-t / attack))
 
 
-# Soft mallet: strong fundamental, a whisper of octave, a faint marimba-like 4th partial.
-MALLET = [(1, 1.0, 4.2), (2, 0.10, 8.0), (3.98, 0.035, 16.0)]
-CHIME = [(1, 1.0, 2.0), (2.0, 0.22, 3.4), (3.0, 0.07, 5.0)]
+def _hz(midi):
+    return 440.0 * 2 ** ((midi - 69) / 12)
 
 
-def _lowpass(x, fc):
-    """Gentle 2nd-order-like low-pass on a whole bus via FFT (no scipy needed)."""
-    spec = np.fft.rfft(x)
-    f = np.fft.rfftfreq(len(x), 1 / SR)
-    spec *= 1 / np.sqrt(1 + (f / fc) ** 4)
-    return np.fft.irfft(spec, len(x))
+class Bank:
+    """Pre-rendered sound variants (random round-robin avoids the machine-gun effect)."""
+
+    def __init__(self, rng):
+        self.rng = rng
+        n = np.random.default_rng(7)
+        self.taps = []
+        for _ in range(8):
+            d = int(0.018 * SR)
+            t = np.arange(d) / SR
+            click = _band(n.standard_normal(d), 900, 4200) * np.exp(-t / 0.0022)
+            self.taps.append(click / np.max(np.abs(click)))
+        self.grains = []
+        for _ in range(12):
+            d = int(0.012 * SR)
+            t = np.arange(d) / SR
+            g = _band(n.standard_normal(d), 1800, 6500) * np.exp(-t / 0.0016)
+            self.grains.append(g / np.max(np.abs(g)))
+        self._tones = {}
+
+    def tap(self):
+        return self.taps[self.rng.randrange(len(self.taps))]
+
+    def grain(self):
+        return self.grains[self.rng.randrange(len(self.grains))]
+
+    def plink(self, midi):
+        # kalimba-ish: round fundamental, faint inharmonic tine partial, quick decay
+        if midi not in self._tones:
+            self._tones[midi] = _tone(_hz(midi), 0.55, [(1, 1.0, 11), (2.0, 0.10, 20), (5.9, 0.035, 45)],
+                                      0.0025)
+        return self._tones[midi]
+
+    def clack(self, rngf):
+        d = int(0.06 * SR)
+        t = np.arange(d) / SR
+        f1, f2 = 2300 * rngf, 3550 * rngf
+        body = (np.sin(2 * np.pi * f1 * t) + 0.6 * np.sin(2 * np.pi * f2 * t)) * np.exp(-t / 0.011)
+        return body * (1 - np.exp(-t / 0.0006)) * 0.55
+
+    def chime(self, midi, dur=2.4):
+        key = ("c", midi)
+        if key not in self._tones:
+            self._tones[key] = _tone(_hz(midi), dur, [(1, 1.0, 1.9), (2.0, 0.12, 3.5), (3.0, 0.03, 6)],
+                                     0.012)
+        return self._tones[key]
 
 
-def _add(buf, start, clip, gain):
+def _pan(x):
+    """Screen x -> (left, right) constant-power gains, kept away from hard-pan."""
+    p = max(-1.0, min(1.0, (x - 540) / 540)) * 0.75
+    a = (p + 1) * np.pi / 4
+    return np.cos(a), np.sin(a)
+
+
+def _add(L, R, start, clip, gain, x=540.0):
     i = int(start * SR)
-    if i >= len(buf) or i < 0:
+    if i < 0 or i >= len(L):
         return
-    n = min(len(clip), len(buf) - i)
-    buf[i:i + n] += clip[:n] * gain
+    n = min(len(clip), len(L) - i)
+    gl, gr = _pan(x)
+    L[i:i + n] += clip[:n] * gain * gl
+    R[i:i + n] += clip[:n] * gain * gr
 
 
-def _pentatonic(tonic_pc, mode, lo, hi):
-    major_tonic = (tonic_pc + 3) % 12 if mode == "minor" else tonic_pc
-    pcs = {(major_tonic + s) % 12 for s in (0, 2, 4, 7, 9)}
-    return [n for n in range(lo, hi + 1) if n % 12 in pcs], major_tonic
+def _energy(v, lo, hi):
+    """Impact speed -> 0..1, with a soft curve so mid hits still read."""
+    return float(np.clip((v - lo) / (hi - lo), 0, 1)) ** 0.8
 
 
-def _whoosh(rng, dur=0.5):
-    n = int(dur * SR)
-    t = np.arange(n) / SR
-    noise = rng.standard_normal(n)
-    env = (1 - np.exp(-t / 0.03)) * np.exp(-t / 0.12)
-    return noise * env
-
-
-def _load_music(track, seconds):
-    raw = subprocess.run([_ffmpeg(), "-loglevel", "error", "-i", os.path.join(MUSIC_DIR, track["file"]),
-                          "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"],
-                         capture_output=True, check=True).stdout
-    x = np.frombuffer(raw, dtype=np.float32).astype(np.float64)
-    # skip a quiet intro: start at the first second that is at least 60% of median loudness
-    sec = SR
-    rms = np.array([np.sqrt(np.mean(x[i:i + sec] ** 2)) for i in range(0, len(x) - sec, sec)])
-    start = 0
-    if len(rms):
-        med = np.median(rms)
-        loud = np.nonzero(rms >= 0.6 * med)[0]
-        start = int(loud[0]) * sec if len(loud) else 0
-    x = x[start:]
-    need = int(seconds * SR)
-    if len(x) < need:                    # loop with a 1 s crossfade
-        xf = SR
-        out = x.copy()
-        while len(out) < need:
-            ramp = np.linspace(0, 1, xf)
-            out[-xf:] = out[-xf:] * (1 - ramp) + x[:xf] * ramp
-            out = np.concatenate([out, x[xf:]])
-        x = out
-    x = x[:need]
-    fade_in, fade_out = int(0.12 * SR), int(1.4 * SR)
-    x[:fade_in] *= np.linspace(0, 1, fade_in)
-    x[-fade_out:] *= np.linspace(1, 0, fade_out)
-    return x
-
-
-def _ffmpeg():
-    from render import ffmpeg_bin
-    return ffmpeg_bin()
-
-
-def _norm_rms(x, target):
-    rms = np.sqrt(np.mean(x ** 2)) or 1.0
-    return x * (target / rms)
-
-
-def build(match, track, total_seconds, win_time, rng_seed=0):
-    rng = np.random.default_rng(rng_seed)
+def build(match, total_seconds, win_time, rng_seed=0):
     prng = random.Random(rng_seed)
-    fx = np.zeros(int((total_seconds + 0.5) * SR))
+    bank = Bank(prng)
+    n = int((total_seconds + 0.5) * SR)
+    L, R = np.zeros(n), np.zeros(n)
 
-    tonic, mode = track["tonic"], track["mode"]
-    low_notes, major_tonic = _pentatonic(tonic, mode, 55, 74)     # ball A: warm register
-    high_notes, _ = _pentatonic(tonic, mode, 64, 86)              # ball B: brighter register
-    registers = [low_notes, high_notes]
-    pos = [len(low_notes) // 2, len(high_notes) // 2]
-    cache = {}
-
-    def note(midi, dur=1.4, partials=MALLET, attack=0.010):
-        key = (midi, dur, id(partials), attack)
-        if key not in cache:
-            cache[key] = _tone(_hz(midi), dur, partials, attack)
-        return cache[key]
+    tonic = KEYS[rng_seed % len(KEYS)]
+    pent = [tonic + o * 12 + s for o in range(4) for s in (0, 2, 4, 7, 9)]
+    registers = [[m for m in pent if 60 <= m <= 76], [m for m in pent if 67 <= m <= 84]]
+    pos = [len(registers[0]) // 2, len(registers[1]) // 2]
 
     for e in match.events:
         if e.kind == "bounce":
+            k = _energy(e.v, 250, 1300)
             reg = registers[e.ball]
-            # small melodic steps read as a tune; big leaps read as random
             pos[e.ball] = min(len(reg) - 1, max(0, pos[e.ball] + prng.choice([-2, -1, -1, 1, 1, 2])))
-            _add(fx, e.t, note(reg[pos[e.ball]]), 0.26 * prng.uniform(0.75, 1.0))
+            _add(L, R, e.t, bank.plink(reg[pos[e.ball]]), 0.10 + 0.22 * k, e.x)
+            _add(L, R, e.t, bank.tap(), 0.05 + 0.20 * k * k, e.x)          # harder = crisper
         elif e.kind == "clash":
-            _add(fx, e.t, note(major_tonic + 48, 0.25, [(1, 1.0, 22)], 0.004), 0.10)   # soft wooden tock
+            k = _energy(e.v, 150, 1400)
+            _add(L, R, e.t, bank.clack(prng.uniform(0.94, 1.06)), 0.10 + 0.28 * k, e.x)
+            _add(L, R, e.t, bank.tap(), 0.06 + 0.12 * k, e.x)
         elif e.kind == "break":
-            root = major_tonic + 72 - 12 * (e.ring < 3)
-            for k, iv in enumerate((0, 4, 7, 12)):
-                _add(fx, e.t + k * 0.045, note(root + iv, 2.0, CHIME, 0.006), 0.10)
-            _add(fx, e.t, _whoosh(rng), 0.10 + 0.02 * e.ring)
+            # soft glass crackle: grains scattered around the ring, dense then thinning
+            for _ in range(46):
+                dt = prng.expovariate(1 / 0.07)
+                if dt > 0.45:
+                    continue
+                gx = 540 + prng.uniform(-1, 1) * match.rings[e.ring].radius
+                _add(L, R, e.t + dt, bank.grain(), prng.uniform(0.03, 0.09) * (1 - dt / 0.5), gx)
+            whump = _tone(_hz(tonic), 0.5, [(1, 1.0, 9), (2, 0.2, 14)], 0.006)
+            _add(L, R, e.t, whump, 0.16 + 0.03 * e.ring, e.x)
+            _add(L, R, e.t + 0.02, bank.chime(tonic + 36 + 12 * (e.ring >= 3)), 0.07, e.x)
 
-    root = major_tonic + 60
-    for k, iv in enumerate((0, 4, 7, 12, 16)):
-        _add(fx, win_time + 0.10 + k * 0.10, note(root + iv, 1.6, MALLET, 0.008), 0.24)
-    for iv in (0, 4, 7, 12):
-        _add(fx, win_time + 0.65, note(root + iv, 2.8, CHIME, 0.01), 0.10)
+    # win: gentle rising chime, spread across the stereo field
+    for j, iv in enumerate((0, 4, 7, 12, 16)):
+        _add(L, R, win_time + 0.12 + j * 0.13, bank.chime(tonic + 36 + iv), 0.12, 300 + j * 120)
 
-    fx = _lowpass(fx, 3800)
-    # short room reflections so notes bloom instead of sounding dry
-    wet = np.zeros_like(fx)
-    for delay, g in ((0.031, 0.28), (0.053, 0.21), (0.083, 0.15), (0.127, 0.10), (0.181, 0.06)):
-        d = int(delay * SR)
-        wet[d:] += fx[:-d] * g
-    fx = _norm_rms(fx + _lowpass(wet, 2500), 0.12)
-
-    music = _load_music(track, len(fx) / SR)
-    music = _norm_rms(music, 0.12) * MUSIC_GAIN
-    out = _norm_rms(fx + music[: len(fx)], OUT_RMS)
-    # soft knee on peaks only: everything under the knee is untouched, so the
-    # mix stays open instead of being squashed flat
-    knee = 0.80
-    mag = np.abs(out)
-    over = mag > knee
-    out[over] = np.sign(out[over]) * (knee + (1 - knee) * np.tanh((mag[over] - knee) / (1 - knee)))
-    return out[: int(total_seconds * SR)]
+    # small soft room: a few low-passed reflections, cross-fed between channels
+    out = []
+    for ch, other in ((L, R), (R, L)):
+        wet = np.zeros_like(ch)
+        for delay, g, src in ((0.023, 0.22, ch), (0.037, 0.18, other), (0.061, 0.13, ch),
+                              (0.097, 0.09, other), (0.149, 0.05, ch)):
+            d = int(delay * SR)
+            wet[d:] += src[:-d] * g
+        out.append(_lowpass(ch + _lowpass(wet, 3000), 9000))
+    stereo = np.stack(out, axis=1)[: int(total_seconds * SR)]
+    stereo = stereo / (np.max(np.abs(stereo)) or 1.0) * OUT_PEAK * LIFT
+    # peak-only soft knee: the ~2 dB lift only touches the loudest transients
+    mag = np.abs(stereo)
+    over = mag > KNEE
+    stereo[over] = np.sign(stereo[over]) * (KNEE + (OUT_PEAK - KNEE) * np.tanh((mag[over] - KNEE) / (OUT_PEAK - KNEE)))
+    return stereo
 
 
 def write_wav(samples, path):
     pcm = (np.clip(samples, -1, 1) * 32767).astype(np.int16)
-    stereo = np.repeat(pcm[:, None], 2, axis=1)
+    if pcm.ndim == 1:
+        pcm = np.repeat(pcm[:, None], 2, axis=1)
     with wave.open(path, "wb") as w:
         w.setnchannels(2)
         w.setsampwidth(2)
         w.setframerate(SR)
-        w.writeframes(stereo.tobytes())
+        w.writeframes(pcm.tobytes())

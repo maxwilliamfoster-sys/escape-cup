@@ -61,6 +61,7 @@ class Event:
     ring: int = -1
     x: float = 0.0
     y: float = 0.0
+    v: float = 0.0         # impact speed (px/s) - drives how hard the sound hits
 
 
 @dataclass
@@ -147,7 +148,7 @@ def simulate(seed, record=True):
                             b.vy *= MIN_BOUNCE_SPEED / spd
                         if t - b.last_note > 0.07:
                             b.last_note = t
-                            m.events.append(Event(t, "bounce", i, k, qx, qy))
+                            m.events.append(Event(t, "bounce", i, k, qx, qy, -vn))
                 spd = math.hypot(b.vx, b.vy)
                 if spd > MAX_SPEED:
                     b.vx *= MAX_SPEED / spd
@@ -165,7 +166,7 @@ def simulate(seed, record=True):
                 if rel > 0:
                     a.vx -= rel * nx; a.vy -= rel * ny
                     c.vx += rel * nx; c.vy += rel * ny
-                    m.events.append(Event(t, "clash", -1, -1, (a.x + c.x) / 2, (a.y + c.y) / 2))
+                    m.events.append(Event(t, "clash", -1, -1, (a.x + c.x) / 2, (a.y + c.y) / 2, rel))
 
             # A ring breaks once a ball's centre is well past it (the next ring
             # is closer than a ball's diameter, so "whole body outside" is
