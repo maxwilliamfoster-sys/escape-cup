@@ -2,9 +2,11 @@ name: Schedule Escape Cup matches
 
 on:
   schedule:
-    # Runs early; Buffer publishes at the UK-evening slots in main.SLOTS, so
-    # GitHub's multi-hour cron delays don't move the posting time.
-    - cron: '17 5 * * *'
+    # Every 3 hours: reconcile with Buffer (mark published posts, rewind the
+    # bracket if a scheduled video was deleted/rejected) and fill the next slots.
+    # Buffer publishes at the exact slot times, so GitHub's cron delays don't
+    # move posting times. ~8 runs/day stays well inside Buffer's 250 calls/day.
+    - cron: '17 */3 * * *'
   workflow_dispatch:
     inputs:
       mode:

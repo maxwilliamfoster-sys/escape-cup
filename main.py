@@ -29,7 +29,7 @@ import os
 import random
 import sys
 import traceback
-from datetime import date, datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 import director
@@ -50,7 +50,7 @@ RAMP_DAYS = 7
 RAMP_SLOTS = [(19, 30)]
 WEEKDAY_SLOTS = [(16, 30), (20, 0)]
 WEEKEND_SLOTS = [(12, 0), (19, 30)]
-HORIZON = timedelta(hours=36)        # how far ahead one run schedules
+HORIZON = timedelta(hours=26)        # how far ahead to schedule (= your veto window)
 MIN_LEAD = timedelta(minutes=25)     # never schedule a slot closer than this
 MAX_ATTEMPTS = 3                     # different matches tried before a slot is skipped
 
@@ -87,9 +87,9 @@ def _ordinal(n):
 # ------------------------------------------------------------------ timing --
 
 def first_post_day(state, fallback):
-    days = [datetime.fromisoformat(m["posted"]).astimezone(LONDON).date()
-            for rnd in state["rounds"] for m in rnd if m.get("posted")]
-    days += [date.fromisoformat(d) for d in state.get("history_days", [])]
+    """Day of the account's first post, across every cup (the ramp must not restart per cup)."""
+    days = [datetime.fromisoformat(e["due"]).astimezone(LONDON).date()
+            for e in state.get("log", []) if e.get("due")]
     return min(days) if days else fallback
 
 
@@ -100,16 +100,18 @@ def slots_for_day(day, first_day):
 
 
 def upcoming_slots(now, taken, state):
-    """Slots (UTC) in (now+MIN_LEAD, now+HORIZON] that Buffer doesn't already hold."""
+    """Slots (UTC) in (now+MIN_LEAD, now+HORIZON] strictly AFTER everything already
+    scheduled. Matches are consumed in bracket order, so filling an earlier gap
+    with a later match would publish the story out of order - never do that."""
     local_today = now.astimezone(LONDON).date()
     first = first_post_day(state, local_today)
+    after = max(taken + [now + MIN_LEAD - timedelta(seconds=1)])
     out = []
     for offset in range(3):
         day = local_today + timedelta(days=offset)
         for h, mnt in slots_for_day(day, first):
             slot = datetime(day.year, day.month, day.day, h, mnt, tzinfo=LONDON).astimezone(timezone.utc)
-            if now + MIN_LEAD <= slot <= now + HORIZON and all(
-                    abs((slot - t).total_seconds()) > 1800 for t in taken):
+            if slot <= now + HORIZON and (slot - after).total_seconds() > (1800 if taken else 0):
                 out.append(slot)
     return out
 
@@ -184,7 +186,10 @@ def build_one(state, exclude_seeds=()):
 
 def build_passing(state):
     """Try up to MAX_ATTEMPTS different matches; return the first that passes, else None + reasons."""
-    tried, reasons = [], []
+    r, m = tournament.next_match(state)
+    # seeds whose videos were vetoed (deleted in Buffer) or rejected are never reused
+    tried = list(state.get("excluded_seeds", {}).get(f"{state['edition']}-{r}-{m}", []))
+    reasons = []
     for _ in range(MAX_ATTEMPTS):
         v = build_one(state, exclude_seeds=tried)
         if not v["failures"]:
@@ -202,17 +207,81 @@ def qc_line(rep):
 
 # ------------------------------------------------------------------- runs --
 
-def check_failures(state, org, channel):
-    """Alert once per Buffer post that failed to publish (e.g. TikTok rejected it)."""
-    seen = set(state.setdefault("seen_errors", []))
-    for p in publish.recent_posts(org, channel, statuses=("error",)):
-        if p["id"] in seen:
+NOT_FOUND = ("not found", "notfound", "does not exist", "doesn't exist", "no post", "deleted")
+
+
+def _buffer_status(post_id, pending_ids):
+    """'scheduled' | 'sending' | 'sent' | 'error' | 'missing' for one of our Buffer posts."""
+    if post_id in pending_ids:
+        return "scheduled", None
+    try:
+        post = publish.get_post(post_id)
+    except publish.PublishError as e:
+        if any(s in str(e).lower() for s in NOT_FOUND):
+            return "missing", None
+        raise                                    # unknown API trouble: never roll back on a guess
+    if not post:
+        return "missing", None
+    return post["status"], post
+
+
+def reconcile(state, org, channel):
+    """Make the log match what really happened in Buffer/TikTok.
+
+    - published posts are marked published (checked once, then never again),
+    - if a scheduled video will never publish (you deleted it in Buffer, or
+      TikTok rejected it), that match and every LATER unpublished match are
+      pulled out of Buffer and out of the log; the rebuilt bracket then replays
+      them in order, so the published story never skips a match. The vetoed or
+      rejected match gets a different simulation next time.
+    Returns the (possibly rebuilt) state.
+    """
+    log = state.get("log", [])
+    pending = publish.pending_posts(org, channel)
+    pending_ids = {p["id"] for p in pending}
+    # First learn the status of EVERY entry (a later match may already be live,
+    # which decides whether rewinding is allowed), then act on the earliest drop.
+    drop_at = None
+    for i, e in enumerate(log):
+        if e.get("status") in ("published", "lost") or not e.get("buffer_id"):
             continue
-        seen.add(p["id"])
-        msg = (p.get("error") or {}).get("message", "unknown error")
-        notify.send(f"⚠️ <b>Escape Cup post failed in Buffer</b>\n{html.escape(msg)}\n"
-                    f"<i>{html.escape((p.get('text') or '')[:120])}</i>")
-    state["seen_errors"] = sorted(seen)[-50:]
+        status, post = _buffer_status(e["buffer_id"], pending_ids)
+        if status == "sent":
+            e["status"] = "published"
+            e["link"] = (post or {}).get("externalLink")
+        elif status in ("error", "missing"):
+            e["drop_reason"] = "deleted in Buffer" if status == "missing" else \
+                ((post or {}).get("error") or {}).get("message", "TikTok/Buffer error")
+            if drop_at is None:
+                drop_at = i
+    if drop_at is None:
+        return state
+
+    dropped = log[drop_at]
+    later_published = [e for e in log[drop_at + 1:] if e.get("status") == "published"]
+    title = f"{teams.name(dropped['a'])} v {teams.name(dropped['b'])}"
+    if later_published:
+        # A later match already went out, so the bracket can't be rewound. Keep
+        # the result; mark it so it is only alerted once.
+        dropped["status"] = "lost"
+        notify.send(f"⚠️ <b>Escape Cup: {html.escape(title)} never reached TikTok</b> "
+                    f"({html.escape(dropped['drop_reason'])}), and later matches were already "
+                    f"published, so the bracket keeps its result.")
+        return state
+
+    # cancel every later still-scheduled post so the replay stays in order
+    cancelled = []
+    for e in log[drop_at + 1:]:
+        if e.get("buffer_id") in pending_ids:
+            publish.delete_post(e["buffer_id"])
+            cancelled.append(f"{teams.name(e['a'])} v {teams.name(e['b'])}")
+    key = f"{dropped['edition']}-{dropped['r']}-{dropped['m']}"
+    state.setdefault("excluded_seeds", {}).setdefault(key, []).append(dropped["seed"])
+    state = tournament.truncate(state, drop_at)
+    notify.send(f"↩️ <b>Escape Cup: {html.escape(title)} was not published</b> "
+                f"({html.escape(dropped['drop_reason'])}).\nIt will be re-simulated and scheduled again "
+                f"in order" + (f"; also re-queued: {html.escape(', '.join(cancelled))}." if cancelled else "."))
+    return state
 
 
 def reset_unpublished():
@@ -220,17 +289,17 @@ def reset_unpublished():
     redraw the cup from scratch (used when the team list changed before launch)."""
     state = tournament.load()
     org, channel = publish.tiktok_channel()
-    ours = {m["buffer_id"] for rnd in state["rounds"] for m in rnd if m.get("buffer_id")}
+    ours = {e["buffer_id"] for e in state.get("log", []) if e.get("buffer_id")}
     pending = publish.pending_posts(org, channel)
     cancelled = [p["id"] for p in pending if p["id"] in ours]
     for pid in cancelled:
         publish.delete_post(pid)
     now = datetime.now(timezone.utc)
-    published = [m for rnd in state["rounds"] for m in rnd
-                 if m.get("posted") and datetime.fromisoformat(m["posted"]) <= now]
+    published = [e for e in state.get("log", [])
+                 if e.get("status") == "published" or (e.get("due") and datetime.fromisoformat(e["due"]) <= now)]
     if published:
         raise RuntimeError(f"{len(published)} match(es) already published - not redrawing")
-    tournament.save(tournament.new_edition(1))
+    tournament.save(tournament.rebuild([]))
     notify.send(f"♻️ <b>Escape Cup reset</b>: cancelled {len(cancelled)} scheduled post(s) in Buffer "
                 f"and redrew Escape Cup #1. Nothing had been published.")
     print(f"[reset] cancelled {cancelled}, redrew edition 1")
@@ -241,30 +310,29 @@ def post_now():
     caption) and wait for TikTok to confirm it - an end-to-end test of auto-posting."""
     state = tournament.load()
     org, channel = publish.tiktok_channel()
-    pending = sorted(publish.pending_posts(org, channel), key=lambda p: p.get("dueAt") or "")
-    ours = {m["buffer_id"]: (r, i) for r, rnd in enumerate(state["rounds"])
-            for i, m in enumerate(rnd) if m.get("buffer_id")}
-    target = next((p for p in pending if p["id"] in ours), None)
-    if not target:
+    pending = {p["id"]: p for p in publish.pending_posts(org, channel)}
+    idx = next((i for i, e in enumerate(state.get("log", [])) if e.get("buffer_id") in pending), None)
+    if idx is None:
         raise RuntimeError("no pending Escape Cup post in Buffer to publish")
-    r, i = ours[target["id"]]
-    match = state["rounds"][r][i]
-    fname = f"ec{state['edition']:02d}_r{r}_m{i:02d}_{match['seed']}.mp4"
+    e = state["log"][idx]
+    target = pending[e["buffer_id"]]
+    fname = f"ec{e['edition']:02d}_r{e['r']}_m{e['m']:02d}_{e['seed']}.mp4"
     url = f"{publish.pages_base()}/v/{fname}"
     publish.delete_post(target["id"])
     post = publish.schedule_tiktok(channel, url, target["text"], datetime.now(timezone.utc))
-    match["posted"] = datetime.now(timezone.utc).isoformat()
-    match["buffer_id"] = post["id"]
+    e["due"], e["buffer_id"] = datetime.now(timezone.utc).isoformat(), post["id"]
     tournament.save(state)
     final = publish.wait_until_published(post["id"])
-    title = f"{teams.name(match['a'])} v {teams.name(match['b'])}"
+    title = f"{teams.name(e['a'])} v {teams.name(e['b'])}"
     if final["status"] == "sent":
-        notify.send(f"✅ <b>Escape Cup test post is LIVE on TikTok</b>\n{html.escape(title)}\n"
+        e["status"], e["link"] = "published", final.get("externalLink")
+        tournament.save(state)
+        notify.send(f"✅ <b>Escape Cup post is LIVE on TikTok</b>\n{html.escape(title)}\n"
                     f"{final.get('externalLink') or '(no link returned)'}\n"
                     f"Posted automatically by Buffer - no action needed.")
     else:
         err = (final.get("error") or {})
-        notify.send(f"⚠️ <b>Escape Cup test post: {final['status']}</b>\n{html.escape(title)}\n"
+        notify.send(f"⚠️ <b>Escape Cup post-now: {final['status']}</b>\n{html.escape(title)}\n"
                     f"{html.escape(str(err.get('message') or ''))}\n"
                     f"{html.escape(str(err.get('rawError') or ''))[:500]}")
         raise RuntimeError(f"post ended as {final['status']}: {err}")
@@ -286,39 +354,38 @@ def run(sample=False, local=False):
         return
 
     org, channel = publish.tiktok_channel()
-    check_failures(state, org, channel)
+    state = reconcile(state, org, channel)
+    tournament.save(state)
     pending = publish.pending_posts(org, channel)
     taken = [datetime.fromisoformat(p["dueAt"].replace("Z", "+00:00")) for p in pending if p.get("dueAt")]
     slots = upcoming_slots(datetime.now(timezone.utc), taken, state)
     if not slots:
         print(f"[main] nothing to schedule ({len(pending)} already pending)")
-        tournament.save(state)
         return
 
     for slot in slots:
-        state = tournament.roll_over_if_done(state)
         v, reasons = build_passing(state)
         when = slot.astimezone(LONDON).strftime("%a %d %b %H:%M UK")
         if v is None:
-            notify.send(f"🛑 <b>Escape Cup: nothing posted for {when}</b>\n"
+            # Stop here: filling a LATER slot with this match's successor would
+            # break the order. The next run retries this match first.
+            notify.send(f"🛑 <b>Escape Cup: nothing scheduled for {when}</b>\n"
                         f"{MAX_ATTEMPTS} renders failed the quality gate:\n"
                         + html.escape("\n".join(reasons))[:3000])
-            continue
+            break
         url = publish.host_video(v["path"], v["file"])
         post = publish.schedule_tiktok(channel, url, v["caption"], slot)
-        tournament.record(state, v["r"], v["m"], v["winner"], v["seed"], v["theme"])
-        match = state["rounds"][v["r"]][v["m"]]
-        match["posted"] = slot.isoformat()
-        match["buffer_id"] = post["id"]
         state["recent_captions"] = (state.get("recent_captions", []) + [v["caption"]])[-40:]
+        state = tournament.append(state, {
+            "edition": state["edition"], "r": v["r"], "m": v["m"], "a": v["a"], "b": v["b"],
+            "winner": v["winner"], "seed": v["seed"], "theme": v["theme"],
+            "due": slot.isoformat(), "buffer_id": post["id"], "status": "scheduled"})
         tournament.save(state)
         notify.send_video(v["path"], f"🎾 <b>Escape Cup scheduled</b> for {when}\n"
                                      f"{html.escape(v['round'])}: winner {html.escape(teams.name(v['winner']))} "
                                      f"(don't spoil it 🤫)\n✅ {qc_line(v['report'])}\n"
-                                     f"Don't like it? Delete it in Buffer before then.\n\n"
-                                     f"{html.escape(v['caption'])}")
-    state = tournament.roll_over_if_done(state)
-    tournament.save(state)
+                                     f"Don't like it? Delete it in Buffer before then - the bracket "
+                                     f"rewinds and it gets re-simulated.\n\n{html.escape(v['caption'])}")
 
 
 def main():
