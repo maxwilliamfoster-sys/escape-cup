@@ -167,3 +167,21 @@ def delete_post(post_id):
     if res.get("message"):
         raise PublishError(f"Buffer refused to delete {post_id}: {res['message']}")
     print(f"[buffer] deleted {post_id}")
+
+
+def get_post(post_id):
+    return _gql("""query($i: PostInput!) { post(input: $i) {
+        id status dueAt sentAt externalLink schedulingType notificationStatus
+        error { message rawError supportUrl } } }""", {"i": {"id": post_id}})["post"]
+
+
+def wait_until_published(post_id, timeout=900, every=20):
+    """Poll Buffer until TikTok has the post (sent) or it failed. Returns the final post."""
+    deadline = time.time() + timeout
+    post = get_post(post_id)
+    while time.time() < deadline and post["status"] in ("scheduled", "sending"):
+        print(f"[buffer] {post_id}: {post['status']}")
+        time.sleep(every)
+        post = get_post(post_id)
+    print(f"[buffer] {post_id}: final {post['status']} {post.get('externalLink') or ''}")
+    return post

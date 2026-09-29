@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'schedule = normal run; reset = cancel our pending Buffer posts and redraw (only if nothing published)'
+        description: 'schedule = normal run; reset = cancel pending + redraw (only if nothing published); post-now = publish the next pending post immediately and wait for TikTok'
         type: choice
-        options: [schedule, reset]
+        options: [schedule, reset, post-now]
         default: schedule
 
 concurrency:
@@ -45,6 +45,8 @@ jobs:
         run: |
           if [ "${{ github.event.inputs.mode }}" = "reset" ]; then
             python main.py --reset-unpublished
+          elif [ "${{ github.event.inputs.mode }}" = "post-now" ]; then
+            python main.py --post-now
           else
             python main.py
           fi

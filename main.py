@@ -236,6 +236,40 @@ def reset_unpublished():
     print(f"[reset] cancelled {cancelled}, redrew edition 1")
 
 
+def post_now():
+    """Publish our earliest pending Buffer post immediately (same checked video and
+    caption) and wait for TikTok to confirm it - an end-to-end test of auto-posting."""
+    state = tournament.load()
+    org, channel = publish.tiktok_channel()
+    pending = sorted(publish.pending_posts(org, channel), key=lambda p: p.get("dueAt") or "")
+    ours = {m["buffer_id"]: (r, i) for r, rnd in enumerate(state["rounds"])
+            for i, m in enumerate(rnd) if m.get("buffer_id")}
+    target = next((p for p in pending if p["id"] in ours), None)
+    if not target:
+        raise RuntimeError("no pending Escape Cup post in Buffer to publish")
+    r, i = ours[target["id"]]
+    match = state["rounds"][r][i]
+    fname = f"ec{state['edition']:02d}_r{r}_m{i:02d}_{match['seed']}.mp4"
+    url = f"{publish.pages_base()}/v/{fname}"
+    publish.delete_post(target["id"])
+    post = publish.schedule_tiktok(channel, url, target["text"], datetime.now(timezone.utc))
+    match["posted"] = datetime.now(timezone.utc).isoformat()
+    match["buffer_id"] = post["id"]
+    tournament.save(state)
+    final = publish.wait_until_published(post["id"])
+    title = f"{teams.name(match['a'])} v {teams.name(match['b'])}"
+    if final["status"] == "sent":
+        notify.send(f"✅ <b>Escape Cup test post is LIVE on TikTok</b>\n{html.escape(title)}\n"
+                    f"{final.get('externalLink') or '(no link returned)'}\n"
+                    f"Posted automatically by Buffer - no action needed.")
+    else:
+        err = (final.get("error") or {})
+        notify.send(f"⚠️ <b>Escape Cup test post: {final['status']}</b>\n{html.escape(title)}\n"
+                    f"{html.escape(str(err.get('message') or ''))}\n"
+                    f"{html.escape(str(err.get('rawError') or ''))[:500]}")
+        raise RuntimeError(f"post ended as {final['status']}: {err}")
+
+
 def run(sample=False, local=False):
     state = tournament.load()
     if sample:
@@ -291,12 +325,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sample", action="store_true", help="render the next match, don't post")
     ap.add_argument("--local", action="store_true", help="with --sample: no Telegram")
+    ap.add_argument("--post-now", action="store_true",
+                    help="publish the earliest pending post immediately and wait for TikTok")
     ap.add_argument("--reset-unpublished", action="store_true",
                     help="cancel our pending Buffer posts and redraw if nothing is published")
     args = ap.parse_args()
     try:
         if args.reset_unpublished:
             reset_unpublished()
+        elif args.post_now:
+            post_now()
         else:
             run(sample=args.sample, local=args.local)
     except Exception as e:
