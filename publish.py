@@ -158,3 +158,12 @@ def schedule_tiktok(channel_id, video_url, caption, due_at, thumb_ms=2500):
         raise PublishError(f"Buffer rejected the post: {res.get('message')}")
     print(f"[buffer] {mode}: {res['post']}")
     return res["post"]
+
+
+def delete_post(post_id):
+    data = _gql("""mutation($i: DeletePostInput!) { deletePost(input: $i) {
+        __typename ... on MutationError { message } } }""", {"i": {"id": post_id}})
+    res = data["deletePost"]
+    if res.get("message"):
+        raise PublishError(f"Buffer refused to delete {post_id}: {res['message']}")
+    print(f"[buffer] deleted {post_id}")

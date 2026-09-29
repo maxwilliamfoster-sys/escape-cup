@@ -35,8 +35,23 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 FONT_BLACK = os.path.join(ROOT, "assets", "fonts", "Montserrat-900.ttf")
 FONT_BOLD = os.path.join(ROOT, "assets", "fonts", "Montserrat-800.ttf")
 
-RING_COLORS = ["#FF4D6D", "#FF9F1C", "#FFE14D", "#3DDC97", "#4CC9F0", "#B388FF"]
 FINAL_RED = "#FF3355"
+
+# Visual themes, rotated per video. TikTok treats automation that "sends
+# repetitive content" as spam, so consecutive videos must not look identical:
+# each theme changes the ring palette and the background tint.
+# (bg_dark, bg_mid, glow, ring colours inner->outer)
+THEMES = {
+    "neon":   ("#0A0F24", "#161B3D", "#2A3570", ["#FF4D6D", "#FF9F1C", "#FFE14D", "#3DDC97", "#4CC9F0", "#B388FF"]),
+    "ocean":  ("#051A24", "#0B2E3D", "#11546B", ["#7FFFD4", "#4DD8E6", "#38B6FF", "#5B8CFF", "#8A7CFF", "#C38BFF"]),
+    "sunset": ("#1F0A16", "#361127", "#6B2045", ["#FFD166", "#FFB347", "#FF8C61", "#FF6B8B", "#E86AF0", "#A77BFF"]),
+    "forest": ("#07160F", "#10281C", "#1F5A3A", ["#E9F59A", "#B8F28B", "#7BE495", "#4FD1A5", "#3CB4C8", "#5B8DEF"]),
+    "candy":  ("#160B24", "#26143D", "#4B2A7A", ["#FF9AD5", "#FFB86B", "#FFF07A", "#8BF0C8", "#8FD3FF", "#C9A2FF"]),
+    "ember":  ("#1A0C06", "#2E160B", "#6B3312", ["#FFF3B0", "#FFD166", "#FFA94D", "#FF7A45", "#FF5470", "#D65DB1"]),
+}
+FINAL_THEME = "gold"
+THEMES[FINAL_THEME] = ("#140F02", "#2A2006", "#6B5410", ["#FFF6CC", "#FFE9A0", "#FFD966", "#FFC933", "#FFB300", "#FF9900"])
+HOOK_TEXT = "WHICH COUNTRY ESCAPES FIRST?"      # on-screen text is indexed by TikTok search
 
 
 def ffmpeg_bin():
@@ -223,18 +238,19 @@ class Particles:
                 cr.restore()
 
 
-def _background():
+def _background(theme):
+    dark, mid, glow, _ = THEMES[theme]
     s = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H)
     cr = cairo.Context(s)
     g = cairo.LinearGradient(0, 0, 0, H)
-    g.add_color_stop_rgb(0, *rgb("#0A0F24"))
-    g.add_color_stop_rgb(0.5, *rgb("#161B3D"))
-    g.add_color_stop_rgb(1, *rgb("#0A0F24"))
+    g.add_color_stop_rgb(0, *rgb(dark))
+    g.add_color_stop_rgb(0.5, *rgb(mid))
+    g.add_color_stop_rgb(1, *rgb(dark))
     cr.set_source(g)
     cr.paint()
     rg = cairo.RadialGradient(sim.CX, sim.CY, 0, sim.CX, sim.CY, 640)
-    rg.add_color_stop_rgba(0, *rgb("#2A3570"), 0.55)
-    rg.add_color_stop_rgba(1, *rgb("#2A3570"), 0.0)
+    rg.add_color_stop_rgba(0, *rgb(glow), 0.55)
+    rg.add_color_stop_rgba(1, *rgb(glow), 0.0)
     cr.set_source(rg)
     cr.paint()
     return s
@@ -278,8 +294,10 @@ def render_match(match, info, out_path, workdir):
     total = n_sim + n_card
     win_t = n_sim / FPS
 
-    base = _background()
-    hook_bg = _header_layer(base, codes, text, flags, "WHO BREAKS OUT FIRST?", "#FFD84D", False)
+    theme = info.get("theme", "neon")
+    RING_COLORS = THEMES[theme][3]
+    base = _background(theme)
+    hook_bg = _header_layer(base, codes, text, flags, HOOK_TEXT, "#FFD84D", False)
     main_bg = _header_layer(base, codes, text, flags, info["header"], "#9FB0E6", True)
 
     breaks_by_frame = {}
@@ -297,7 +315,8 @@ def render_match(match, info, out_path, workdir):
     cmd = [ffmpeg_bin(), "-y", "-loglevel", "error",
            "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
            "-i", wav,
-           "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
+           "-c:v", "libx264", "-preset", "slow", "-tune", "animation", "-crf", "14",
+           "-pix_fmt", "yuv420p", "-g", "60",
            "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out_path]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
 

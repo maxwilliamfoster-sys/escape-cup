@@ -6,6 +6,12 @@ on:
     # GitHub's multi-hour cron delays don't move the posting time.
     - cron: '17 5 * * *'
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'schedule = normal run; reset = cancel our pending Buffer posts and redraw (only if nothing published)'
+        type: choice
+        options: [schedule, reset]
+        default: schedule
 
 concurrency:
   group: escape-cup-post
@@ -36,7 +42,12 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python main.py
+        run: |
+          if [ "${{ github.event.inputs.mode }}" = "reset" ]; then
+            python main.py --reset-unpublished
+          else
+            python main.py
+          fi
 
       - name: Commit bracket state
         if: always()

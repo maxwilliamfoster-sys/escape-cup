@@ -18,10 +18,12 @@ def acceptable(d):
             and min(d["breaks"]) >= 1)
 
 
-def pick(base_seed, tries=400):
+def pick(base_seed, tries=400, exclude=()):
     best = None
     for k in range(tries):
         seed = base_seed * 1000 + k
+        if seed in exclude:
+            continue
         m = sim.simulate(seed, record=False)
         d = sim.drama(m)
         if acceptable(d):

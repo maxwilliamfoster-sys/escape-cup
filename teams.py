@@ -1,7 +1,13 @@
 """The 32 nations of the Escape Cup.
 
-Chosen for big TikTok audiences and football rivalries (comment fuel). India is
-left out on purpose: TikTok is banned there, so an Indian fanbase can't find it.
+Chosen for big TikTok audiences and football rivalries (comment fuel).
+
+Deliberately excluded:
+  - India: TikTok is banned there, so an Indian fanbase can't find the videos.
+  - Any flag carrying scripture (Saudi Arabia, Iraq, Afghanistan, Iran...): e.g. the
+    Saudi flag bears the Shahada and must not touch the ground - FIFA holds it
+    above the pitch. Putting it on a ball that bounces and loses invites offence
+    and mass-reporting. quality.py refuses these codes.
 `color` is the ball's trail/accent colour, picked by hand from each flag.
 Flags are from flagcdn.com (national flags are public domain), fetched once by
 tools/fetch_flags.py and committed so CI needs no network for them.
@@ -36,7 +42,7 @@ TEAMS = [
     ("ph", "Philippines", "#2E6BE6"),
     ("id", "Indonesia", "#FF3B3B"),
     ("vn", "Vietnam", "#FFD700"),
-    ("sa", "Saudi Arabia", "#16A34A"),
+    ("ch", "Switzerland", "#FF3B30"),
     ("co", "Colombia", "#FCD116"),
     ("uy", "Uruguay", "#7FB6F0"),
     ("ie", "Ireland", "#22B35E"),
