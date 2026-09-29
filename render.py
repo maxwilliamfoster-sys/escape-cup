@@ -265,7 +265,7 @@ def _stroke_arc(cr, r, start, end, color, width, alpha):
 
 
 def render_match(match, info, out_path, workdir):
-    """info: a, b (team codes), header, melody, result_line, next_label,
+    """info: a, b (team codes), header, track (tracks.json entry), result_line, next_label,
     next_line, cta, final (bool)."""
     a, b = info["a"], info["b"]
     codes = [a, b]
@@ -292,7 +292,7 @@ def render_match(match, info, out_path, workdir):
     flash = {}
 
     wav = os.path.join(workdir, "audio.wav")
-    audio.write_wav(audio.build(match, info["melody"], total / FPS, win_t, match.seed), wav)
+    audio.write_wav(audio.build(match, info["track"], total / FPS, win_t, match.seed), wav)
 
     cmd = [ffmpeg_bin(), "-y", "-loglevel", "error",
            "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",

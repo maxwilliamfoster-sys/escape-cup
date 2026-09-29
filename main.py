@@ -17,6 +17,7 @@ import hashlib
 import html
 import json
 import os
+import random
 import sys
 import traceback
 from datetime import datetime, timedelta, timezone
@@ -62,6 +63,14 @@ def upcoming_slots(now, taken, count):
     return out
 
 
+def pick_track(n):
+    """Walk the music library in a fixed shuffled order, so consecutive videos
+    never share a track and every track gets used before any repeats."""
+    lib = sorted(audio.tracks(), key=lambda t: t["slug"])
+    random.Random("escape-cup-music").shuffle(lib)
+    return lib[n % len(lib)]
+
+
 def build_one(state):
     """Render the next match. Returns (path, caption, meta, winner, seed, melody, r, m)."""
     nm = tournament.next_match(state)
@@ -73,7 +82,8 @@ def build_one(state):
     seed, drama = director.pick(base)
     phys = sim.simulate(seed)
     winner = [a, b][phys.winner]
-    melody = audio.MELODY_NAMES[state.get("posts", 0) % len(audio.MELODY_NAMES)]
+    track = pick_track(state.get("posts", 0))
+    melody = track["file"]
     is_final = d["size"] == 1
 
     if is_final:
@@ -93,7 +103,7 @@ def build_one(state):
         cta = "Follow so you don't miss it"
         tease = f"Escape Cup #{state['edition'] + 1} starts tomorrow - who's your team? 👇"
 
-    info = dict(a=a, b=b, header=d["header"], melody=melody, result_line=result,
+    info = dict(a=a, b=b, header=d["header"], track=track, result_line=result,
                 next_label=next_label, next_line=next_line, cta=cta, final=is_final)
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(WORK, exist_ok=True)
