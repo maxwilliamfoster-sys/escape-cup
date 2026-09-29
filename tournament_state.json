@@ -14,11 +14,11 @@
    {
     "a": "pl",
     "b": "uy",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "uy",
+    "seed": 118630431040,
+    "melody": "ocean",
+    "posted": "2026-09-30T18:30:00+00:00",
+    "buffer_id": "6abc2e6fbc79f7218889ccd2"
    },
    {
     "a": "ph",
@@ -150,7 +150,7 @@
   [
    {
     "a": "ch",
-    "b": null,
+    "b": "uy",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -292,9 +292,39 @@
   ]
  ],
  "titles": {},
- "posts": 1,
- "seen_errors": [],
+ "posts": 2,
+ "log": [
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 0,
+   "a": "gb-sct",
+   "b": "ch",
+   "winner": "ch",
+   "seed": 93052674003,
+   "theme": "neon",
+   "due": "2026-09-29T21:20:19.967364+00:00",
+   "buffer_id": "6abc2b89bc79f7218889713e",
+   "status": "published",
+   "link": "https://tiktok.com/@cuh2g/video/7691070201583979809"
+  },
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 1,
+   "a": "pl",
+   "b": "uy",
+   "winner": "uy",
+   "seed": 118630431040,
+   "theme": "ocean",
+   "due": "2026-09-30T18:30:00+00:00",
+   "buffer_id": "6abc2e6fbc79f7218889ccd2",
+   "status": "scheduled"
+  }
+ ],
  "recent_captions": [
-  "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Switzerland 🇨🇭 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nPoland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #scotland #switzerland"
- ]
+  "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Switzerland 🇨🇭 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nPoland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #scotland #switzerland",
+  "Country ball escape - Poland 🇵🇱 vs Uruguay 🇺🇾\nEscape Cup 1, Round of 32\nNext up: Philippines vs Nigeria - who's your pick? 👇\n#ballescape #physicssimulation #simulation #poland #uruguay"
+ ],
+ "seen_errors": []
 }
