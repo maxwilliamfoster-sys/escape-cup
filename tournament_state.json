@@ -23,11 +23,11 @@
    {
     "a": "ph",
     "b": "ng",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ph",
+    "seed": 147181587009,
+    "melody": "sunset",
+    "posted": "2026-10-01T18:30:00+00:00",
+    "buffer_id": "6abd6da41971cfe1dd975757"
    },
    {
     "a": "ma",
@@ -158,7 +158,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "ph",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 2,
+ "posts": 3,
  "log": [
   {
    "edition": 1,
@@ -319,12 +319,27 @@
    "theme": "ocean",
    "due": "2026-09-30T18:30:00+00:00",
    "buffer_id": "6abc2e6fbc79f7218889ccd2",
+   "status": "published",
+   "link": "https://tiktok.com/@cuh2g/video/7691397558987459872"
+  },
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 2,
+   "a": "ph",
+   "b": "ng",
+   "winner": "ph",
+   "seed": 147181587009,
+   "theme": "sunset",
+   "due": "2026-10-01T18:30:00+00:00",
+   "buffer_id": "6abd6da41971cfe1dd975757",
    "status": "scheduled"
   }
  ],
  "recent_captions": [
   "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Switzerland 🇨🇭 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nPoland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #scotland #switzerland",
-  "Country ball escape - Poland 🇵🇱 vs Uruguay 🇺🇾\nEscape Cup 1, Round of 32\nNext up: Philippines vs Nigeria - who's your pick? 👇\n#ballescape #physicssimulation #simulation #poland #uruguay"
+  "Country ball escape - Poland 🇵🇱 vs Uruguay 🇺🇾\nEscape Cup 1, Round of 32\nNext up: Philippines vs Nigeria - who's your pick? 👇\n#ballescape #physicssimulation #simulation #poland #uruguay",
+  "Philippines 🇵🇭 vs Nigeria 🇳🇬: six rings, one way out. Physics simulation\nEscape Cup 1, Round of 32\nComing next: Morocco vs Ukraine. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #philippines #nigeria"
  ],
  "seen_errors": []
 }
