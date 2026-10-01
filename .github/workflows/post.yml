@@ -12,7 +12,7 @@ on:
       mode:
         description: 'schedule = normal run; reset = cancel pending + redraw (only if nothing published); post-now = publish the next pending post immediately and wait for TikTok'
         type: choice
-        options: [schedule, reset, post-now]
+        options: [schedule, requeue, reset, post-now]
         default: schedule
 
 concurrency:
@@ -47,6 +47,8 @@ jobs:
         run: |
           if [ "${{ github.event.inputs.mode }}" = "reset" ]; then
             python main.py --reset-unpublished
+          elif [ "${{ github.event.inputs.mode }}" = "requeue" ]; then
+            python main.py --requeue
           elif [ "${{ github.event.inputs.mode }}" = "post-now" ]; then
             python main.py --post-now
           else

@@ -66,7 +66,8 @@ HEADS = [
     "{A} or {B}? Physics decides which country breaks out first",
     "Country ball escape - {A} vs {B}",
     "{A} vs {B} in the escape rings. Who gets out first?",
-    "{A} vs {B}: six rings, one way out. Physics simulation",
+    "{A} vs {B}: 16 rings, one way out. Physics simulation",
+    "Which country escapes first? {A} vs {B} ball escape",
 ]
 FINAL_HEADS = [
     "THE FINAL 🏆 {A} vs {B} - which country escapes with the cup?",
@@ -284,6 +285,32 @@ def reconcile(state, org, channel):
     return state
 
 
+def requeue_unpublished():
+    """After a format change: cancel every still-scheduled post and re-render those
+    matches with the current code, in the same bracket order. Published matches
+    are untouched; seeds are NOT excluded (nothing was wrong with those matches)."""
+    state = tournament.load()
+    org, channel = publish.tiktok_channel()
+    state = reconcile(state, org, channel)
+    log = state.get("log", [])
+    keep = 0
+    while keep < len(log) and log[keep].get("status") in ("published", "lost"):
+        keep += 1
+    pending_ids = {p["id"] for p in publish.pending_posts(org, channel)}
+    cancelled = []
+    for e in log[keep:]:
+        if e.get("buffer_id") in pending_ids:
+            publish.delete_post(e["buffer_id"])
+            cancelled.append(f"{teams.name(e['a'])} v {teams.name(e['b'])}")
+    state = tournament.truncate(state, keep)
+    tournament.save(state)
+    print(f"[requeue] cancelled {cancelled}; log kept {keep} published entries")
+    run()
+    if cancelled:
+        notify.send(f"🔁 <b>Escape Cup requeued</b> {len(cancelled)} unpublished video(s) in the new format: "
+                    f"{html.escape(', '.join(cancelled))}")
+
+
 def reset_unpublished():
     """Cancel our still-scheduled Buffer posts; if nothing has been published yet,
     redraw the cup from scratch (used when the team list changed before launch)."""
@@ -394,6 +421,8 @@ def main():
     ap.add_argument("--local", action="store_true", help="with --sample: no Telegram")
     ap.add_argument("--post-now", action="store_true",
                     help="publish the earliest pending post immediately and wait for TikTok")
+    ap.add_argument("--requeue", action="store_true",
+                    help="re-render every unpublished scheduled match with the current code")
     ap.add_argument("--reset-unpublished", action="store_true",
                     help="cancel our pending Buffer posts and redraw if nothing is published")
     args = ap.parse_args()
@@ -402,6 +431,8 @@ def main():
             reset_unpublished()
         elif args.post_now:
             post_now()
+        elif args.requeue:
+            requeue_unpublished()
         else:
             run(sample=args.sample, local=args.local)
     except Exception as e:

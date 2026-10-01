@@ -1,10 +1,15 @@
 """
 Deterministic 2D physics for one Escape Cup match.
 
-Two balls start in the centre of N nested, rotating rings, each with one gap.
-When a ball's whole body clears the innermost live ring through its gap, that
-ring SHATTERS and the ball scores it. Both balls are then inside the next ring.
-Whoever breaks the final (outermost) ring wins the match.
+Two balls start in the centre of N densely nested, rotating rings, each with one
+gap. When a ball pokes through the innermost live ring's gap, that ring SHATTERS
+and the ball scores it. Whoever breaks the final (outermost) ring wins.
+
+v2 (2026-10-01): 6 thick rings with tiny balls lost viewers at 0:01 (avg watch
+6-8s, <2% completion). The format that wins on TikTok is many thin rings
+filling the screen with a ring popping every second or so - so 16 rings, a
+ring breaks the instant a ball enters its gap (needed anyway: with dense rings
+a ball can never fully clear one before touching the next).
 
 Nothing is scripted: the same seed replays the same match exactly. The director
 only chooses WHICH seed to publish (see director.py).
@@ -17,12 +22,16 @@ import random
 from dataclasses import dataclass, field
 
 # Arena geometry (pixels, in the 1080x1920 frame)
-CX, CY = 540.0, 905.0
-RING_RADII = [130, 188, 246, 304, 362, 420]
-RING_THICK = 9.0
-BALL_R = 32.0
-GAP_ARC = 5.2 * BALL_R            # gap length along the ring (same at every radius)
-FINAL_GAP_ARC = 4.2 * BALL_R      # the last ring is the hardest to get through
+CX, CY = 540.0, 930.0
+N_RINGS = 16
+INNER_R, OUTER_R = 96.0, 470.0
+RING_RADII = [INNER_R + (OUTER_R - INNER_R) * i / (N_RINGS - 1) for i in range(N_RINGS)]
+RING_THICK = 6.0
+BALL_R = 22.0
+GAP_DEG = 40.0                    # every ring's gap is the same ANGLE: a wedge, like the
+FINAL_GAP_SCALE = 0.75            # top ball-escape videos; the last ring's gap is narrower
+TWIST = (0.10, 0.30)              # per-ring phase offset (rad) -> a spiral of gaps
+BREAK_DEPTH = 0.35 * BALL_R       # how far into the gap a ball must poke to break the ring
 
 GRAVITY = 820.0
 RESTITUTION = 1.0
@@ -31,8 +40,7 @@ MAX_SPEED = 1350.0
 FPS = 60
 SUBSTEPS = 6
 DT = 1.0 / (FPS * SUBSTEPS)
-MAX_SECONDS = 75.0
-N_RINGS = len(RING_RADII)
+MAX_SECONDS = 60.0
 
 
 @dataclass
@@ -80,13 +88,17 @@ def _wrap(a):
 
 
 def _make_rings(rng):
+    """All rings spin together with a per-ring phase twist, so the gaps form a
+    rotating spiral wedge. A ball that finds the wedge can break several rings
+    in a row - the combo moments that make this genre satisfying."""
     rings = []
     direction = rng.choice([-1, 1])
+    omega = direction * rng.uniform(0.7, 1.2)
+    twist = rng.choice([-1, 1]) * rng.uniform(*TWIST)
+    start = rng.uniform(-math.pi, math.pi)
     for i, r in enumerate(RING_RADII):
-        arc = FINAL_GAP_ARC if i == N_RINGS - 1 else GAP_ARC
-        omega = direction * rng.uniform(0.6, 1.3)
-        rings.append(Ring(r, (arc / r) / 2, rng.uniform(-math.pi, math.pi), omega))
-        direction = -direction
+        gap = math.radians(GAP_DEG) * (FINAL_GAP_SCALE if i == N_RINGS - 1 else 1.0)
+        rings.append(Ring(r, gap / 2, _wrap(start + i * twist), omega))
     return rings
 
 
@@ -109,7 +121,7 @@ def simulate(seed, record=True):
         ang = rng.uniform(0, 2 * math.pi)
         spd = rng.uniform(520, 700)
         side = -1 if i == 0 else 1
-        balls.append(Ball(CX + side * 36, CY - 20 + rng.uniform(-8, 8),
+        balls.append(Ball(CX + side * 30, CY - 15 + rng.uniform(-6, 6),
                           math.cos(ang) * spd, math.sin(ang) * spd))
 
     m = Match(seed=seed, rings=[Ring(r.radius, r.gap_half, r.angle, r.omega) for r in rings])
@@ -168,12 +180,13 @@ def simulate(seed, record=True):
                     c.vx += rel * nx; c.vy += rel * ny
                     m.events.append(Event(t, "clash", -1, -1, (a.x + c.x) / 2, (a.y + c.y) / 2, rel))
 
-            # A ring breaks once a ball's centre is well past it (the next ring
-            # is closer than a ball's diameter, so "whole body outside" is
-            # geometrically impossible for the inner rings).
+            # A ring breaks the moment a ball pokes into its gap.
             ring = rings[current]
             for i, b in enumerate(balls):
-                if math.hypot(b.x - CX, b.y - CY) > ring.radius + BALL_R * 0.55:
+                dx, dy = b.x - CX, b.y - CY
+                in_gap = abs(_wrap(math.atan2(dy, dx) - ring.angle)) < ring.gap_half
+                dist = math.hypot(dx, dy)
+                if (in_gap and dist > ring.radius - BREAK_DEPTH) or dist > ring.radius + BALL_R:
                     ring.alive = False
                     m.breaks[i] += 1
                     m.events.append(Event(t, "break", i, current, b.x, b.y))
@@ -199,10 +212,13 @@ def drama(m):
     swaps = sum(1 for a, b in zip(breakers, breakers[1:]) if a != b)
     # score line after the second-to-last ring: close = both on similar counts
     pre = [breakers[:-1].count(0), breakers[:-1].count(1)] if breakers else [0, 0]
-    gaps = [e.t for e in m.events if e.kind == "break"]
-    longest_wait = max((b - a for a, b in zip([0.0] + gaps, gaps)), default=0.0)
+    times = [e.t for e in m.events if e.kind == "break"]
+    waits = [b - a for a, b in zip([0.0] + times, times)]
+    longest_wait = max(waits[:-1], default=0.0)          # excluding the final ring
+    final_wait = waits[-1] if waits else 0.0             # tension on the last ring
     return {"winner": m.winner, "duration": round(m.duration, 2), "breaks": m.breaks,
-            "swaps": swaps, "pre_final": pre, "longest_wait": round(longest_wait, 1)}
+            "swaps": swaps, "pre_final": pre, "longest_wait": round(longest_wait, 1),
+            "final_wait": round(final_wait, 1), "first_break": round(times[0], 2) if times else 99.0}
 
 
 if __name__ == "__main__":

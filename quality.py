@@ -9,8 +9,9 @@ effective 2026-09-24 + creator data):
              everything; a weak source comes out blurry and gets swiped.
   visual     no black frames, no frozen stretches, hook text on frame 0,
              winner card at the end - the first second decides the swipe.
-  audio      loudness in a normal band and almost no energy above 2 kHz (the
-             owner found brighter versions painful), no dead silence.
+  audio      loudness in a normal band, almost no energy above 2 kHz (the
+             owner found brighter versions painful), most energy above 400 Hz
+             (v4 was near-silent on phone speakers), no dead silence.
   content    no flags carrying scripture (see teams.py), both teams scored,
              a real winner.
   caption    <= 5 hashtags (TikTok only counts 5), keywords present, no
@@ -33,10 +34,11 @@ W, H, FPS = 1080, 1920, 60
 EXCLUDED_CODES = {"sa", "iq", "af", "ir"}          # flags carrying scripture
 LUFS_RANGE = (-19.0, -13.0)
 MAX_TRUE_PEAK = -0.5
-MAX_HF_PCT = 1.0                                   # % of energy above 2 kHz
+MAX_HF_PCT = 2.0                                   # % of energy above 2 kHz (owner finds sharp highs painful)
+MIN_PHONE_PCT = 55.0                               # % of energy above 400 Hz: phone speakers barely play below it
 MIN_VIDEO_KBPS = 1500
 MAX_BYTES = 90 * 1024 * 1024                       # GitHub Pages file limit is 100 MB
-DURATION_RANGE = (22.0, 48.0)
+DURATION_RANGE = (15.0, 32.0)
 BAIT = [r"\bfollow\b", r"\blike\s*(for|4)\s*like\b", r"\bl4l\b", r"\bf4f\b", r"\blike if\b",
         r"\bgift", r"\bshare (this|if)\b", r"\bsubscribe\b", r"#fyp", r"#foryou", r"#viral",
         r"\b\d+%\s*(of people|can't|cannot|can not|fail)", r"\bnobody can\b", r"\bonly \d+%"]
@@ -84,7 +86,8 @@ def _audio_bands(path):
     spec = np.abs(np.fft.rfft(x)) ** 2
     f = np.fft.rfftfreq(len(x), 1 / 44100)
     tot = spec.sum() or 1.0
-    return 100 * spec[f > 2000].sum() / tot, 100 * spec[(f > 1000) & (f <= 2000)].sum() / tot
+    return (100 * spec[f > 2000].sum() / tot, 100 * spec[(f > 1000) & (f <= 2000)].sum() / tot,
+            100 * spec[f > 400].sum() / tot)
 
 
 def check_video(path, match_seconds):
@@ -125,13 +128,14 @@ def check_video(path, match_seconds):
         fail.append(f"frozen picture during match ({', '.join(frz)}s)")
     rep["black_frames"], rep["freezes"] = len(blk), len(frz)
 
-    # first frame must carry the yellow hook text in the header band
+    # first frame must carry the white hook box ("Which country escapes first?")
     f0 = _frame(path, 0.0)
-    band = f0[140:225, 60:1020]
-    yellow = int(((band[..., 0] > 200) & (band[..., 1] > 170) & (band[..., 2] < 140)).sum())
-    rep["hook_px"] = yellow
-    if yellow < 800:
-        fail.append("hook text not visible on the first frame")
+    band = f0[190:275, 60:1020]
+    white = int(((band[..., 0] > 235) & (band[..., 1] > 235) & (band[..., 2] > 235)).sum())
+    dark_text = int(((band[..., 0] < 60) & (band[..., 1] < 60) & (band[..., 2] < 60)).sum())
+    rep["hook_px"] = white
+    if white < 25000 or dark_text < 1500:
+        fail.append("hook box not visible on the first frame")
     # the winner card must actually appear (screen dims under the card)
     mid = _frame(path, match_seconds * 0.5).mean()
     card = _frame(path, min(dur - 0.3, match_seconds + 2.0))
@@ -144,8 +148,11 @@ def check_video(path, match_seconds):
     peak = re.findall(r"Peak:\s+(-?[\d.]+) dBFS", log)
     lufs = float(lufs[-1]) if lufs else -99.0
     tp = float(peak[-1]) if peak else 0.0
-    hf, mid_band = _audio_bands(path)
-    rep.update(lufs=lufs, true_peak=tp, hf_pct=round(hf, 2), band_1_2k_pct=round(mid_band, 1))
+    hf, mid_band, phone = _audio_bands(path)
+    rep.update(lufs=lufs, true_peak=tp, hf_pct=round(hf, 2), band_1_2k_pct=round(mid_band, 1),
+               phone_pct=round(phone, 1))
+    if phone < MIN_PHONE_PCT:
+        fail.append(f"only {phone:.0f}% of the sound is above 400 Hz - near-silent on phone speakers")
     if not LUFS_RANGE[0] <= lufs <= LUFS_RANGE[1]:
         fail.append(f"loudness {lufs} LUFS outside {LUFS_RANGE}")
     if tp > MAX_TRUE_PEAK:

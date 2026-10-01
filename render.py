@@ -29,7 +29,7 @@ import teams
 
 W, H = 1080, 1920
 FPS = sim.FPS
-CARD_SECONDS = 3.6
+CARD_SECONDS = 2.8
 HOOK_SECONDS = 3.0
 ROOT = os.path.dirname(os.path.abspath(__file__))
 FONT_BLACK = os.path.join(ROOT, "assets", "fonts", "Montserrat-900.ttf")
@@ -51,7 +51,7 @@ THEMES = {
 }
 FINAL_THEME = "gold"
 THEMES[FINAL_THEME] = ("#140F02", "#2A2006", "#6B5410", ["#FFF6CC", "#FFE9A0", "#FFD966", "#FFC933", "#FFB300", "#FF9900"])
-HOOK_TEXT = "WHICH COUNTRY ESCAPES FIRST?"      # on-screen text is indexed by TikTok search
+HOOK_TEXT = "Which country escapes first?"      # on-screen text is indexed by TikTok search
 
 
 def ffmpeg_bin():
@@ -200,13 +200,13 @@ class Particles:
         self.items = []   # [t0, x, y, vx, vy, life, rgb, size, kind, spin]
 
     def ring_burst(self, t, ring, color):
-        n = 72
+        n = 40
         for k in range(n):
             a = 2 * math.pi * k / n + self.rng.uniform(-0.03, 0.03)
             spd = self.rng.uniform(80, 380)
             self.items.append([t, sim.CX + math.cos(a) * ring.radius, sim.CY + math.sin(a) * ring.radius,
                                math.cos(a) * spd, math.sin(a) * spd, self.rng.uniform(0.5, 1.0),
-                               rgb(color), self.rng.uniform(4, 9), "shard", 0])
+                               rgb(color), self.rng.uniform(3, 6), "shard", 0])
 
     def confetti(self, t, color):
         for _ in range(170):
@@ -256,33 +256,71 @@ def _background(theme):
     return s
 
 
-def _header_layer(base, codes, text, flags, top_line, top_color, top_bold):
-    """Background + the static header, baked once."""
+def _hook_box(cr, text, s, cy):
+    """TikTok-native caption style: black text on a white rounded box. This is the
+    exact look of the top ball-escape videos ("Will the ball escape?")."""
+    surf, w, h, pad, gh = text.sprite(s, 54, "#0B0B0F", max_w=880, shadow=False)
+    bw, bh = w + 24, gh + 46
+    _rounded(cr, W / 2 - bw / 2, cy - bh / 2, bw, bh, 18)
+    cr.set_source_rgb(1, 1, 1)
+    cr.fill()
+    text.draw(cr, s, W / 2, cy + gh / 2 - 2, 54, "#0B0B0F", max_w=880, shadow=False)
+
+
+def _ring_colors(theme):
+    """16 colours interpolated across the theme's palette, inner -> outer."""
+    pal = [rgb(c) for c in THEMES[theme][3]]
+    out = []
+    for i in range(sim.N_RINGS):
+        x = i / (sim.N_RINGS - 1) * (len(pal) - 1)
+        j = min(int(x), len(pal) - 2)
+        f = x - j
+        out.append(tuple(pal[j][c] * (1 - f) + pal[j + 1][c] * f for c in range(3)))
+    return out
+
+
+def _static_layer(theme, codes, text, flags, small_line):
+    """Background + hook box + team names, baked once (the score is drawn live)."""
     s = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H)
     cr = cairo.Context(s)
-    cr.set_source_surface(base, 0, 0)
+    dark = THEMES[theme][0]
+    cr.set_source_rgb(*[c * 0.55 for c in rgb(dark)])          # near-black: rings pop
     cr.paint()
-    text.draw(cr, top_line, W / 2, 205, 44 if not top_bold else 30, top_color, bold=top_bold,
-              max_w=920)
+    rg = cairo.RadialGradient(sim.CX, sim.CY, 0, sim.CX, sim.CY, 560)
+    rg.add_color_stop_rgba(0, *rgb(THEMES[theme][2]), 0.35)
+    rg.add_color_stop_rgba(1, *rgb(THEMES[theme][2]), 0.0)
+    cr.set_source(rg)
+    cr.paint()
+    _hook_box(cr, text, HOOK_TEXT, 232)
     for side, code in enumerate(codes):
-        cx = 250 if side == 0 else 830
-        flags.rect(cr, code, cx, 290, 132, 88)
-        text.draw(cr, teams.name(code).upper(), cx, 392, 50, "#FFFFFF", max_w=400)
-    text.draw(cr, "VS", W / 2, 312, 58, "#FFFFFF")
+        name = teams.name(code).upper()
+        if side == 0:
+            flags.rect(cr, code, 92, 352, 66, 44, radius=8, border=3)
+            text.draw(cr, name, 140, 368, 40, "#FFFFFF", align="left", max_w=300)
+        else:
+            flags.rect(cr, code, W - 92, 352, 66, 44, radius=8, border=3)
+            text.draw(cr, name, W - 140, 368, 40, "#FFFFFF", align="right", max_w=300)
+    text.draw(cr, small_line, W / 2, 428, 24, "#9AA3BF", bold=True, max_w=900, shadow=False)
     return s
 
 
-def _stroke_arc(cr, r, start, end, color, width, alpha):
-    cr.new_sub_path()
-    cr.arc(sim.CX, sim.CY, r, start, end)
-    cr.set_source_rgba(*rgb(color), alpha)
-    cr.set_line_width(width)
-    cr.stroke()
+CONTRAST = ["#FFFFFF", "#4CC9F0", "#FF4D6D", "#3DDC97", "#B388FF"]
+
+
+def team_colors(a, b):
+    """Score/trail colours that can't be confused: if both flags give similar
+    colours (Australia/Vietnam are both yellow), team B takes the most
+    contrasting fallback."""
+    ca, cb = teams.color(a), teams.color(b)
+    dist = lambda x, y: sum((p - q) ** 2 for p, q in zip(rgb(x), rgb(y))) ** 0.5
+    if dist(ca, cb) < 0.45:
+        cb = max(CONTRAST, key=lambda c: dist(c, ca))
+    return ca, cb
 
 
 def render_match(match, info, out_path, workdir):
-    """info: a, b (team codes), header, result_line, next_label,
-    next_line, cta, final (bool)."""
+    """info: a, b (team codes), header, result_line, next_label, next_line, cta,
+    final (bool), theme."""
     a, b = info["a"], info["b"]
     codes = [a, b]
     flags = Flags()
@@ -295,18 +333,15 @@ def render_match(match, info, out_path, workdir):
     win_t = n_sim / FPS
 
     theme = info.get("theme", "neon")
-    RING_COLORS = THEMES[theme][3]
-    base = _background(theme)
-    hook_bg = _header_layer(base, codes, text, flags, HOOK_TEXT, "#FFD84D", False)
-    main_bg = _header_layer(base, codes, text, flags, info["header"], "#9FB0E6", True)
+    ring_cols = _ring_colors(theme)
+    layer = _static_layer(theme, codes, text, flags, info["header"])
 
     breaks_by_frame = {}
     for e in match.events:
         if e.kind == "break":
             breaks_by_frame.setdefault(int(e.t * FPS), []).append(e)
-    popups = []
-    ring_owner = [None] * sim.N_RINGS
     score = [0, 0]
+    bump = [-9.0, -9.0]          # time each side last scored (score pops)
     flash = {}
 
     wav = os.path.join(workdir, "audio.wav")
@@ -323,7 +358,8 @@ def render_match(match, info, out_path, workdir):
     surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H)
     cr = cairo.Context(surf)
     trails = [[], []]
-    rcol = [rgb(teams.color(c)) for c in codes]
+    tcol = team_colors(a, b)
+    rcol = [rgb(c) for c in tcol]
 
     for f in range(total):
         t = f / FPS
@@ -331,112 +367,93 @@ def render_match(match, info, out_path, workdir):
         in_card = f >= n_sim
 
         for e in breaks_by_frame.get(f, []):
-            parts.ring_burst(t, match.rings[e.ring], RING_COLORS[e.ring])
-            ring_owner[e.ring] = e.ball
+            col = ring_cols[e.ring]
+            parts.ring_burst(t, match.rings[e.ring], "#%02x%02x%02x" % tuple(int(c * 255) for c in col))
             score[e.ball] += 1
+            bump[e.ball] = t
             flash[e.ring] = t
-            popups.append((t, e.x, e.y - 50, f"+1 {teams.name(codes[e.ball]).upper()}",
-                           teams.color(codes[e.ball])))
         if f == n_sim:
-            parts.confetti(t, teams.color(codes[match.winner]))
+            parts.confetti(t, tcol[match.winner])
 
         cr.set_operator(cairo.OPERATOR_SOURCE)
-        cr.set_source_surface(hook_bg if t < HOOK_SECONDS else main_bg, 0, 0)
+        cr.set_source_surface(layer, 0, 0)
         cr.paint()
         cr.set_operator(cairo.OPERATOR_OVER)
         cr.set_line_cap(cairo.LINE_CAP_ROUND)
 
-        # --- rings: soft glow (wide translucent strokes) + solid core ------
+        # --- live score between the team names -------------------------------
+        for side in (0, 1):
+            pop = max(0.0, 1 - (t - bump[side]) / 0.25)
+            size = int(64 + 26 * pop)
+            x = W / 2 - 70 if side == 0 else W / 2 + 70
+            text.draw(cr, str(score[side]), x, 378, size, tcol[side])
+        text.draw(cr, "-", W / 2, 372, 48, "#FFFFFF")
+
+        # --- rings: glow + core; the last ring turns red ------------------------
         final_phase = sum(alive) == 1
         for k, ring in enumerate(match.rings):
             if not alive[k]:
                 continue
             start = angles[k] + ring.gap_half
             end = angles[k] + 2 * math.pi - ring.gap_half
-            col = FINAL_RED if final_phase else RING_COLORS[k]
-            _stroke_arc(cr, ring.radius, start, end, col, sim.RING_THICK + 22, 0.10)
-            _stroke_arc(cr, ring.radius, start, end, col, sim.RING_THICK + 11, 0.22)
-            _stroke_arc(cr, ring.radius, start, end, col, sim.RING_THICK, 1.0)
+            col = rgb(FINAL_RED) if final_phase else ring_cols[k]
+            for width, alpha in ((sim.RING_THICK + 12, 0.16), (sim.RING_THICK, 1.0)):
+                cr.new_sub_path()
+                cr.arc(sim.CX, sim.CY, ring.radius, start, end)
+                cr.set_source_rgba(*col, alpha)
+                cr.set_line_width(width)
+                cr.stroke()
 
         for k, t0 in flash.items():
             age = t - t0
-            if 0 <= age < 0.25:
-                cr.arc(sim.CX, sim.CY, match.rings[k].radius + age * 120, 0, 2 * math.pi)
-                cr.set_source_rgba(1, 1, 1, 0.8 * (1 - age / 0.25))
-                cr.set_line_width(6)
+            if 0 <= age < 0.22:
+                cr.arc(sim.CX, sim.CY, match.rings[k].radius + age * 140, 0, 2 * math.pi)
+                cr.set_source_rgba(1, 1, 1, 0.7 * (1 - age / 0.22))
+                cr.set_line_width(4)
                 cr.stroke()
 
         parts.draw(cr, t)
 
-        # --- balls + trails ------------------------------------------------
+        # --- balls + trails ------------------------------------------------------
         for i, (x, y) in enumerate(balls):
             if not in_card:
                 trails[i].append((x, y))
-                del trails[i][:-16]
+                del trails[i][:-14]
             n = len(trails[i])
             for j, (tx, ty) in enumerate(trails[i][:-1]):
                 fade = (j + 1) / n
                 cr.arc(tx, ty, sim.BALL_R * (0.35 + 0.55 * fade), 0, 2 * math.pi)
-                cr.set_source_rgba(*rcol[i], 0.28 * fade)
+                cr.set_source_rgba(*rcol[i], 0.30 * fade)
                 cr.fill()
         for i, (x, y) in enumerate(balls):
-            cr.arc(x, y + 5, sim.BALL_R + 2, 0, 2 * math.pi)
-            cr.set_source_rgba(0, 0, 0, 0.35)
-            cr.fill()
-            flags.ball(cr, codes[i], x, y, sim.BALL_R)
+            flags.ball(cr, codes[i], x, y, sim.BALL_R, border=3.5)
 
-        for t0, x, y, s, col in popups:
-            age = t - t0
-            if 0 <= age < 1.0:
-                alpha = 1 - max(0, age - 0.6) / 0.4
-                text.draw(cr, s, min(max(x, 200), W - 200), y - age * 60, 38, col, alpha=alpha)
-
-        # --- scoreboard ------------------------------------------------------
         if not in_card and final_phase:
-            pulse = 0.55 + 0.45 * abs(math.sin(t * 5))
-            text.draw(cr, "FINAL RING - NEXT BREAK WINS", W / 2, 1382, 34, "#FF4D6D",
-                      alpha=pulse, max_w=900)
-        elif not in_card:
-            text.draw(cr, "RINGS BROKEN", W / 2, 1382, 28, "#9FB0E6", bold=True)
-        slot_w = 56
-        x0 = W / 2 - slot_w * (sim.N_RINGS - 1) / 2
-        for k in range(sim.N_RINGS):
-            x = x0 + k * slot_w
-            if ring_owner[k] is None:
-                cr.arc(x, 1432, 17, 0, 2 * math.pi)
-                cr.set_source_rgba(*rgb(RING_COLORS[k]), 0.9)
-                cr.set_line_width(4)
-                cr.stroke()
-            else:
-                flags.ball(cr, codes[ring_owner[k]], x, 1432, 19, border=3)
-        text.draw(cr, str(score[0]), 150, 1458, 76, teams.color(a))
-        text.draw(cr, str(score[1]), 930, 1458, 76, teams.color(b))
+            pulse = 0.55 + 0.45 * abs(math.sin(t * 6))
+            text.draw(cr, "LAST RING", W / 2, sim.CY + sim.OUTER_R + 62, 40, "#FF4D6D", alpha=pulse)
 
-        # --- winner card -------------------------------------------------------
+        # --- winner card -----------------------------------------------------------
         if in_card:
             ct = t - win_t
-            k = min(1.0, ct / 0.35)
+            k = min(1.0, ct / 0.3)
             cr.rectangle(0, 0, W, H)
-            cr.set_source_rgba(*rgb("#050814"), 0.8 * k)
+            cr.set_source_rgba(0.02, 0.02, 0.05, 0.8 * k)
             cr.fill()
             parts.draw(cr, t)
             wcode = codes[match.winner]
             slide = (1 - k) ** 3 * 120
-            text.draw(cr, "CHAMPION" if info.get("final") else "WINNER", W / 2, 560 + slide, 40,
+            text.draw(cr, "CHAMPION" if info.get("final") else "ESCAPED FIRST", W / 2, 600 + slide, 44,
                       "#FFD84D", alpha=k)
-            flags.rect(cr, wcode, W / 2, 700 + slide, 300, 200, radius=20, border=6, alpha=k)
-            text.draw(cr, teams.name(wcode).upper(), W / 2, 905 + slide, 104, "#FFFFFF",
+            flags.rect(cr, wcode, W / 2, 740 + slide, 300, 200, radius=20, border=6, alpha=k)
+            text.draw(cr, teams.name(wcode).upper(), W / 2, 945 + slide, 104, "#FFFFFF",
                       alpha=k, max_w=940)
-            text.draw(cr, info["result_line"], W / 2, 972 + slide, 38, "#C9D3F5", bold=True,
+            text.draw(cr, info["result_line"], W / 2, 1010 + slide, 38, "#C9D3F5", bold=True,
                       alpha=k, max_w=940)
-            k2 = min(1.0, max(0.0, (ct - 0.5) / 0.4))
+            k2 = min(1.0, max(0.0, (ct - 0.4) / 0.35))
             if k2 > 0:
-                cr.rectangle(W / 2 - 160, 1030, 320, 3)
-                cr.set_source_rgba(1, 1, 1, 0.3 * k2)
-                cr.fill()
-                text.draw(cr, info["next_label"], W / 2, 1110, 32, "#9FB0E6", bold=True, alpha=k2)
-                text.draw(cr, info["next_line"], W / 2, 1185, 60, "#FFFFFF", alpha=k2, max_w=960)
-                text.draw(cr, info["cta"], W / 2, 1262, 40, "#FFD84D", alpha=k2, max_w=940)
+                text.draw(cr, info["next_label"], W / 2, 1130, 32, "#9FB0E6", bold=True, alpha=k2)
+                text.draw(cr, info["next_line"], W / 2, 1205, 60, "#FFFFFF", alpha=k2, max_w=960)
+                text.draw(cr, info["cta"], W / 2, 1282, 40, "#FFD84D", alpha=k2, max_w=940)
 
         surf.flush()
         proc.stdin.write(surf.get_data())
