@@ -33,10 +33,10 @@
     "a": "ma",
     "b": "ua",
     "winner": "ma",
-    "seed": 199626937004,
+    "seed": 199626937064,
     "melody": "forest",
     "posted": "2026-10-02T18:30:00+00:00",
-    "buffer_id": "6abea6b8d230700baf521a76"
+    "buffer_id": "6abeb419d22f25b408891d41"
    },
    {
     "a": "au",
@@ -333,7 +333,8 @@
    "theme": "sunset",
    "due": "2026-10-01T18:30:00+00:00",
    "buffer_id": "6abd6da41971cfe1dd975757",
-   "status": "scheduled"
+   "status": "published",
+   "link": "https://tiktok.com/@cuh2g/video/7691768650612722977"
   },
   {
    "edition": 1,
@@ -342,10 +343,10 @@
    "a": "ma",
    "b": "ua",
    "winner": "ma",
-   "seed": 199626937004,
+   "seed": 199626937064,
    "theme": "forest",
    "due": "2026-10-02T18:30:00+00:00",
-   "buffer_id": "6abea6b8d230700baf521a76",
+   "buffer_id": "6abeb419d22f25b408891d41",
    "status": "scheduled"
   }
  ],
@@ -353,7 +354,8 @@
   "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Switzerland 🇨🇭 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nPoland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #scotland #switzerland",
   "Country ball escape - Poland 🇵🇱 vs Uruguay 🇺🇾\nEscape Cup 1, Round of 32\nNext up: Philippines vs Nigeria - who's your pick? 👇\n#ballescape #physicssimulation #simulation #poland #uruguay",
   "Philippines 🇵🇭 vs Nigeria 🇳🇬: six rings, one way out. Physics simulation\nEscape Cup 1, Round of 32\nComing next: Morocco vs Ukraine. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #philippines #nigeria",
-  "Ball escape simulation: Morocco 🇲🇦 vs Ukraine 🇺🇦\nRound of 32 of Escape Cup 1 🏆\nAustralia vs Vietnam is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine"
+  "Ball escape simulation: Morocco 🇲🇦 vs Ukraine 🇺🇦\nRound of 32 of Escape Cup 1 🏆\nAustralia vs Vietnam is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine",
+  "Morocco 🇲🇦 vs Ukraine 🇺🇦 - which country escapes the rings first?\nRound of 32 · Escape Cup 1\nNext up: Australia vs Vietnam - who's your pick? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine"
  ],
  "seen_errors": []
 }
