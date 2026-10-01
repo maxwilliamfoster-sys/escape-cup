@@ -32,11 +32,11 @@
    {
     "a": "ma",
     "b": "ua",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ma",
+    "seed": 199626937004,
+    "melody": "forest",
+    "posted": "2026-10-02T18:30:00+00:00",
+    "buffer_id": "6abea6b8d230700baf521a76"
    },
    {
     "a": "au",
@@ -159,7 +159,7 @@
    },
    {
     "a": "ph",
-    "b": null,
+    "b": "ma",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 3,
+ "posts": 4,
  "log": [
   {
    "edition": 1,
@@ -334,12 +334,26 @@
    "due": "2026-10-01T18:30:00+00:00",
    "buffer_id": "6abd6da41971cfe1dd975757",
    "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 3,
+   "a": "ma",
+   "b": "ua",
+   "winner": "ma",
+   "seed": 199626937004,
+   "theme": "forest",
+   "due": "2026-10-02T18:30:00+00:00",
+   "buffer_id": "6abea6b8d230700baf521a76",
+   "status": "scheduled"
   }
  ],
  "recent_captions": [
   "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Switzerland 🇨🇭 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nPoland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #scotland #switzerland",
   "Country ball escape - Poland 🇵🇱 vs Uruguay 🇺🇾\nEscape Cup 1, Round of 32\nNext up: Philippines vs Nigeria - who's your pick? 👇\n#ballescape #physicssimulation #simulation #poland #uruguay",
-  "Philippines 🇵🇭 vs Nigeria 🇳🇬: six rings, one way out. Physics simulation\nEscape Cup 1, Round of 32\nComing next: Morocco vs Ukraine. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #philippines #nigeria"
+  "Philippines 🇵🇭 vs Nigeria 🇳🇬: six rings, one way out. Physics simulation\nEscape Cup 1, Round of 32\nComing next: Morocco vs Ukraine. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #philippines #nigeria",
+  "Ball escape simulation: Morocco 🇲🇦 vs Ukraine 🇺🇦\nRound of 32 of Escape Cup 1 🏆\nAustralia vs Vietnam is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine"
  ],
  "seen_errors": []
 }
