@@ -12,6 +12,7 @@ Get a rendered MP4 onto TikTok with the PC off.
    official API - no browser automation (that got BuriedCasefiles shadowbanned).
 """
 import os
+import re
 import shutil
 import subprocess
 import tempfile
@@ -22,6 +23,7 @@ import requests
 
 BUFFER_API = "https://api.buffer.com"
 KEEP = 8
+OTHER_PROJECT_HANDLES = ("buriedcasefiles",)   # TikToks in the same Buffer account
 
 
 class PublishError(RuntimeError):
@@ -107,17 +109,29 @@ def _gql(query, variables=None):
 
 def tiktok_channel():
     """(organization_id, channel_id) of the connected TikTok channel."""
+    # The Buffer account also holds the BuriedCasefiles TikTok (youtube-automation repo),
+    # so "the first TikTok channel" is ambiguous: skip channels that belong to another
+    # project, and refuse rather than guess if more than one candidate is left.
     orgs = _gql("query { account { organizations { id name } } }")["account"]["organizations"]
     want = os.environ.get("BUFFER_CHANNEL_ID")
+    hits = []
     for org in orgs:
         chans = _gql("query($o: OrganizationId!) { channels(input: {organizationId: $o}) "
-                     "{ id name service isQueuePaused } }", {"o": org["id"]})["channels"]
+                     "{ id name displayName externalLink service isQueuePaused } }",
+                     {"o": org["id"]})["channels"]
         for c in chans:
-            if (want and c["id"] == want) or (not want and c["service"] == "tiktok"):
-                if c.get("isQueuePaused"):
-                    raise PublishError(f"Buffer queue for {c['name']} is paused")
-                return org["id"], c["id"]
-    raise PublishError("no TikTok channel connected in Buffer")
+            ident = re.sub(r"[^a-z0-9]", "", f"{c['name']}{c['displayName']}{c['externalLink']}".lower())
+            if (want and c["id"] == want) or (
+                    not want and c["service"] == "tiktok"
+                    and not any(h in ident for h in OTHER_PROJECT_HANDLES)):
+                hits.append((org["id"], c))
+    if len(hits) != 1:
+        raise PublishError(f"expected 1 Escape Cup TikTok channel in Buffer, found {len(hits)}: "
+                           f"{[c['name'] for _, c in hits]} - set BUFFER_CHANNEL_ID")
+    org_id, c = hits[0]
+    if c.get("isQueuePaused"):
+        raise PublishError(f"Buffer queue for {c['name']} is paused")
+    return org_id, c["id"]
 
 
 def pending_posts(org_id, channel_id):
