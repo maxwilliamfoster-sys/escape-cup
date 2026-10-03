@@ -50,11 +50,11 @@
    {
     "a": "us",
     "b": "hr",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "hr",
+    "seed": 253935358012,
+    "melody": "ember",
+    "posted": "2026-10-04T18:30:00+00:00",
+    "buffer_id": "6ac170c5fec591339487f64b"
    },
    {
     "a": "mx",
@@ -168,7 +168,7 @@
    },
    {
     "a": "au",
-    "b": null,
+    "b": "hr",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 5,
+ "posts": 6,
  "log": [
   {
    "edition": 1,
@@ -361,6 +361,20 @@
    "theme": "candy",
    "due": "2026-10-03T18:30:00+00:00",
    "buffer_id": "6abfefce55d4307d35a39c85",
+   "status": "published",
+   "link": "https://tiktok.com/@5lmvill/video/7692510813705227552"
+  },
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 5,
+   "a": "us",
+   "b": "hr",
+   "winner": "hr",
+   "seed": 253935358012,
+   "theme": "ember",
+   "due": "2026-10-04T18:30:00+00:00",
+   "buffer_id": "6ac170c5fec591339487f64b",
    "status": "scheduled"
   }
  ],
@@ -370,7 +384,8 @@
   "Philippines 🇵🇭 vs Nigeria 🇳🇬: six rings, one way out. Physics simulation\nEscape Cup 1, Round of 32\nComing next: Morocco vs Ukraine. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #philippines #nigeria",
   "Ball escape simulation: Morocco 🇲🇦 vs Ukraine 🇺🇦\nRound of 32 of Escape Cup 1 🏆\nAustralia vs Vietnam is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine",
   "Morocco 🇲🇦 vs Ukraine 🇺🇦 - which country escapes the rings first?\nRound of 32 · Escape Cup 1\nNext up: Australia vs Vietnam - who's your pick? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine",
-  "Country ball escape - Australia 🇦🇺 vs Vietnam 🇻🇳\nRound of 32 · Escape Cup 1\nUSA vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #australia #vietnam"
+  "Country ball escape - Australia 🇦🇺 vs Vietnam 🇻🇳\nRound of 32 · Escape Cup 1\nUSA vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #australia #vietnam",
+  "USA 🇺🇸 vs Croatia 🇭🇷 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nNext up: Mexico vs Netherlands - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #usa #croatia"
  ],
  "seen_errors": []
 }
