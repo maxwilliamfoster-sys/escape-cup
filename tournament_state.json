@@ -59,11 +59,11 @@
    {
     "a": "mx",
     "b": "nl",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "nl",
+    "seed": 12288626044,
+    "melody": "neon",
+    "posted": "2026-10-05T18:30:00+00:00",
+    "buffer_id": "6ac29db38f73649f4616b488"
    },
    {
     "a": "co",
@@ -176,7 +176,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "nl",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 6,
+ "posts": 7,
  "log": [
   {
    "edition": 1,
@@ -375,6 +375,20 @@
    "theme": "ember",
    "due": "2026-10-04T18:30:00+00:00",
    "buffer_id": "6ac170c5fec591339487f64b",
+   "status": "published",
+   "link": "https://tiktok.com/@5lmvill/video/7692881854126394657"
+  },
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 6,
+   "a": "mx",
+   "b": "nl",
+   "winner": "nl",
+   "seed": 12288626044,
+   "theme": "neon",
+   "due": "2026-10-05T18:30:00+00:00",
+   "buffer_id": "6ac29db38f73649f4616b488",
    "status": "scheduled"
   }
  ],
@@ -385,7 +399,8 @@
   "Ball escape simulation: Morocco 🇲🇦 vs Ukraine 🇺🇦\nRound of 32 of Escape Cup 1 🏆\nAustralia vs Vietnam is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine",
   "Morocco 🇲🇦 vs Ukraine 🇺🇦 - which country escapes the rings first?\nRound of 32 · Escape Cup 1\nNext up: Australia vs Vietnam - who's your pick? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine",
   "Country ball escape - Australia 🇦🇺 vs Vietnam 🇻🇳\nRound of 32 · Escape Cup 1\nUSA vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #australia #vietnam",
-  "USA 🇺🇸 vs Croatia 🇭🇷 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nNext up: Mexico vs Netherlands - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #usa #croatia"
+  "USA 🇺🇸 vs Croatia 🇭🇷 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nNext up: Mexico vs Netherlands - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #usa #croatia",
+  "Which country escapes first? Mexico 🇲🇽 vs Netherlands 🇳🇱 ball escape\nRound of 32 of Escape Cup 1 🏆\nNext up: Colombia vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #mexico #netherlands"
  ],
  "seen_errors": []
 }
