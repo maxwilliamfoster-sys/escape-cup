@@ -68,11 +68,11 @@
    {
     "a": "co",
     "b": "pt",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "pt",
+    "seed": 132356926057,
+    "melody": "ocean",
+    "posted": "2026-10-06T15:30:00+00:00",
+    "buffer_id": "6ac3b64656703b4c1e82c284"
    },
    {
     "a": "id",
@@ -177,7 +177,7 @@
    },
    {
     "a": "nl",
-    "b": null,
+    "b": "pt",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 7,
+ "posts": 8,
  "log": [
   {
    "edition": 1,
@@ -390,6 +390,19 @@
    "due": "2026-10-05T18:30:00+00:00",
    "buffer_id": "6ac29db38f73649f4616b488",
    "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 7,
+   "a": "co",
+   "b": "pt",
+   "winner": "pt",
+   "seed": 132356926057,
+   "theme": "ocean",
+   "due": "2026-10-06T15:30:00+00:00",
+   "buffer_id": "6ac3b64656703b4c1e82c284",
+   "status": "scheduled"
   }
  ],
  "recent_captions": [
@@ -400,7 +413,8 @@
   "Morocco 🇲🇦 vs Ukraine 🇺🇦 - which country escapes the rings first?\nRound of 32 · Escape Cup 1\nNext up: Australia vs Vietnam - who's your pick? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine",
   "Country ball escape - Australia 🇦🇺 vs Vietnam 🇻🇳\nRound of 32 · Escape Cup 1\nUSA vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #australia #vietnam",
   "USA 🇺🇸 vs Croatia 🇭🇷 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nNext up: Mexico vs Netherlands - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #usa #croatia",
-  "Which country escapes first? Mexico 🇲🇽 vs Netherlands 🇳🇱 ball escape\nRound of 32 of Escape Cup 1 🏆\nNext up: Colombia vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #mexico #netherlands"
+  "Which country escapes first? Mexico 🇲🇽 vs Netherlands 🇳🇱 ball escape\nRound of 32 of Escape Cup 1 🏆\nNext up: Colombia vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #mexico #netherlands",
+  "Colombia 🇨🇴 vs Portugal 🇵🇹 in the escape rings. Who gets out first?\nRound of 32 · Escape Cup 1\nComing next: Indonesia vs Turkey. Who takes it? 👇\n#ballescape #physicssimulation #simulation #colombia #portugal"
  ],
  "seen_errors": []
 }
