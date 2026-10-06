@@ -86,11 +86,11 @@
    {
     "a": "kr",
     "b": "jp",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "kr",
+    "seed": 63307382003,
+    "melody": "forest",
+    "posted": "2026-10-07T15:30:00+00:00",
+    "buffer_id": "6ac51aaef2aae537b2479691"
    },
    {
     "a": "es",
@@ -186,7 +186,7 @@
    },
    {
     "a": "tr",
-    "b": null,
+    "b": "kr",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 9,
+ "posts": 10,
  "log": [
   {
    "edition": 1,
@@ -403,7 +403,8 @@
    "theme": "ocean",
    "due": "2026-10-06T15:30:00+00:00",
    "buffer_id": "6ac3b64656703b4c1e82c284",
-   "status": "scheduled"
+   "status": "published",
+   "link": "https://tiktok.com/@5lmvill/video/7693577770609249568"
   },
   {
    "edition": 1,
@@ -417,6 +418,19 @@
    "due": "2026-10-06T19:00:00+00:00",
    "buffer_id": "6ac41ea7e8b512ed4f5aebef",
    "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 9,
+   "a": "kr",
+   "b": "jp",
+   "winner": "kr",
+   "seed": 63307382003,
+   "theme": "forest",
+   "due": "2026-10-07T15:30:00+00:00",
+   "buffer_id": "6ac51aaef2aae537b2479691",
+   "status": "scheduled"
   }
  ],
  "recent_captions": [
@@ -429,7 +443,8 @@
   "USA 🇺🇸 vs Croatia 🇭🇷 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nNext up: Mexico vs Netherlands - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #usa #croatia",
   "Which country escapes first? Mexico 🇲🇽 vs Netherlands 🇳🇱 ball escape\nRound of 32 of Escape Cup 1 🏆\nNext up: Colombia vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #mexico #netherlands",
   "Colombia 🇨🇴 vs Portugal 🇵🇹 in the escape rings. Who gets out first?\nRound of 32 · Escape Cup 1\nComing next: Indonesia vs Turkey. Who takes it? 👇\n#ballescape #physicssimulation #simulation #colombia #portugal",
-  "Ball escape simulation: Indonesia 🇮🇩 vs Turkey 🇹🇷\nEscape Cup 1, Round of 32\nSouth Korea vs Japan is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #indonesia #turkey"
+  "Ball escape simulation: Indonesia 🇮🇩 vs Turkey 🇹🇷\nEscape Cup 1, Round of 32\nSouth Korea vs Japan is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #indonesia #turkey",
+  "Country ball escape - South Korea 🇰🇷 vs Japan 🇯🇵\nEscape Cup 1, Round of 32\nSpain vs Brazil is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #southkorea #japan"
  ],
  "seen_errors": []
 }
