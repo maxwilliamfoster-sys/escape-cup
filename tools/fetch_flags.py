@@ -4,7 +4,7 @@ import sys
 import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from teams import TEAMS  # noqa: E402
+from teams import ALL_TEAMS as TEAMS  # noqa: E402
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "flags")
 os.makedirs(OUT, exist_ok=True)

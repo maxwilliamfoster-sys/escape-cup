@@ -49,12 +49,42 @@ TEAMS = [
     ("gb-sct", "Scotland", "#3C8DFF"),
 ]
 
-BY_CODE = {c: (c, n, col) for c, n, col in TEAMS}
+# Extra nations for Escape Royale heats (16 countries per video, 2026-10-08). Same
+# exclusions as above; also no Russia/Israel/Palestine (war framing invites pile-ons).
+ROYALE_EXTRA = [
+    ("gb-wls", "Wales", "#E8112D"),
+    ("dk", "Denmark", "#E0303D"),
+    ("se", "Sweden", "#FECC02"),
+    ("no", "Norway", "#EF2B2D"),
+    ("gr", "Greece", "#3D7FF5"),
+    ("at", "Austria", "#ED2939"),
+    ("cz", "Czechia", "#3B6FD8"),
+    ("ro", "Romania", "#FCD116"),
+    ("gh", "Ghana", "#FCD116"),
+    ("cm", "Cameroon", "#16A34A"),
+    ("dz", "Algeria", "#16A34A"),
+    ("tn", "Tunisia", "#E70013"),
+    ("jm", "Jamaica", "#FED100"),
+    ("cl", "Chile", "#D52B1E"),
+    ("pe", "Peru", "#D91023"),
+    ("cn", "China", "#EE1C25"),
+    ("th", "Thailand", "#2D4FA0"),
+    ("my", "Malaysia", "#2F5BEA"),
+    ("nz", "New Zealand", "#3B6FD8"),
+    ("za", "South Africa", "#16A34A"),
+]
+ALL_TEAMS = TEAMS + ROYALE_EXTRA
+HOME_NATIONS = ["gb-sct", "gb-wls", "ie"]           # England + one of these in every heat
+BIG_FANBASES = {"br", "ar", "fr", "es", "de", "pt", "it", "nl", "us", "mx", "gb-eng", "ma", "tr",
+                "ng", "co", "jp", "kr", "id", "ph", "pl"}
+
+BY_CODE = {c: (c, n, col) for c, n, col in ALL_TEAMS}
 
 # Home-nation flags are emoji tag sequences, not two regional indicators.
 _SUBDIVISION_EMOJI = {
     "gb-eng": "\U0001F3F4\U000E0067\U000E0062\U000E0065\U000E006E\U000E0067\U000E007F",
     "gb-sct": "\U0001F3F4\U000E0067\U000E0062\U000E0073\U000E0063\U000E0074\U000E007F",
+    "gb-wls": "\U0001F3F4\U000E0067\U000E0062\U000E0077\U000E006C\U000E0073\U000E007F",
 }
 
 

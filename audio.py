@@ -127,12 +127,20 @@ def build(match, total_seconds, win_time, rng_seed=0):
     n_rings = max(e.ring for e in match.events if e.kind == "break") + 1 if any(
         e.kind == "break" for e in match.events) else 1
 
+    many = getattr(match, "n_balls", 2) > 2
+    last_bounce = -1.0
     for e in match.events:
         if e.kind == "bounce":
-            k = _energy(e.v, 250, 1300)
+            # 16 balls bounce constantly: thin to one sound per 60 ms or it turns to noise
+            if many and e.t - last_bounce < 0.06:
+                continue
+            last_bounce = e.t
+            k = _energy(e.v, 250, 1300) * (0.7 if many else 1.0)
             midi = bounce_notes[prng.randrange(len(bounce_notes))]
             _add(L, R, e.t, bank.bloop(midi), 0.05 + 0.13 * k, e.x)
         elif e.kind == "clash":
+            if many:
+                continue                                  # constant contact in a crowd: skip
             k = _energy(e.v, 150, 1400)
             _add(L, R, e.t, bank.knock(), 0.06 + 0.12 * k, e.x)
         elif e.kind == "break":

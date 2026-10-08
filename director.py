@@ -23,6 +23,38 @@ def acceptable(d):
             and min(d["breaks"]) >= 3)
 
 
+ROYALE_RULES = dict(min_s=20.0, max_s=36.0, first_break=1.5, wait=5.5, final_wait=8.0, swaps=2)
+
+
+def acceptable_royale(d):
+    r = ROYALE_RULES
+    return (d["winner"] >= 0 and r["min_s"] <= d["duration"] <= r["max_s"]
+            and d["first_break"] <= r["first_break"] and d["longest_wait"] <= r["wait"]
+            and d["final_wait"] <= r["final_wait"] and d["swaps"] >= r["swaps"]
+            and sorted(d["breaks"])[-2] >= 3)          # a real race: runner-up broke 3+ rings
+
+
+def pick_royale(base_seed, tries=300, exclude=()):
+    """Same idea as pick(), for the 16-country heat."""
+    best = None
+    for k in range(tries):
+        seed = base_seed * 1000 + k
+        if seed in exclude:
+            continue
+        d = sim.drama(sim.simulate(seed, record=False, **sim.ROYALE))
+        if acceptable_royale(d):
+            score = (-abs(d["pre_final"][0] - d["pre_final"][1]), d["swaps"])
+            if best is None or score > best[0]:
+                best = (score, seed, d)
+            if score[0] >= -1 and d["swaps"] >= 3:
+                break
+            if k > 40 and best:
+                break
+    if best is None:
+        raise RuntimeError(f"no acceptable royale in {tries} seeds from {base_seed}")
+    return best[1], best[2]
+
+
 def pick(base_seed, tries=400, exclude=()):
     best = None
     for k in range(tries):

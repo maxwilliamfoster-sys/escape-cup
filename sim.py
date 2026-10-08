@@ -81,23 +81,35 @@ class Match:
     winner: int = -1
     duration: float = 0.0
     breaks: list = field(default_factory=lambda: [0, 0])
+    ball_r: float = BALL_R
+    n_balls: int = 2
+
+
+# Escape Royale (variant B, 2026-10-08): many countries in one arena. More balls
+# find the gaps faster, so the arena has more rings and smaller balls.
+# Tuned 2026-10-08: <20 deg the innermost gap is narrower than a ball (nothing escapes);
+# rings closer than ~reach apart need the deeper break rule below; r18 = readable flags.
+ROYALE = {"n_balls": 16, "ball_r": 18.0, "n_rings": 28, "inner_r": 120.0, "outer_r": 470.0,
+          "gap_deg": 20.0}
 
 
 def _wrap(a):
     return (a + math.pi) % (2 * math.pi) - math.pi
 
 
-def _make_rings(rng):
+def _make_rings(rng, radii=None, gap_deg=None):
     """All rings spin together with a per-ring phase twist, so the gaps form a
     rotating spiral wedge. A ball that finds the wedge can break several rings
     in a row - the combo moments that make this genre satisfying."""
+    radii = radii or RING_RADII
+    gap_deg = gap_deg or GAP_DEG
     rings = []
     direction = rng.choice([-1, 1])
     omega = direction * rng.uniform(0.7, 1.2)
     twist = rng.choice([-1, 1]) * rng.uniform(*TWIST)
     start = rng.uniform(-math.pi, math.pi)
-    for i, r in enumerate(RING_RADII):
-        gap = math.radians(GAP_DEG) * (FINAL_GAP_SCALE if i == N_RINGS - 1 else 1.0)
+    for i, r in enumerate(radii):
+        gap = math.radians(gap_deg) * (FINAL_GAP_SCALE if i == len(radii) - 1 else 1.0)
         rings.append(Ring(r, gap / 2, _wrap(start + i * twist), omega))
     return rings
 
@@ -113,20 +125,44 @@ def _closest_on_ring(ring, bx, by):
     return CX + math.cos(edge) * ring.radius, CY + math.sin(edge) * ring.radius
 
 
-def simulate(seed, record=True):
+def simulate(seed, record=True, n_balls=2, ball_r=None, n_rings=None, inner_r=None,
+             outer_r=None, gap_deg=None):
+    """One match. Defaults are the 1v1 Escape Cup; pass **ROYALE for the many-country heat."""
     rng = random.Random(seed)
-    rings = _make_rings(rng)
+    ball_r = ball_r or BALL_R
+    n_rings = n_rings or N_RINGS
+    inner_r = inner_r or INNER_R
+    outer_r = outer_r or OUTER_R
+    radii = [inner_r + (outer_r - inner_r) * i / (n_rings - 1) for i in range(n_rings)]
+    spacing = radii[1] - radii[0]
+    rings = _make_rings(rng, radii, gap_deg)
     balls = []
-    for i in range(2):
-        ang = rng.uniform(0, 2 * math.pi)
-        spd = rng.uniform(520, 700)
-        side = -1 if i == 0 else 1
-        balls.append(Ball(CX + side * 30, CY - 15 + rng.uniform(-6, 6),
-                          math.cos(ang) * spd, math.sin(ang) * spd))
+    if n_balls == 2:
+        for i in range(2):
+            ang = rng.uniform(0, 2 * math.pi)
+            spd = rng.uniform(520, 700)
+            side = -1 if i == 0 else 1
+            balls.append(Ball(CX + side * 30, CY - 15 + rng.uniform(-6, 6),
+                              math.cos(ang) * spd, math.sin(ang) * spd))
+    else:                                     # a loose rosette inside the innermost ring
+        for i in range(n_balls):
+            layer, idx = (0, i) if i < 6 else (1, i - 6)
+            count = 6 if layer == 0 else n_balls - 6
+            rad = (ball_r * 2.3) if layer == 0 else (ball_r * 4.6)
+            a0 = 2 * math.pi * idx / count + layer * 0.3
+            ang = rng.uniform(0, 2 * math.pi)
+            spd = rng.uniform(480, 680)
+            balls.append(Ball(CX + math.cos(a0) * rad, CY + math.sin(a0) * rad,
+                              math.cos(ang) * spd, math.sin(ang) * spd))
 
-    m = Match(seed=seed, rings=[Ring(r.radius, r.gap_half, r.angle, r.omega) for r in rings])
+    m = Match(seed=seed, rings=[Ring(r.radius, r.gap_half, r.angle, r.omega) for r in rings],
+              breaks=[0] * n_balls, ball_r=ball_r, n_balls=n_balls)
     t = 0.0
-    reach = BALL_R + RING_THICK / 2
+    reach = ball_r + RING_THICK / 2
+    # a ring breaks once a ball is far enough into its gap; with dense rings the next ring
+    # out would push the ball back before 0.35*r, so never require more than it can reach
+    break_depth = max(0.35 * ball_r, reach - spacing + 2.0)
+    last = n_rings - 1
     current = 0                               # index of the innermost live ring
     while t < MAX_SECONDS and m.winner < 0:
         for _ in range(SUBSTEPS):
@@ -137,7 +173,11 @@ def simulate(seed, record=True):
                 b.vy += GRAVITY * DT
                 b.x += b.vx * DT
                 b.y += b.vy * DT
-                for k in range(current, N_RINGS):
+                # only rings within `reach` of the ball's radius can touch it (exact cull)
+                d0 = math.hypot(b.x - CX, b.y - CY)
+                lo = max(current, int((d0 - reach - inner_r) // spacing))
+                hi = min(last, int((d0 + reach - inner_r) // spacing) + 1)
+                for k in range(lo, hi + 1):
                     ring = rings[k]
                     qx, qy = _closest_on_ring(ring, b.x, b.y)
                     nx, ny = b.x - qx, b.y - qy
@@ -166,19 +206,26 @@ def simulate(seed, record=True):
                     b.vx *= MAX_SPEED / spd
                     b.vy *= MAX_SPEED / spd
 
-            a, c = balls
-            dx, dy = c.x - a.x, c.y - a.y
-            d = math.hypot(dx, dy)
-            if 1e-9 < d < 2 * BALL_R:
-                nx, ny = dx / d, dy / d
-                push = (2 * BALL_R - d) / 2
-                a.x -= nx * push; a.y -= ny * push
-                c.x += nx * push; c.y += ny * push
-                rel = (a.vx - c.vx) * nx + (a.vy - c.vy) * ny
-                if rel > 0:
-                    a.vx -= rel * nx; a.vy -= rel * ny
-                    c.vx += rel * nx; c.vy += rel * ny
-                    m.events.append(Event(t, "clash", -1, -1, (a.x + c.x) / 2, (a.y + c.y) / 2, rel))
+            two_r = 2 * ball_r
+            for p_ in range(n_balls):
+                a = balls[p_]
+                for q in range(p_ + 1, n_balls):
+                    c = balls[q]
+                    dx, dy = c.x - a.x, c.y - a.y
+                    if abs(dx) >= two_r or abs(dy) >= two_r:
+                        continue
+                    d = math.hypot(dx, dy)
+                    if 1e-9 < d < two_r:
+                        nx, ny = dx / d, dy / d
+                        push = (two_r - d) / 2
+                        a.x -= nx * push; a.y -= ny * push
+                        c.x += nx * push; c.y += ny * push
+                        rel = (a.vx - c.vx) * nx + (a.vy - c.vy) * ny
+                        if rel > 0:
+                            a.vx -= rel * nx; a.vy -= rel * ny
+                            c.vx += rel * nx; c.vy += rel * ny
+                            m.events.append(Event(t, "clash", -1, -1, (a.x + c.x) / 2,
+                                                  (a.y + c.y) / 2, rel))
 
             # A ring breaks the moment a ball pokes into its gap.
             ring = rings[current]
@@ -186,11 +233,11 @@ def simulate(seed, record=True):
                 dx, dy = b.x - CX, b.y - CY
                 in_gap = abs(_wrap(math.atan2(dy, dx) - ring.angle)) < ring.gap_half
                 dist = math.hypot(dx, dy)
-                if (in_gap and dist > ring.radius - BREAK_DEPTH) or dist > ring.radius + BALL_R:
+                if (in_gap and dist > ring.radius - break_depth) or dist > ring.radius + ball_r:
                     ring.alive = False
                     m.breaks[i] += 1
                     m.events.append(Event(t, "break", i, current, b.x, b.y))
-                    if current == N_RINGS - 1:
+                    if current == last:
                         m.winner = i
                         m.duration = t
                         m.events.append(Event(t, "win", i, current, b.x, b.y))
@@ -206,12 +253,32 @@ def simulate(seed, record=True):
     return m
 
 
+def standings(m):
+    """Podium order: the winner first, then by rings broken (tie: broke a ring most recently)."""
+    last_t = {}
+    for e in m.events:
+        if e.kind == "break":
+            last_t[e.ball] = e.t
+    return sorted(range(m.n_balls), key=lambda i: (i != m.winner, -m.breaks[i], -last_t.get(i, -1)))
+
+
 def drama(m):
     """Summarise a match for the director."""
     breakers = [e.ball for e in m.events if e.kind == "break"]
-    swaps = sum(1 for a, b in zip(breakers, breakers[1:]) if a != b)
-    # score line after the second-to-last ring: close = both on similar counts
-    pre = [breakers[:-1].count(0), breakers[:-1].count(1)] if breakers else [0, 0]
+    if m.n_balls == 2:
+        swaps = sum(1 for a, b in zip(breakers, breakers[1:]) if a != b)
+        # score line after the second-to-last ring: close = both on similar counts
+        pre = [breakers[:-1].count(0), breakers[:-1].count(1)] if breakers else [0, 0]
+    else:
+        # lead changes in the running ring count; "pre" = top two counts before the last ring
+        counts, leader, swaps = [0] * m.n_balls, None, 0
+        for b_ in breakers[:-1]:
+            counts[b_] += 1
+            top = max(range(m.n_balls), key=lambda i: counts[i])
+            if counts[top] > sorted(counts)[-2] and top != leader:
+                swaps += leader is not None
+                leader = top
+        pre = sorted(counts, reverse=True)[:2] if breakers else [0, 0]
     times = [e.t for e in m.events if e.kind == "break"]
     waits = [b - a for a, b in zip([0.0] + times, times)]
     longest_wait = max(waits[:-1], default=0.0)          # excluding the final ring
