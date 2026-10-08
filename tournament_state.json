@@ -122,20 +122,20 @@
    {
     "a": "fr",
     "b": "gb-eng",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "fr",
+    "seed": 196788407008,
+    "melody": "ocean",
+    "posted": "2026-10-09T15:30:00+00:00",
+    "buffer_id": "6ac7e691777d0616a6fe342e"
    },
    {
     "a": "ar",
     "b": "be",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "be",
+    "seed": 79032151002,
+    "melody": "sunset",
+    "posted": "2026-10-09T19:00:00+00:00",
+    "buffer_id": "6ac7e746d3b0be2fc4156a67"
    },
    {
     "a": "ie",
@@ -204,7 +204,7 @@
    },
    {
     "a": "ca",
-    "b": null,
+    "b": "fr",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -212,7 +212,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "be",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 13,
+ "posts": 15,
  "log": [
   {
    "edition": 1,
@@ -459,7 +459,8 @@
    "theme": "ember",
    "due": "2026-10-08T15:30:00+00:00",
    "buffer_id": "6ac6ae205116513c48a86ccf",
-   "status": "scheduled"
+   "status": "published",
+   "link": "https://tiktok.com/@5lmvill/video/7694320106393947425"
   },
   {
    "edition": 1,
@@ -472,6 +473,32 @@
    "theme": "neon",
    "due": "2026-10-08T19:00:00+00:00",
    "buffer_id": "6ac6ae942a8ddf9255cde071",
+   "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 13,
+   "a": "fr",
+   "b": "gb-eng",
+   "winner": "fr",
+   "seed": 196788407008,
+   "theme": "ocean",
+   "due": "2026-10-09T15:30:00+00:00",
+   "buffer_id": "6ac7e691777d0616a6fe342e",
+   "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 0,
+   "m": 14,
+   "a": "ar",
+   "b": "be",
+   "winner": "be",
+   "seed": 79032151002,
+   "theme": "sunset",
+   "due": "2026-10-09T19:00:00+00:00",
+   "buffer_id": "6ac7e746d3b0be2fc4156a67",
    "status": "scheduled"
   }
  ],
@@ -489,7 +516,9 @@
   "Country ball escape - South Korea 🇰🇷 vs Japan 🇯🇵\nEscape Cup 1, Round of 32\nSpain vs Brazil is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #southkorea #japan",
   "Which country escapes first? Spain 🇪🇸 vs Brazil 🇧🇷 ball escape\nRound of 32 · Escape Cup 1\nNext up: Senegal vs Italy - who's your pick? 👇\n#ballescape #physicssimulation #simulation #spain #brazil",
   "Which country escapes first? Senegal 🇸🇳 vs Italy 🇮🇹 ball escape\nEscape Cup 1, Round of 32\nComing next: Canada vs Germany. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #senegal #italy",
-  "Canada 🇨🇦 vs Germany 🇩🇪: 16 rings, one way out. Physics simulation\nEscape Cup 1, Round of 32\nFrance vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #canada #germany"
+  "Canada 🇨🇦 vs Germany 🇩🇪: 16 rings, one way out. Physics simulation\nEscape Cup 1, Round of 32\nFrance vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #canada #germany",
+  "France 🇫🇷 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 in the escape rings. Who gets out first?\nRound of 32 of Escape Cup 1 🏆\nArgentina vs Belgium is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #france #england",
+  "Argentina 🇦🇷 vs Belgium 🇧🇪: 16 rings, one way out. Physics simulation\nRound of 32 of Escape Cup 1 🏆\nIreland vs Egypt is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #argentina #belgium"
  ],
  "seen_errors": []
 }
