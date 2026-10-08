@@ -1,0 +1,40 @@
+name: Collect analytics
+
+# Read-only: pulls per-post TikTok metrics (views, likes, comments, shares,
+# saves, follows, average watch time) from Buffer into analytics.json, so the
+# pipeline can learn which videos actually performed.
+on:
+  schedule:
+    - cron: '41 7 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: escape-cup-state
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: sudo apt-get update && sudo apt-get install -y libcairo2-dev pkg-config
+      - run: pip install -r requirements.txt
+      - name: Collect
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+        run: python analytics.py
+      - name: Commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add analytics.json
+          git diff --staged --quiet || git commit -m "analytics: $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase -q || true
+          git push || true
