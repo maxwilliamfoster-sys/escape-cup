@@ -1,0 +1,316 @@
+{
+ "posts": {
+  "6abc2b89bc79f7218889713e": {
+   "match": "gb-sct v ch",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-09-29T21:20:19.967364+00:00",
+   "theme": "neon",
+   "seed": 93052674003,
+   "format": "v1",
+   "length": 35,
+   "link": "https://www.tiktok.com/@5lmvill/video/7691070201583979809?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Switzerland 🇨🇭 - which country escapes the rings first? Escape Cup 1, Round of 32 Poland vs Uruguay ",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.775Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 867,
+     "shares": 0,
+     "reach": 794,
+     "totalTimeWatched": 113.45,
+     "averageTimeWatched": 7.74
+    }
+   ]
+  },
+  "6abc2e6fbc79f7218889ccd2": {
+   "match": "pl v uy",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-09-30T18:30:00+00:00",
+   "theme": "ocean",
+   "seed": 118630431040,
+   "format": "v1",
+   "length": 30,
+   "link": "https://www.tiktok.com/@5lmvill/video/7691397558987459872?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Poland 🇵🇱 vs Uruguay 🇺🇾 Escape Cup 1, Round of 32 Next up: Philippines vs Nigeria - who's your pic",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.775Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 248,
+     "shares": 0,
+     "reach": 229,
+     "totalTimeWatched": 24.37,
+     "averageTimeWatched": 5.65
+    }
+   ]
+  },
+  "6abd6da41971cfe1dd975757": {
+   "match": "ph v ng",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-01T18:30:00+00:00",
+   "theme": "sunset",
+   "seed": 147181587009,
+   "format": "v1",
+   "length": 24,
+   "link": "https://www.tiktok.com/@5lmvill/video/7691768650612722977?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Philippines 🇵🇭 vs Nigeria 🇳🇬: six rings, one way out. Physics simulation Escape Cup 1, Round of 32 Coming next: Morocco ",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.775Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.38,
+     "views": 261,
+     "shares": 0,
+     "reach": 247,
+     "totalTimeWatched": 28.28,
+     "averageTimeWatched": 6.36
+    }
+   ]
+  },
+  "6abeb419d22f25b408891d41": {
+   "match": "ma v ua",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-02T18:30:00+00:00",
+   "theme": "forest",
+   "seed": 199626937064,
+   "format": "v2",
+   "length": 25,
+   "link": "https://www.tiktok.com/@5lmvill/video/7692139799490202913?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Morocco 🇲🇦 vs Ukraine 🇺🇦 - which country escapes the rings first? Round of 32 · Escape Cup 1 Next up: Australia vs Vietn",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.775Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.83,
+     "views": 242,
+     "shares": 0,
+     "reach": 231,
+     "totalTimeWatched": 24.2,
+     "averageTimeWatched": 5.79
+    }
+   ]
+  },
+  "6abfefce55d4307d35a39c85": {
+   "match": "au v vn",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-03T18:30:00+00:00",
+   "theme": "candy",
+   "seed": 21299054001,
+   "format": "v2",
+   "length": 22,
+   "link": "https://www.tiktok.com/@5lmvill/video/7692510813705227552?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Australia 🇦🇺 vs Vietnam 🇻🇳 Round of 32 · Escape Cup 1 USA vs Croatia is next - who are you backing",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.775Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.14,
+     "views": 735,
+     "shares": 0,
+     "reach": 682,
+     "totalTimeWatched": 63.8,
+     "averageTimeWatched": 5.12
+    }
+   ]
+  },
+  "6ac170c5fec591339487f64b": {
+   "match": "us v hr",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-04T18:30:00+00:00",
+   "theme": "ember",
+   "seed": 253935358012,
+   "format": "v2",
+   "length": 21,
+   "link": "https://www.tiktok.com/@5lmvill/video/7692881854126394657?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "USA 🇺🇸 vs Croatia 🇭🇷 - which country escapes the rings first? Escape Cup 1, Round of 32 Next up: Mexico vs Netherlands -",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.775Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 241,
+     "shares": 0,
+     "reach": 232,
+     "totalTimeWatched": 17.52,
+     "averageTimeWatched": 4.27
+    }
+   ]
+  },
+  "6ac29db38f73649f4616b488": {
+   "match": "mx v nl",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-05T18:30:00+00:00",
+   "theme": "neon",
+   "seed": 12288626044,
+   "format": "v2",
+   "length": 25,
+   "link": "https://www.tiktok.com/@5lmvill/video/7693252995424718112?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Which country escapes first? Mexico 🇲🇽 vs Netherlands 🇳🇱 ball escape Round of 32 of Escape Cup 1 🏆 Next up: Colombia vs ",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.774Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.14,
+     "views": 717,
+     "shares": 0,
+     "reach": 680,
+     "totalTimeWatched": 82.3,
+     "averageTimeWatched": 6.82
+    }
+   ]
+  },
+  "6ac3b64656703b4c1e82c284": {
+   "match": "co v pt",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-06T15:30:00+00:00",
+   "theme": "ocean",
+   "seed": 132356926057,
+   "format": "v2",
+   "length": 27,
+   "link": "https://www.tiktok.com/@5lmvill/video/7693577770609249568?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Colombia 🇨🇴 vs Portugal 🇵🇹 in the escape rings. Who gets out first? Round of 32 · Escape Cup 1 Coming next: Indonesia vs",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.774Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 1.22,
+     "views": 245,
+     "shares": 0,
+     "reach": 220,
+     "totalTimeWatched": 28.75,
+     "averageTimeWatched": 6.77
+    }
+   ]
+  },
+  "6ac41ea7e8b512ed4f5aebef": {
+   "match": "id v tr",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-06T19:00:00+00:00",
+   "theme": "sunset",
+   "seed": 152412030086,
+   "format": "v2",
+   "length": 24,
+   "link": "https://www.tiktok.com/@5lmvill/video/7693632119205088544?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Ball escape simulation: Indonesia 🇮🇩 vs Turkey 🇹🇷 Escape Cup 1, Round of 32 South Korea vs Japan is next - who are you b",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.774Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.39,
+     "views": 256,
+     "shares": 0,
+     "reach": 225,
+     "totalTimeWatched": 27.07,
+     "averageTimeWatched": 6.25
+    }
+   ]
+  },
+  "6ac51aaef2aae537b2479691": {
+   "match": "kr v jp",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-07T15:30:00+00:00",
+   "theme": "forest",
+   "seed": 63307382003,
+   "format": "v2",
+   "length": 18,
+   "link": "https://tiktok.com/@5lmvill/video/7693948859218660640",
+   "caption": "Country ball escape - South Korea 🇰🇷 vs Japan 🇯🇵",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.774Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 736,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 62.42,
+     "averageTimeWatched": 4.99
+    }
+   ]
+  },
+  "6ac579142b46a5da666e902b": {
+   "match": "es v br",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-07T19:00:00+00:00",
+   "theme": "candy",
+   "seed": 156601890087,
+   "format": "v2",
+   "length": 18,
+   "link": "https://tiktok.com/@5lmvill/video/7694003127254535457",
+   "caption": "Which country escapes first? Spain 🇪🇸 vs Brazil 🇧🇷 ball escape",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-08T11:19:35.774Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 245,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 24.12,
+     "averageTimeWatched": 5.81
+    }
+   ]
+  },
+  "6ac6ae205116513c48a86ccf": {
+   "match": "sn v it",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-08T15:30:00+00:00",
+   "theme": "ember",
+   "seed": 262878757038,
+   "format": "v2",
+   "length": 20,
+   "link": "https://tiktok.com/@5lmvill/video/7694320106393947425",
+   "caption": "Which country escapes first? Senegal 🇸🇳 vs Italy 🇮🇹 ball escape",
+   "snapshots": [
+    {
+     "at": "2026-10-08T19:00+00:00",
+     "metrics_updated": "2026-10-07T20:40:00.891Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 0,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 0,
+     "averageTimeWatched": 0
+    }
+   ]
+  }
+ }
+}
