@@ -22,7 +22,8 @@
      "shares": 0,
      "reach": 794,
      "totalTimeWatched": 113.45,
-     "averageTimeWatched": 7.74
+     "averageTimeWatched": 7.74,
+     "likes": 0
     }
    ]
   },
@@ -48,7 +49,8 @@
      "shares": 0,
      "reach": 229,
      "totalTimeWatched": 24.37,
-     "averageTimeWatched": 5.65
+     "averageTimeWatched": 5.65,
+     "likes": 0
     }
    ]
   },
@@ -74,7 +76,8 @@
      "shares": 0,
      "reach": 247,
      "totalTimeWatched": 28.28,
-     "averageTimeWatched": 6.36
+     "averageTimeWatched": 6.36,
+     "likes": 1
     }
    ]
   },
@@ -100,7 +103,8 @@
      "shares": 0,
      "reach": 231,
      "totalTimeWatched": 24.2,
-     "averageTimeWatched": 5.79
+     "averageTimeWatched": 5.79,
+     "likes": 2
     }
    ]
   },
@@ -126,7 +130,8 @@
      "shares": 0,
      "reach": 682,
      "totalTimeWatched": 63.8,
-     "averageTimeWatched": 5.12
+     "averageTimeWatched": 5.12,
+     "likes": 1
     }
    ]
   },
@@ -152,7 +157,8 @@
      "shares": 0,
      "reach": 232,
      "totalTimeWatched": 17.52,
-     "averageTimeWatched": 4.27
+     "averageTimeWatched": 4.27,
+     "likes": 0
     }
    ]
   },
@@ -178,7 +184,8 @@
      "shares": 0,
      "reach": 680,
      "totalTimeWatched": 82.3,
-     "averageTimeWatched": 6.82
+     "averageTimeWatched": 6.82,
+     "likes": 1
     }
    ]
   },
@@ -204,7 +211,8 @@
      "shares": 0,
      "reach": 220,
      "totalTimeWatched": 28.75,
-     "averageTimeWatched": 6.77
+     "averageTimeWatched": 6.77,
+     "likes": 3
     }
    ]
   },
@@ -230,7 +238,8 @@
      "shares": 0,
      "reach": 225,
      "totalTimeWatched": 27.07,
-     "averageTimeWatched": 6.25
+     "averageTimeWatched": 6.25,
+     "likes": 1
     }
    ]
   },
@@ -256,7 +265,8 @@
      "shares": 0,
      "reach": 0,
      "totalTimeWatched": 62.42,
-     "averageTimeWatched": 4.99
+     "averageTimeWatched": 4.99,
+     "likes": 0
     }
    ]
   },
@@ -282,7 +292,8 @@
      "shares": 0,
      "reach": 0,
      "totalTimeWatched": 24.12,
-     "averageTimeWatched": 5.81
+     "averageTimeWatched": 5.81,
+     "likes": 0
     }
    ]
   },
@@ -308,7 +319,8 @@
      "shares": 0,
      "reach": 0,
      "totalTimeWatched": 0,
-     "averageTimeWatched": 0
+     "averageTimeWatched": 0,
+     "likes": 0
     }
    ]
   }

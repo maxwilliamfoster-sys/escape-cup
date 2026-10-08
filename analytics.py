@@ -2,8 +2,8 @@
 Performance data for every published Escape Cup video, pulled from Buffer's
 post metrics (a personal API key carries the insights scope). Read-only.
 
-Buffer normalises TikTok's numbers into: views, viewers, likes, comments, shares,
-saves, follows, reach, engagementRate, averageTimeWatched, totalTimeWatched.
+Buffer returns for TikTok (checked 2026-10-08): views, reactions (= likes), comments,
+shares, reach, engagementRate, averageTimeWatched (s), totalTimeWatched. No saves or follows.
 TikTok's "watched full video" % and the retention curve are NOT exposed - for
 those, read TikTok Studio. avg_pct = averageTimeWatched / video length is the
 closest automatic proxy for retention.
@@ -60,6 +60,8 @@ def collect():
         if not post:
             continue
         m = {x["type"]: x["value"] for x in (post.get("metrics") or [])}
+        if "likes" not in m and "reactions" in m:      # Buffer reports TikTok likes as reactions
+            m["likes"] = m["reactions"]
         key = f"{e['a']}-{e['b']}"
         rec = data["posts"].setdefault(post["id"], {})
         rec.update({
