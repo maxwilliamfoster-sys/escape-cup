@@ -24,6 +24,19 @@
      "totalTimeWatched": 113.45,
      "averageTimeWatched": 7.74,
      "likes": 0
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.818Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 867,
+     "shares": 0,
+     "reach": 794,
+     "totalTimeWatched": 111.73,
+     "averageTimeWatched": 7.62,
+     "likes": 0
     }
    ]
   },
@@ -42,6 +55,19 @@
     {
      "at": "2026-10-08T19:00+00:00",
      "metrics_updated": "2026-10-08T11:19:35.775Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 248,
+     "shares": 0,
+     "reach": 229,
+     "totalTimeWatched": 24.37,
+     "averageTimeWatched": 5.65,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.818Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -78,6 +104,19 @@
      "totalTimeWatched": 28.28,
      "averageTimeWatched": 6.36,
      "likes": 1
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.818Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.38,
+     "views": 261,
+     "shares": 0,
+     "reach": 247,
+     "totalTimeWatched": 28.28,
+     "averageTimeWatched": 6.36,
+     "likes": 1
     }
    ]
   },
@@ -96,6 +135,19 @@
     {
      "at": "2026-10-08T19:00+00:00",
      "metrics_updated": "2026-10-08T11:19:35.775Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.83,
+     "views": 242,
+     "shares": 0,
+     "reach": 231,
+     "totalTimeWatched": 24.2,
+     "averageTimeWatched": 5.79,
+     "likes": 2
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.818Z",
      "reactions": 2,
      "comments": 0,
      "engagementRate": 0.83,
@@ -132,6 +184,19 @@
      "totalTimeWatched": 63.8,
      "averageTimeWatched": 5.12,
      "likes": 1
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.817Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.14,
+     "views": 735,
+     "shares": 0,
+     "reach": 682,
+     "totalTimeWatched": 63.8,
+     "averageTimeWatched": 5.12,
+     "likes": 1
     }
    ]
   },
@@ -158,6 +223,19 @@
      "reach": 232,
      "totalTimeWatched": 17.52,
      "averageTimeWatched": 4.27,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.817Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 242,
+     "shares": 0,
+     "reach": 232,
+     "totalTimeWatched": 17.53,
+     "averageTimeWatched": 4.26,
      "likes": 0
     }
    ]
@@ -186,6 +264,19 @@
      "totalTimeWatched": 82.3,
      "averageTimeWatched": 6.82,
      "likes": 1
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.817Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.14,
+     "views": 719,
+     "shares": 0,
+     "reach": 681,
+     "totalTimeWatched": 82.38,
+     "averageTimeWatched": 6.81,
+     "likes": 1
     }
    ]
   },
@@ -212,6 +303,19 @@
      "reach": 220,
      "totalTimeWatched": 28.75,
      "averageTimeWatched": 6.77,
+     "likes": 3
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.817Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 1.22,
+     "views": 246,
+     "shares": 0,
+     "reach": 235,
+     "totalTimeWatched": 28.77,
+     "averageTimeWatched": 6.74,
      "likes": 3
     }
    ]
@@ -240,6 +344,19 @@
      "totalTimeWatched": 27.07,
      "averageTimeWatched": 6.25,
      "likes": 1
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.817Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.39,
+     "views": 257,
+     "shares": 0,
+     "reach": 243,
+     "totalTimeWatched": 27.1,
+     "averageTimeWatched": 6.23,
+     "likes": 1
     }
    ]
   },
@@ -266,6 +383,19 @@
      "reach": 0,
      "totalTimeWatched": 62.42,
      "averageTimeWatched": 4.99,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.817Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 740,
+     "shares": 0,
+     "reach": 679,
+     "totalTimeWatched": 62.87,
+     "averageTimeWatched": 5,
      "likes": 0
     }
    ]
@@ -294,6 +424,19 @@
      "totalTimeWatched": 24.12,
      "averageTimeWatched": 5.81,
      "likes": 0
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.817Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 265,
+     "shares": 0,
+     "reach": 225,
+     "totalTimeWatched": 25.57,
+     "averageTimeWatched": 5.7,
+     "likes": 0
     }
    ]
   },
@@ -320,6 +463,46 @@
      "reach": 0,
      "totalTimeWatched": 0,
      "averageTimeWatched": 0,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.817Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 0.4,
+     "views": 748,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 96.27,
+     "averageTimeWatched": 7.55,
+     "likes": 3
+    }
+   ]
+  },
+  "6ac6ae942a8ddf9255cde071": {
+   "match": "ca v de",
+   "edition": 1,
+   "round": 0,
+   "due": "2026-10-08T19:00:00+00:00",
+   "theme": "neon",
+   "seed": 75259327001,
+   "format": "v2",
+   "length": null,
+   "link": "https://tiktok.com/@5lmvill/video/7694374266262883616",
+   "caption": "Canada 🇨🇦 vs Germany 🇩🇪: 16 rings, one way out. Physics simulation",
+   "snapshots": [
+    {
+     "at": "2026-10-09T14:39+00:00",
+     "metrics_updated": "2026-10-09T10:20:33.817Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 245,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 28.87,
+     "averageTimeWatched": 6.9,
      "likes": 0
     }
    ]
