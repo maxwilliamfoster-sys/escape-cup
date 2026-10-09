@@ -151,11 +151,11 @@
    {
     "a": "ch",
     "b": "uy",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ch",
+    "seed": 157524724015,
+    "melody": "candy",
+    "posted": "2026-10-10T18:30:00+00:00",
+    "buffer_id": "6ac93123ed92ed8fa5a3d7dc"
    },
    {
     "a": "ph",
@@ -223,7 +223,7 @@
   ],
   [
    {
-    "a": null,
+    "a": "ch",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 16,
+ "posts": 17,
  "log": [
   {
    "edition": 1,
@@ -487,7 +487,8 @@
    "theme": "ocean",
    "due": "2026-10-09T15:30:00+00:00",
    "buffer_id": "6ac7e691777d0616a6fe342e",
-   "status": "scheduled"
+   "status": "published",
+   "link": "https://tiktok.com/@5lmvill/video/7694691020306517280"
   },
   {
    "edition": 1,
@@ -514,6 +515,19 @@
    "due": "2026-10-10T11:00:00+00:00",
    "buffer_id": "6ac8c2e69fc66ba0d7119512",
    "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 1,
+   "m": 0,
+   "a": "ch",
+   "b": "uy",
+   "winner": "ch",
+   "seed": 157524724015,
+   "theme": "candy",
+   "due": "2026-10-10T18:30:00+00:00",
+   "buffer_id": "6ac93123ed92ed8fa5a3d7dc",
+   "status": "scheduled"
   }
  ],
  "recent_captions": [
@@ -533,7 +547,8 @@
   "Canada 🇨🇦 vs Germany 🇩🇪: 16 rings, one way out. Physics simulation\nEscape Cup 1, Round of 32\nFrance vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #canada #germany",
   "France 🇫🇷 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 in the escape rings. Who gets out first?\nRound of 32 of Escape Cup 1 🏆\nArgentina vs Belgium is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #france #england",
   "Argentina 🇦🇷 vs Belgium 🇧🇪: 16 rings, one way out. Physics simulation\nRound of 32 of Escape Cup 1 🏆\nIreland vs Egypt is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #argentina #belgium",
-  "Ball escape simulation: Ireland 🇮🇪 vs Egypt 🇪🇬\nRound of 32 of Escape Cup 1 🏆\nSwitzerland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #ireland #egypt"
+  "Ball escape simulation: Ireland 🇮🇪 vs Egypt 🇪🇬\nRound of 32 of Escape Cup 1 🏆\nSwitzerland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #ireland #egypt",
+  "Ball escape simulation: Switzerland 🇨🇭 vs Uruguay 🇺🇾\nRound of 16 of Escape Cup 1 🏆\nNext up: Philippines vs Morocco - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #switzerland #uruguay"
  ],
  "seen_errors": []
 }
