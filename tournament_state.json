@@ -160,11 +160,11 @@
    {
     "a": "ph",
     "b": "ma",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ph",
+    "seed": 140591726035,
+    "melody": "ember",
+    "posted": "2026-10-11T11:00:00+00:00",
+    "buffer_id": "6aca0a7cd9cab260a7bc726d"
    },
    {
     "a": "au",
@@ -224,7 +224,7 @@
   [
    {
     "a": "ch",
-    "b": null,
+    "b": "ph",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 17,
+ "posts": 18,
  "log": [
   {
    "edition": 1,
@@ -529,6 +529,19 @@
    "due": "2026-10-10T18:30:00+00:00",
    "buffer_id": "6ac93123ed92ed8fa5a3d7dc",
    "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 1,
+   "m": 1,
+   "a": "ph",
+   "b": "ma",
+   "winner": "ph",
+   "seed": 140591726035,
+   "theme": "ember",
+   "due": "2026-10-11T11:00:00+00:00",
+   "buffer_id": "6aca0a7cd9cab260a7bc726d",
+   "status": "scheduled"
   }
  ],
  "recent_captions": [
@@ -549,7 +562,8 @@
   "France 🇫🇷 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 in the escape rings. Who gets out first?\nRound of 32 of Escape Cup 1 🏆\nArgentina vs Belgium is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #france #england",
   "Argentina 🇦🇷 vs Belgium 🇧🇪: 16 rings, one way out. Physics simulation\nRound of 32 of Escape Cup 1 🏆\nIreland vs Egypt is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #argentina #belgium",
   "Ball escape simulation: Ireland 🇮🇪 vs Egypt 🇪🇬\nRound of 32 of Escape Cup 1 🏆\nSwitzerland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #ireland #egypt",
-  "Ball escape simulation: Switzerland 🇨🇭 vs Uruguay 🇺🇾\nRound of 16 of Escape Cup 1 🏆\nNext up: Philippines vs Morocco - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #switzerland #uruguay"
+  "Ball escape simulation: Switzerland 🇨🇭 vs Uruguay 🇺🇾\nRound of 16 of Escape Cup 1 🏆\nNext up: Philippines vs Morocco - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #switzerland #uruguay",
+  "Philippines 🇵🇭 vs Morocco 🇲🇦 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 1\nAustralia vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #philippines #morocco"
  ],
  "seen_errors": []
 }
