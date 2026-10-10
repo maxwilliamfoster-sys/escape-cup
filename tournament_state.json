@@ -169,11 +169,11 @@
    {
     "a": "au",
     "b": "hr",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "au",
+    "seed": 131642101022,
+    "melody": "neon",
+    "posted": "2026-10-11T18:30:00+00:00",
+    "buffer_id": "6aca7445c4de2d2b123541a4"
    },
    {
     "a": "nl",
@@ -232,7 +232,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "au",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 18,
+ "posts": 19,
  "log": [
   {
    "edition": 1,
@@ -515,7 +515,8 @@
    "theme": "forest",
    "due": "2026-10-10T11:00:00+00:00",
    "buffer_id": "6ac8c2e69fc66ba0d7119512",
-   "status": "scheduled"
+   "status": "published",
+   "link": "https://tiktok.com/@5lmvill/video/7694992926912384288"
   },
   {
    "edition": 1,
@@ -542,6 +543,19 @@
    "due": "2026-10-11T11:00:00+00:00",
    "buffer_id": "6aca0a7cd9cab260a7bc726d",
    "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 1,
+   "m": 2,
+   "a": "au",
+   "b": "hr",
+   "winner": "au",
+   "seed": 131642101022,
+   "theme": "neon",
+   "due": "2026-10-11T18:30:00+00:00",
+   "buffer_id": "6aca7445c4de2d2b123541a4",
+   "status": "scheduled"
   }
  ],
  "recent_captions": [
@@ -563,7 +577,8 @@
   "Argentina 🇦🇷 vs Belgium 🇧🇪: 16 rings, one way out. Physics simulation\nRound of 32 of Escape Cup 1 🏆\nIreland vs Egypt is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #argentina #belgium",
   "Ball escape simulation: Ireland 🇮🇪 vs Egypt 🇪🇬\nRound of 32 of Escape Cup 1 🏆\nSwitzerland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #ireland #egypt",
   "Ball escape simulation: Switzerland 🇨🇭 vs Uruguay 🇺🇾\nRound of 16 of Escape Cup 1 🏆\nNext up: Philippines vs Morocco - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #switzerland #uruguay",
-  "Philippines 🇵🇭 vs Morocco 🇲🇦 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 1\nAustralia vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #philippines #morocco"
+  "Philippines 🇵🇭 vs Morocco 🇲🇦 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 1\nAustralia vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #philippines #morocco",
+  "Ball escape simulation: Australia 🇦🇺 vs Croatia 🇭🇷\nRound of 16 of Escape Cup 1 🏆\nNext up: Netherlands vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #australia #croatia"
  ],
  "seen_errors": []
 }
