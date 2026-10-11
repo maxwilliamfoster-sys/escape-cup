@@ -178,20 +178,20 @@
    {
     "a": "nl",
     "b": "pt",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "nl",
+    "seed": 185599358028,
+    "melody": "ocean",
+    "posted": "2026-10-12T15:30:00+00:00",
+    "buffer_id": "6acbe500a9411fbcc5587805"
    },
    {
     "a": "tr",
     "b": "kr",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "kr",
+    "seed": 170900570070,
+    "melody": "sunset",
+    "posted": "2026-10-12T19:00:00+00:00",
+    "buffer_id": "6acbe563fa026cfb81126e84"
    },
    {
     "a": "es",
@@ -233,7 +233,7 @@
    },
    {
     "a": "au",
-    "b": null,
+    "b": "nl",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -241,7 +241,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "kr",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 19,
+ "posts": 21,
  "log": [
   {
    "edition": 1,
@@ -557,6 +557,33 @@
    "theme": "neon",
    "due": "2026-10-11T18:30:00+00:00",
    "buffer_id": "6aca7445c4de2d2b123541a4",
+   "status": "published",
+   "link": "https://tiktok.com/@5lmvill/video/7695479508509429025"
+  },
+  {
+   "edition": 1,
+   "r": 1,
+   "m": 3,
+   "a": "nl",
+   "b": "pt",
+   "winner": "nl",
+   "seed": 185599358028,
+   "theme": "ocean",
+   "due": "2026-10-12T15:30:00+00:00",
+   "buffer_id": "6acbe500a9411fbcc5587805",
+   "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 1,
+   "m": 4,
+   "a": "tr",
+   "b": "kr",
+   "winner": "kr",
+   "seed": 170900570070,
+   "theme": "sunset",
+   "due": "2026-10-12T19:00:00+00:00",
+   "buffer_id": "6acbe563fa026cfb81126e84",
    "status": "scheduled"
   }
  ],
@@ -580,7 +607,9 @@
   "Ball escape simulation: Ireland 🇮🇪 vs Egypt 🇪🇬\nRound of 32 of Escape Cup 1 🏆\nSwitzerland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #ireland #egypt",
   "Ball escape simulation: Switzerland 🇨🇭 vs Uruguay 🇺🇾\nRound of 16 of Escape Cup 1 🏆\nNext up: Philippines vs Morocco - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #switzerland #uruguay",
   "Philippines 🇵🇭 vs Morocco 🇲🇦 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 1\nAustralia vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #philippines #morocco",
-  "Ball escape simulation: Australia 🇦🇺 vs Croatia 🇭🇷\nRound of 16 of Escape Cup 1 🏆\nNext up: Netherlands vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #australia #croatia"
+  "Ball escape simulation: Australia 🇦🇺 vs Croatia 🇭🇷\nRound of 16 of Escape Cup 1 🏆\nNext up: Netherlands vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #australia #croatia",
+  "Netherlands 🇳🇱 vs Portugal 🇵🇹: 16 rings, one way out. Physics simulation\nRound of 16 of Escape Cup 1 🏆\nComing next: Turkey vs South Korea. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #netherlands #portugal",
+  "Turkey 🇹🇷 vs South Korea 🇰🇷 in the escape rings. Who gets out first?\nRound of 16 of Escape Cup 1 🏆\nComing next: Spain vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #turkey #southkorea"
  ],
  "seen_errors": []
 }
