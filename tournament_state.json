@@ -196,20 +196,20 @@
    {
     "a": "es",
     "b": "it",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "it",
+    "seed": 250741294018,
+    "melody": "forest",
+    "posted": "2026-10-13T15:30:00+00:00",
+    "buffer_id": "6acd4e982c1b16d2e1243e32"
    },
    {
     "a": "ca",
     "b": "fr",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ca",
+    "seed": 123878124049,
+    "melody": "candy",
+    "posted": "2026-10-13T19:00:00+00:00",
+    "buffer_id": "6acd4f090fd81940c1c85efb"
    },
    {
     "a": "be",
@@ -242,7 +242,7 @@
    },
    {
     "a": "kr",
-    "b": null,
+    "b": "it",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -250,7 +250,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "ca",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 21,
+ "posts": 23,
  "log": [
   {
    "edition": 1,
@@ -571,7 +571,8 @@
    "theme": "ocean",
    "due": "2026-10-12T15:30:00+00:00",
    "buffer_id": "6acbe500a9411fbcc5587805",
-   "status": "scheduled"
+   "status": "published",
+   "link": "https://tiktok.com/@5lmvill/video/7695804406465432864"
   },
   {
    "edition": 1,
@@ -584,6 +585,33 @@
    "theme": "sunset",
    "due": "2026-10-12T19:00:00+00:00",
    "buffer_id": "6acbe563fa026cfb81126e84",
+   "status": "published",
+   "link": "https://tiktok.com/@5lmvill/video/7695858577965092128"
+  },
+  {
+   "edition": 1,
+   "r": 1,
+   "m": 5,
+   "a": "es",
+   "b": "it",
+   "winner": "it",
+   "seed": 250741294018,
+   "theme": "forest",
+   "due": "2026-10-13T15:30:00+00:00",
+   "buffer_id": "6acd4e982c1b16d2e1243e32",
+   "status": "scheduled"
+  },
+  {
+   "edition": 1,
+   "r": 1,
+   "m": 6,
+   "a": "ca",
+   "b": "fr",
+   "winner": "ca",
+   "seed": 123878124049,
+   "theme": "candy",
+   "due": "2026-10-13T19:00:00+00:00",
+   "buffer_id": "6acd4f090fd81940c1c85efb",
    "status": "scheduled"
   }
  ],
@@ -609,7 +637,9 @@
   "Philippines 🇵🇭 vs Morocco 🇲🇦 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 1\nAustralia vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #philippines #morocco",
   "Ball escape simulation: Australia 🇦🇺 vs Croatia 🇭🇷\nRound of 16 of Escape Cup 1 🏆\nNext up: Netherlands vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #australia #croatia",
   "Netherlands 🇳🇱 vs Portugal 🇵🇹: 16 rings, one way out. Physics simulation\nRound of 16 of Escape Cup 1 🏆\nComing next: Turkey vs South Korea. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #netherlands #portugal",
-  "Turkey 🇹🇷 vs South Korea 🇰🇷 in the escape rings. Who gets out first?\nRound of 16 of Escape Cup 1 🏆\nComing next: Spain vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #turkey #southkorea"
+  "Turkey 🇹🇷 vs South Korea 🇰🇷 in the escape rings. Who gets out first?\nRound of 16 of Escape Cup 1 🏆\nComing next: Spain vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #turkey #southkorea",
+  "Spain 🇪🇸 vs Italy 🇮🇹 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 1\nCanada vs France is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #spain #italy",
+  "Canada 🇨🇦 vs France 🇫🇷: 16 rings, one way out. Physics simulation\nRound of 16 · Escape Cup 1\nComing next: Belgium vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #canada #france"
  ],
  "seen_errors": []
 }
