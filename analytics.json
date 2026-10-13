@@ -76,8 +76,22 @@
      "totalTimeWatched": 114.23,
      "averageTimeWatched": 7.68,
      "likes": 0
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 888,
+     "shares": 0,
+     "reach": 811,
+     "totalTimeWatched": 116.08,
+     "averageTimeWatched": 7.74,
+     "likes": 0
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6abc2e6fbc79f7218889ccd2": {
    "match": "pl v uy",
@@ -155,8 +169,22 @@
      "totalTimeWatched": 24.32,
      "averageTimeWatched": 5.34,
      "likes": 0
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 270,
+     "shares": 0,
+     "reach": 243,
+     "totalTimeWatched": 24.85,
+     "averageTimeWatched": 5.31,
+     "likes": 0
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6abd6da41971cfe1dd975757": {
    "match": "ph v ng",
@@ -234,8 +262,22 @@
      "totalTimeWatched": 27.9,
      "averageTimeWatched": 6.04,
      "likes": 1
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.36,
+     "views": 277,
+     "shares": 0,
+     "reach": 257,
+     "totalTimeWatched": 27.95,
+     "averageTimeWatched": 5.95,
+     "likes": 1
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6abeb419d22f25b408891d41": {
    "match": "ma v ua",
@@ -313,8 +355,22 @@
      "totalTimeWatched": 23.53,
      "averageTimeWatched": 5.49,
      "likes": 2
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.77,
+     "views": 260,
+     "shares": 0,
+     "reach": 244,
+     "totalTimeWatched": 23.85,
+     "averageTimeWatched": 5.38,
+     "likes": 2
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6abfefce55d4307d35a39c85": {
    "match": "au v vn",
@@ -392,8 +448,22 @@
      "totalTimeWatched": 64.22,
      "averageTimeWatched": 5.12,
      "likes": 1
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.13,
+     "views": 748,
+     "shares": 0,
+     "reach": 694,
+     "totalTimeWatched": 63.03,
+     "averageTimeWatched": 4.98,
+     "likes": 1
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac170c5fec591339487f64b": {
    "match": "us v hr",
@@ -471,8 +541,22 @@
      "totalTimeWatched": 17.93,
      "averageTimeWatched": 4.22,
      "likes": 0
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 253,
+     "shares": 0,
+     "reach": 243,
+     "totalTimeWatched": 17.93,
+     "averageTimeWatched": 4.22,
+     "likes": 0
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac29db38f73649f4616b488": {
    "match": "mx v nl",
@@ -550,8 +634,22 @@
      "totalTimeWatched": 83.28,
      "averageTimeWatched": 6.73,
      "likes": 1
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.14,
+     "views": 734,
+     "shares": 0,
+     "reach": 695,
+     "totalTimeWatched": 83.28,
+     "averageTimeWatched": 6.73,
+     "likes": 1
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac3b64656703b4c1e82c284": {
    "match": "co v pt",
@@ -629,8 +727,22 @@
      "totalTimeWatched": 29.32,
      "averageTimeWatched": 6.57,
      "likes": 3
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 1.16,
+     "views": 258,
+     "shares": 0,
+     "reach": 245,
+     "totalTimeWatched": 29.32,
+     "averageTimeWatched": 6.57,
+     "likes": 3
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac41ea7e8b512ed4f5aebef": {
    "match": "id v tr",
@@ -708,8 +820,22 @@
      "totalTimeWatched": 27.83,
      "averageTimeWatched": 6.1,
      "likes": 1
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.37,
+     "views": 269,
+     "shares": 0,
+     "reach": 256,
+     "totalTimeWatched": 27.83,
+     "averageTimeWatched": 6.1,
+     "likes": 1
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac51aaef2aae537b2479691": {
    "match": "kr v jp",
@@ -787,8 +913,22 @@
      "totalTimeWatched": 63.12,
      "averageTimeWatched": 4.92,
      "likes": 0
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 753,
+     "shares": 0,
+     "reach": 698,
+     "totalTimeWatched": 63.12,
+     "averageTimeWatched": 4.92,
+     "likes": 0
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac579142b46a5da666e902b": {
    "match": "es v br",
@@ -866,8 +1006,22 @@
      "totalTimeWatched": 26.23,
      "averageTimeWatched": 5.51,
      "likes": 0
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 282,
+     "shares": 0,
+     "reach": 265,
+     "totalTimeWatched": 26.25,
+     "averageTimeWatched": 5.49,
+     "likes": 0
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac6ae205116513c48a86ccf": {
    "match": "sn v it",
@@ -945,8 +1099,22 @@
      "totalTimeWatched": 97.67,
      "averageTimeWatched": 7.43,
      "likes": 4
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.52,
+     "views": 771,
+     "shares": 0,
+     "reach": 724,
+     "totalTimeWatched": 97.68,
+     "averageTimeWatched": 7.42,
+     "likes": 4
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac6ae942a8ddf9255cde071": {
    "match": "ca v de",
@@ -1011,8 +1179,22 @@
      "totalTimeWatched": 34.07,
      "averageTimeWatched": 6.55,
      "likes": 0
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 303,
+     "shares": 0,
+     "reach": 277,
+     "totalTimeWatched": 34.07,
+     "averageTimeWatched": 6.55,
+     "likes": 0
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac7e691777d0616a6fe342e": {
    "match": "fr v gb-eng",
@@ -1064,8 +1246,22 @@
      "totalTimeWatched": 50.97,
      "averageTimeWatched": 8.79,
      "likes": 2
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.59,
+     "views": 337,
+     "shares": 0,
+     "reach": 297,
+     "totalTimeWatched": 50.97,
+     "averageTimeWatched": 8.76,
+     "likes": 2
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac7e746d3b0be2fc4156a67": {
    "match": "ar v be",
@@ -1117,8 +1313,22 @@
      "totalTimeWatched": 52.77,
      "averageTimeWatched": 7.82,
      "likes": 0
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 403,
+     "shares": 0,
+     "reach": 359,
+     "totalTimeWatched": 52.92,
+     "averageTimeWatched": 7.78,
+     "likes": 0
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac8c2e69fc66ba0d7119512": {
    "match": "ie v eg",
@@ -1157,8 +1367,22 @@
      "totalTimeWatched": 1347.58,
      "averageTimeWatched": 10.91,
      "likes": 144
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 154,
+     "comments": 1,
+     "engagementRate": 2.11,
+     "views": 7633,
+     "shares": 6,
+     "reach": 6473,
+     "totalTimeWatched": 1434.08,
+     "averageTimeWatched": 10.95,
+     "likes": 154
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6ac93123ed92ed8fa5a3d7dc": {
    "match": "ch v uy",
@@ -1197,8 +1421,22 @@
      "totalTimeWatched": 90.47,
      "averageTimeWatched": 5.83,
      "likes": 4
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.43,
+     "views": 933,
+     "shares": 0,
+     "reach": 821,
+     "totalTimeWatched": 91.77,
+     "averageTimeWatched": 5.78,
+     "likes": 4
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6aca0a7cd9cab260a7bc726d": {
    "match": "ph v ma",
@@ -1237,8 +1475,22 @@
      "totalTimeWatched": 70.45,
      "averageTimeWatched": 8.96,
      "likes": 5
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 6,
+     "comments": 0,
+     "engagementRate": 1.26,
+     "views": 477,
+     "shares": 0,
+     "reach": 403,
+     "totalTimeWatched": 72.08,
+     "averageTimeWatched": 8.83,
+     "likes": 6
     }
-   ]
+   ],
+   "variant": "cup"
   },
   "6aca7445c4de2d2b123541a4": {
    "match": "au v hr",
@@ -1263,6 +1515,76 @@
      "reach": 0,
      "totalTimeWatched": 88.15,
      "averageTimeWatched": 6.51,
+     "likes": 1
+    },
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 2,
+     "comments": 2,
+     "engagementRate": 0.51,
+     "views": 782,
+     "shares": 0,
+     "reach": 687,
+     "totalTimeWatched": 91.12,
+     "averageTimeWatched": 6.5,
+     "likes": 2
+    }
+   ],
+   "variant": "cup"
+  },
+  "6acbe500a9411fbcc5587805": {
+   "match": "nl v pt",
+   "variant": "cup",
+   "edition": 1,
+   "round": 1,
+   "due": "2026-10-12T15:30:00+00:00",
+   "theme": "ocean",
+   "seed": 185599358028,
+   "format": "v2",
+   "length": null,
+   "link": "https://tiktok.com/@5lmvill/video/7695804406465432864",
+   "caption": "Netherlands 🇳🇱 vs Portugal 🇵🇹: 16 rings, one way out. Physics simulation",
+   "snapshots": [
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.3,
+     "views": 1322,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 167.62,
+     "averageTimeWatched": 7.35,
+     "likes": 4
+    }
+   ]
+  },
+  "6acbe563fa026cfb81126e84": {
+   "match": "tr v kr",
+   "variant": "cup",
+   "edition": 1,
+   "round": 1,
+   "due": "2026-10-12T19:00:00+00:00",
+   "theme": "sunset",
+   "seed": 170900570070,
+   "format": "v2",
+   "length": null,
+   "link": "https://tiktok.com/@5lmvill/video/7695858577965092128",
+   "caption": "Turkey 🇹🇷 vs South Korea 🇰🇷 in the escape rings. Who gets out first?",
+   "snapshots": [
+    {
+     "at": "2026-10-13T15:16+00:00",
+     "metrics_updated": "2026-10-13T06:24:27.511Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.36,
+     "views": 274,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 27.63,
+     "averageTimeWatched": 5.64,
      "likes": 1
     }
    ]
