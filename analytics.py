@@ -62,10 +62,13 @@ def collect():
         m = {x["type"]: x["value"] for x in (post.get("metrics") or [])}
         if "likes" not in m and "reactions" in m:      # Buffer reports TikTok likes as reactions
             m["likes"] = m["reactions"]
-        key = f"{e['a']}-{e['b']}"
+        royale = e.get("series") == "royale"
+        key = "" if royale else f"{e['a']}-{e['b']}"
         rec = data["posts"].setdefault(post["id"], {})
         rec.update({
-            "match": f"{e['a']} v {e['b']}", "edition": e["edition"], "round": e["r"],
+            "match": f"royale {e['heat']}" if royale else f"{e['a']} v {e['b']}",
+            "variant": "royale" if royale else "cup",
+            "edition": e["edition"], "round": None if royale else e["r"],
             "due": e.get("due"), "theme": e.get("theme"), "seed": e.get("seed"),
             "format": "v2" if (e.get("due") or "") >= V2_FROM else "v1",
             "length": e.get("length") or rec.get("length") or BACKFILL_LEN.get(key),
@@ -89,6 +92,7 @@ def rows(data):
         L = r.get("length")
         out.append({
             "due": (r.get("due") or "")[:16], "match": r["match"], "fmt": r["format"], "len": L,
+            "variant": r.get("variant", "cup"),
             "views": views, "likes": s.get("likes", 0), "comments": s.get("comments", 0),
             "shares": s.get("shares", 0), "saves": s.get("saves", 0), "follows": s.get("follows", 0),
             "avg_watch": avg, "avg_pct": round(100 * avg / L, 1) if avg and L else None,
@@ -106,12 +110,53 @@ def report(data):
               f"{x['avg_pct'] if x['avg_pct'] is not None else '':>5} {x['like_rate'] if x['like_rate'] is not None else '':>5}")
 
 
+def _median(xs):
+    xs = sorted(x for x in xs if x is not None)
+    if not xs:
+        return None
+    mid = len(xs) // 2
+    return xs[mid] if len(xs) % 2 else (xs[mid - 1] + xs[mid]) / 2
+
+
+AB_FROM = "2026-10-13"      # cup vs royale A/B started (main.ARMS)
+AB_MIN_N = 6
+
+
+def compare(data):
+    """Cup vs Escape Royale since AB_FROM. Avg % watched first (it decides whether
+    TikTok widens the test batch: the one breakout, Ireland v Egypt, had the best
+    watch time), then likes and comments per 1k views."""
+    lines = []
+    for arm in ("cup", "royale"):
+        xs = [x for x in rows(data) if x["variant"] == arm and x["due"] >= AB_FROM and x["views"]]
+        if not xs:
+            lines.append(f"{arm:7} n=0")
+            continue
+        views = sum(x["views"] for x in xs)
+        pct, avg = _median([x["avg_pct"] for x in xs]), _median([x["avg_watch"] for x in xs])
+        lines.append(f"{arm:7} n={len(xs):2}  avg watched {'n/a' if pct is None else f'{pct:.0f}%'}"
+                     f" ({'n/a' if avg is None else f'{avg:.1f}s'})  median views {_median([x['views'] for x in xs]):.0f}"
+                     f"  likes {1000 * sum(x['likes'] for x in xs) / views:.1f}/1k"
+                     f"  comments {1000 * sum(x['comments'] for x in xs) / views:.1f}/1k")
+    ready = all(sum(1 for x in rows(data) if x["variant"] == a and x["due"] >= AB_FROM and x["views"])
+                >= AB_MIN_N for a in ("cup", "royale"))
+    lines.append("enough data to judge" if ready else f"keep running: judge at {AB_MIN_N}+ posts per arm")
+    return "\n".join(lines)
+
+
 if __name__ == "__main__":
-    if "--report" in sys.argv:
+    if "--compare" in sys.argv:
+        print(compare(load()))
+    elif "--report" in sys.argv:
         report(load())
     else:
         d = collect()
         report(d)
+        print(compare(d))
+        # weekly A/B digest to Telegram (Mondays)
+        if datetime.now(timezone.utc).weekday() == 0:
+            import notify
+            notify.send("<b>Escape Cup A/B: cup vs royale</b>\n<pre>" + compare(d) + "</pre>")
         # also dump the raw metric names once, so new fields are visible in the log
         last = next(iter(d["posts"].values()), {}).get("snapshots", [{}])[-1]
         print("metric fields:", sorted(k for k in last if k not in ("at", "metrics_updated")))

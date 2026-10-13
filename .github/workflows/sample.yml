@@ -4,6 +4,11 @@ name: Send sample video
 # Never posts, never changes the bracket.
 on:
   workflow_dispatch:
+    inputs:
+      royale:
+        description: "Escape Royale heat (16 countries) instead of the next cup match"
+        type: boolean
+        default: false
 
 jobs:
   sample:
@@ -20,4 +25,4 @@ jobs:
       - env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python main.py --sample
+        run: python main.py --sample ${{ inputs.royale && '--royale' || '' }}

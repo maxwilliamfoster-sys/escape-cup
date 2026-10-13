@@ -201,6 +201,130 @@ def build_passing(state):
     return None, reasons
 
 
+# ----------------------------------------------------------- A/B: royale --
+# Approved 2026-10-08 ("build it and A/B test"). 19 one-v-one videos all sat at
+# ~25% average watch (6s) and ~0.3% likes, and the v2 ring redesign did not move it.
+# Diagnosis: two random countries give a 91%-UK audience no stake. The closest
+# growing competitor shows 8+ flags with "COMMENT YOUR COUNTRY". Each day one slot
+# is a cup match and the other an Escape Royale heat (16 countries, England plus a
+# home nation in every heat); the arms swap time slots daily so neither owns the
+# better hour. Judge on avg % watched, then likes and comments per view, after 6+
+# posts per arm (analytics.py --compare).
+ARMS = ("cup", "royale")
+ROYALE_SIZE = 16
+ROYALE_POINTS = (3, 2, 1)                 # podium points for the running league table
+
+ROYALE_HEADS = [
+    "16 countries, 1 way out - which country escapes the rings first?",
+    "Ball escape simulation: 16 countries, only one breaks out first",
+    "Country ball escape royale - 16 flags, one exit. Find your country",
+    "Which country escapes first? 16 countries in one physics simulation",
+    "16 country balls, 28 rings, one way out. Physics simulation",
+]
+ROYALE_TEASES = ["Is your country in this one? 👇", "Which flag were you backing? 👇",
+                 "Where did your country finish? 👇"]
+
+
+def arm_for(slot, state):
+    """'cup' or 'royale' for a posting slot (UTC)."""
+    local = slot.astimezone(LONDON)
+    day = local.date()
+    slots = slots_for_day(day, first_post_day(state, day))
+    idx = slots.index((local.hour, local.minute)) if (local.hour, local.minute) in slots else 0
+    return ARMS[(day.toordinal() + idx) % len(ARMS)]
+
+
+def royale_heat(state):
+    return 1 + sum(1 for e in state.get("log", []) if e.get("series") == "royale")
+
+
+def royale_field(heat):
+    """England + one home nation + 14 others (big fanbases weighted x3), seeded per heat."""
+    rng = random.Random(f"royale-{heat}")
+    picks = ["gb-eng", rng.choice(teams.HOME_NATIONS)]
+    pool = [c for c, _, _ in teams.ALL_TEAMS
+            if c not in picks and c not in teams.HOME_NATIONS and c not in quality.EXCLUDED_CODES]
+    weights = [3 if c in teams.BIG_FANBASES else 1 for c in pool]
+    while len(picks) < ROYALE_SIZE:
+        c = rng.choices(pool, weights)[0]
+        if c not in picks:
+            picks.append(c)
+    rng.shuffle(picks)
+    return picks
+
+
+def royale_league(state, extra_podium=()):
+    """Top three of the running league (3/2/1 points per heat podium)."""
+    pts = {}
+    podiums = [e.get("podium", []) for e in state.get("log", []) if e.get("series") == "royale"]
+    for podium in podiums + [list(extra_podium)]:
+        for code, p in zip(podium, ROYALE_POINTS):
+            pts[code] = pts.get(code, 0) + p
+    top = sorted(pts.items(), key=lambda kv: -kv[1])[:3]
+    return "LEAGUE: " + "  ·  ".join(f"{teams.name(c).upper()} {p}" for c, p in top)
+
+
+def make_royale_caption(codes, heat, rng):
+    home = next(c for c in codes if c in teams.HOME_NATIONS)
+    named = ["gb-eng", home] + [c for c in codes if c in teams.BIG_FANBASES and c != "gb-eng"][:2]
+    second = (f"Escape Royale heat {heat}: " + ", ".join(teams.name(c) for c in named)
+              + f" and {len(codes) - len(named)} more")
+    tags = NICHE_TAGS + [rng.choice(ROTATING_TAG), "#countryballs"]
+    return f"{rng.choice(ROYALE_HEADS)}\n{second}\n{rng.choice(ROYALE_TEASES)}\n{' '.join(tags)}"
+
+
+def build_royale(state, exclude_seeds=()):
+    heat = royale_heat(state)
+    codes = royale_field(heat)
+    base = int(hashlib.sha1(f"royale-{heat}".encode()).hexdigest()[:7], 16)
+    seed, drama = director.pick_royale(base, exclude=exclude_seeds)
+    phys = sim.simulate(seed, **sim.ROYALE)
+    winner = codes[phys.winner]
+    podium = [codes[i] for i in sim.standings(phys)[:3]]
+    rng = random.Random(seed)
+    themes = [t for t in render.THEMES if t != render.FINAL_THEME]
+    # offset from the cup's rotation so back-to-back posts rarely share a look
+    theme = themes[(state.get("posts", 0) + len(themes) // 2) % len(themes)]
+    info = dict(codes=codes, header=f"ESCAPE ROYALE  ·  HEAT {heat}", theme=theme,
+                league_line=royale_league(state, podium), next_line="NEW HEAT, 16 NEW COUNTRIES NEXT")
+    os.makedirs(OUT, exist_ok=True)
+    os.makedirs(WORK, exist_ok=True)
+    fname = f"royale{heat:03d}_{seed}.mp4"
+    path = os.path.join(OUT, fname)
+    render.render_royale(phys, info, path, WORK)
+
+    caption = make_royale_caption(codes, heat, rng)
+    report, failures = quality.check_video(path, len(phys.frames) / sim.FPS,
+                                           quality.ROYALE_DURATION_RANGE)
+    failures += quality.check_royale(codes, winner, phys.breaks)
+    failures += quality.check_caption(caption, None, None, state.get("recent_captions", []))
+    return {"path": path, "caption": caption, "file": fname, "seed": seed, "winner": winner,
+            "series": "royale", "heat": heat, "codes": codes, "podium": podium,
+            "round": f"Escape Royale heat {heat}", "theme": theme, "drama": drama,
+            "report": report, "failures": failures}
+
+
+def build_passing_royale(state):
+    heat = royale_heat(state)
+    tried = list(state.get("excluded_seeds", {}).get(f"royale-{heat}", []))
+    reasons = []
+    for _ in range(MAX_ATTEMPTS):
+        v = build_royale(state, exclude_seeds=tried)
+        if not v["failures"]:
+            return v, reasons
+        tried.append(v["seed"])
+        reasons.append(f"seed {v['seed']}: " + "; ".join(v["failures"]))
+        print("[quality] FAILED", reasons[-1])
+    return None, reasons
+
+
+def label(e):
+    """Human name of a log entry, for alerts."""
+    if e.get("series") == "royale":
+        return f"Escape Royale heat {e['heat']}"
+    return f"{teams.name(e['a'])} v {teams.name(e['b'])}"
+
+
 def qc_line(rep):
     return (f"{rep['res']} {rep['fps']:.0f}fps · {rep['seconds']}s · {rep['mbps']} Mbps · "
             f"{rep['lufs']} LUFS · {rep['hf_pct']}% >2kHz · no black/frozen frames · hook ✓ · card ✓")
@@ -260,7 +384,7 @@ def reconcile(state, org, channel):
 
     dropped = log[drop_at]
     later_published = [e for e in log[drop_at + 1:] if e.get("status") == "published"]
-    title = f"{teams.name(dropped['a'])} v {teams.name(dropped['b'])}"
+    title = label(dropped)
     if later_published:
         # A later match already went out, so the bracket can't be rewound. Keep
         # the result; mark it so it is only alerted once.
@@ -275,8 +399,9 @@ def reconcile(state, org, channel):
     for e in log[drop_at + 1:]:
         if e.get("buffer_id") in pending_ids:
             publish.delete_post(e["buffer_id"])
-            cancelled.append(f"{teams.name(e['a'])} v {teams.name(e['b'])}")
-    key = f"{dropped['edition']}-{dropped['r']}-{dropped['m']}"
+            cancelled.append(label(e))
+    key = (f"royale-{dropped['heat']}" if dropped.get("series") == "royale"
+           else f"{dropped['edition']}-{dropped['r']}-{dropped['m']}")
     state.setdefault("excluded_seeds", {}).setdefault(key, []).append(dropped["seed"])
     state = tournament.truncate(state, drop_at)
     notify.send(f"↩️ <b>Escape Cup: {html.escape(title)} was not published</b> "
@@ -301,7 +426,7 @@ def requeue_unpublished():
     for e in log[keep:]:
         if e.get("buffer_id") in pending_ids:
             publish.delete_post(e["buffer_id"])
-            cancelled.append(f"{teams.name(e['a'])} v {teams.name(e['b'])}")
+            cancelled.append(label(e))
     state = tournament.truncate(state, keep)
     tournament.save(state)
     print(f"[requeue] cancelled {cancelled}; log kept {keep} published entries")
@@ -343,14 +468,14 @@ def post_now():
         raise RuntimeError("no pending Escape Cup post in Buffer to publish")
     e = state["log"][idx]
     target = pending[e["buffer_id"]]
-    fname = f"ec{e['edition']:02d}_r{e['r']}_m{e['m']:02d}_{e['seed']}.mp4"
+    fname = e.get("file") or f"ec{e['edition']:02d}_r{e['r']}_m{e['m']:02d}_{e['seed']}.mp4"
     url = f"{publish.pages_base()}/v/{fname}"
     publish.delete_post(target["id"])
     post = publish.schedule_tiktok(channel, url, target["text"], datetime.now(timezone.utc))
     e["due"], e["buffer_id"] = datetime.now(timezone.utc).isoformat(), post["id"]
     tournament.save(state)
     final = publish.wait_until_published(post["id"])
-    title = f"{teams.name(e['a'])} v {teams.name(e['b'])}"
+    title = label(e)
     if final["status"] == "sent":
         e["status"], e["link"] = "published", final.get("externalLink")
         tournament.save(state)
@@ -365,13 +490,13 @@ def post_now():
         raise RuntimeError(f"post ended as {final['status']}: {err}")
 
 
-def run(sample=False, local=False):
+def run(sample=False, local=False, royale=False):
     state = tournament.load()
     if sample:
         work = copy.deepcopy(state)
-        v = build_one(work)
-        print(json.dumps({k: v[k] for k in ("file", "round", "a", "b", "winner", "theme", "drama",
-                                            "report", "failures")}, indent=1))
+        v = build_royale(work) if royale else build_one(work)
+        print(json.dumps({k: v.get(k) for k in ("file", "round", "a", "b", "codes", "winner", "theme",
+                                                "drama", "report", "failures")}, indent=1))
         print(v["caption"])
         if not local:
             verdict = ("✅ passed quality gate\n" + qc_line(v["report"])) if not v["failures"] else \
@@ -391,11 +516,13 @@ def run(sample=False, local=False):
         return
 
     for slot in slots:
-        v, reasons = build_passing(state)
+        arm = arm_for(slot, state)
+        v, reasons = build_passing_royale(state) if arm == "royale" else build_passing(state)
         when = slot.astimezone(LONDON).strftime("%a %d %b %H:%M UK")
         if v is None:
             # Stop here: filling a LATER slot with this match's successor would
-            # break the order. The next run retries this match first.
+            # break the order. The next run retries this match first. (A failed
+            # royale heat stops too, so the arms never drift out of their slots.)
             notify.send(f"🛑 <b>Escape Cup: nothing scheduled for {when}</b>\n"
                         f"{MAX_ATTEMPTS} renders failed the quality gate:\n"
                         + html.escape("\n".join(reasons))[:3000])
@@ -403,10 +530,17 @@ def run(sample=False, local=False):
         url = publish.host_video(v["path"], v["file"])
         post = publish.schedule_tiktok(channel, url, v["caption"], slot)
         state["recent_captions"] = (state.get("recent_captions", []) + [v["caption"]])[-40:]
-        state = tournament.append(state, {
-            "edition": state["edition"], "r": v["r"], "m": v["m"], "a": v["a"], "b": v["b"],
-            "winner": v["winner"], "seed": v["seed"], "theme": v["theme"],
-            "due": slot.isoformat(), "buffer_id": post["id"], "status": "scheduled"})
+        entry = {"edition": state["edition"], "winner": v["winner"], "seed": v["seed"],
+                 "theme": v["theme"], "due": slot.isoformat(), "buffer_id": post["id"],
+                 "status": "scheduled", "file": v["file"],
+                 # length was never stored before 2026-10-13, so avg % watched was
+                 # blank for every post after the hand-typed backfill
+                 "length": v["report"].get("seconds")}
+        if v.get("series") == "royale":
+            entry.update(series="royale", heat=v["heat"], codes=v["codes"], podium=v["podium"])
+        else:
+            entry.update(r=v["r"], m=v["m"], a=v["a"], b=v["b"])
+        state = tournament.append(state, entry)
         tournament.save(state)
         notify.send_video(v["path"], f"🎾 <b>Escape Cup scheduled</b> for {when}\n"
                                      f"{html.escape(v['round'])}: winner {html.escape(teams.name(v['winner']))} "
@@ -419,6 +553,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sample", action="store_true", help="render the next match, don't post")
     ap.add_argument("--local", action="store_true", help="with --sample: no Telegram")
+    ap.add_argument("--royale", action="store_true", help="with --sample: an Escape Royale heat")
     ap.add_argument("--post-now", action="store_true",
                     help="publish the earliest pending post immediately and wait for TikTok")
     ap.add_argument("--requeue", action="store_true",
@@ -434,7 +569,7 @@ def main():
         elif args.requeue:
             requeue_unpublished()
         else:
-            run(sample=args.sample, local=args.local)
+            run(sample=args.sample, local=args.local, royale=args.royale)
     except Exception as e:
         traceback.print_exc()
         if not args.local:

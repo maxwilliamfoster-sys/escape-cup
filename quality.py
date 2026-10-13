@@ -39,6 +39,7 @@ MIN_PHONE_PCT = 55.0                               # % of energy above 400 Hz: p
 MIN_VIDEO_KBPS = 1500
 MAX_BYTES = 90 * 1024 * 1024                       # GitHub Pages file limit is 100 MB
 DURATION_RANGE = (15.0, 32.0)
+ROYALE_DURATION_RANGE = (20.0, 42.0)                # director: 20-36s heat + 3.4s card
 BAIT = [r"\bfollow\b", r"\blike\s*(for|4)\s*like\b", r"\bl4l\b", r"\bf4f\b", r"\blike if\b",
         r"\bgift", r"\bshare (this|if)\b", r"\bsubscribe\b", r"#fyp", r"#foryou", r"#viral",
         r"\b\d+%\s*(of people|can't|cannot|can not|fail)", r"\bnobody can\b", r"\bonly \d+%"]
@@ -90,7 +91,7 @@ def _audio_bands(path):
             100 * spec[f > 400].sum() / tot)
 
 
-def check_video(path, match_seconds):
+def check_video(path, match_seconds, duration_range=DURATION_RANGE):
     """Returns (report, failures). match_seconds = length before the winner card."""
     rep, fail = {}, []
     info = probe(path)
@@ -111,8 +112,8 @@ def check_video(path, match_seconds):
         fail.append(f"fps {fps:.2f}")
     if v["codec_name"] != "h264" or v.get("pix_fmt") != "yuv420p" or a["codec_name"] != "aac":
         fail.append(f"codec {rep['codec']} {v.get('pix_fmt')}")
-    if not DURATION_RANGE[0] <= dur <= DURATION_RANGE[1]:
-        fail.append(f"duration {dur:.1f}s outside {DURATION_RANGE}")
+    if not duration_range[0] <= dur <= duration_range[1]:
+        fail.append(f"duration {dur:.1f}s outside {duration_range}")
     if vkbps < MIN_VIDEO_KBPS:
         fail.append(f"video bitrate {vkbps:.0f} kbps < {MIN_VIDEO_KBPS}")
     if size > MAX_BYTES:
@@ -181,6 +182,7 @@ def check_content(a, b, winner, breaks):
 
 
 def check_caption(caption, a, b, recent_captions):
+    """a/b = the two countries of a cup match; None for an Escape Royale heat."""
     fail = []
     tags = re.findall(r"#\w+", caption)
     if not 3 <= len(tags) <= 5:
@@ -195,7 +197,7 @@ def check_caption(caption, a, b, recent_captions):
     for pat in SPOILERS:
         if re.search(pat, low):
             fail.append(f"possible spoiler /{pat}/")
-    if teams.name(a).lower() not in first.lower() or teams.name(b).lower() not in first.lower():
+    if a and b and (teams.name(a).lower() not in first.lower() or teams.name(b).lower() not in first.lower()):
         fail.append("first line must name both countries (search keywords)")
     if not any(k in low for k in KEYWORDS):
         fail.append("no niche keyword in caption")
@@ -206,4 +208,23 @@ def check_caption(caption, a, b, recent_captions):
     body = caption.rsplit("\n", 1)[0].strip()
     if any(body == c.rsplit("\n", 1)[0].strip() for c in recent_captions):
         fail.append("caption repeats a recent one")
+    return fail
+
+
+def check_royale(codes, winner, breaks):
+    """Escape Royale heat: 16 distinct known countries incl. England, a real race."""
+    fail = []
+    for code in codes:
+        if code in EXCLUDED_CODES:
+            fail.append(f"excluded flag {code}")
+        if code not in teams.BY_CODE:
+            fail.append(f"unknown team {code}")
+    if len(set(codes)) != len(codes):
+        fail.append("a country appears twice")
+    if "gb-eng" not in codes:
+        fail.append("England missing (91% of viewers are in the UK)")
+    if winner not in codes:
+        fail.append("winner is not in the heat")
+    if sorted(breaks)[-2] < 3:
+        fail.append("runaway heat (runner-up broke fewer than 3 rings)")
     return fail
