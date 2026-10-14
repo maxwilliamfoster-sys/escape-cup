@@ -225,11 +225,11 @@
    {
     "a": "ch",
     "b": "ph",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ph",
+    "seed": 100135476050,
+    "melody": "neon",
+    "posted": "2026-10-15T15:30:00+00:00",
+    "buffer_id": "6acfb7ad274f2a94bd9bcd5c"
    },
    {
     "a": "au",
@@ -261,7 +261,7 @@
   ],
   [
    {
-    "a": null,
+    "a": "ph",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 24,
+ "posts": 25,
  "log": [
   {
    "edition": 1,
@@ -623,7 +623,7 @@
    "theme": "sunset",
    "due": "2026-10-14T15:30:00+00:00",
    "buffer_id": "6ace8429212d8766037262bf",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale001_4906619001.mp4",
    "length": 30.5,
    "series": "royale",
@@ -650,7 +650,8 @@
     "ph",
     "se",
     "it"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7696546539182886177"
   },
   {
    "edition": 1,
@@ -666,6 +667,21 @@
    "m": 7,
    "a": "be",
    "b": "ie"
+  },
+  {
+   "edition": 1,
+   "winner": "ph",
+   "seed": 100135476050,
+   "theme": "neon",
+   "due": "2026-10-15T15:30:00+00:00",
+   "buffer_id": "6acfb7ad274f2a94bd9bcd5c",
+   "status": "scheduled",
+   "file": "ec01_r2_m00_100135476050.mp4",
+   "length": 20.6,
+   "r": 2,
+   "m": 0,
+   "a": "ch",
+   "b": "ph"
   }
  ],
  "recent_captions": [
@@ -694,7 +710,8 @@
   "Spain 🇪🇸 vs Italy 🇮🇹 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 1\nCanada vs France is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #spain #italy",
   "Canada 🇨🇦 vs France 🇫🇷: 16 rings, one way out. Physics simulation\nRound of 16 · Escape Cup 1\nComing next: Belgium vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #canada #france",
   "Which country escapes first? 16 countries in one physics simulation\nEscape Royale heat 1: England, Ireland, Italy, Colombia and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
-  "Belgium 🇧🇪 or Ireland 🇮🇪? Physics decides which country breaks out first\nRound of 16 · Escape Cup 1\nNext up: Switzerland vs Philippines - who's your pick? 👇\n#ballescape #physicssimulation #simulation #belgium #ireland"
+  "Belgium 🇧🇪 or Ireland 🇮🇪? Physics decides which country breaks out first\nRound of 16 · Escape Cup 1\nNext up: Switzerland vs Philippines - who's your pick? 👇\n#ballescape #physicssimulation #simulation #belgium #ireland",
+  "Switzerland 🇨🇭 vs Philippines 🇵🇭 - which country escapes the rings first?\nQuarter-final · Escape Cup 1\nComing next: Australia vs Netherlands. Who takes it? 👇\n#ballescape #physicssimulation #simulation #switzerland #philippines"
  ],
  "seen_errors": []
 }
