@@ -660,13 +660,14 @@
    "theme": "ember",
    "due": "2026-10-14T19:00:00+00:00",
    "buffer_id": "6ace84adcb3665561f62d960",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec01_r1_m07_159368569010.mp4",
    "length": 23.9,
    "r": 1,
    "m": 7,
    "a": "be",
-   "b": "ie"
+   "b": "ie",
+   "link": "https://tiktok.com/@5lmvill/video/7696600824356572448"
   },
   {
    "edition": 1,
@@ -682,6 +683,42 @@
    "m": 0,
    "a": "ch",
    "b": "ph"
+  },
+  {
+   "edition": 1,
+   "winner": "cm",
+   "seed": 89890120029,
+   "theme": "candy",
+   "due": "2026-10-15T19:00:00+00:00",
+   "buffer_id": "6acff770ad454aea56d01536",
+   "status": "scheduled",
+   "file": "royale002_89890120029.mp4",
+   "length": 24.9,
+   "series": "royale",
+   "heat": 2,
+   "codes": [
+    "ph",
+    "mx",
+    "za",
+    "cz",
+    "sn",
+    "es",
+    "cm",
+    "ie",
+    "au",
+    "jp",
+    "be",
+    "it",
+    "gb-eng",
+    "de",
+    "eg",
+    "ar"
+   ],
+   "podium": [
+    "cm",
+    "mx",
+    "ar"
+   ]
   }
  ],
  "recent_captions": [
@@ -711,7 +748,8 @@
   "Canada 🇨🇦 vs France 🇫🇷: 16 rings, one way out. Physics simulation\nRound of 16 · Escape Cup 1\nComing next: Belgium vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #canada #france",
   "Which country escapes first? 16 countries in one physics simulation\nEscape Royale heat 1: England, Ireland, Italy, Colombia and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
   "Belgium 🇧🇪 or Ireland 🇮🇪? Physics decides which country breaks out first\nRound of 16 · Escape Cup 1\nNext up: Switzerland vs Philippines - who's your pick? 👇\n#ballescape #physicssimulation #simulation #belgium #ireland",
-  "Switzerland 🇨🇭 vs Philippines 🇵🇭 - which country escapes the rings first?\nQuarter-final · Escape Cup 1\nComing next: Australia vs Netherlands. Who takes it? 👇\n#ballescape #physicssimulation #simulation #switzerland #philippines"
+  "Switzerland 🇨🇭 vs Philippines 🇵🇭 - which country escapes the rings first?\nQuarter-final · Escape Cup 1\nComing next: Australia vs Netherlands. Who takes it? 👇\n#ballescape #physicssimulation #simulation #switzerland #philippines",
+  "Country ball escape royale - 16 flags, one exit. Find your country\nEscape Royale heat 2: England, Ireland, Philippines, Mexico and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs"
  ],
  "seen_errors": []
 }
