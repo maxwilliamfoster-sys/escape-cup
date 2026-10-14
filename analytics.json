@@ -89,6 +89,19 @@
      "totalTimeWatched": 116.08,
      "averageTimeWatched": 7.74,
      "likes": 0
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.695Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 888,
+     "shares": 0,
+     "reach": 814,
+     "totalTimeWatched": 116.15,
+     "averageTimeWatched": 7.73,
+     "likes": 0
     }
    ],
    "variant": "cup"
@@ -181,6 +194,19 @@
      "reach": 243,
      "totalTimeWatched": 24.85,
      "averageTimeWatched": 5.31,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.695Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 270,
+     "shares": 0,
+     "reach": 244,
+     "totalTimeWatched": 24.85,
+     "averageTimeWatched": 5.29,
      "likes": 0
     }
    ],
@@ -275,6 +301,19 @@
      "totalTimeWatched": 27.95,
      "averageTimeWatched": 5.95,
      "likes": 1
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.695Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.36,
+     "views": 277,
+     "shares": 0,
+     "reach": 258,
+     "totalTimeWatched": 27.95,
+     "averageTimeWatched": 5.93,
+     "likes": 1
     }
    ],
    "variant": "cup"
@@ -367,6 +406,19 @@
      "reach": 244,
      "totalTimeWatched": 23.85,
      "averageTimeWatched": 5.38,
+     "likes": 2
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.695Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.77,
+     "views": 260,
+     "shares": 0,
+     "reach": 246,
+     "totalTimeWatched": 23.93,
+     "averageTimeWatched": 5.34,
      "likes": 2
     }
    ],
@@ -461,6 +513,19 @@
      "totalTimeWatched": 63.03,
      "averageTimeWatched": 4.98,
      "likes": 1
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.695Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.13,
+     "views": 748,
+     "shares": 0,
+     "reach": 695,
+     "totalTimeWatched": 63.03,
+     "averageTimeWatched": 4.97,
+     "likes": 1
     }
    ],
    "variant": "cup"
@@ -554,6 +619,19 @@
      "totalTimeWatched": 17.93,
      "averageTimeWatched": 4.22,
      "likes": 0
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.695Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 253,
+     "shares": 0,
+     "reach": 243,
+     "totalTimeWatched": 17.6,
+     "averageTimeWatched": 4.09,
+     "likes": 0
     }
    ],
    "variant": "cup"
@@ -638,6 +716,19 @@
     {
      "at": "2026-10-13T15:16+00:00",
      "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.14,
+     "views": 734,
+     "shares": 0,
+     "reach": 695,
+     "totalTimeWatched": 83.28,
+     "averageTimeWatched": 6.73,
+     "likes": 1
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
      "reactions": 1,
      "comments": 0,
      "engagementRate": 0.14,
@@ -740,6 +831,19 @@
      "totalTimeWatched": 29.32,
      "averageTimeWatched": 6.57,
      "likes": 3
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 1.16,
+     "views": 258,
+     "shares": 0,
+     "reach": 245,
+     "totalTimeWatched": 29.32,
+     "averageTimeWatched": 6.57,
+     "likes": 3
     }
    ],
    "variant": "cup"
@@ -824,6 +928,19 @@
     {
      "at": "2026-10-13T15:16+00:00",
      "metrics_updated": "2026-10-13T06:24:27.512Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.37,
+     "views": 269,
+     "shares": 0,
+     "reach": 256,
+     "totalTimeWatched": 27.83,
+     "averageTimeWatched": 6.1,
+     "likes": 1
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
      "reactions": 1,
      "comments": 0,
      "engagementRate": 0.37,
@@ -926,6 +1043,19 @@
      "totalTimeWatched": 63.12,
      "averageTimeWatched": 4.92,
      "likes": 0
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 753,
+     "shares": 0,
+     "reach": 698,
+     "totalTimeWatched": 63.12,
+     "averageTimeWatched": 4.92,
+     "likes": 0
     }
    ],
    "variant": "cup"
@@ -1016,6 +1146,19 @@
      "views": 282,
      "shares": 0,
      "reach": 265,
+     "totalTimeWatched": 26.25,
+     "averageTimeWatched": 5.49,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 282,
+     "shares": 0,
+     "reach": 266,
      "totalTimeWatched": 26.25,
      "averageTimeWatched": 5.49,
      "likes": 0
@@ -1112,6 +1255,19 @@
      "totalTimeWatched": 97.68,
      "averageTimeWatched": 7.42,
      "likes": 4
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.52,
+     "views": 771,
+     "shares": 0,
+     "reach": 726,
+     "totalTimeWatched": 97.68,
+     "averageTimeWatched": 7.42,
+     "likes": 4
     }
    ],
    "variant": "cup"
@@ -1192,6 +1348,19 @@
      "totalTimeWatched": 34.07,
      "averageTimeWatched": 6.55,
      "likes": 0
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 303,
+     "shares": 0,
+     "reach": 277,
+     "totalTimeWatched": 34.07,
+     "averageTimeWatched": 6.55,
+     "likes": 0
     }
    ],
    "variant": "cup"
@@ -1256,6 +1425,19 @@
      "views": 337,
      "shares": 0,
      "reach": 297,
+     "totalTimeWatched": 50.97,
+     "averageTimeWatched": 8.76,
+     "likes": 2
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.59,
+     "views": 337,
+     "shares": 0,
+     "reach": 298,
      "totalTimeWatched": 50.97,
      "averageTimeWatched": 8.76,
      "likes": 2
@@ -1326,6 +1508,19 @@
      "totalTimeWatched": 52.92,
      "averageTimeWatched": 7.78,
      "likes": 0
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 405,
+     "shares": 0,
+     "reach": 362,
+     "totalTimeWatched": 53.03,
+     "averageTimeWatched": 7.76,
+     "likes": 0
     }
    ],
    "variant": "cup"
@@ -1380,6 +1575,19 @@
      "totalTimeWatched": 1434.08,
      "averageTimeWatched": 10.95,
      "likes": 154
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 156,
+     "comments": 1,
+     "engagementRate": 2.08,
+     "views": 7827,
+     "shares": 6,
+     "reach": 6945,
+     "totalTimeWatched": 1471.52,
+     "averageTimeWatched": 10.95,
+     "likes": 156
     }
    ],
    "variant": "cup"
@@ -1433,6 +1641,19 @@
      "reach": 821,
      "totalTimeWatched": 91.77,
      "averageTimeWatched": 5.78,
+     "likes": 4
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.43,
+     "views": 941,
+     "shares": 0,
+     "reach": 836,
+     "totalTimeWatched": 92.37,
+     "averageTimeWatched": 5.77,
      "likes": 4
     }
    ],
@@ -1488,6 +1709,19 @@
      "totalTimeWatched": 72.08,
      "averageTimeWatched": 8.83,
      "likes": 6
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 6,
+     "comments": 0,
+     "engagementRate": 1.24,
+     "views": 484,
+     "shares": 0,
+     "reach": 419,
+     "totalTimeWatched": 72.42,
+     "averageTimeWatched": 8.74,
+     "likes": 6
     }
    ],
    "variant": "cup"
@@ -1529,6 +1763,19 @@
      "totalTimeWatched": 91.12,
      "averageTimeWatched": 6.5,
      "likes": 2
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 2,
+     "comments": 2,
+     "engagementRate": 0.51,
+     "views": 790,
+     "shares": 0,
+     "reach": 713,
+     "totalTimeWatched": 91.58,
+     "averageTimeWatched": 6.47,
+     "likes": 2
     }
    ],
    "variant": "cup"
@@ -1558,6 +1805,19 @@
      "totalTimeWatched": 167.62,
      "averageTimeWatched": 7.35,
      "likes": 4
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.3,
+     "views": 1344,
+     "shares": 0,
+     "reach": 1222,
+     "totalTimeWatched": 170.35,
+     "averageTimeWatched": 7.34,
+     "likes": 4
     }
    ]
   },
@@ -1585,6 +1845,75 @@
      "reach": 0,
      "totalTimeWatched": 27.63,
      "averageTimeWatched": 5.64,
+     "likes": 1
+    },
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.3,
+     "views": 328,
+     "shares": 0,
+     "reach": 250,
+     "totalTimeWatched": 32.08,
+     "averageTimeWatched": 5.53,
+     "likes": 1
+    }
+   ]
+  },
+  "6acd4e982c1b16d2e1243e32": {
+   "match": "es v it",
+   "variant": "cup",
+   "edition": 1,
+   "round": 1,
+   "due": "2026-10-13T15:30:00+00:00",
+   "theme": "forest",
+   "seed": 250741294018,
+   "format": "v2",
+   "length": null,
+   "link": "https://tiktok.com/@5lmvill/video/7696175604403539233",
+   "caption": "Spain 🇪🇸 vs Italy 🇮🇹 in the escape rings. Who gets out first?",
+   "snapshots": [
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.55,
+     "views": 731,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 74.27,
+     "averageTimeWatched": 6,
+     "likes": 4
+    }
+   ]
+  },
+  "6acd4f090fd81940c1c85efb": {
+   "match": "ca v fr",
+   "variant": "cup",
+   "edition": 1,
+   "round": 1,
+   "due": "2026-10-13T19:00:00+00:00",
+   "theme": "candy",
+   "seed": 123878124049,
+   "format": "v2",
+   "length": null,
+   "link": "https://tiktok.com/@5lmvill/video/7696229663504420128",
+   "caption": "Canada 🇨🇦 vs France 🇫🇷: 16 rings, one way out. Physics simulation",
+   "snapshots": [
+    {
+     "at": "2026-10-14T13:05+00:00",
+     "metrics_updated": "2026-10-14T05:25:40.694Z",
+     "reactions": 1,
+     "comments": 1,
+     "engagementRate": 0.28,
+     "views": 704,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 61.32,
+     "averageTimeWatched": 5.14,
      "likes": 1
     }
    ]
