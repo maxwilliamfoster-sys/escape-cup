@@ -234,11 +234,11 @@
    {
     "a": "au",
     "b": "nl",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "nl",
+    "seed": 234480822032,
+    "melody": "ocean",
+    "posted": "2026-10-16T19:00:00+00:00",
+    "buffer_id": "6ad1446c5533140b41c9ecbd"
    },
    {
     "a": "kr",
@@ -262,7 +262,7 @@
   [
    {
     "a": "ph",
-    "b": null,
+    "b": "nl",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 25,
+ "posts": 26,
  "log": [
   {
    "edition": 1,
@@ -692,7 +692,7 @@
    "theme": "candy",
    "due": "2026-10-15T19:00:00+00:00",
    "buffer_id": "6acff770ad454aea56d01536",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale002_89890120029.mp4",
    "length": 24.9,
    "series": "royale",
@@ -719,7 +719,8 @@
     "cm",
     "mx",
     "ar"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7696971843323825441"
   },
   {
    "edition": 1,
@@ -756,6 +757,21 @@
     "pl",
     "es"
    ]
+  },
+  {
+   "edition": 1,
+   "winner": "nl",
+   "seed": 234480822032,
+   "theme": "ocean",
+   "due": "2026-10-16T19:00:00+00:00",
+   "buffer_id": "6ad1446c5533140b41c9ecbd",
+   "status": "scheduled",
+   "file": "ec01_r2_m01_234480822032.mp4",
+   "length": 22.1,
+   "r": 2,
+   "m": 1,
+   "a": "au",
+   "b": "nl"
   }
  ],
  "recent_captions": [
@@ -787,7 +803,8 @@
   "Belgium 🇧🇪 or Ireland 🇮🇪? Physics decides which country breaks out first\nRound of 16 · Escape Cup 1\nNext up: Switzerland vs Philippines - who's your pick? 👇\n#ballescape #physicssimulation #simulation #belgium #ireland",
   "Switzerland 🇨🇭 vs Philippines 🇵🇭 - which country escapes the rings first?\nQuarter-final · Escape Cup 1\nComing next: Australia vs Netherlands. Who takes it? 👇\n#ballescape #physicssimulation #simulation #switzerland #philippines",
   "Country ball escape royale - 16 flags, one exit. Find your country\nEscape Royale heat 2: England, Ireland, Philippines, Mexico and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
-  "Country ball escape royale - 16 flags, one exit. Find your country\nEscape Royale heat 3: England, Ireland, Poland, Spain and 12 more\nWhere did your country finish? 👇\n#ballescape #physicssimulation #satisfying #countryballs"
+  "Country ball escape royale - 16 flags, one exit. Find your country\nEscape Royale heat 3: England, Ireland, Poland, Spain and 12 more\nWhere did your country finish? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
+  "Which country escapes first? Australia 🇦🇺 vs Netherlands 🇳🇱 ball escape\nQuarter-final of Escape Cup 1 🏆\nNext up: South Korea vs Italy - who's your pick? 👇\n#ballescape #physicssimulation #simulation #australia #netherlands"
  ],
  "seen_errors": []
 }
