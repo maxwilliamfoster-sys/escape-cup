@@ -156,6 +156,20 @@ def _side(ci, higher_is_better):
     return 0
 
 
+def _fragile(control, treatment, stat, ci):
+    """True if dropping any single video flips the ratio to the other side of 1.0."""
+    up = ci[0] > 1                       # the CI says treatment > control
+    for arm, other, is_t in ((control, treatment, False), (treatment, control, True)):
+        for i in range(len(arm)):
+            rest = arm[:i] + arm[i + 1:]
+            if not rest:
+                return True
+            c, t = (stat(other), stat(rest)) if is_t else (stat(rest), stat(other))
+            if not c or (t / c > 1) != up:
+                return True
+    return False
+
+
 def judge(control, treatment, min_n, max_n, higher_is_better=True, stat=None,
           guardrails=None, level=0.90, interim_level=0.98, seed=0):
     """Judge one experiment arm against control.
@@ -178,7 +192,7 @@ def judge(control, treatment, min_n, max_n, higher_is_better=True, stat=None,
         "min_n": min_n, "max_n": max_n,
         "control": stat(control) if control else None,
         "treatment": stat(treatment) if treatment else None,
-        "ratio": None, "ci": None, "p": None, "guardrails_worse": [],
+        "ratio": None, "ci": None, "p": None, "guardrails_worse": [], "fragile": False,
     }
     n = min(len(control), len(treatment))
     ci = bootstrap_ratio_ci(control, treatment, stat=stat, level=level, seed=seed) if n else None
@@ -200,6 +214,10 @@ def judge(control, treatment, min_n, max_n, higher_is_better=True, stat=None,
     if n < max_n and interim_level > level:
         ci = bootstrap_ratio_ci(control, treatment, stat=stat, level=interim_level, seed=seed)
     side = _side(ci, higher_is_better)
+    if side and _fragile(control, treatment, stat, ci):
+        # one video decides it (e.g. a single breakout): not evidence yet
+        res["fragile"] = True
+        side = 0
     if side > 0:
         res["verdict"] = BLOCKED if res["guardrails_worse"] else WINNER
     elif side < 0:
