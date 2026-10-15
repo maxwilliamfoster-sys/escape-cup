@@ -20,6 +20,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
+import growth_stats
 import publish
 import tournament
 
@@ -79,8 +80,58 @@ def collect():
         snaps = rec.setdefault("snapshots", [])
         if not snaps or snaps[-1].get("metrics_updated") != snap["metrics_updated"] or snaps[-1].get("views") != m.get("views"):
             snaps.append(snap)
+    snap_account(data)
     save(data)
     return data
+
+
+def snap_account(data):
+    """Daily follower count from the public profile (growth-lab, 2026-10-15): followers
+    per 1k views is the conversion metric, and Buffer doesn't report follows."""
+    import re
+    import requests
+    try:
+        r = requests.get("https://www.tiktok.com/@5lmvill", timeout=30, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                          "(KHTML, like Gecko) Chrome/141.0 Safari/537.36",
+            "Accept-Language": "en-GB,en;q=0.9"})
+        m = re.search(r'<script id="__UNIVERSAL_DATA_FOR_REHYDRATION__"[^>]*>(.*?)</script>',
+                      r.text, re.S)
+        st = json.loads(m.group(1))["__DEFAULT_SCOPE__"]["webapp.user-detail"]["userInfo"]["stats"]
+    except Exception as e:
+        print(f"account snapshot skipped ({str(e)[:100]})")
+        return
+    data.setdefault("account", []).append({
+        "at": datetime.now(timezone.utc).isoformat(timespec="minutes"),
+        "followers": int(st["followerCount"]), "likes": int(st["heartCount"]),
+        "videos": int(st["videoCount"])})
+
+
+def _age_h(rec, snap):
+    """Hours from the post's due time to when Buffer last refreshed this snapshot."""
+    t = snap.get("metrics_updated") or snap.get("at")
+    if not t or not rec.get("due"):
+        return None
+    return (datetime.fromisoformat(t.replace("Z", "+00:00"))
+            - datetime.fromisoformat(rec["due"].replace("Z", "+00:00"))).total_seconds() / 3600
+
+
+def at_age(rec, hours=72):
+    """views / avg % watched / likes per 1k at a fixed age (None if too young)."""
+    pts = [(_age_h(rec, s), s) for s in rec.get("snapshots", [])]
+    pts = [(a, s) for a, s in pts if a is not None]
+    L = rec.get("length")
+    views = growth_stats.value_at_age([(a, s.get("views") or 0) for a, s in pts], hours, True)
+    likes = growth_stats.value_at_age([(a, s.get("likes") or 0) for a, s in pts], hours, True)
+    watch = growth_stats.value_at_age(
+        [(a, 100 * s["averageTimeWatched"] / L) for a, s in pts if s.get("averageTimeWatched") and L],
+        hours)
+    if watch is None and L:              # average, not a total: nearest later snapshot
+        later = sorted((a, s) for a, s in pts if a >= hours and s.get("averageTimeWatched"))
+        if later and later[0][0] <= hours + 48:
+            watch = 100 * later[0][1]["averageTimeWatched"] / L
+    return {"views": views, "watch": watch,
+            "likes_1k": 1000 * likes / views if views and likes is not None else None}
 
 
 def rows(data):
@@ -94,7 +145,7 @@ def rows(data):
             "due": (r.get("due") or "")[:16], "match": r["match"], "fmt": r["format"], "len": L,
             "variant": r.get("variant", "cup"),
             "views": views, "likes": s.get("likes", 0), "comments": s.get("comments", 0),
-            "shares": s.get("shares", 0), "saves": s.get("saves", 0), "follows": s.get("follows", 0),
+            "shares": s.get("shares", 0),
             "avg_watch": avg, "avg_pct": round(100 * avg / L, 1) if avg and L else None,
             "like_rate": round(100 * s.get("likes", 0) / views, 2) if views else None,
         })
@@ -102,11 +153,11 @@ def rows(data):
 
 
 def report(data):
-    print(f"{'posted (UTC)':16} {'match':12} fmt len views likes com shr sav fol avg_s avg%  like%")
+    print(f"{'posted (UTC)':16} {'match':12} fmt len views likes com shr avg_s avg%  like%")
     for x in rows(data):
         print(f"{x['due']:16} {x['match']:12} {x['fmt']:3} {x['len'] or '':>3} {x['views']:>5.0f} "
-              f"{x['likes']:>5.0f} {x['comments']:>3.0f} {x['shares']:>3.0f} {x['saves']:>3.0f} "
-              f"{x['follows']:>3.0f} {x['avg_watch'] if x['avg_watch'] is not None else '':>5} "
+              f"{x['likes']:>5.0f} {x['comments']:>3.0f} {x['shares']:>3.0f} "
+              f"{x['avg_watch'] if x['avg_watch'] is not None else '':>5} "
               f"{x['avg_pct'] if x['avg_pct'] is not None else '':>5} {x['like_rate'] if x['like_rate'] is not None else '':>5}")
 
 
@@ -119,28 +170,35 @@ def _median(xs):
 
 
 AB_FROM = "2026-10-13"      # cup vs royale A/B started (main.ARMS)
-AB_MIN_N = 6
+AB_MIN_N, AB_MAX_N = 10, 20   # per arm (growth-lab README; watch % detects ~1.19x at 15)
 
 
 def compare(data):
-    """Cup vs Escape Royale since AB_FROM. Avg % watched first (it decides whether
-    TikTok widens the test batch: the one breakout, Ireland v Egypt, had the best
-    watch time), then likes and comments per 1k views."""
+    """Cup vs Escape Royale since AB_FROM, every post scored at 72h (not its latest
+    snapshot). Judged by growth_stats on avg % watched (it decides whether TikTok
+    widens the test batch: the one breakout, Ireland v Egypt, had the best watch
+    time); views@72h and likes per 1k are guardrails."""
     lines = []
+    arms = {}
     for arm in ("cup", "royale"):
-        xs = [x for x in rows(data) if x["variant"] == arm and x["due"] >= AB_FROM and x["views"]]
-        if not xs:
-            lines.append(f"{arm:7} n=0")
-            continue
-        views = sum(x["views"] for x in xs)
-        pct, avg = _median([x["avg_pct"] for x in xs]), _median([x["avg_watch"] for x in xs])
-        lines.append(f"{arm:7} n={len(xs):2}  avg watched {'n/a' if pct is None else f'{pct:.0f}%'}"
-                     f" ({'n/a' if avg is None else f'{avg:.1f}s'})  median views {_median([x['views'] for x in xs]):.0f}"
-                     f"  likes {1000 * sum(x['likes'] for x in xs) / views:.1f}/1k"
-                     f"  comments {1000 * sum(x['comments'] for x in xs) / views:.1f}/1k")
-    ready = all(sum(1 for x in rows(data) if x["variant"] == a and x["due"] >= AB_FROM and x["views"])
-                >= AB_MIN_N for a in ("cup", "royale"))
-    lines.append("enough data to judge" if ready else f"keep running: judge at {AB_MIN_N}+ posts per arm")
+        recs = [r for r in data["posts"].values()
+                if r.get("variant", "cup") == arm and (r.get("due") or "") >= AB_FROM]
+        sc = [at_age(r) for r in recs]
+        arms[arm] = sc
+        ok = [x for x in sc if x["views"] is not None]
+        md = lambda k, f: f.format(_median([x[k] for x in ok])) if [x for x in ok if x[k] is not None] else "n/a"
+        lines.append(f"{arm:7} posted {len(recs):2}, scored @72h {len(ok):2}  avg watched "
+                     f"{md('watch', '{:.0f}%')}  views@72h {md('views', '{:.0f}')}  likes {md('likes_1k', '{:.1f}')}/1k")
+    c, t = arms["cup"], arms["royale"]
+    res = growth_stats.judge(
+        [x["watch"] for x in c], [x["watch"] for x in t], AB_MIN_N, AB_MAX_N,
+        guardrails={"views@72h": ([x["views"] for x in c], [x["views"] for x in t], True),
+                    "likes/1k": ([x["likes_1k"] for x in c], [x["likes_1k"] for x in t], True)})
+    lines.append(growth_stats.format_result("royale vs cup", "avg % watched @72h", res).replace("**", ""))
+    acct = data.get("account") or []
+    if acct:
+        lines.append(f"followers {acct[0]['followers']} ({acct[0]['at'][:10]}) -> "
+                     f"{acct[-1]['followers']} ({acct[-1]['at'][:10]})")
     return "\n".join(lines)
 
 

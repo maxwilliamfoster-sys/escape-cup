@@ -1,8 +1,8 @@
 name: Collect analytics
 
 # Read-only: pulls per-post TikTok metrics (views, likes, comments, shares,
-# saves, follows, average watch time) from Buffer into analytics.json, so the
-# pipeline can learn which videos actually performed.
+# average watch time) from Buffer into analytics.json, plus the public follower
+# count, so the weekly review can judge posts at the same age (72h).
 on:
   schedule:
     - cron: '41 7 * * *'
