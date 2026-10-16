@@ -243,11 +243,11 @@
    {
     "a": "kr",
     "b": "it",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "it",
+    "seed": 216350041060,
+    "melody": "sunset",
+    "posted": "2026-10-17T11:00:00+00:00",
+    "buffer_id": "6ad20975b948bf9e9d90ab99"
    },
    {
     "a": "ca",
@@ -270,7 +270,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "it",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 26,
+ "posts": 27,
  "log": [
   {
    "edition": 1,
@@ -772,6 +772,29 @@
    "m": 1,
    "a": "au",
    "b": "nl"
+  },
+  {
+   "edition": 1,
+   "winner": "it",
+   "seed": 216350041060,
+   "theme": "sunset",
+   "due": "2026-10-17T11:00:00+00:00",
+   "buffer_id": "6ad20975b948bf9e9d90ab99",
+   "status": "scheduled",
+   "file": "ec01_r2_m02_216350041060.mp4",
+   "length": 20.5,
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "f933e47c2ace7fe6bb0ffc35bf5a39e7e1be57fa20f29ae3c06c99cf29f1bc83",
+    "checked_at": "2026-10-16T11:22:35+00:00"
+   },
+   "r": 2,
+   "m": 2,
+   "a": "kr",
+   "b": "it"
   }
  ],
  "recent_captions": [
@@ -804,7 +827,8 @@
   "Switzerland 🇨🇭 vs Philippines 🇵🇭 - which country escapes the rings first?\nQuarter-final · Escape Cup 1\nComing next: Australia vs Netherlands. Who takes it? 👇\n#ballescape #physicssimulation #simulation #switzerland #philippines",
   "Country ball escape royale - 16 flags, one exit. Find your country\nEscape Royale heat 2: England, Ireland, Philippines, Mexico and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
   "Country ball escape royale - 16 flags, one exit. Find your country\nEscape Royale heat 3: England, Ireland, Poland, Spain and 12 more\nWhere did your country finish? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
-  "Which country escapes first? Australia 🇦🇺 vs Netherlands 🇳🇱 ball escape\nQuarter-final of Escape Cup 1 🏆\nNext up: South Korea vs Italy - who's your pick? 👇\n#ballescape #physicssimulation #simulation #australia #netherlands"
+  "Which country escapes first? Australia 🇦🇺 vs Netherlands 🇳🇱 ball escape\nQuarter-final of Escape Cup 1 🏆\nNext up: South Korea vs Italy - who's your pick? 👇\n#ballescape #physicssimulation #simulation #australia #netherlands",
+  "South Korea 🇰🇷 vs Italy 🇮🇹: 16 rings, one way out. Physics simulation\nQuarter-final · Escape Cup 1\nNext up: Canada vs Ireland - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #southkorea #italy"
  ],
  "seen_errors": []
 }

@@ -1,0 +1,30 @@
+{
+ "entries": [
+  {
+   "checked_at": "2026-10-16T11:22:35+00:00",
+   "platform": "tiktok",
+   "file": "ec01_r2_m02_216350041060.mp4",
+   "sha256": "f933e47c2ace7fe6bb0ffc35bf5a39e7e1be57fa20f29ae3c06c99cf29f1bc83",
+   "head": "South Korea 🇰🇷 vs Italy 🇮🇹: 16 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: AI review failed: HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01krgfnbpdf2jrvn8r60dwmzkz` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested "
+   ],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 20.48,
+    "lufs": -14.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "coherence": null,
+    "quality": null,
+    "summary": null
+   }
+  }
+ ]
+}
