@@ -25,6 +25,50 @@
     "quality": null,
     "summary": null
    }
+  },
+  {
+   "checked_at": "2026-10-16T16:41:08+00:00",
+   "platform": "tiktok",
+   "file": "royale004_47724846002.mp4",
+   "sha256": "7597d7ebec6706784f3c906f6dfe877d2eaeefc532e104c9876c2e11d395743e",
+   "head": "Country ball escape royale - 16 flags, one exit. Find your country",
+   "ok": false,
+   "failures": [
+    "same first caption line as a recent post (repetitive content): \"country ball escape royale - 16 flags, one exit. find your country\""
+   ],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 33.43,
+    "lufs": -13.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   }
+  },
+  {
+   "checked_at": "2026-10-16T16:42:29+00:00",
+   "platform": "tiktok",
+   "file": "royale004_47724846006.mp4",
+   "sha256": "5e10c44769268290db3effb8e25c0bd7bd55b011175b8314257d6bbe5ac2bda7",
+   "head": "Ball escape simulation: 16 countries, only one breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 29.18,
+    "lufs": -16.1,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "summary": "The video is a high-quality, coherent physics simulation that clearly tracks the progress of 16 country balls escaping rings, culminating in a clear winner (Jamaica) and a teaser for the next heat, with no policy violations.",
+    "tokens": 4055
+   }
   }
  ]
 }
