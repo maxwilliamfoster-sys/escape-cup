@@ -1,9 +1,30 @@
 {
  "experiments": [
-  {"id": "escape-cup-format-1", "channel": "escape-cup", "lever": "format", "kind": "hook style",
+  {
+   "id": "escape-cup-format-1",
+   "channel": "escape-cup",
+   "lever": "format",
+   "kind": "hook style",
    "hypothesis": "A 16-country royale heat gives a 91%-UK audience a stake (find your country), raising avg % watched over a 1-v-1 cup match.",
-   "control": "cup", "variant": "royale", "start_date": "2026-10-13", "status": "running",
-   "min_n": 10, "max_n": 20, "metric": "avg % watched at 72h", "control_metrics": {}, "variant_metrics": {},
-   "note": "started by hand 2026-10-13 (main.ARMS, slot alternation); arms come from analytics.json 'variant'"}
+   "control": "cup",
+   "variant": "royale",
+   "start_date": "2026-10-13",
+   "status": "running",
+   "min_n": 10,
+   "max_n": 20,
+   "metric": "avg % watched at 72h",
+   "control_metrics": {
+    "n": 0,
+    "views72": null
+   },
+   "variant_metrics": {
+    "n": 0,
+    "views72": null
+   },
+   "note": "started by hand 2026-10-13 (main.ARMS, slot alternation); arms come from analytics.json 'variant'",
+   "verdict": "keep running",
+   "last_judged": "2026-10-16",
+   "result": "escape-cup-format-1 · avg % watched at 72h: KEEP RUNNING — n=0 vs 0 (min 10, max 20)"
+  }
  ]
 }

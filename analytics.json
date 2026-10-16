@@ -115,9 +115,23 @@
      "totalTimeWatched": 116.15,
      "averageTimeWatched": 7.73,
      "likes": 0
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.120Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 888,
+     "shares": 0,
+     "reach": 814,
+     "totalTimeWatched": 116.15,
+     "averageTimeWatched": 7.73,
+     "likes": 0
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6abc2e6fbc79f7218889ccd2": {
    "match": "pl v uy",
@@ -234,9 +248,23 @@
      "totalTimeWatched": 24.85,
      "averageTimeWatched": 5.29,
      "likes": 0
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.120Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 270,
+     "shares": 0,
+     "reach": 244,
+     "totalTimeWatched": 24.85,
+     "averageTimeWatched": 5.29,
+     "likes": 0
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6abd6da41971cfe1dd975757": {
    "match": "ph v ng",
@@ -353,9 +381,23 @@
      "totalTimeWatched": 27.95,
      "averageTimeWatched": 5.93,
      "likes": 1
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.36,
+     "views": 278,
+     "shares": 0,
+     "reach": 258,
+     "totalTimeWatched": 27.95,
+     "averageTimeWatched": 5.93,
+     "likes": 1
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6abeb419d22f25b408891d41": {
    "match": "ma v ua",
@@ -472,9 +514,23 @@
      "totalTimeWatched": 23.93,
      "averageTimeWatched": 5.34,
      "likes": 2
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.76,
+     "views": 264,
+     "shares": 0,
+     "reach": 246,
+     "totalTimeWatched": 23.93,
+     "averageTimeWatched": 5.34,
+     "likes": 2
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6abfefce55d4307d35a39c85": {
    "match": "au v vn",
@@ -591,9 +647,23 @@
      "totalTimeWatched": 63.03,
      "averageTimeWatched": 4.97,
      "likes": 1
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.13,
+     "views": 750,
+     "shares": 0,
+     "reach": 695,
+     "totalTimeWatched": 63.03,
+     "averageTimeWatched": 4.97,
+     "likes": 1
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac170c5fec591339487f64b": {
    "match": "us v hr",
@@ -710,9 +780,23 @@
      "totalTimeWatched": 17.6,
      "averageTimeWatched": 4.09,
      "likes": 0
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 253,
+     "shares": 0,
+     "reach": 243,
+     "totalTimeWatched": 17.6,
+     "averageTimeWatched": 4.09,
+     "likes": 0
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac29db38f73649f4616b488": {
    "match": "mx v nl",
@@ -829,9 +913,23 @@
      "totalTimeWatched": 81.97,
      "averageTimeWatched": 6.62,
      "likes": 1
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.14,
+     "views": 734,
+     "shares": 0,
+     "reach": 695,
+     "totalTimeWatched": 81.97,
+     "averageTimeWatched": 6.62,
+     "likes": 1
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac3b64656703b4c1e82c284": {
    "match": "co v pt",
@@ -948,9 +1046,23 @@
      "totalTimeWatched": 29.32,
      "averageTimeWatched": 6.57,
      "likes": 3
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 1.15,
+     "views": 260,
+     "shares": 0,
+     "reach": 245,
+     "totalTimeWatched": 28.05,
+     "averageTimeWatched": 6.28,
+     "likes": 3
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac41ea7e8b512ed4f5aebef": {
    "match": "id v tr",
@@ -1067,9 +1179,23 @@
      "totalTimeWatched": 27.83,
      "averageTimeWatched": 6.1,
      "likes": 1
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.37,
+     "views": 269,
+     "shares": 0,
+     "reach": 256,
+     "totalTimeWatched": 27.2,
+     "averageTimeWatched": 5.96,
+     "likes": 1
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac51aaef2aae537b2479691": {
    "match": "kr v jp",
@@ -1186,9 +1312,23 @@
      "totalTimeWatched": 63.12,
      "averageTimeWatched": 4.92,
      "likes": 0
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 753,
+     "shares": 0,
+     "reach": 698,
+     "totalTimeWatched": 63.12,
+     "averageTimeWatched": 4.92,
+     "likes": 0
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac579142b46a5da666e902b": {
    "match": "es v br",
@@ -1305,9 +1445,23 @@
      "totalTimeWatched": 26.25,
      "averageTimeWatched": 5.49,
      "likes": 0
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 284,
+     "shares": 0,
+     "reach": 266,
+     "totalTimeWatched": 26.25,
+     "averageTimeWatched": 5.49,
+     "likes": 0
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac6ae205116513c48a86ccf": {
    "match": "sn v it",
@@ -1424,9 +1578,23 @@
      "totalTimeWatched": 97.68,
      "averageTimeWatched": 7.41,
      "likes": 4
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.52,
+     "views": 773,
+     "shares": 0,
+     "reach": 726,
+     "totalTimeWatched": 97.68,
+     "averageTimeWatched": 7.41,
+     "likes": 4
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac6ae942a8ddf9255cde071": {
    "match": "ca v de",
@@ -1530,9 +1698,23 @@
      "totalTimeWatched": 34.3,
      "averageTimeWatched": 6.58,
      "likes": 0
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 304,
+     "shares": 0,
+     "reach": 277,
+     "totalTimeWatched": 34.3,
+     "averageTimeWatched": 6.58,
+     "likes": 0
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac7e691777d0616a6fe342e": {
    "match": "fr v gb-eng",
@@ -1623,9 +1805,23 @@
      "totalTimeWatched": 51.32,
      "averageTimeWatched": 8.75,
      "likes": 2
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.59,
+     "views": 339,
+     "shares": 0,
+     "reach": 298,
+     "totalTimeWatched": 51.32,
+     "averageTimeWatched": 8.75,
+     "likes": 2
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac7e746d3b0be2fc4156a67": {
    "match": "ar v be",
@@ -1716,9 +1912,23 @@
      "totalTimeWatched": 53.42,
      "averageTimeWatched": 7.8,
      "likes": 0
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 406,
+     "shares": 0,
+     "reach": 364,
+     "totalTimeWatched": 53.43,
+     "averageTimeWatched": 7.78,
+     "likes": 0
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac8c2e69fc66ba0d7119512": {
    "match": "ie v eg",
@@ -1796,9 +2006,23 @@
      "totalTimeWatched": 1487.17,
      "averageTimeWatched": 10.95,
      "likes": 160
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 162,
+     "comments": 1,
+     "engagementRate": 2.12,
+     "views": 7955,
+     "shares": 6,
+     "reach": 7100,
+     "totalTimeWatched": 1496.05,
+     "averageTimeWatched": 10.95,
+     "likes": 162
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6ac93123ed92ed8fa5a3d7dc": {
    "match": "ch v uy",
@@ -1876,9 +2100,23 @@
      "totalTimeWatched": 92.77,
      "averageTimeWatched": 5.76,
      "likes": 4
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.42,
+     "views": 948,
+     "shares": 0,
+     "reach": 836,
+     "totalTimeWatched": 92.78,
+     "averageTimeWatched": 5.75,
+     "likes": 4
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6aca0a7cd9cab260a7bc726d": {
    "match": "ph v ma",
@@ -1956,9 +2194,23 @@
      "totalTimeWatched": 72.62,
      "averageTimeWatched": 8.66,
      "likes": 6
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 6,
+     "comments": 0,
+     "engagementRate": 1.22,
+     "views": 492,
+     "shares": 0,
+     "reach": 423,
+     "totalTimeWatched": 72.68,
+     "averageTimeWatched": 8.6,
+     "likes": 6
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6aca7445c4de2d2b123541a4": {
    "match": "au v hr",
@@ -2023,9 +2275,23 @@
      "totalTimeWatched": 91.68,
      "averageTimeWatched": 6.43,
      "likes": 2
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 2,
+     "comments": 2,
+     "engagementRate": 0.5,
+     "views": 796,
+     "shares": 0,
+     "reach": 719,
+     "totalTimeWatched": 91.72,
+     "averageTimeWatched": 6.42,
+     "likes": 2
     }
    ],
-   "variant": "cup"
+   "variant": "cup",
+   "loop": {}
   },
   "6acbe500a9411fbcc5587805": {
    "match": "nl v pt",
@@ -2078,8 +2344,22 @@
      "totalTimeWatched": 170.78,
      "averageTimeWatched": 7.32,
      "likes": 4
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.3,
+     "views": 1352,
+     "shares": 0,
+     "reach": 1241,
+     "totalTimeWatched": 170.85,
+     "averageTimeWatched": 7.31,
+     "likes": 4
     }
-   ]
+   ],
+   "loop": {}
   },
   "6acbe563fa026cfb81126e84": {
    "match": "tr v kr",
@@ -2132,8 +2412,22 @@
      "totalTimeWatched": 32.15,
      "averageTimeWatched": 5.48,
      "likes": 1
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.3,
+     "views": 332,
+     "shares": 0,
+     "reach": 300,
+     "totalTimeWatched": 32.17,
+     "averageTimeWatched": 5.47,
+     "likes": 1
     }
-   ]
+   ],
+   "loop": {}
   },
   "6acd4e982c1b16d2e1243e32": {
    "match": "es v it",
@@ -2173,8 +2467,22 @@
      "totalTimeWatched": 77,
      "averageTimeWatched": 6.02,
      "likes": 5
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 5,
+     "comments": 0,
+     "engagementRate": 0.66,
+     "views": 758,
+     "shares": 0,
+     "reach": 665,
+     "totalTimeWatched": 77.08,
+     "averageTimeWatched": 6,
+     "likes": 5
     }
-   ]
+   ],
+   "loop": {}
   },
   "6acd4f090fd81940c1c85efb": {
    "match": "ca v fr",
@@ -2214,8 +2522,22 @@
      "totalTimeWatched": 64.55,
      "averageTimeWatched": 5.24,
      "likes": 1
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 1,
+     "comments": 1,
+     "engagementRate": 0.28,
+     "views": 720,
+     "shares": 0,
+     "reach": 643,
+     "totalTimeWatched": 64.62,
+     "averageTimeWatched": 5.24,
+     "likes": 1
     }
-   ]
+   ],
+   "loop": {}
   },
   "6ace8429212d8766037262bf": {
    "match": "royale 1",
@@ -2242,8 +2564,22 @@
      "totalTimeWatched": 38.75,
      "averageTimeWatched": 8.74,
      "likes": 5
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 5,
+     "comments": 1,
+     "engagementRate": 2.31,
+     "views": 260,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 39.32,
+     "averageTimeWatched": 8.77,
+     "likes": 5
     }
-   ]
+   ],
+   "loop": {}
   },
   "6ace84adcb3665561f62d960": {
    "match": "be v ie",
@@ -2270,8 +2606,22 @@
      "totalTimeWatched": 145.37,
      "averageTimeWatched": 8.87,
      "likes": 14
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 14,
+     "comments": 1,
+     "engagementRate": 1.53,
+     "views": 983,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 148.18,
+     "averageTimeWatched": 8.85,
+     "likes": 14
     }
-   ]
+   ],
+   "loop": {}
   },
   "6acfb7ad274f2a94bd9bcd5c": {
    "match": "ch v ph",
@@ -2298,6 +2648,49 @@
      "totalTimeWatched": 0,
      "averageTimeWatched": 0,
      "likes": 0
+    },
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.119Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 0.43,
+     "views": 697,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 83.2,
+     "averageTimeWatched": 6.97,
+     "likes": 3
+    }
+   ],
+   "loop": {}
+  },
+  "6acff770ad454aea56d01536": {
+   "match": "royale 2",
+   "variant": "royale",
+   "edition": 1,
+   "round": null,
+   "due": "2026-10-15T19:00:00+00:00",
+   "theme": "candy",
+   "seed": 89890120029,
+   "format": "v2",
+   "length": 24.9,
+   "link": "https://tiktok.com/@5lmvill/video/7696971843323825441",
+   "caption": "Country ball escape royale - 16 flags, one exit. Find your country",
+   "loop": {},
+   "snapshots": [
+    {
+     "at": "2026-10-16T08:47+00:00",
+     "metrics_updated": "2026-10-16T03:27:35.118Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.42,
+     "views": 239,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 35.23,
+     "averageTimeWatched": 8.56,
+     "likes": 1
     }
    ]
   }
@@ -2307,6 +2700,12 @@
    "at": "2026-10-15T20:30+00:00",
    "followers": 18,
    "likes": 220,
+   "videos": 27
+  },
+  {
+   "at": "2026-10-16T08:47+00:00",
+   "followers": 18,
+   "likes": 221,
    "videos": 27
   }
  ]
