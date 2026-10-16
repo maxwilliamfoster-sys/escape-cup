@@ -426,7 +426,7 @@ def speech_match(script, transcript):
     return sum(blk.size for blk in sm.get_matching_blocks()) / len(a)
 
 
-def _images_b64(path, dur, sheets=2, cols=3, rows=2):
+def _images_b64(path, dur, sheets=2, cols=3, rows=2, tile=(216, 384)):
     """[first frame at 360x640, then `sheets` contact sheets of cols*rows frames spread
     evenly through the video, left-to-right, top-to-bottom]. The model takes <=3 images."""
     import tempfile
@@ -437,7 +437,7 @@ def _images_b64(path, dur, sheets=2, cols=3, rows=2):
               "-vf", "scale=360:640", "-q:v", "5", first], 120)
         n = sheets * cols * rows
         _run([ffmpeg_bin(), "-loglevel", "error", "-i", path, "-vf",
-              f"fps={n / max(dur, 1):.5f},scale=270:480,tile={cols}x{rows}", "-frames:v", str(sheets),
+              f"fps={n / max(dur, 1):.5f},scale={tile[0]}:{tile[1]},tile={cols}x{rows}", "-frames:v", str(sheets),
               "-q:v", "5", os.path.join(tmp, "sheet%d.jpg")], 300)
         for name in ["first.jpg"] + [f"sheet{i}.jpg" for i in range(1, sheets + 1)]:
             p = os.path.join(tmp, name)
@@ -480,24 +480,33 @@ def ai_review(path, platform, profile, *, title="", caption="", transcript="", s
         '"policy_issues":["..."],"quality_issues":["..."],"summary":"one sentence"}')}]
     for b64 in images:
         content.append({"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + b64}})
-    # max_tokens covers the model's hidden reasoning too; 700 truncated the JSON.
-    body = {"model": AI_MODEL, "temperature": 0, "max_tokens": 3000, "reasoning_format": "hidden",
+    # Reasoning off: hidden reasoning was ~3k tokens a review, and the model's free
+    # quota is 200k tokens/DAY shared by all three bots (calibration day 2026-10-16
+    # exhausted it). The verdict is a visual judgement; it doesn't need a chain.
+    body = {"model": AI_MODEL, "temperature": 0, "max_tokens": 900, "reasoning_effort": "none",
             "response_format": {"type": "json_object"},
             "messages": [{"role": "user", "content": content}]}
-    last, res = None, {}
+    last, res, tokens = None, {}, None
     for attempt in range(3):
         try:
             req = urllib.request.Request(AI_URL, data=json.dumps(body).encode(), headers={
                 "Authorization": f"Bearer {key}", "Content-Type": "application/json", "User-Agent": "upload-gate"})
             with urllib.request.urlopen(req, timeout=120) as resp:
-                out = json.load(resp)["choices"][0]["message"]["content"]
+                reply = json.load(resp)
+            out = reply["choices"][0]["message"]["content"]
+            tokens = (reply.get("usage") or {}).get("total_tokens")
             m = re.search(r"\{.*\}", out, re.S)
             res = json.loads(m.group(0)) if m else {}
             if res.get("verdict") not in ("PASS", "BLOCK"):
                 raise ValueError(f"no verdict in reply: {out[:200]}")
             break
         except urllib.error.HTTPError as e:
-            last = f"HTTP {e.code}: {e.read()[:200].decode(errors='replace')}"
+            body_txt = e.read()[:400].decode(errors="replace")
+            last = f"HTTP {e.code}: {body_txt[:200]}"
+            if "per day" in body_txt:              # daily quota gone: waiting a minute won't help
+                return {"ok": False, "available": False, "quota": True,
+                        "problems": ["AI review skipped: the free daily AI quota is used up "
+                                     "(it refills over the next 24h)"]}
             if e.code in (429, 500, 502, 503) and attempt < 2:
                 time.sleep(min(65, float(e.headers.get("retry-after") or 30)))
                 continue
@@ -512,7 +521,7 @@ def ai_review(path, platform, profile, *, title="", caption="", transcript="", s
     problems = [str(p) for p in (res.get("policy_issues") or []) + (res.get("quality_issues") or []) if p]
     ok = res["verdict"] == "PASS" and coh >= 5 and qual >= 5 and not (res.get("policy_issues") or [])
     return {"ok": ok, "available": True, "coherence": coh, "quality": qual, "problems": problems[:6],
-            "summary": str(res.get("summary") or "")[:300], "model": AI_MODEL}
+            "summary": str(res.get("summary") or "")[:300], "model": AI_MODEL, "tokens": tokens}
 
 
 # ---------------------------------------------------------------------- main --
@@ -632,7 +641,8 @@ def record(verdict, ledger_path, keep=300):
                                         "warnings", "gate_version")}
     slim["report"] = {k: verdict["report"].get(k) for k in ("seconds", "lufs", "speech_match", "longest_freeze")}
     if verdict.get("ai"):
-        slim["ai"] = {k: verdict["ai"].get(k) for k in ("available", "ok", "coherence", "quality", "summary")}
+        slim["ai"] = {k: verdict["ai"].get(k) for k in ("available", "ok", "coherence", "quality", "summary",
+                                                         "tokens")}
     data.setdefault("entries", []).append(slim)
     data["entries"] = data["entries"][-keep:]
     with open(ledger_path, "w", encoding="utf-8") as fh:
