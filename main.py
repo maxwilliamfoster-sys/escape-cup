@@ -38,6 +38,7 @@ import publish
 import quality
 import render
 import sim
+import upload_gate
 import teams
 import tournament
 
@@ -180,22 +181,63 @@ def build_one(state, exclude_seeds=()):
     report, failures = quality.check_video(path, len(phys.frames) / sim.FPS)
     failures += quality.check_content(a, b, winner, phys.breaks)
     failures += quality.check_caption(caption, a, b, state.get("recent_captions", []))
+    verdict = gate(path, caption, state, quality.DURATION_RANGE) if not failures else None
+    if verdict:
+        failures += verdict["failures"]
     return {"path": path, "caption": caption, "file": fname, "seed": seed, "winner": winner,
             "r": r, "m": m, "round": d["round_name"], "a": a, "b": b, "theme": theme,
-            "drama": drama, "report": report, "failures": failures}
+            "drama": drama, "report": report, "failures": failures, "gate": verdict}
+
+
+# Upload gate (growth-lab upload_gate.py): TikTok's limits and guidelines, technical
+# quality and, when GROQ_API_KEY is set, an AI review of the frames. Runs after
+# quality.py; publish.host_video refuses any file it did not approve.
+GATE_LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "upload_gate_log.json")
+GATE_CONTEXT = ("Escape Cup: physics simulation. Country flag balls bounce inside rotating rings; a "
+                "ring shatters when a ball escapes through its gap; first to break out wins. Hook box "
+                "at the top; the end card names the winner and teases the NEXT match or heat "
+                "(different countries by design). No narration, soft sound effects. The physics is "
+                "real; results are not rigged.")
+
+
+def gate(path, caption, state, seconds):
+    return upload_gate.check(path, "tiktok", profile={
+        "fps": 60, "seconds": seconds, "min_video_kbps": quality.MIN_VIDEO_KBPS,
+        "lufs": quality.LUFS_RANGE, "ai_review": "if_available", "ai_context": GATE_CONTEXT,
+        "ledger": GATE_LEDGER}, caption=caption, ai_label=False,
+        recent_texts=[c.split("\n")[0] for c in state.get("recent_captions", [])])
+
+
+def _gate_record(v):
+    g = v.get("gate") or {}
+    return {"ok": bool(g.get("ok")), "sha256": g.get("sha256"), "checked_at": g.get("checked_at")}
 
 
 def build_passing(state):
     """Try up to MAX_ATTEMPTS different matches; return the first that passes, else None + reasons."""
     r, m = tournament.next_match(state)
     # seeds whose videos were vetoed (deleted in Buffer) or rejected are never reused
-    tried = list(state.get("excluded_seeds", {}).get(f"{state['edition']}-{r}-{m}", []))
+    key = f"{state['edition']}-{r}-{m}"
+    return _build_with_retries(state, key, build_one)
+
+
+def _build_with_retries(state, key, build):
+    """Up to MAX_ATTEMPTS seeds. Failing seeds are saved in state["excluded_seeds"]
+    so the next run tries NEW seeds: the base seed is deterministic, so without
+    this every 3-hourly run retried the same 3 failing seeds forever."""
+    tried = list(state.get("excluded_seeds", {}).get(key, []))
     reasons = []
     for _ in range(MAX_ATTEMPTS):
-        v = build_one(state, exclude_seeds=tried)
+        try:
+            v = build(state, exclude_seeds=tried)
+        except RuntimeError as exc:              # director found no acceptable seed
+            reasons.append(f"no usable simulation: {exc}")
+            print("[quality] FAILED", reasons[-1])
+            break
         if not v["failures"]:
             return v, reasons
         tried.append(v["seed"])
+        state.setdefault("excluded_seeds", {}).setdefault(key, []).append(v["seed"])
         reasons.append(f"seed {v['seed']}: " + "; ".join(v["failures"]))
         print("[quality] FAILED", reasons[-1])
     return None, reasons
@@ -347,24 +389,17 @@ def build_royale(state, exclude_seeds=()):
                                            quality.ROYALE_DURATION_RANGE)
     failures += quality.check_royale(codes, winner, phys.breaks)
     failures += quality.check_caption(caption, None, None, state.get("recent_captions", []))
+    verdict = gate(path, caption, state, quality.ROYALE_DURATION_RANGE) if not failures else None
+    if verdict:
+        failures += verdict["failures"]
     return {"path": path, "caption": caption, "file": fname, "seed": seed, "winner": winner,
             "series": "royale", "heat": heat, "codes": codes, "podium": podium,
             "round": f"Escape Royale heat {heat}", "theme": theme, "drama": drama,
-            "report": report, "failures": failures}
+            "report": report, "failures": failures, "gate": verdict}
 
 
 def build_passing_royale(state):
-    heat = royale_heat(state)
-    tried = list(state.get("excluded_seeds", {}).get(f"royale-{heat}", []))
-    reasons = []
-    for _ in range(MAX_ATTEMPTS):
-        v = build_royale(state, exclude_seeds=tried)
-        if not v["failures"]:
-            return v, reasons
-        tried.append(v["seed"])
-        reasons.append(f"seed {v['seed']}: " + "; ".join(v["failures"]))
-        print("[quality] FAILED", reasons[-1])
-    return None, reasons
+    return _build_with_retries(state, f"royale-{royale_heat(state)}", build_royale)
 
 
 def label(e):
@@ -516,6 +551,8 @@ def post_now():
     if idx is None:
         raise RuntimeError("no pending Escape Cup post in Buffer to publish")
     e = state["log"][idx]
+    if not (e.get("gate") or {}).get("ok"):
+        raise RuntimeError("that post has no upload-gate approval on record - not publishing it early")
     target = pending[e["buffer_id"]]
     fname = e.get("file") or f"ec{e['edition']:02d}_r{e['r']}_m{e['m']:02d}_{e['seed']}.mp4"
     url = f"{publish.pages_base()}/v/{fname}"
@@ -540,8 +577,10 @@ def post_now():
 
 
 def run(sample=False, local=False, royale=False):
+    global GATE_LEDGER
     state = tournament.load()
     if sample:
+        GATE_LEDGER = None             # samples are never posted; keep them out of the audit log
         # LOOP_FORCE_VALUES (JSON): preview a queued lever value before the loop uses it
         apply_loop(json.loads(os.environ.get("LOOP_FORCE_VALUES") or "{}"))
         work = copy.deepcopy(state)
@@ -550,8 +589,9 @@ def run(sample=False, local=False, royale=False):
                                                 "drama", "report", "failures")}, indent=1))
         print(v["caption"])
         if not local:
-            verdict = ("✅ passed quality gate\n" + qc_line(v["report"])) if not v["failures"] else \
-                ("❌ FAILED quality gate:\n" + html.escape("; ".join(v["failures"])))
+            verdict = ("✅ passed quality gate\n" + qc_line(v["report"]) + "\n"
+                       + upload_gate.summary(v["gate"])) if not v["failures"] else \
+                ("❌ FAILED quality gate / upload gate:\n" + html.escape("; ".join(v["failures"]))[:800])
             notify.send_video(v["path"], f"🧪 <b>Escape Cup sample</b> (not posted)\n{verdict}\n\n"
                                          + html.escape(v["caption"]))
         return
@@ -576,31 +616,40 @@ def run(sample=False, local=False, royale=False):
         when = slot.astimezone(LONDON).strftime("%a %d %b %H:%M UK")
         if v is None:
             # Stop here: filling a LATER slot with this match's successor would
-            # break the order. The next run retries this match first. (A failed
-            # royale heat stops too, so the arms never drift out of their slots.)
+            # break the order. The next run retries this match first, with new
+            # seeds (failed ones are saved). (A failed royale heat stops too, so
+            # the arms never drift out of their slots.)
+            tournament.save(state)
             notify.send(f"🛑 <b>Escape Cup: nothing scheduled for {when}</b>\n"
-                        f"{MAX_ATTEMPTS} renders failed the quality gate:\n"
+                        f"{MAX_ATTEMPTS} renders failed the quality gate / upload gate:\n"
                         + html.escape("\n".join(reasons))[:3000])
             break
-        url = publish.host_video(v["path"], v["file"])
+        protect = {e.get("file") for e in state.get("log", []) if e.get("status") == "scheduled"}
+        url = publish.host_video(v["path"], v["file"], protect=protect)
         post = publish.schedule_tiktok(channel, url, v["caption"], slot)
-        state["recent_captions"] = (state.get("recent_captions", []) + [v["caption"]])[-40:]
-        entry = {"edition": state["edition"], "winner": v["winner"], "seed": v["seed"],
-                 "theme": v["theme"], "due": slot.isoformat(), "buffer_id": post["id"],
-                 "status": "scheduled", "file": v["file"],
-                 # length was never stored before 2026-10-13, so avg % watched was
-                 # blank for every post after the hand-typed backfill
-                 "length": v["report"].get("seconds"),
-                 "loop": loop_arms}
-        if v.get("series") == "royale":
-            entry.update(series="royale", heat=v["heat"], codes=v["codes"], podium=v["podium"])
-        else:
-            entry.update(r=v["r"], m=v["m"], a=v["a"], b=v["b"])
-        state = tournament.append(state, entry)
-        tournament.save(state)
+        try:
+            state["recent_captions"] = (state.get("recent_captions", []) + [v["caption"]])[-40:]
+            entry = {"edition": state["edition"], "winner": v["winner"], "seed": v["seed"],
+                     "theme": v["theme"], "due": slot.isoformat(), "buffer_id": post["id"],
+                     "status": "scheduled", "file": v["file"],
+                     # length was never stored before 2026-10-13, so avg % watched was
+                     # blank for every post after the hand-typed backfill
+                     "length": v["report"].get("seconds"),
+                     "loop": loop_arms, "gate": _gate_record(v)}
+            if v.get("series") == "royale":
+                entry.update(series="royale", heat=v["heat"], codes=v["codes"], podium=v["podium"])
+            else:
+                entry.update(r=v["r"], m=v["m"], a=v["a"], b=v["b"])
+            state = tournament.append(state, entry)
+            tournament.save(state)
+        except Exception:
+            # A Buffer post the log doesn't know about would be posted twice later.
+            publish.delete_post(post["id"])
+            raise
         notify.send_video(v["path"], f"🎾 <b>Escape Cup scheduled</b> for {when}\n"
                                      f"{html.escape(v['round'])}: winner {html.escape(teams.name(v['winner']))} "
                                      f"(don't spoil it 🤫)\n✅ {qc_line(v['report'])}\n"
+                                     f"{upload_gate.summary(v['gate'])}\n"
                                      f"Don't like it? Delete it in Buffer before then - the bracket "
                                      f"rewinds and it gets re-simulated.\n\n{html.escape(v['caption'])}")
 

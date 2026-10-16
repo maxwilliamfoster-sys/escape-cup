@@ -30,4 +30,5 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           LOOP_FORCE_VALUES: ${{ inputs.loop_values }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python main.py --sample ${{ inputs.royale && '--royale' || '' }}

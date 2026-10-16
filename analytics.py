@@ -128,7 +128,8 @@ def at_age(rec, hours=72):
         [(a, 100 * s["averageTimeWatched"] / L) for a, s in pts if s.get("averageTimeWatched") and L],
         hours)
     if watch is None and L:              # average, not a total: nearest later snapshot
-        later = sorted((a, s) for a, s in pts if a >= hours and s.get("averageTimeWatched"))
+        later = sorted(((a, s) for a, s in pts if a >= hours and s.get("averageTimeWatched")),
+                       key=lambda x: x[0])      # equal ages would compare the dicts
         if later and later[0][0] <= hours + 48:
             watch = 100 * later[0][1]["averageTimeWatched"] / L
     return {"views": views, "watch": watch,

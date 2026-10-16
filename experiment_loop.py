@@ -21,6 +21,7 @@ Files in each bot repo:
   loop_config.json  {"paused": false, "values": {lever: current default}}
   experiments.json  the ledger: {"experiments": [entry, ...]}
 """
+import html
 import json
 import os
 import random
@@ -269,7 +270,9 @@ def digest_section(name, ledger, levers, config, summary, actions):
         out.append(f"(experiments error: {exc})")
     for a in actions or []:
         out.append(f"• {a}")
-    return "\n".join(out)
+    # Sent with parse_mode=HTML: a "<" in a hypothesis ("<=15s") or an error made
+    # Telegram reject the whole digest. Only the bold header is markup.
+    return "\n".join([out[0]] + [html.escape(str(x), quote=False) for x in out[1:]])
 
 
 def build_digest(sections):
@@ -279,7 +282,7 @@ def build_digest(sections):
         try:
             parts.append(fn())
         except Exception as exc:
-            parts.append(f"<b>{name}</b>\n⚠️ section failed: {exc}")
+            parts.append(f"<b>{name}</b>\n⚠️ section failed: {html.escape(str(exc), quote=False)}")
     return "\n\n".join(parts)
 
 

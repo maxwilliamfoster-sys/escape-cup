@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 import requests
 
 BUFFER_API = "https://api.buffer.com"
-KEEP = 8
+KEEP = 12
 OTHER_PROJECT_HANDLES = ("buriedcasefiles",)   # TikToks in the same Buffer account
 
 
@@ -45,7 +45,27 @@ def pages_base():
     return f"https://{owner.lower()}.github.io/{name}"
 
 
-def host_video(path, filename):
+def prune_plan(present, order, filename, protect=(), keep=None):
+    """(files to delete, new upload order ending with filename). Oldest uploads go
+    first; files missing from the manifest (pre-manifest uploads) count as oldest;
+    protected files are never deleted."""
+    keep = keep or KEEP
+    order = sorted(set(present) - set(order) - {filename}) + \
+        [f for f in order if f in present and f != filename]
+    removable = [f for f in order if f not in set(protect)]
+    delete = []
+    while len(order) > keep - 1 and removable:
+        f = removable.pop(0)
+        order.remove(f)
+        delete.append(f)
+    return delete, order + [filename]
+
+
+def host_video(path, filename, protect=()):
+    """protect = file names still needed by scheduled posts (never pruned)."""
+    # Only a file the upload gate approved in this run may be published.
+    import upload_gate
+    upload_gate.require(path, "tiktok")
     token = os.environ.get("GITHUB_TOKEN")
     repo = os.environ.get("GITHUB_REPOSITORY")
     if not token or not repo:
@@ -61,10 +81,22 @@ def host_video(path, filename):
                           capture_output=True).returncode == 0:
             subprocess.run(["git", "checkout", "-q", "FETCH_HEAD", "--", "."], cwd=tmp,
                            capture_output=True)
-        old = sorted(f for f in os.listdir(os.path.join(tmp, "v")) if f.endswith(".mp4"))
-        for f in old[: max(0, len(old) - (KEEP - 1))]:
-            os.remove(os.path.join(tmp, "v", f))
-        shutil.copy(path, os.path.join(tmp, "v", filename))
+        # Prune by UPLOAD ORDER (v/order.txt), never by name, and never a file a
+        # scheduled post still needs. Sorting by name deleted the cup videos first
+        # ("ec..." < "royale...") while Buffer was still due to fetch them.
+        vdir = os.path.join(tmp, "v")
+        manifest = os.path.join(vdir, "order.txt")
+        order = []
+        if os.path.exists(manifest):
+            with open(manifest, encoding="utf-8") as fh:
+                order = [ln.strip() for ln in fh if ln.strip()]
+        present = {f for f in os.listdir(vdir) if f.endswith(".mp4")}
+        delete, order = prune_plan(present, order, filename, protect)
+        for f in delete:
+            os.remove(os.path.join(vdir, f))
+        shutil.copy(path, os.path.join(vdir, filename))
+        with open(manifest, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(order) + "\n")
         open(os.path.join(tmp, ".nojekyll"), "w").close()
         with open(os.path.join(tmp, "index.html"), "w") as fh:
             fh.write("<!doctype html><title>Escape Cup media</title>")

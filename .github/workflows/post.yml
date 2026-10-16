@@ -45,6 +45,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}      # upload gate AI review (optional)
         run: |
           if [ "${{ github.event.inputs.mode }}" = "reset" ]; then
             python main.py --reset-unpublished
@@ -62,5 +63,13 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add tournament_state.json
-          git diff --staged --quiet || git commit -m "state: $(date -u +%Y-%m-%dT%H:%M)"
-          git push || true
+          if [ -f upload_gate_log.json ]; then git add upload_gate_log.json; fi
+          git diff --staged --quiet && exit 0
+          git commit -m "state: $(date -u +%Y-%m-%dT%H:%M)"
+          # analytics.yml also pushes to main; a rejected push used to be hidden by
+          # "|| true" and the bracket state was lost. Rebase and retry, else fail loudly.
+          for i in 1 2 3; do
+            git pull --rebase -q && git push && exit 0
+            sleep 5
+          done
+          echo "::error::could not push tournament_state.json"; exit 1
