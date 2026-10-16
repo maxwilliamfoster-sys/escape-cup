@@ -1,0 +1,5 @@
+{
+ "_doc": "Current lever defaults, written by the experiment loop when it promotes/reverts. Set paused: true to freeze the loop (renders then use these values with no experiment arms).",
+ "paused": false,
+ "values": {}
+}

@@ -9,6 +9,10 @@ on:
         description: "Escape Royale heat (16 countries) instead of the next cup match"
         type: boolean
         default: false
+      loop_values:
+        description: 'Experiment-loop lever values to preview, JSON (e.g. {"pacing": "fast"})'
+        required: false
+        default: ''
 
 jobs:
   sample:
@@ -25,4 +29,5 @@ jobs:
       - env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LOOP_FORCE_VALUES: ${{ inputs.loop_values }}
         run: python main.py --sample ${{ inputs.royale && '--royale' || '' }}

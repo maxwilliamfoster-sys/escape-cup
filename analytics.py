@@ -75,6 +75,7 @@ def collect():
             "length": e.get("length") or rec.get("length") or BACKFILL_LEN.get(key),
             "link": post.get("externalLink") or e.get("link"),
             "caption": (post.get("text") or "").split("\n")[0][:120],
+            "loop": e.get("loop") or rec.get("loop") or {},   # experiment-loop arms
         })
         snap = {"at": now, "metrics_updated": post.get("metricsUpdatedAt"), **m}
         snaps = rec.setdefault("snapshots", [])

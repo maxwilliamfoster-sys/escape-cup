@@ -225,13 +225,62 @@ ROYALE_TEASES = ["Is your country in this one? 👇", "Which flag were you backi
                  "Where did your country finish? 👇"]
 
 
-def arm_for(slot, state):
-    """'cup' or 'royale' for a posting slot (UTC)."""
+def _slot_parity(slot, state):
+    """0 or 1 for a posting slot (UTC); flips between a day's slots and swaps daily."""
     local = slot.astimezone(LONDON)
     day = local.date()
     slots = slots_for_day(day, first_post_day(state, day))
     idx = slots.index((local.hour, local.minute)) if (local.hour, local.minute) in slots else 0
-    return ARMS[(day.toordinal() + idx) % len(ARMS)]
+    return (day.toordinal() + idx) % 2
+
+
+def arm_for(slot, state, loop_vals=None):
+    """'cup' or 'royale' for a posting slot (UTC). Once the experiment loop has
+    judged the format test, its "format" value decides every slot."""
+    fmt = (loop_vals or {}).get("format")
+    if fmt in ARMS:
+        return fmt
+    return ARMS[_slot_parity(slot, state)]
+
+
+# ------------------------------------------------- nightly experiment loop --
+# growth-lab, 2026-10-16. The loop (loop_nightly.py, in analytics.yml) judges
+# the running test and promotes/reverts it in loop_config.json. Arms follow
+# the same slot alternation as cup vs royale (control = parity 0), so neither
+# arm owns the better hour. Allowed levers and values: levers.json only.
+LOOP_DEFAULTS = {"hook": render.HOOK_TEXT, "max_s": director.MAX_SECONDS,
+                 "first_break": director.MAX_FIRST_BREAK, "wait": director.MAX_WAIT,
+                 "royale": dict(director.ROYALE_RULES)}
+PACING_FAST = {"first_break": 1.2, "wait": 4.5, "royale_first_break": 1.0, "royale_wait": 4.5}
+LENGTH_SHORT = {"max_s": 20.0, "royale_max_s": 26.0}
+
+
+def loop_for(slot, state):
+    """(lever values, {experiment_id: arm}) for a posting slot. Never raises."""
+    try:
+        import experiment_loop
+        led, _, cfg = experiment_loop.load_repo(ROOT)
+        arm = ("control", "variant")[_slot_parity(slot, state)]
+        return experiment_loop.values_for_post(led, cfg, force_arm=arm)
+    except Exception as e:
+        print(f"[loop] off ({e})")
+        return {}, {}
+
+
+def apply_loop(vals):
+    """Set the render/director knobs for one video, starting from the defaults
+    every time (control and variant alternate within one run)."""
+    d = LOOP_DEFAULTS
+    royale = dict(d["royale"])
+    render.HOOK_TEXT = vals.get("hook_text") or d["hook"]
+    director.MAX_SECONDS, director.MAX_FIRST_BREAK, director.MAX_WAIT = d["max_s"], d["first_break"], d["wait"]
+    if vals.get("pacing") == "fast":
+        director.MAX_FIRST_BREAK, director.MAX_WAIT = PACING_FAST["first_break"], PACING_FAST["wait"]
+        royale.update(first_break=PACING_FAST["royale_first_break"], wait=PACING_FAST["royale_wait"])
+    if vals.get("length") == "short":
+        director.MAX_SECONDS = LENGTH_SHORT["max_s"]
+        royale["max_s"] = LENGTH_SHORT["royale_max_s"]
+    director.ROYALE_RULES = royale
 
 
 def royale_heat(state):
@@ -493,6 +542,8 @@ def post_now():
 def run(sample=False, local=False, royale=False):
     state = tournament.load()
     if sample:
+        # LOOP_FORCE_VALUES (JSON): preview a queued lever value before the loop uses it
+        apply_loop(json.loads(os.environ.get("LOOP_FORCE_VALUES") or "{}"))
         work = copy.deepcopy(state)
         v = build_royale(work) if royale else build_one(work)
         print(json.dumps({k: v.get(k) for k in ("file", "round", "a", "b", "codes", "winner", "theme",
@@ -516,7 +567,11 @@ def run(sample=False, local=False, royale=False):
         return
 
     for slot in slots:
-        arm = arm_for(slot, state)
+        loop_vals, loop_arms = loop_for(slot, state)
+        apply_loop(loop_vals)
+        if loop_vals or loop_arms:
+            print(f"[loop] arms {loop_arms} values {loop_vals}")
+        arm = arm_for(slot, state, loop_vals)
         v, reasons = build_passing_royale(state) if arm == "royale" else build_passing(state)
         when = slot.astimezone(LONDON).strftime("%a %d %b %H:%M UK")
         if v is None:
@@ -535,7 +590,8 @@ def run(sample=False, local=False, royale=False):
                  "status": "scheduled", "file": v["file"],
                  # length was never stored before 2026-10-13, so avg % watched was
                  # blank for every post after the hand-typed backfill
-                 "length": v["report"].get("seconds")}
+                 "length": v["report"].get("seconds"),
+                 "loop": loop_arms}
         if v.get("series") == "royale":
             entry.update(series="royale", heat=v["heat"], codes=v["codes"], podium=v["podium"])
         else:

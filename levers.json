@@ -1,0 +1,20 @@
+{
+ "_doc": "Allowed levers for the nightly experiment loop (experiment_loop.py). ONLY these levers and values can ever be applied (main.apply_loop / arm_for). Order = test queue. pacing 'fast' and length 'short' were checked 2026-10-16 for seed acceptance (cup 1.25% / 4.3%, royale 20% / 19% of seeds - enough inside the director's 300-400 tries). Length is judged on views@72h: a shorter video gets a higher % watched for free.",
+ "channel": "escape-cup",
+ "metric": "avg % watched at 72h",
+ "min_n": 10,
+ "max_n": 20,
+ "max_days": 42,
+ "not_before": "2026-10-28",
+ "levers": [
+  {"lever": "format", "kind": "hook style", "control": "cup", "variants": ["royale"],
+   "hypothesis": "A 16-country royale heat gives a 91%-UK audience a stake (find your country), raising avg % watched over a 1-v-1 cup match."},
+  {"lever": "hook_text", "kind": "hook style", "control": "Which country escapes first?",
+   "variants": ["Pick a country before it starts!"],
+   "hypothesis": "Asking viewers to commit to a country before the first ring breaks makes them stay to see it through, raising avg % watched."},
+  {"lever": "pacing", "kind": "hook style", "control": "normal", "variants": ["fast"],
+   "hypothesis": "A first ring inside ~1s and no lull over 4.5s (vs 2s / 6s) removes the early dead moments where viewers swipe."},
+  {"lever": "length", "kind": "length", "control": "normal", "variants": ["short"], "primary": "views72",
+   "hypothesis": "Capping matches at 20s (royale 26s) gets more full watches and replays, which TikTok rewards with more views."}
+ ]
+}
