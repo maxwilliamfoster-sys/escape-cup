@@ -782,7 +782,7 @@
    "theme": "sunset",
    "due": "2026-10-17T11:00:00+00:00",
    "buffer_id": "6ad20975b948bf9e9d90ab99",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec01_r2_m02_216350041060.mp4",
    "length": 20.5,
    "loop": {
@@ -796,7 +796,8 @@
    "r": 2,
    "m": 2,
    "a": "kr",
-   "b": "it"
+   "b": "it",
+   "link": "https://tiktok.com/@5lmvill/video/7697590077785984289"
   },
   {
    "edition": 1,
