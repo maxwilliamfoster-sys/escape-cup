@@ -15,7 +15,7 @@
    "metric": "avg % watched at 72h",
    "control_metrics": {
     "n": 0,
-    "views72": null
+    "views72": 739.5991
    },
    "variant_metrics": {
     "n": 0,
@@ -23,7 +23,7 @@
    },
    "note": "started by hand 2026-10-13 (main.ARMS, slot alternation); arms come from analytics.json 'variant'",
    "verdict": "keep running",
-   "last_judged": "2026-10-16",
+   "last_judged": "2026-10-17",
    "result": "escape-cup-format-1 · avg % watched at 72h: KEEP RUNNING — n=0 vs 0 (min 10, max 20)"
   }
  ]
