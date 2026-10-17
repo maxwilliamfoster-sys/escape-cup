@@ -841,6 +841,50 @@
     "gb-eng",
     "nl"
    ]
+  },
+  {
+   "edition": 1,
+   "winner": "jp",
+   "seed": 180608404000,
+   "theme": "neon",
+   "due": "2026-10-18T11:00:00+00:00",
+   "buffer_id": "6ad351d10b0d72757ad1feca",
+   "status": "scheduled",
+   "file": "royale005_180608404000.mp4",
+   "length": 38.2,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "aa842d6c8a22d5781e0b5837bf382d4a977e1a9f4ff12aafc431ada3964bd143",
+    "checked_at": "2026-10-17T10:44:25+00:00"
+   },
+   "series": "royale",
+   "heat": 5,
+   "codes": [
+    "it",
+    "de",
+    "kr",
+    "dz",
+    "jp",
+    "nl",
+    "es",
+    "ph",
+    "cl",
+    "ie",
+    "at",
+    "th",
+    "co",
+    "ua",
+    "ng",
+    "gb-eng"
+   ],
+   "podium": [
+    "jp",
+    "nl",
+    "at"
+   ]
   }
  ],
  "recent_captions": [
@@ -875,7 +919,8 @@
   "Country ball escape royale - 16 flags, one exit. Find your country\nEscape Royale heat 3: England, Ireland, Poland, Spain and 12 more\nWhere did your country finish? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
   "Which country escapes first? Australia 🇦🇺 vs Netherlands 🇳🇱 ball escape\nQuarter-final of Escape Cup 1 🏆\nNext up: South Korea vs Italy - who's your pick? 👇\n#ballescape #physicssimulation #simulation #australia #netherlands",
   "South Korea 🇰🇷 vs Italy 🇮🇹: 16 rings, one way out. Physics simulation\nQuarter-final · Escape Cup 1\nNext up: Canada vs Ireland - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #southkorea #italy",
-  "Ball escape simulation: 16 countries, only one breaks out first\nEscape Royale heat 4: England, Scotland, Netherlands, Argentina and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs"
+  "Ball escape simulation: 16 countries, only one breaks out first\nEscape Royale heat 4: England, Scotland, Netherlands, Argentina and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs",
+  "16 country balls, 28 rings, one way out. Physics simulation\nEscape Royale heat 5: England, Ireland, Italy, Germany and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #satisfying #countryballs"
  ],
  "seen_errors": [],
  "excluded_seeds": {

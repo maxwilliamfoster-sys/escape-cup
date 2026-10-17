@@ -69,6 +69,31 @@
     "summary": "The video is a high-quality, coherent physics simulation that clearly tracks the progress of 16 country balls escaping rings, culminating in a clear winner (Jamaica) and a teaser for the next heat, with no policy violations.",
     "tokens": 4055
    }
+  },
+  {
+   "checked_at": "2026-10-17T10:44:25+00:00",
+   "platform": "tiktok",
+   "file": "royale005_180608404000.mp4",
+   "sha256": "aa842d6c8a22d5781e0b5837bf382d4a977e1a9f4ff12aafc431ada3964bd143",
+   "head": "16 country balls, 28 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 38.2,
+    "lufs": -17.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "summary": "The video presents a consistent and high-quality physics simulation of country balls escaping rings, with clear on-screen text tracking the progress and a definitive end card that matches the caption's promise.",
+    "tokens": 4047
+   }
   }
  ]
 }
