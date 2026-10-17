@@ -94,6 +94,31 @@
     "summary": "The video presents a consistent and high-quality physics simulation of country balls escaping rings, with clear on-screen text tracking the progress and a definitive end card that matches the caption's promise.",
     "tokens": 4047
    }
+  },
+  {
+   "checked_at": "2026-10-17T20:36:25+00:00",
+   "platform": "tiktok",
+   "file": "ec01_r2_m03_263864342031.mp4",
+   "sha256": "0279fce6757f1a379b395087cfdd3547c70f2109862cd540fb8f0ef20f1f9475",
+   "head": "Country ball escape - Canada 🇨🇦 vs Ireland 🇮🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 21.9,
+    "lufs": -17.1,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "summary": "The video is a coherent, high-quality physics simulation that matches the caption and title, with a clear winner and no policy violations.",
+    "tokens": 4035
+   }
   }
  ]
 }
