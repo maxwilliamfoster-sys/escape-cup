@@ -263,11 +263,11 @@
    {
     "a": "ph",
     "b": "nl",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "nl",
+    "seed": 256055476014,
+    "melody": "candy",
+    "posted": "2026-10-19T15:30:00+00:00",
+    "buffer_id": "6ad4eba7ae173d6e000aebaa"
    },
    {
     "a": "it",
@@ -281,7 +281,7 @@
   ],
   [
    {
-    "a": null,
+    "a": "nl",
     "b": null,
     "winner": null,
     "seed": null,
@@ -292,7 +292,7 @@
   ]
  ],
  "titles": {},
- "posts": 28,
+ "posts": 29,
  "log": [
   {
    "edition": 1,
@@ -851,7 +851,7 @@
    "theme": "neon",
    "due": "2026-10-18T11:00:00+00:00",
    "buffer_id": "6ad351d10b0d72757ad1feca",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale005_180608404000.mp4",
    "length": 38.2,
    "loop": {
@@ -886,7 +886,8 @@
     "jp",
     "nl",
     "at"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7697961536152751393"
   },
   {
    "edition": 1,
@@ -910,6 +911,29 @@
    "m": 3,
    "a": "ca",
    "b": "ie"
+  },
+  {
+   "edition": 1,
+   "winner": "nl",
+   "seed": 256055476014,
+   "theme": "candy",
+   "due": "2026-10-19T15:30:00+00:00",
+   "buffer_id": "6ad4eba7ae173d6e000aebaa",
+   "status": "scheduled",
+   "file": "ec01_r3_m00_256055476014.mp4",
+   "length": 21.7,
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "6c8415d7906fcd69467924b7f0e07f0d823e136ce9349334f624ed4bded5e6c5",
+    "checked_at": "2026-10-18T15:53:02+00:00"
+   },
+   "r": 3,
+   "m": 0,
+   "a": "ph",
+   "b": "nl"
   }
  ],
  "recent_captions": [
@@ -946,13 +970,17 @@
   "South Korea 🇰🇷 vs Italy 🇮🇹: 16 rings, one way out. Physics simulation\nQuarter-final · Escape Cup 1\nNext up: Canada vs Ireland - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #southkorea #italy",
   "Ball escape simulation: 16 countries, only one breaks out first\nEscape Royale heat 4: England, Scotland, Netherlands, Argentina and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "16 country balls, 28 rings, one way out. Physics simulation\nEscape Royale heat 5: England, Ireland, Italy, Germany and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
-  "Country ball escape - Canada 🇨🇦 vs Ireland 🇮🇪\nQuarter-final · Escape Cup 1\nPhilippines vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #canada #ireland"
+  "Country ball escape - Canada 🇨🇦 vs Ireland 🇮🇪\nQuarter-final · Escape Cup 1\nPhilippines vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #canada #ireland",
+  "Philippines 🇵🇭 vs Netherlands 🇳🇱 in the escape rings. Who gets out first?\nSemi-final of Escape Cup 1 🏆\nItaly vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #philippines #netherlands"
  ],
  "seen_errors": [],
  "excluded_seeds": {
   "royale-4": [
    47724846005,
    47724846002
+  ],
+  "1-3-0": [
+   256055476048
   ]
  }
 }

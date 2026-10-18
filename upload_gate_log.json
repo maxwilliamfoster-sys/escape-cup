@@ -119,6 +119,31 @@
     "summary": "The video is a coherent, high-quality physics simulation that matches the caption and title, with a clear winner and no policy violations.",
     "tokens": 4035
    }
+  },
+  {
+   "checked_at": "2026-10-18T15:53:02+00:00",
+   "platform": "tiktok",
+   "file": "ec01_r3_m00_256055476014.mp4",
+   "sha256": "6c8415d7906fcd69467924b7f0e07f0d823e136ce9349334f624ed4bded5e6c5",
+   "head": "Philippines 🇵🇭 vs Netherlands 🇳🇱 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 21.68,
+    "lufs": -15.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "summary": "The video is a high-quality, coherent physics simulation that clearly displays the match progression, winner, and next match teaser without any policy violations or rendering errors.",
+    "tokens": 4052
+   }
   }
  ]
 }
