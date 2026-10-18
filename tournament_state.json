@@ -935,6 +935,50 @@
    "m": 0,
    "a": "ph",
    "b": "nl"
+  },
+  {
+   "edition": 1,
+   "winner": "gb-eng",
+   "seed": 172107506027,
+   "theme": "sunset",
+   "due": "2026-10-19T19:00:00+00:00",
+   "buffer_id": "6ad552d90a208cb32385d23b",
+   "status": "scheduled",
+   "file": "royale006_172107506027.mp4",
+   "length": 26.3,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "2e44c10b1ec14d6eff65b0b073529488b8ab6764955b8d476a17aa4a60f35b72",
+    "checked_at": "2026-10-18T23:13:00+00:00"
+   },
+   "series": "royale",
+   "heat": 6,
+   "codes": [
+    "pt",
+    "ma",
+    "gb-eng",
+    "gb-sct",
+    "br",
+    "ua",
+    "jp",
+    "ng",
+    "ph",
+    "cn",
+    "de",
+    "dz",
+    "it",
+    "ar",
+    "ch",
+    "kr"
+   ],
+   "podium": [
+    "gb-eng",
+    "de",
+    "it"
+   ]
   }
  ],
  "recent_captions": [
@@ -972,7 +1016,8 @@
   "Ball escape simulation: 16 countries, only one breaks out first\nEscape Royale heat 4: England, Scotland, Netherlands, Argentina and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "16 country balls, 28 rings, one way out. Physics simulation\nEscape Royale heat 5: England, Ireland, Italy, Germany and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
   "Country ball escape - Canada 🇨🇦 vs Ireland 🇮🇪\nQuarter-final · Escape Cup 1\nPhilippines vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #canada #ireland",
-  "Philippines 🇵🇭 vs Netherlands 🇳🇱 in the escape rings. Who gets out first?\nSemi-final of Escape Cup 1 🏆\nItaly vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #philippines #netherlands"
+  "Philippines 🇵🇭 vs Netherlands 🇳🇱 in the escape rings. Who gets out first?\nSemi-final of Escape Cup 1 🏆\nItaly vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #philippines #netherlands",
+  "16 countries, 1 way out - which country escapes the rings first?\nEscape Royale heat 6: England, Scotland, Portugal, Morocco and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs"
  ],
  "seen_errors": [],
  "excluded_seeds": {

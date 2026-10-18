@@ -201,6 +201,31 @@
     "speech_match": null,
     "longest_freeze": 0.0
    }
+  },
+  {
+   "checked_at": "2026-10-18T23:13:00+00:00",
+   "platform": "tiktok",
+   "file": "royale006_172107506027.mp4",
+   "sha256": "2e44c10b1ec14d6eff65b0b073529488b8ab6764955b8d476a17aa4a60f35b72",
+   "head": "16 countries, 1 way out - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 26.27,
+    "lufs": -14.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "summary": "The video presents a clear, high-quality physics simulation of country balls escaping rings, with consistent on-screen text and a logical progression from start to finish.",
+    "tokens": 4040
+   }
   }
  ]
 }
