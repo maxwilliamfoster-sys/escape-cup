@@ -896,7 +896,7 @@
    "theme": "forest",
    "due": "2026-10-18T18:30:00+00:00",
    "buffer_id": "6ad3dc8a769b457934935c0c",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec01_r2_m03_263864342031.mp4",
    "length": 21.9,
    "loop": {
@@ -910,7 +910,8 @@
    "r": 2,
    "m": 3,
    "a": "ca",
-   "b": "ie"
+   "b": "ie",
+   "link": "https://tiktok.com/@5lmvill/video/7698077033858895136"
   },
   {
    "edition": 1,
@@ -981,6 +982,11 @@
   ],
   "1-3-0": [
    256055476048
+  ],
+  "royale-6": [
+   172107506020,
+   172107506017,
+   172107506024
   ]
  }
 }

@@ -144,6 +144,63 @@
     "summary": "The video is a high-quality, coherent physics simulation that clearly displays the match progression, winner, and next match teaser without any policy violations or rendering errors.",
     "tokens": 4052
    }
+  },
+  {
+   "checked_at": "2026-10-18T20:43:04+00:00",
+   "platform": "tiktok",
+   "file": "royale006_172107506020.mp4",
+   "sha256": "26d6bf3626ba448eb61c91d7e031ef78974410125574ced7a02179e3a2baacbe",
+   "head": "Country ball escape royale - 16 flags, one exit. Find your country",
+   "ok": false,
+   "failures": [
+    "same first caption line as a recent post (repetitive content): \"country ball escape royale - 16 flags, one exit. find your country\""
+   ],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 28.47,
+    "lufs": -14.7,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   }
+  },
+  {
+   "checked_at": "2026-10-18T20:44:40+00:00",
+   "platform": "tiktok",
+   "file": "royale006_172107506017.mp4",
+   "sha256": "fc54eca7e142aa548162e2827a3270a91531b621a54582a16b8cfe270f607b1e",
+   "head": "Ball escape simulation: 16 countries, only one breaks out first",
+   "ok": false,
+   "failures": [
+    "same first caption line as a recent post (repetitive content): \"ball escape simulation: 16 countries, only one breaks out first\""
+   ],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 24.03,
+    "lufs": -14.1,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   }
+  },
+  {
+   "checked_at": "2026-10-18T20:46:26+00:00",
+   "platform": "tiktok",
+   "file": "royale006_172107506024.mp4",
+   "sha256": "5bf9648748b7fee1f0b049931f4235216f020f2099d77f02035080c81c751a5a",
+   "head": "Country ball escape royale - 16 flags, one exit. Find your country",
+   "ok": false,
+   "failures": [
+    "same first caption line as a recent post (repetitive content): \"country ball escape royale - 16 flags, one exit. find your country\""
+   ],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 29.72,
+    "lufs": -13.8,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   }
   }
  ]
 }
