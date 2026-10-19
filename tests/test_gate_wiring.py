@@ -81,8 +81,24 @@ class TestRetries(unittest.TestCase):
         with mock.patch.object(main, "_RUN_START", main.time.monotonic() - main.RUN_BUDGET_S):
             v, reasons = main._build_with_retries({}, "k", build)
         self.assertIsNone(v)
-        self.assertEqual(len(reasons), 2)          # one render, then "out of time"
+        self.assertEqual(len(reasons), 1)          # no render: it couldn't finish in time
         self.assertIn("out of time", reasons[-1])
+
+    def test_budget_checked_before_first_attempt_of_a_later_slot(self):
+        calls = []
+
+        def build(st, exclude_seeds):
+            calls.append(1)
+            return {"seed": 1, "failures": []}
+        with mock.patch.object(main, "_SLOWEST", 120.0),                 mock.patch.object(main, "_RUN_START", main.time.monotonic() - main.RUN_BUDGET_S + 60):
+            v, reasons = main._build_with_retries({}, "k", build)
+        self.assertIsNone(v)
+        self.assertEqual(calls, [])
+        self.assertEqual(len(reasons), 1)
+        self.assertIn("out of time", reasons[0])
+
+    def test_run_budget_leaves_room_to_post(self):
+        self.assertEqual(main.RUN_BUDGET_S, 35 * 60)
 
     def test_director_error_is_a_gate_failure_not_a_crash(self):
         def build(st, exclude_seeds):

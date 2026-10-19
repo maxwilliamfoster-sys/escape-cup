@@ -63,8 +63,12 @@ MAX_ATTEMPTS = 12
 # (chess 10, Escape 8, BCF 20 = ~165k of 200k tokens; growth-lab PLAN_2026-10-19).
 AI_DAILY_CAP = 8
 SYSTEMIC_STOP = "same failure 3 times in a row - stopping (not a content problem; check the log)"
-RUN_BUDGET_S = 45 * 60
+# Renders finish by 35 min + 15 min hosting/Telegram per slot + ~3 min setup < the
+# 60-min job timeout. Checked before EVERY render (also a later slot's first one),
+# against the slowest render so far in this run.
+RUN_BUDGET_S = 35 * 60
 _RUN_START = time.monotonic()
+_SLOWEST = 0.0
 
 RESULT_LINE = {16: "advances to the Round of 16", 8: "reaches the quarter-finals",
                4: "reaches the semi-finals", 2: "reaches the Final"}
@@ -280,11 +284,11 @@ def _build_with_retries(state, key, build):
     seeds: the base seed is deterministic, so without this every 3-hourly run
     retried the same failing seeds forever."""
     tried = list(state.get("excluded_seeds", {}).get(key, []))
+    global _SLOWEST
     reasons, keys = [], []
-    slowest = 0.0
     for attempt in range(MAX_ATTEMPTS):
         # only start a render that can finish inside the run's budget
-        if attempt and time.monotonic() - _RUN_START + slowest > RUN_BUDGET_S:
+        if time.monotonic() - _RUN_START + _SLOWEST > RUN_BUDGET_S:
             reasons.append("out of time for this run - the next run retries this slot")
             break
         t0 = time.monotonic()
@@ -294,7 +298,7 @@ def _build_with_retries(state, key, build):
             reasons.append(f"no usable simulation: {exc}")
             print("[quality] FAILED", reasons[-1])
             break
-        slowest = max(slowest, time.monotonic() - t0)
+        _SLOWEST = max(_SLOWEST, time.monotonic() - t0)
         if not v["failures"]:
             return v, reasons
         if v.get("caption_only"):
