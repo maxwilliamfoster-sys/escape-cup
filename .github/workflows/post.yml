@@ -69,7 +69,11 @@ jobs:
           # analytics.yml also pushes to main; a rejected push used to be hidden by
           # "|| true" and the bracket state was lost. Rebase and retry, else fail loudly.
           for i in 1 2 3; do
-            git pull --rebase -q && git push && exit 0
+            if git pull --rebase -q; then
+              git push && exit 0
+            else
+              git rebase --abort 2>/dev/null || true
+            fi
             sleep 5
           done
           echo "::error::could not push tournament_state.json"; exit 1

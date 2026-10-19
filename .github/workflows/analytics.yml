@@ -45,6 +45,16 @@ jobs:
           for f in experiments.json loop_config.json loop_summary.json; do
             if [ -f "$f" ]; then git add "$f"; fi
           done
-          git diff --staged --quiet || git commit -m "analytics: $(date -u +%Y-%m-%dT%H:%M)"
-          git pull --rebase -q || true
-          git push || true
+          git diff --staged --quiet && exit 0
+          git commit -m "analytics: $(date -u +%Y-%m-%dT%H:%M)"
+          # post.yml also pushes to main: rebase and retry, else fail loudly
+          # (a rejected push used to be hidden by "|| true" and the day's data lost).
+          for i in 1 2 3; do
+            if git pull --rebase --autostash -q; then
+              git push && exit 0
+            else
+              git rebase --abort 2>/dev/null || true
+            fi
+            sleep $((i * 5))
+          done
+          echo "::error::could not push analytics state after 3 tries"; exit 1
