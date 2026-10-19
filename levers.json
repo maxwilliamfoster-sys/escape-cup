@@ -7,7 +7,7 @@
  "max_days": 42,
  "not_before": "2026-10-28",
  "levers": [
-  {"lever": "format", "kind": "hook style", "control": "cup", "variants": ["royale"],
+  {"lever": "format", "kind": "hook style", "control": "cup", "variants": ["royale"], "primary": "views72",
    "hypothesis": "A 16-country royale heat gives a 91%-UK audience a stake (find your country), raising avg % watched over a 1-v-1 cup match."},
   {"lever": "hook_text", "kind": "hook style", "control": "Which country escapes first?",
    "variants": ["Pick a country before it starts!"],

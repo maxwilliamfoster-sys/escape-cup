@@ -31,6 +31,9 @@ PATH = os.path.join(ROOT, "analytics.json")
 BACKFILL_LEN = {
     "gb-sct-ch": 35, "pl-uy": 30, "ph-ng": 24, "ma-ua": 25, "au-vn": 22, "us-hr": 21,
     "mx-nl": 25, "co-pt": 27, "id-tr": 24, "kr-jp": 18, "es-br": 18, "sn-it": 20,
+    # 10-13 cup posts (A/B start), before length was stored: frames of sim.simulate(seed)
+    # / FPS + render.CARD_SECONDS, a formula that reproduces 10-14..10-16 exactly.
+    "es-it": 28.9, "ca-fr": 23.7,
 }
 V2_FROM = "2026-10-02"          # first dense-ring (v2) post
 
@@ -177,9 +180,9 @@ AB_MIN_N, AB_MAX_N = 10, 20   # per arm (growth-lab README; watch % detects ~1.1
 
 def compare(data):
     """Cup vs Escape Royale since AB_FROM, every post scored at 72h (not its latest
-    snapshot). Judged by growth_stats on avg % watched (it decides whether TikTok
-    widens the test batch: the one breakout, Ireland v Egypt, had the best watch
-    time); views@72h and likes per 1k are guardrails."""
+    snapshot). Judged by growth_stats on views@72h; avg % watched and likes per 1k
+    are guardrails. (Amended 2026-10-19 before min n, EXPERIMENTS.md A1: % watched
+    penalises the longer royale, ~29s vs ~21s.)"""
     lines = []
     arms = {}
     for arm in ("cup", "royale"):
@@ -193,10 +196,10 @@ def compare(data):
                      f"{md('watch', '{:.0f}%')}  views@72h {md('views', '{:.0f}')}  likes {md('likes_1k', '{:.1f}')}/1k")
     c, t = arms["cup"], arms["royale"]
     res = growth_stats.judge(
-        [x["watch"] for x in c], [x["watch"] for x in t], AB_MIN_N, AB_MAX_N,
-        guardrails={"views@72h": ([x["views"] for x in c], [x["views"] for x in t], True),
+        [x["views"] for x in c], [x["views"] for x in t], AB_MIN_N, AB_MAX_N,
+        guardrails={"avg % watched": ([x["watch"] for x in c], [x["watch"] for x in t], True),
                     "likes/1k": ([x["likes_1k"] for x in c], [x["likes_1k"] for x in t], True)})
-    lines.append(growth_stats.format_result("royale vs cup", "avg % watched @72h", res).replace("**", ""))
+    lines.append(growth_stats.format_result("royale vs cup", "views@72h", res).replace("**", ""))
     acct = data.get("account") or []
     if acct:
         lines.append(f"followers {acct[0]['followers']} ({acct[0]['at'][:10]}) -> "

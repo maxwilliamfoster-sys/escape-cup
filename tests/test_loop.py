@@ -27,7 +27,8 @@ FMT = "escape-cup-format-1"
 
 
 def fake_analytics(n, watch_cup, watch_royale, start="2026-10-13", seed=0):
-    """analytics.json with n cup + n royale posts, each with a 24h and a 96h snapshot."""
+    """analytics.json with n cup + n royale posts, each with 24h, 60h and 96h snapshots
+    (views@72h needs points under 48h apart)."""
     rng = random.Random(seed)
     posts = {}
     t0 = datetime.fromisoformat(start + "T15:30:00+00:00")
@@ -36,8 +37,10 @@ def fake_analytics(n, watch_cup, watch_royale, start="2026-10-13", seed=0):
         due = t0 + timedelta(hours=12 * i)
         L = 20.0
         pct = (watch_cup if arm == "cup" else watch_royale) + rng.uniform(-2, 2)
-        snaps = [{"at": (due + timedelta(hours=h)).isoformat(), "views": 300 * h // 24,
-                  "likes": 5, "averageTimeWatched": pct / 100 * L} for h in (24, 96)]
+        # views follow watch %, so the arm that holds better also wins on views@72h
+        # (the format test's primary metric since the 2026-10-19 amendment)
+        snaps = [{"at": (due + timedelta(hours=h)).isoformat(), "views": int(10 * h * pct / 24),
+                  "likes": 5, "averageTimeWatched": pct / 100 * L} for h in (24, 60, 96)]
         posts[f"p{i}"] = {"variant": arm, "due": due.isoformat(), "length": L, "snapshots": snaps}
     return {"posts": posts}
 
@@ -168,6 +171,31 @@ class TestRenderSide(unittest.TestCase):
                 self.assertTrue(all(isinstance(v, str) and 0 < len(v) <= 40 for v in vals))
             else:
                 self.assertTrue(set(vals) <= known[l["lever"]], l["lever"])
+
+
+class TestFormatAmendment(unittest.TestCase):
+    """2026-10-19: the format test is judged on views@72h (EXPERIMENTS.md, A1)."""
+
+    def test_format_lever_judged_on_views(self):
+        with open(os.path.join(ROOT, "levers.json"), encoding="utf-8") as fh:
+            levers = json.load(fh)
+        fmt = [l for l in levers["levers"] if l["lever"] == "format"][0]
+        self.assertEqual(fmt["primary"], "views72")
+
+    def test_backfilled_lengths_cover_ab_start(self):
+        import analytics
+        with open(os.path.join(ROOT, "tournament_state.json"), encoding="utf-8") as fh:
+            log = json.load(fh)["log"]
+        missing = [e.get("due") for e in log if (e.get("due") or "") >= analytics.AB_FROM
+                   and not e.get("length")
+                   and not analytics.BACKFILL_LEN.get(f"{e.get('a')}-{e.get('b')}")]
+        self.assertEqual(missing, [])
+
+    def test_compare_report_judges_on_views(self):
+        import analytics
+        out = analytics.compare({"posts": {}})
+        self.assertIn("views@72h", out.splitlines()[2])
+        self.assertNotIn("avg % watched @72h", out.splitlines()[2])
 
 
 if __name__ == "__main__":
