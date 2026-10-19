@@ -23,6 +23,8 @@ import requests
 
 BUFFER_API = "https://api.buffer.com"
 KEEP = 12
+PAGES_WAIT_S = 600          # how long to wait for Pages to serve a new video
+PAGES_RETRIGGER_S = 300     # after this long, push an empty commit to redeploy, once
 OTHER_PROJECT_HANDLES = ("buriedcasefiles",)   # TikToks in the same Buffer account
 
 
@@ -35,7 +37,11 @@ class PublishError(RuntimeError):
 def _git(args, cwd):
     r = subprocess.run(["git"] + args, cwd=cwd, capture_output=True, text=True)
     if r.returncode != 0:
-        raise PublishError(f"git {' '.join(args[:2])} failed: {r.stderr.strip()[:300]}")
+        err = r.stderr.strip()
+        token = os.environ.get("GITHUB_TOKEN")
+        if token:
+            err = err.replace(token, "***")     # the remote URL carries the token
+        raise PublishError(f"git {' '.join(args[:2])} failed: {err[:300]}")
     return r.stdout
 
 
@@ -76,11 +82,18 @@ def host_video(path, filename, protect=()):
         _git(["init", "-q"], tmp)
         _git(["checkout", "-q", "--orphan", "media"], tmp)
         os.makedirs(os.path.join(tmp, "v"), exist_ok=True)
-        # carry over the most recent videos (Buffer may still need them)
-        if subprocess.run(["git", "fetch", "-q", "--depth", "1", remote, "media"], cwd=tmp,
-                          capture_output=True).returncode == 0:
-            subprocess.run(["git", "checkout", "-q", "FETCH_HEAD", "--", "."], cwd=tmp,
-                           capture_output=True)
+        # carry over the most recent videos (Buffer may still need them). The push
+        # below is a force-push, so if the branch exists but can't be read, stop:
+        # pushing anyway would delete every video a scheduled post still needs.
+        exists = bool(_git(["ls-remote", "--heads", remote, "media"], tmp).strip())
+        fetched = subprocess.run(["git", "fetch", "-q", "--depth", "1", remote, "media"],
+                                 cwd=tmp, capture_output=True).returncode == 0
+        if fetched:
+            fetched = subprocess.run(["git", "checkout", "-q", "FETCH_HEAD", "--", "."],
+                                     cwd=tmp, capture_output=True).returncode == 0
+        if exists and not fetched:
+            raise PublishError("media branch exists but could not be fetched - not "
+                               "force-pushing (would delete scheduled videos)")
         # Prune by UPLOAD ORDER (v/order.txt), never by name, and never a file a
         # scheduled post still needs. Sorting by name deleted the cup videos first
         # ("ec..." < "royale...") while Buffer was still due to fetch them.
@@ -91,6 +104,9 @@ def host_video(path, filename, protect=()):
             with open(manifest, encoding="utf-8") as fh:
                 order = [ln.strip() for ln in fh if ln.strip()]
         present = {f for f in os.listdir(vdir) if f.endswith(".mp4")}
+        missing = sorted(set(protect) - present - {filename})
+        if missing:
+            raise PublishError(f"scheduled video {missing[0]} missing from media branch - not force-pushing")
         delete, order = prune_plan(present, order, filename, protect)
         for f in delete:
             os.remove(os.path.join(vdir, f))
@@ -105,22 +121,32 @@ def host_video(path, filename, protect=()):
               "-c", "user.email=github-actions[bot]@users.noreply.github.com",
               "commit", "-q", "-m", f"media: {filename}"], tmp)
         _git(["push", "-q", "-f", remote, "media"], tmp)
+
+        url = f"{pages_base()}/v/{filename}"
+        size = os.path.getsize(path)
+        start = time.time()
+        retriggered = False
+        while time.time() < start + PAGES_WAIT_S:
+            try:
+                r = requests.head(url, timeout=20, allow_redirects=False)
+                if r.status_code == 200 and int(r.headers.get("content-length", 0)) == size:
+                    print(f"[host] live: {url}")
+                    return url
+            except requests.RequestException:
+                pass
+            # A Pages deploy sometimes fails (HTTP 500) and nothing redeploys it.
+            # An empty commit starts a new deploy; once is enough.
+            if not retriggered and time.time() - start >= PAGES_RETRIGGER_S:
+                retriggered = True
+                print("[host] Pages still not serving the video - retriggering the deploy once")
+                _git(["-c", "user.name=github-actions[bot]",
+                      "-c", "user.email=github-actions[bot]@users.noreply.github.com",
+                      "commit", "--allow-empty", "-q", "-m", "media: retrigger Pages"], tmp)
+                _git(["push", "-q", remote, "media"], tmp)
+            time.sleep(15)
+        raise PublishError(f"Pages never served {url} (is Pages enabled on the media branch?)")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
-
-    url = f"{pages_base()}/v/{filename}"
-    size = os.path.getsize(path)
-    deadline = time.time() + 600
-    while time.time() < deadline:
-        try:
-            r = requests.head(url, timeout=20, allow_redirects=False)
-            if r.status_code == 200 and int(r.headers.get("content-length", 0)) == size:
-                print(f"[host] live: {url}")
-                return url
-        except requests.RequestException:
-            pass
-        time.sleep(15)
-    raise PublishError(f"Pages never served {url} (is Pages enabled on the media branch?)")
 
 
 # ----------------------------------------------------------------- buffer --
