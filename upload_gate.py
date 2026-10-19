@@ -103,6 +103,7 @@ DEFAULT_PROFILE = {
     "speech_min": None,              # e.g. 0.7 = transcript must cover 70% of the script
     "whisper_model": "tiny",
     "ai_review": "off",              # "off" | "if_available" | "required"
+    "ai_daily_cap": None,            # max real AI reviews per UTC day for this bot (needs "ledger")
     "ai_context": "",                # one paragraph: what the channel posts and why
     "ai_realistic": False,           # realistic AI voice/visuals -> platform AI label required
     "allowed_domains": (),           # links allowed in descriptions (YouTube only)
@@ -142,7 +143,7 @@ POLICY_BRIEF = {
     "tiktok": (
         "TikTok Community Guidelines + For You feed eligibility: no gore, blood, dead bodies, "
         "injuries or distressing/shocking imagery; no sexual content; nothing that sexualises or "
-        "endangers minors; no hate or slurs; no dangerous acts; no unverified claims stated as fact; "
+        "endangers minors; no hate or slurs; no dangerous acts; "
         "for real crimes only court-established facts and never implying guilt of anyone acquitted, "
         "uncharged or unconvicted; no engagement bait or false incentives; no visible watermarks or "
         "logos of other creators or stock sites (unoriginal content); no private personal data; "
@@ -448,6 +449,11 @@ def _images_b64(path, dur, sheets=2, cols=3, rows=2, tile=(216, 384)):
     return out
 
 
+def _redact(s):
+    """Groq error bodies name the account's organisation id; keep it out of public logs."""
+    return re.sub(r"org_[A-Za-z0-9]+", "org_***", s)
+
+
 def ai_review(path, platform, profile, *, title="", caption="", transcript="", seconds=None):
     """Ask a free vision model to watch the video as a strict pre-publication reviewer.
     Returns {"ok": bool, "available": bool, "coherence", "quality", "problems": [...], "summary"}."""
@@ -473,7 +479,8 @@ def ai_review(path, platform, profile, *, title="", caption="", transcript="", s
         "Ground rules: a plain request to comment, like or follow is ALLOWED (only rewards or "
         "false promises are bait). Burned-in captions show one or a few words at a time, so a "
         "lone word in one frame is normal. Do not fact-check the story: facts were verified "
-        "against sources before this step; judge only what is on screen and how it fits. Stock "
+        "against sources before this step; judge only what is on screen and how it fits. "
+        "Never block for factual accuracy, dates or unverifiable details - that is out of scope here. Stock "
         "or mood footage is fine when its mood fits the story; flag footage that is jarringly "
         "unrelated or inappropriate for the subject (e.g. food, animals, parties, sport, "
         "celebrations in a story about a death).\n"
@@ -503,7 +510,7 @@ def ai_review(path, platform, profile, *, title="", caption="", transcript="", s
                 raise ValueError(f"no verdict in reply: {out[:200]}")
             break
         except urllib.error.HTTPError as e:
-            body_txt = e.read()[:400].decode(errors="replace")
+            body_txt = _redact(e.read()[:400].decode(errors="replace"))
             last = f"HTTP {e.code}: {body_txt[:200]}"
             if "per day" in body_txt:              # daily quota gone: waiting a minute won't help
                 return {"ok": False, "available": False, "quota": True,
@@ -580,7 +587,16 @@ def check(path, platform, *, profile=None, title="", caption="", description="",
                 W.append(f"narration only {match:.0%} matched to the script")
 
     mode = pr.get("ai_review", "off")
-    if mode != "off" and not F:                  # don't spend the AI budget on a video already blocked
+    cap = pr.get("ai_daily_cap")
+    if mode != "off" and not F and cap and pr.get("ledger") and ai_reviews_today(pr["ledger"]) >= cap:
+        # The free AI quota is shared by 3 bots; retry loops must not let one bot spend it
+        # all. Same outcome as Groq's own "per day" answer, just reached earlier.
+        ai = {"ok": False, "available": False, "quota": True, "cap": True,
+              "problems": [f"AI review skipped: this bot's daily AI-review cap ({cap}) is reached "
+                           "(the free AI quota is shared by 3 bots)"]}
+        verdict["ai"] = ai
+        (F if mode == "required" else W).append("AI review unavailable: " + "; ".join(ai["problems"]))
+    elif mode != "off" and not F:                # don't spend the AI budget on a video already blocked
         # The reviewer reads the SCRIPT, not Whisper's transcript: the speech check above
         # already proved the audio says the script, and Whisper's mishearings ("porn"
         # for "pawn") made the reviewer blame the narration for words never spoken.
@@ -659,6 +675,40 @@ def recent_heads(ledger_path, platform, n=30):
     except (OSError, ValueError):
         return []
     return [e["head"] for e in entries if e.get("ok") and e.get("platform") == platform and e.get("head")][-n:]
+
+
+def ai_reviews_today(ledger_path, now=None):
+    """Real AI reviews (ai.available True) logged in this ledger on the current UTC day."""
+    try:
+        with open(ledger_path, encoding="utf-8") as fh:
+            entries = json.load(fh).get("entries", [])
+    except (OSError, ValueError):
+        return 0
+    day = (now or datetime.now(timezone.utc)).date().isoformat()
+    return sum(1 for e in entries
+               if (e.get("checked_at") or "")[:10] == day and (e.get("ai") or {}).get("available") is True)
+
+
+# Failures that mean the machinery is broken (missing tool, unset secret), not the video.
+INFRA_RE = re.compile(r"could not run|not set|missing or empty|no such file|unavailable", re.I)
+
+
+def failure_key(failures):
+    """A stable key for an infrastructure failure, "" for content failures. Content
+    failures (loudness, freeze, caption, AI blocks) vary from seed to seed and must
+    never stop a retry loop; AI outages have their own handling in each bot."""
+    if not failures:
+        return ""
+    first = str(failures[0])
+    if not INFRA_RE.search(first) or first.startswith("AI review"):
+        return ""
+    return re.sub(r"\d", "#", first.lower())[:60]
+
+
+def systemic(keys, n=3):
+    """True when the last n candidates failed with the same infrastructure problem."""
+    last = list(keys)[-n:]
+    return len(last) == n and bool(last[0]) and len(set(last)) == 1 and not last[0].startswith("ai review")
 
 
 def blocked_since(ledger_path, since_iso):

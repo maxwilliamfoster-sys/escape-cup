@@ -103,6 +103,23 @@ class TestRetries(unittest.TestCase):
         self.assertEqual(len(calls), 1)
         self.assertEqual(state["excluded_seeds"].get("k", []), [])
 
+    def test_same_infrastructure_failure_three_times_stops(self):
+        seeds = iter(range(50, 80))
+        calls = []
+
+        def build(st, exclude_seeds):
+            calls.append(1)
+            return {"seed": next(seeds), "failures": ["Video check could not run: ffprobe missing"]}
+        v, reasons = main._build_with_retries({}, "k", build)
+        self.assertIsNone(v)
+        self.assertEqual(len(calls), 3)
+        self.assertIn("same failure 3 times in a row", reasons[-1])
+
+    def test_gate_profile_caps_daily_ai_reviews(self):
+        with mock.patch.object(main.upload_gate, "check", return_value={"ok": True}) as chk:
+            main.gate("x.mp4", "c", {}, (1, 2))
+        self.assertEqual(chk.call_args.kwargs["profile"]["ai_daily_cap"], 8)
+
     def test_first_passing_render_is_used(self):
         seeds = iter([5, 6])
 

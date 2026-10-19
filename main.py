@@ -59,6 +59,10 @@ MIN_LEAD = timedelta(minutes=25)     # never schedule a slot closer than this
 # 60 min). MAX_ATTEMPTS is only a per-slot safety cap. If a slot still has nothing,
 # the run stops there and the next 3-hourly run retries it (HORIZON = 26h ahead).
 MAX_ATTEMPTS = 12
+# Real AI reviews per UTC day for this bot. The free Groq quota is shared by 3 bots
+# (chess 10, Escape 8, BCF 20 = ~165k of 200k tokens; growth-lab PLAN_2026-10-19).
+AI_DAILY_CAP = 8
+SYSTEMIC_STOP = "same failure 3 times in a row - stopping (not a content problem; check the log)"
 RUN_BUDGET_S = 45 * 60
 _RUN_START = time.monotonic()
 
@@ -242,7 +246,8 @@ GATE_CONTEXT = ("Escape Cup: physics simulation. Country flag balls bounce insid
 def gate(path, caption, state, seconds):
     return upload_gate.check(path, "tiktok", profile={
         "fps": 60, "seconds": seconds, "min_video_kbps": quality.MIN_VIDEO_KBPS,
-        "lufs": quality.LUFS_RANGE, "ai_review": "if_available", "ai_context": GATE_CONTEXT,
+        "lufs": quality.LUFS_RANGE, "ai_review": "if_available", "ai_daily_cap": AI_DAILY_CAP,
+        "ai_context": GATE_CONTEXT,
         "ledger": GATE_LEDGER}, caption=caption, ai_label=False,
         recent_texts=_recent_heads(state))
 
@@ -275,7 +280,7 @@ def _build_with_retries(state, key, build):
     seeds: the base seed is deterministic, so without this every 3-hourly run
     retried the same failing seeds forever."""
     tried = list(state.get("excluded_seeds", {}).get(key, []))
-    reasons = []
+    reasons, keys = [], []
     slowest = 0.0
     for attempt in range(MAX_ATTEMPTS):
         # only start a render that can finish inside the run's budget
@@ -302,6 +307,12 @@ def _build_with_retries(state, key, build):
         state.setdefault("excluded_seeds", {}).setdefault(key, []).append(v["seed"])
         reasons.append(f"seed {v['seed']}: " + "; ".join(v["failures"]))
         print("[quality] FAILED", reasons[-1])
+        # A broken tool or secret fails every seed the same way: stop burning minutes.
+        keys.append(upload_gate.failure_key(v["failures"]))
+        if upload_gate.systemic(keys):
+            reasons.append(SYSTEMIC_STOP)
+            print("[quality]", SYSTEMIC_STOP)
+            break
         if attempt + 1 < MAX_ATTEMPTS:
             print(f"[retry] render {attempt + 2} with a new seed")
     return None, reasons

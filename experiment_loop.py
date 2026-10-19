@@ -8,7 +8,9 @@ default config and losers REVERTED with no human step. The guard rails keep
 that safe:
 - only levers and values listed in the bot's levers.json can ever be applied
   (pre-vetted; every render still goes through the bot's own quality gates)
-- one running experiment per channel; a new one starts only when none is running
+- one running experiment per channel (chess's legacy motion+choice 2x2 is the one
+  exception); a new one starts only when none is running
+- verdicts change config only on Sundays (UTC) or at max n: see DECISION_WEEKDAY
 - verdicts come from growth_stats.judge (bootstrap CI, stricter early stop,
   leave-one-out, guardrails) with the measured min/max posts per arm
 - no data (API failure) = no decisions; paused = no decisions
@@ -28,6 +30,8 @@ import random
 from datetime import date
 
 import growth_stats as gs
+
+DECISION_WEEKDAY = 6          # Sunday (date.weekday()); weekly looks, as judge() was simulated for
 
 ENDED = ("promoted", "reverted", "stalled")
 
@@ -163,6 +167,16 @@ def evaluate(ledger, levers, config, posts, today, data_ok=True):
         e["last_judged"] = today
         e["result"] = gs.format_result(e["id"], e.get("metric", "hold"), res).replace("**", "")
         age = (date.fromisoformat(today) - date.fromisoformat(e["start_date"][:10])).days
+        # growth_stats.judge's interim_level=0.98 was simulated for WEEKLY looks (8.7% false
+        # alarms over 4); nightly decisions inflate that. So verdicts change config only on
+        # Sundays, or once both arms reach max n (no more data is coming).
+        decided = res["verdict"] in (gs.WINNER, gs.LOSER, gs.INCONCLUSIVE, gs.BLOCKED)
+        at_max = min(len(hold["control"]), len(hold["variant"])) >= e_max
+        if decided and not at_max and date.fromisoformat(today).weekday() != DECISION_WEEKDAY:
+            e["pending_verdict"] = res["verdict"]
+            actions.append(f"{channel}: {e['id']} looks like {res['verdict']} - decided on Sunday")
+            continue
+        e.pop("pending_verdict", None)
         if res["verdict"] == gs.WINNER:
             e["status"], e["ended"] = "promoted", today
             config["values"][e["lever"]] = e["variant"]
