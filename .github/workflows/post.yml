@@ -22,7 +22,7 @@ concurrency:
 jobs:
   schedule:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60     # main.py retries rejected renders for up to 45 min
     permissions:
       contents: write      # push the media branch + commit tournament_state.json
     steps:

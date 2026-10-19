@@ -28,6 +28,7 @@ import json
 import os
 import random
 import sys
+import time
 import traceback
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -53,7 +54,13 @@ WEEKDAY_SLOTS = [(16, 30), (20, 0)]
 WEEKEND_SLOTS = [(12, 0), (19, 30)]
 HORIZON = timedelta(hours=26)        # how far ahead to schedule (= your veto window)
 MIN_LEAD = timedelta(minutes=25)     # never schedule a slot closer than this
-MAX_ATTEMPTS = 3                     # different matches tried before a slot is skipped
+# A rejected render never skips a slot: new seeds are tried until one passes the
+# quality gate AND the upload gate, while the run's time budget lasts (job timeout
+# 60 min). MAX_ATTEMPTS is only a per-slot safety cap. If a slot still has nothing,
+# the run stops there and the next 3-hourly run retries it (HORIZON = 26h ahead).
+MAX_ATTEMPTS = 12
+RUN_BUDGET_S = 45 * 60
+_RUN_START = time.monotonic()
 
 RESULT_LINE = {16: "advances to the Round of 16", 8: "reaches the quarter-finals",
                4: "reaches the semi-finals", 2: "reaches the Final"}
@@ -222,24 +229,34 @@ def build_passing(state):
 
 
 def _build_with_retries(state, key, build):
-    """Up to MAX_ATTEMPTS seeds. Failing seeds are saved in state["excluded_seeds"]
-    so the next run tries NEW seeds: the base seed is deterministic, so without
-    this every 3-hourly run retried the same 3 failing seeds forever."""
+    """New seeds until one passes (up to MAX_ATTEMPTS, while RUN_BUDGET_S lasts).
+    Failing seeds are saved in state["excluded_seeds"] so the next run tries NEW
+    seeds: the base seed is deterministic, so without this every 3-hourly run
+    retried the same failing seeds forever."""
     tried = list(state.get("excluded_seeds", {}).get(key, []))
     reasons = []
-    for _ in range(MAX_ATTEMPTS):
+    slowest = 0.0
+    for attempt in range(MAX_ATTEMPTS):
+        # only start a render that can finish inside the run's budget
+        if attempt and time.monotonic() - _RUN_START + slowest > RUN_BUDGET_S:
+            reasons.append("out of time for this run - the next run retries this slot")
+            break
+        t0 = time.monotonic()
         try:
             v = build(state, exclude_seeds=tried)
         except RuntimeError as exc:              # director found no acceptable seed
             reasons.append(f"no usable simulation: {exc}")
             print("[quality] FAILED", reasons[-1])
             break
+        slowest = max(slowest, time.monotonic() - t0)
         if not v["failures"]:
             return v, reasons
         tried.append(v["seed"])
         state.setdefault("excluded_seeds", {}).setdefault(key, []).append(v["seed"])
         reasons.append(f"seed {v['seed']}: " + "; ".join(v["failures"]))
         print("[quality] FAILED", reasons[-1])
+        if attempt + 1 < MAX_ATTEMPTS:
+            print(f"[retry] render {attempt + 2} with a new seed")
     return None, reasons
 
 
@@ -620,8 +637,9 @@ def run(sample=False, local=False, royale=False):
             # seeds (failed ones are saved). (A failed royale heat stops too, so
             # the arms never drift out of their slots.)
             tournament.save(state)
-            notify.send(f"🛑 <b>Escape Cup: nothing scheduled for {when}</b>\n"
-                        f"{MAX_ATTEMPTS} renders failed the quality gate / upload gate:\n"
+            notify.send(f"🛑 <b>Escape Cup: {when} not filled yet</b> - the next run "
+                        f"(within 3h) retries it with new seeds.\n"
+                        f"{len(reasons)} render(s) failed the quality gate / upload gate:\n"
                         + html.escape("\n".join(reasons))[:3000])
             break
         protect = {e.get("file") for e in state.get("log", []) if e.get("status") == "scheduled"}

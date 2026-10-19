@@ -57,10 +57,32 @@ class TestRetries(unittest.TestCase):
 
         def build(st, exclude_seeds):
             return {"seed": next(seeds), "failures": ["loudness"]}
-        v, reasons = main._build_with_retries(state, "k", build)
+        with mock.patch.object(main, "MAX_ATTEMPTS", 3):
+            v, reasons = main._build_with_retries(state, "k", build)
         self.assertIsNone(v)
         self.assertEqual(state["excluded_seeds"]["k"], [1, 2, 3, 4])
         self.assertEqual(len(reasons), 3)
+
+    def test_keeps_retrying_past_three_rejections(self):
+        seeds = iter(range(10, 30))
+
+        def build(st, exclude_seeds):
+            s = next(seeds)
+            return {"seed": s, "failures": [] if s == 17 else ["AI review: blocked"]}
+        v, reasons = main._build_with_retries({}, "k", build)
+        self.assertEqual(v["seed"], 17)
+        self.assertEqual(len(reasons), 7)
+
+    def test_stops_when_the_run_is_out_of_time(self):
+        seeds = iter(range(100))
+
+        def build(st, exclude_seeds):
+            return {"seed": next(seeds), "failures": ["x"]}
+        with mock.patch.object(main, "_RUN_START", main.time.monotonic() - main.RUN_BUDGET_S):
+            v, reasons = main._build_with_retries({}, "k", build)
+        self.assertIsNone(v)
+        self.assertEqual(len(reasons), 2)          # one render, then "out of time"
+        self.assertIn("out of time", reasons[-1])
 
     def test_director_error_is_a_gate_failure_not_a_crash(self):
         def build(st, exclude_seeds):

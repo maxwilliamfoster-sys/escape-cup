@@ -458,6 +458,8 @@ def ai_review(path, platform, profile, *, title="", caption="", transcript="", s
     images = _images_b64(path, dur)
     content = [{"type": "text", "text": (
         f"You are the final pre-publication reviewer for a {PLATFORMS[platform]['name']} channel. "
+        # Without the date the model called 2025/2026 events "future dates" and blocked them.
+        f"Today's date is {datetime.now(timezone.utc):%d %B %Y}; events up to today are in the past.\n"
         f"Channel: {profile.get('ai_context') or 'short vertical videos'}\n"
         f"Image 1 is the first frame (what a scroller sees). Images 2-3 are contact sheets of 12 "
         f"frames spread evenly through the {dur:.0f}s video, in reading order.\n"
