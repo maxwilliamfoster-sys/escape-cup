@@ -101,11 +101,41 @@ class TestRetries(unittest.TestCase):
         self.assertEqual(main.RUN_BUDGET_S, 35 * 60)
 
     def test_director_error_is_a_gate_failure_not_a_crash(self):
-        def build(st, exclude_seeds):
+        def build(st, exclude_seeds, tries=None):
             raise RuntimeError("no acceptable seed in 400 tries")
         v, reasons = main._build_with_retries({}, "k", build)
         self.assertIsNone(v)
         self.assertIn("no usable simulation", reasons[0])
+
+    def test_director_exhaustion_retries_wider_once(self):
+        calls = []
+
+        def build(st, exclude_seeds, tries=None):
+            calls.append(tries)
+            if tries is None:
+                raise RuntimeError("no acceptable seed in 400 tries")
+            return {"seed": 7, "failures": []}
+        v, _ = main._build_with_retries({}, "k", build)
+        self.assertEqual(v["seed"], 7)
+        self.assertEqual(calls, [None, 1200])
+
+    def test_royale_searches_900_seeds_when_widening(self):
+        calls = []
+
+        def build(st, exclude_seeds, tries=None):
+            calls.append(tries)
+            raise RuntimeError("none")
+        with mock.patch.object(main, "royale_heat", return_value=3):
+            main._build_with_retries({}, "royale-3", build, wide_tries=main.WIDE_TRIES_ROYALE)
+        self.assertEqual(calls, [None, 900])
+
+    def test_prune_excluded_drops_published_keys(self):
+        state = {"excluded_seeds": {"5-0-1": [1], "5-0-2": [2], "royale-4": [3], "royale-5": [4]},
+                 "log": [{"edition": 5, "r": 0, "m": 1, "status": "published"},
+                         {"edition": 5, "r": 0, "m": 2, "status": "scheduled"},
+                         {"series": "royale", "heat": 4, "status": "published"}]}
+        main.prune_excluded(state)
+        self.assertEqual(state["excluded_seeds"], {"5-0-2": [2], "royale-5": [4]})
 
     def test_caption_only_failure_keeps_seed_and_stops(self):
         calls = []

@@ -59,6 +59,10 @@ MIN_LEAD = timedelta(minutes=25)     # never schedule a slot closer than this
 # 60 min). MAX_ATTEMPTS is only a per-slot safety cap. If a slot still has nothing,
 # the run stops there and the next 3-hourly run retries it (HORIZON = 26h ahead).
 MAX_ATTEMPTS = 12
+# When the director finds no acceptable seed in its usual 400/300 tries, it searches
+# this many once before the slot is given up (x3 the defaults).
+WIDE_TRIES_CUP = 1200
+WIDE_TRIES_ROYALE = 900
 # Real AI reviews per UTC day for this bot. The free Groq quota is shared by 3 bots
 # (chess 10, Escape 8, BCF 20 = ~165k of 200k tokens; growth-lab PLAN_2026-10-19).
 AI_DAILY_CAP = 8
@@ -181,14 +185,14 @@ def _caption_only(caption, fails, **fields):
             "failures": [f"caption: {f}" for f in fails], **fields}
 
 
-def build_one(state, exclude_seeds=()):
+def build_one(state, exclude_seeds=(), tries=None):
     """Render + gate the next match. Returns dict with path, caption, report, failures..."""
     r, m = tournament.next_match(state)
     match = state["rounds"][r][m]
     a, b = match["a"], match["b"]
     d = tournament.describe(state, r, m)
     base = int(hashlib.sha1(f"{state['edition']}-{r}-{m}".encode()).hexdigest()[:7], 16)
-    seed, drama = director.pick(base, exclude=exclude_seeds)
+    seed, drama = director.pick(base, exclude=exclude_seeds, **({"tries": tries} if tries else {}))
     phys = sim.simulate(seed)
     winner = [a, b][phys.winner]
     is_final = d["size"] == 1
@@ -278,24 +282,53 @@ def build_passing(state):
     return _build_with_retries(state, key, build_one)
 
 
-def _build_with_retries(state, key, build):
+def prune_excluded(state):
+    """Drop excluded_seeds of matches/heats already published: they are never
+    built again, so their lists only grew the state file."""
+    done = set()
+    for e in state.get("log", []):
+        if e.get("status") != "published":
+            continue
+        done.add(f"royale-{e['heat']}" if e.get("series") == "royale"
+                 else f"{e.get('edition')}-{e.get('r')}-{e.get('m')}")
+    ex = state.get("excluded_seeds", {})
+    for k in [k for k in ex if k in done]:
+        del ex[k]
+
+
+def _build(build, state, tried, tries):
+    if tries:
+        return build(state, exclude_seeds=tried, tries=tries)
+    return build(state, exclude_seeds=tried)
+
+
+def _build_with_retries(state, key, build, wide_tries=WIDE_TRIES_CUP):
     """New seeds until one passes (up to MAX_ATTEMPTS, while RUN_BUDGET_S lasts).
     Failing seeds are saved in state["excluded_seeds"] so the next run tries NEW
     seeds: the base seed is deterministic, so without this every 3-hourly run
-    retried the same failing seeds forever."""
+    retried the same failing seeds forever. If the director runs out of
+    acceptable seeds, it searches wider (wide_tries) once before giving up."""
     tried = list(state.get("excluded_seeds", {}).get(key, []))
     global _SLOWEST
     reasons, keys = [], []
+    tries = None
     for attempt in range(MAX_ATTEMPTS):
         # only start a render that can finish inside the run's budget
         if time.monotonic() - _RUN_START + _SLOWEST > RUN_BUDGET_S:
             reasons.append("out of time for this run - the next run retries this slot")
             break
         t0 = time.monotonic()
-        try:
-            v = build(state, exclude_seeds=tried)
-        except RuntimeError as exc:              # director found no acceptable seed
-            reasons.append(f"no usable simulation: {exc}")
+        v, err = None, None
+        for t in ([tries] if tries else [None, wide_tries]):
+            try:
+                v, tries = _build(build, state, tried, t), t
+                break
+            except RuntimeError as exc:          # director found no acceptable seed
+                err = exc
+                if t is None:
+                    print(f"[quality] {exc} - searching wider ({wide_tries} seeds)")
+        if v is None:
+            reasons.append(f"no usable simulation: {err}")
             print("[quality] FAILED", reasons[-1])
             break
         _SLOWEST = max(_SLOWEST, time.monotonic() - t0)
@@ -452,11 +485,11 @@ def make_royale_caption(codes, heat, rng, recent_heads=()):
     return f"{first}\n{second}\n{rng.choice(ROYALE_TEASES)}\n{' '.join(tags)}"
 
 
-def build_royale(state, exclude_seeds=()):
+def build_royale(state, exclude_seeds=(), tries=None):
     heat = royale_heat(state)
     codes = royale_field(heat)
     base = int(hashlib.sha1(f"royale-{heat}".encode()).hexdigest()[:7], 16)
-    seed, drama = director.pick_royale(base, exclude=exclude_seeds)
+    seed, drama = director.pick_royale(base, exclude=exclude_seeds, **({"tries": tries} if tries else {}))
     phys = sim.simulate(seed, **sim.ROYALE)
     winner = codes[phys.winner]
     podium = [codes[i] for i in sim.standings(phys)[:3]]
@@ -492,7 +525,8 @@ def build_royale(state, exclude_seeds=()):
 
 
 def build_passing_royale(state):
-    return _build_with_retries(state, f"royale-{royale_heat(state)}", build_royale)
+    return _build_with_retries(state, f"royale-{royale_heat(state)}", build_royale,
+                               wide_tries=WIDE_TRIES_ROYALE)
 
 
 def label(e):
@@ -702,6 +736,7 @@ def run(sample=False, local=False, royale=False):
 
     org, channel = publish.tiktok_channel()
     state = reconcile(state, org, channel)
+    prune_excluded(state)
     tournament.save(state)
     pending = publish.pending_posts(org, channel)
     taken = [datetime.fromisoformat(p["dueAt"].replace("Z", "+00:00")) for p in pending if p.get("dueAt")]
