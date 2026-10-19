@@ -251,6 +251,31 @@
     "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation that ends with a clear winner and a tease for the next heat, with no policy or rendering issues.",
     "tokens": 4061
    }
+  },
+  {
+   "checked_at": "2026-10-19T20:36:03+00:00",
+   "platform": "tiktok",
+   "file": "ec01_r3_m01_105685225019.mp4",
+   "sha256": "d2627de56a0cec83e665dd0406d4e24d5c46c56e56b8072d08b8a3c6786aae47",
+   "head": "Which country escapes first? Italy 🇮🇹 vs Ireland 🇮🇪 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 17.45,
+    "lufs": -16.9,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The video presents a coherent, polished physics simulation of Italy vs. Ireland with clear on-screen text, a consistent scoreboard progression, and a clean end card that matches the caption's teaser for the next match.",
+    "tokens": 4082
+   }
   }
  ]
 }
