@@ -11,6 +11,7 @@ These rules come from `Projects/Content-Bots/growth-lab` (README, EXPERIMENT_TEM
 - Primary metric: median avg % watched at 72h. Guardrails: views@72h, likes per 1k.
 - Min/max n per arm: 10 / 20. This was raised from the original 6 on 2026-10-15, because the measured spread made 6 too few to tell noise from a real effect.
 - Start: 2026-10-13 (first royale 10-14). Earliest judge date: about 2026-10-27.
+- 2026-10-19 amendment: the royale caption's first line now names the heat ("Escape Royale heat N: …") and the second line starts "Featuring …". This fixes a deadlock: all 5 old first lines had become "recent", so the repeat rule blocked every royale render. Captions are now checked before rendering.
 - Result: —
 
 ## Queue (research 2026-10-15: growth-lab/research/reports/TikTok growth and testing methods.md)

@@ -144,6 +144,35 @@ def make_caption(state, a, b, d, preview, rng):
     return f"{head}\n{second}\n{tease}\n{' '.join(tags)}"
 
 
+CAPTION_TRIES = 6
+
+
+def _pick_caption(build, seed, check):
+    """Captions are checked BEFORE rendering: a words-only failure (e.g. a repeated
+    first line) used to throw away a finished render and exclude a good seed.
+    Tries the seed's own wording first (unchanged from before), then re-rolls the
+    words only. Returns (caption, failures of the last try)."""
+    caption, fails = "", []
+    for k in range(CAPTION_TRIES):
+        caption = build(random.Random(seed if k == 0 else f"{seed}-cap{k}"))
+        fails = check(caption)
+        if not fails:
+            break
+    return caption, fails
+
+
+def _caption_failures(caption, state, a, b):
+    """Our caption rules plus the upload gate's text layer (same recent headlines)."""
+    return (quality.check_caption(caption, a, b, state.get("recent_captions", []))
+            + upload_gate.check_text("tiktok", caption=caption, recent_texts=_recent_heads(state))[0])
+
+
+def _caption_only(caption, fails, **fields):
+    """Build result for a caption that failed every re-roll: nothing was rendered."""
+    return {"path": None, "caption": caption, "report": {}, "gate": None, "caption_only": True,
+            "failures": [f"caption: {f}" for f in fails], **fields}
+
+
 def build_one(state, exclude_seeds=()):
     """Render + gate the next match. Returns dict with path, caption, report, failures..."""
     r, m = tournament.next_match(state)
@@ -155,7 +184,6 @@ def build_one(state, exclude_seeds=()):
     phys = sim.simulate(seed)
     winner = [a, b][phys.winner]
     is_final = d["size"] == 1
-    rng = random.Random(seed)
 
     if is_final:
         titles = state["titles"].get(winner, 0) + 1
@@ -178,16 +206,20 @@ def build_one(state, exclude_seeds=()):
 
     info = dict(a=a, b=b, header=d["header"], result_line=result, theme=theme,
                 next_label=next_label, next_line=next_line, cta=cta, final=is_final)
+    fname = f"ec{state['edition']:02d}_r{r}_m{m:02d}_{seed}.mp4"
+    caption, cap_fail = _pick_caption(
+        lambda g: make_caption(state, a, b, d, preview, g), seed,
+        lambda c: _caption_failures(c, state, a, b))
+    if cap_fail:
+        return _caption_only(caption, cap_fail, seed=seed, file=fname, winner=winner, r=r, m=m,
+                             round=d["round_name"], a=a, b=b, theme=theme, drama=drama)
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(WORK, exist_ok=True)
-    fname = f"ec{state['edition']:02d}_r{r}_m{m:02d}_{seed}.mp4"
     path = os.path.join(OUT, fname)
     render.render_match(phys, info, path, WORK)
 
-    caption = make_caption(state, a, b, d, preview, rng)
     report, failures = quality.check_video(path, len(phys.frames) / sim.FPS)
     failures += quality.check_content(a, b, winner, phys.breaks)
-    failures += quality.check_caption(caption, a, b, state.get("recent_captions", []))
     verdict = gate(path, caption, state, quality.DURATION_RANGE) if not failures else None
     if verdict:
         failures += verdict["failures"]
@@ -212,7 +244,16 @@ def gate(path, caption, state, seconds):
         "fps": 60, "seconds": seconds, "min_video_kbps": quality.MIN_VIDEO_KBPS,
         "lufs": quality.LUFS_RANGE, "ai_review": "if_available", "ai_context": GATE_CONTEXT,
         "ledger": GATE_LEDGER}, caption=caption, ai_label=False,
-        recent_texts=[c.split("\n")[0] for c in state.get("recent_captions", [])])
+        recent_texts=_recent_heads(state))
+
+
+def _recent_heads(state):
+    """First caption lines the gate counts as recent: our last 40 captions plus the
+    headlines it approved before (upload_gate.check adds those from its ledger)."""
+    heads = [c.split("\n")[0] for c in state.get("recent_captions", [])]
+    if GATE_LEDGER:
+        heads += upload_gate.recent_heads(GATE_LEDGER, "tiktok")
+    return heads
 
 
 def _gate_record(v):
@@ -251,6 +292,12 @@ def _build_with_retries(state, key, build):
         slowest = max(slowest, time.monotonic() - t0)
         if not v["failures"]:
             return v, reasons
+        if v.get("caption_only"):
+            # The words failed every re-roll; a new seed wouldn't change them, and the
+            # seed itself is fine, so it stays usable.
+            reasons.append("; ".join(v["failures"]))
+            print("[quality] FAILED", reasons[-1])
+            break
         tried.append(v["seed"])
         state.setdefault("excluded_seeds", {}).setdefault(key, []).append(v["seed"])
         reasons.append(f"seed {v['seed']}: " + "; ".join(v["failures"]))
@@ -372,13 +419,22 @@ def royale_league(state, extra_podium=()):
     return "LEAGUE: " + "  ·  ".join(f"{teams.name(c).upper()} {p}" for c, p in top)
 
 
-def make_royale_caption(codes, heat, rng):
+def make_royale_caption(codes, heat, rng, recent_heads=()):
+    """The first line names the heat, so it differs from every earlier heat's. With
+    only the 5 bare ROYALE_HEADS, all 5 were "recent" by 2026-10-19 and the gate's
+    repeat rule blocked every royale render. A re-render of the same heat (after a
+    Buffer veto) takes a phrasing that isn't recent yet."""
     home = next(c for c in codes if c in teams.HOME_NATIONS)
     named = ["gb-eng", home] + [c for c in codes if c in teams.BIG_FANBASES and c != "gb-eng"][:2]
-    second = (f"Escape Royale heat {heat}: " + ", ".join(teams.name(c) for c in named)
+    second = ("Featuring " + ", ".join(teams.name(c) for c in named)
               + f" and {len(codes) - len(named)} more")
+    heads = list(ROYALE_HEADS)
+    rng.shuffle(heads)
+    recent = {upload_gate._norm_space(h) for h in recent_heads if h}
+    firsts = [f"Escape Royale heat {heat}: {h}" for h in heads]
+    first = next((f for f in firsts if upload_gate._norm_space(f) not in recent), firsts[0])
     tags = NICHE_TAGS + [rng.choice(ROTATING_TAG), "#countryballs"]
-    return f"{rng.choice(ROYALE_HEADS)}\n{second}\n{rng.choice(ROYALE_TEASES)}\n{' '.join(tags)}"
+    return f"{first}\n{second}\n{rng.choice(ROYALE_TEASES)}\n{' '.join(tags)}"
 
 
 def build_royale(state, exclude_seeds=()):
@@ -389,23 +445,28 @@ def build_royale(state, exclude_seeds=()):
     phys = sim.simulate(seed, **sim.ROYALE)
     winner = codes[phys.winner]
     podium = [codes[i] for i in sim.standings(phys)[:3]]
-    rng = random.Random(seed)
     themes = [t for t in render.THEMES if t != render.FINAL_THEME]
     # offset from the cup's rotation so back-to-back posts rarely share a look
     theme = themes[(state.get("posts", 0) + len(themes) // 2) % len(themes)]
     info = dict(codes=codes, header=f"ESCAPE ROYALE  ·  HEAT {heat}", theme=theme,
                 league_line=royale_league(state, podium), next_line="NEW HEAT, 16 NEW COUNTRIES NEXT")
+    fname = f"royale{heat:03d}_{seed}.mp4"
+    heads = _recent_heads(state)
+    caption, cap_fail = _pick_caption(
+        lambda g: make_royale_caption(codes, heat, g, heads), seed,
+        lambda c: _caption_failures(c, state, None, None))
+    if cap_fail:
+        return _caption_only(caption, cap_fail, seed=seed, file=fname, winner=winner,
+                             series="royale", heat=heat, codes=codes, podium=podium,
+                             round=f"Escape Royale heat {heat}", theme=theme, drama=drama)
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(WORK, exist_ok=True)
-    fname = f"royale{heat:03d}_{seed}.mp4"
     path = os.path.join(OUT, fname)
     render.render_royale(phys, info, path, WORK)
 
-    caption = make_royale_caption(codes, heat, rng)
     report, failures = quality.check_video(path, len(phys.frames) / sim.FPS,
                                            quality.ROYALE_DURATION_RANGE)
     failures += quality.check_royale(codes, winner, phys.breaks)
-    failures += quality.check_caption(caption, None, None, state.get("recent_captions", []))
     verdict = gate(path, caption, state, quality.ROYALE_DURATION_RANGE) if not failures else None
     if verdict:
         failures += verdict["failures"]

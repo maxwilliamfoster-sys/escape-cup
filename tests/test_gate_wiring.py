@@ -91,6 +91,18 @@ class TestRetries(unittest.TestCase):
         self.assertIsNone(v)
         self.assertIn("no usable simulation", reasons[0])
 
+    def test_caption_only_failure_keeps_seed_and_stops(self):
+        calls = []
+
+        def build(st, exclude_seeds):
+            calls.append(1)
+            return {"seed": 9, "failures": ["caption: repeat"], "caption_only": True}
+        state = {"excluded_seeds": {}}
+        v, reasons = main._build_with_retries(state, "k", build)
+        self.assertIsNone(v)
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(state["excluded_seeds"].get("k", []), [])
+
     def test_first_passing_render_is_used(self):
         seeds = iter([5, 6])
 
