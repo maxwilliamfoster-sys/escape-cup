@@ -165,7 +165,10 @@ def evaluate(ledger, levers, config, posts, today, data_ok=True):
                            guardrails={"views@72h": (views["control"], views["variant"], True)})
         e["verdict"] = res["verdict"]
         e["last_judged"] = today
-        e["result"] = gs.format_result(e["id"], e.get("metric", "hold"), res).replace("**", "")
+        # label from what was actually judged: a test amended to views72 keeps its old
+        # "metric" text in the ledger, which printed views numbers under "% watched"
+        label = "views@72h" if lever.get("primary") == "views72" else e.get("metric", "hold")
+        e["result"] = gs.format_result(e["id"], label, res).replace("**", "")
         age = (date.fromisoformat(today) - date.fromisoformat(e["start_date"][:10])).days
         # growth_stats.judge's interim_level=0.98 was simulated for WEEKLY looks (8.7% false
         # alarms over 4); nightly decisions inflate that. So verdicts change config only on
