@@ -541,6 +541,17 @@ def reconcile(state, org, channel):
     log = state.get("log", [])
     pending = publish.pending_posts(org, channel)
     pending_ids = {p["id"] for p in pending}
+    # A scheduled Buffer post the log doesn't know means a run was killed between
+    # scheduling and saving. Alert once; never delete it automatically.
+    known = {e.get("buffer_id") for e in log}
+    alerted = state.setdefault("orphans_alerted", [])
+    for p in pending:
+        if p["id"] not in known and p["id"] not in alerted:
+            due = (p.get("dueAt") or "?")[:16].replace("T", " ")
+            notify.send("⚠️ <b>Escape Cup: a scheduled Buffer post isn't in the bracket log</b> "
+                        f"(due {html.escape(due)} UTC). A run was probably killed mid-post. "
+                        "Delete it in Buffer if it duplicates a match.")
+            alerted.append(p["id"])
     # First learn the status of EVERY entry (a later match may already be live,
     # which decides whether rewinding is allowed), then act on the earliest drop.
     drop_at = None

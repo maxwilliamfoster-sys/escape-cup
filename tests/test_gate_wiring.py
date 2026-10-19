@@ -146,5 +146,20 @@ class TestRetries(unittest.TestCase):
         self.assertEqual(v["seed"], 6)
 
 
+class TestReconcile(unittest.TestCase):
+    def test_orphan_pending_post_alerts_once(self):
+        state = {"log": [{"buffer_id": "known", "status": "published"}]}
+        pending = [{"id": "known", "dueAt": "2026-10-20T15:30:00Z"},
+                   {"id": "orphan", "dueAt": "2026-10-20T19:30:00Z"}]
+        with mock.patch.object(publish, "pending_posts", return_value=pending),                 mock.patch.object(publish, "delete_post") as delete,                 mock.patch.object(main.notify, "send") as send:
+            state = main.reconcile(state, "org", "chan")
+            state = main.reconcile(state, "org", "chan")
+        self.assertEqual(send.call_count, 1)
+        self.assertIn("isn't in the bracket log", send.call_args.args[0])
+        self.assertIn("2026-10-20 19:30", send.call_args.args[0])
+        delete.assert_not_called()
+        self.assertEqual(state["orphans_alerted"], ["orphan"])
+
+
 if __name__ == "__main__":
     unittest.main()
