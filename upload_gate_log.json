@@ -226,6 +226,31 @@
     "summary": "The video presents a clear, high-quality physics simulation of country balls escaping rings, with consistent on-screen text and a logical progression from start to finish.",
     "tokens": 4040
    }
+  },
+  {
+   "checked_at": "2026-10-19T14:09:42+00:00",
+   "platform": "tiktok",
+   "file": "royale007_242177096000.mp4",
+   "sha256": "a6099fe8bddd492c7d0056de2470094b636d518e0937de100f61558551b6c037",
+   "head": "Escape Royale heat 7: Country ball escape royale - 16 flags, one exit. Find your country",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 35.92,
+    "lufs": -14.7,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation that ends with a clear winner and a tease for the next heat, with no policy or rendering issues.",
+    "tokens": 4061
+   }
   }
  ]
 }

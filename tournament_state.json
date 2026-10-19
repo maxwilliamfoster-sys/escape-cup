@@ -979,6 +979,50 @@
     "de",
     "it"
    ]
+  },
+  {
+   "edition": 1,
+   "winner": "pl",
+   "seed": 242177096000,
+   "theme": "sunset",
+   "due": "2026-10-20T15:30:00+00:00",
+   "buffer_id": "6ad6250ef8ab1a796324e458",
+   "status": "scheduled",
+   "file": "royale007_242177096000.mp4",
+   "length": 35.9,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "a6099fe8bddd492c7d0056de2470094b636d518e0937de100f61558551b6c037",
+    "checked_at": "2026-10-19T14:09:42+00:00"
+   },
+   "series": "royale",
+   "heat": 7,
+   "codes": [
+    "be",
+    "mx",
+    "kr",
+    "es",
+    "pl",
+    "gb-sct",
+    "no",
+    "jp",
+    "pe",
+    "ro",
+    "vn",
+    "gb-eng",
+    "pt",
+    "it",
+    "ar",
+    "sn"
+   ],
+   "podium": [
+    "pl",
+    "ar",
+    "sn"
+   ]
   }
  ],
  "recent_captions": [
@@ -1017,7 +1061,8 @@
   "16 country balls, 28 rings, one way out. Physics simulation\nEscape Royale heat 5: England, Ireland, Italy, Germany and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
   "Country ball escape - Canada 🇨🇦 vs Ireland 🇮🇪\nQuarter-final · Escape Cup 1\nPhilippines vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #canada #ireland",
   "Philippines 🇵🇭 vs Netherlands 🇳🇱 in the escape rings. Who gets out first?\nSemi-final of Escape Cup 1 🏆\nItaly vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #philippines #netherlands",
-  "16 countries, 1 way out - which country escapes the rings first?\nEscape Royale heat 6: England, Scotland, Portugal, Morocco and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs"
+  "16 countries, 1 way out - which country escapes the rings first?\nEscape Royale heat 6: England, Scotland, Portugal, Morocco and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
+  "Escape Royale heat 7: Country ball escape royale - 16 flags, one exit. Find your country\nFeaturing England, Scotland, Mexico, South Korea and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs"
  ],
  "seen_errors": [],
  "excluded_seeds": {
