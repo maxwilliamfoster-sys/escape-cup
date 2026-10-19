@@ -31,6 +31,8 @@ jobs:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          APP_URL: https://bot-hq.maxwilliamfoster.workers.dev
+          APP_EVENTS_TOKEN: ${{ secrets.APP_EVENTS_TOKEN }}
         run: python analytics.py
       # Nightly experiment loop (growth-lab): judge / promote / revert / start one
       # test from levers.json. Writes only experiments.json, loop_config.json and

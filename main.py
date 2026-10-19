@@ -34,6 +34,7 @@ from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 import director
+import app_events
 import notify
 import publish
 import quality
@@ -529,6 +530,16 @@ def build_passing_royale(state):
                                wide_tries=WIDE_TRIES_ROYALE)
 
 
+def _app(kind, severity, title, body="", **data):
+    """Also tell Bot HQ (the phone app). Telegram alerts are unchanged."""
+    try:
+        short = " ".join(str(title).split())
+        app_events.emit("escape", kind, severity, short if len(short) <= 80 else short[:79] + "…",
+                        body, data=data or None)
+    except Exception as e:
+        print(f"[BotHQ] emit failed: {e}")
+
+
 def label(e):
     """Human name of a log entry, for alerts."""
     if e.get("series") == "royale":
@@ -582,6 +593,9 @@ def reconcile(state, org, channel):
     for p in pending:
         if p["id"] not in known and p["id"] not in alerted:
             due = (p.get("dueAt") or "?")[:16].replace("T", " ")
+            _app("orphan_post", "action", "Escape Cup: a Buffer post isn't in the bracket log",
+                 f"Due {due} UTC. A run was probably killed mid-post. Delete it in Buffer if it "
+                 "duplicates a match.", buffer_id=p["id"])
             notify.send("⚠️ <b>Escape Cup: a scheduled Buffer post isn't in the bracket log</b> "
                         f"(due {html.escape(due)} UTC). A run was probably killed mid-post. "
                         "Delete it in Buffer if it duplicates a match.")
@@ -611,6 +625,10 @@ def reconcile(state, org, channel):
         # A later match already went out, so the bracket can't be rewound. Keep
         # the result; mark it so it is only alerted once.
         dropped["status"] = "lost"
+        _app("post_lost", "action", f"Escape Cup: {title} never reached TikTok",
+             f"Reason: {dropped['drop_reason']}. Later matches were already published, so the "
+             "bracket keeps its result. Check Buffer/TikTok for what went wrong.",
+             buffer_id=dropped.get("buffer_id"))
         notify.send(f"⚠️ <b>Escape Cup: {html.escape(title)} never reached TikTok</b> "
                     f"({html.escape(dropped['drop_reason'])}), and later matches were already "
                     f"published, so the bracket keeps its result.")
@@ -626,6 +644,9 @@ def reconcile(state, org, channel):
            else f"{dropped['edition']}-{dropped['r']}-{dropped['m']}")
     state.setdefault("excluded_seeds", {}).setdefault(key, []).append(dropped["seed"])
     state = tournament.truncate(state, drop_at)
+    _app("post_rewound", "warn", f"Escape Cup: {title} was not published",
+         f"Reason: {dropped['drop_reason']}. It will be re-simulated and scheduled again in order"
+         + (f"; also re-queued: {', '.join(cancelled)}." if cancelled else ". Nothing to do."))
     notify.send(f"↩️ <b>Escape Cup: {html.escape(title)} was not published</b> "
                 f"({html.escape(dropped['drop_reason'])}).\nIt will be re-simulated and scheduled again "
                 f"in order" + (f"; also re-queued: {html.escape(', '.join(cancelled))}." if cancelled else "."))
@@ -759,6 +780,9 @@ def run(sample=False, local=False, royale=False):
             # seeds (failed ones are saved). (A failed royale heat stops too, so
             # the arms never drift out of their slots.)
             tournament.save(state)
+            _app("slot_missed", "warn", f"Escape Cup: {when} slot not filled yet",
+                 f"The next run (within 3h) retries it with new seeds. {len(reasons)} render(s) failed "
+                 "the quality gate / upload gate:\n" + "\n".join(reasons)[:3000])
             notify.send(f"🛑 <b>Escape Cup: {when} not filled yet</b> - the next run "
                         f"(within 3h) retries it with new seeds.\n"
                         f"{len(reasons)} render(s) failed the quality gate / upload gate:\n"
