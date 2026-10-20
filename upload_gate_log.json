@@ -276,6 +276,31 @@
     "summary": "The video presents a coherent, polished physics simulation of Italy vs. Ireland with clear on-screen text, a consistent scoreboard progression, and a clean end card that matches the caption's teaser for the next match.",
     "tokens": 4082
    }
+  },
+  {
+   "checked_at": "2026-10-20T14:19:07+00:00",
+   "platform": "tiktok",
+   "file": "ec01_r4_m00_133050739024.mp4",
+   "sha256": "f68ca0dc942fac45e06e63a00487016d9eaabbc73ef5e7dec4944ba42b53b32e",
+   "head": "THE FINAL 🏆 Netherlands 🇳🇱 vs Ireland 🇮🇪 - which country escapes with the cup?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 18.22,
+    "lufs": -16.8,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The video presents a coherent, polished physics simulation of the Netherlands vs. Ireland final with consistent on-screen text, a clear winner reveal, and a teaser for the next draw, with no policy violations.",
+    "tokens": 4087
+   }
   }
  ]
 }
