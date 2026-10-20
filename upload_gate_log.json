@@ -301,6 +301,31 @@
     "summary": "The video presents a coherent, polished physics simulation of the Netherlands vs. Ireland final with consistent on-screen text, a clear winner reveal, and a teaser for the next draw, with no policy violations.",
     "tokens": 4087
    }
+  },
+  {
+   "checked_at": "2026-10-20T19:19:25+00:00",
+   "platform": "tiktok",
+   "file": "royale008_174841004021.mp4",
+   "sha256": "4d03ade57fbafd66c7f7abbb00a0677bc3b0e24f9a1ee77f629ba49387873249",
+   "head": "Escape Royale heat 8: Which country escapes first? 16 countries in one physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 27.53,
+    "lufs": -13.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation, with a clear hook, progressive ring countdown, and a clean end card naming France as the winner and teasing the next heat.",
+    "tokens": 4074
+   }
   }
  ]
 }

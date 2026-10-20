@@ -991,7 +991,7 @@
    "theme": "sunset",
    "due": "2026-10-20T15:30:00+00:00",
    "buffer_id": "6ad6250ef8ab1a796324e458",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale007_242177096000.mp4",
    "length": 35.9,
    "loop": {
@@ -1026,7 +1026,8 @@
     "pl",
     "ar",
     "sn"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7698773159658458400"
   },
   {
    "edition": 1,
@@ -1035,7 +1036,7 @@
    "theme": "ember",
    "due": "2026-10-20T19:00:00+00:00",
    "buffer_id": "6ad67f9afa946662466a7732",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec01_r3_m01_105685225019.mp4",
    "length": 17.4,
    "loop": {
@@ -1049,7 +1050,8 @@
    "r": 3,
    "m": 1,
    "a": "it",
-   "b": "ie"
+   "b": "ie",
+   "link": "https://tiktok.com/@5lmvill/video/7698827423676189985"
   },
   {
    "edition": 1,
@@ -1073,6 +1075,50 @@
    "m": 0,
    "a": "nl",
    "b": "ie"
+  },
+  {
+   "edition": 2,
+   "winner": "fr",
+   "seed": 174841004021,
+   "theme": "candy",
+   "due": "2026-10-21T19:00:00+00:00",
+   "buffer_id": "6ad7bf20bdfe25c556ef58e0",
+   "status": "scheduled",
+   "file": "royale008_174841004021.mp4",
+   "length": 27.5,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "4d03ade57fbafd66c7f7abbb00a0677bc3b0e24f9a1ee77f629ba49387873249",
+    "checked_at": "2026-10-20T19:19:25+00:00"
+   },
+   "series": "royale",
+   "heat": 8,
+   "codes": [
+    "de",
+    "ma",
+    "jp",
+    "ng",
+    "co",
+    "ua",
+    "sn",
+    "au",
+    "gb-eng",
+    "gb-sct",
+    "fr",
+    "es",
+    "us",
+    "uy",
+    "br",
+    "ch"
+   ],
+   "podium": [
+    "fr",
+    "de",
+    "gb-sct"
+   ]
   }
  ],
  "recent_captions": [
@@ -1114,8 +1160,13 @@
   "16 countries, 1 way out - which country escapes the rings first?\nEscape Royale heat 6: England, Scotland, Portugal, Morocco and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
   "Escape Royale heat 7: Country ball escape royale - 16 flags, one exit. Find your country\nFeaturing England, Scotland, Mexico, South Korea and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "Which country escapes first? Italy 🇮🇹 vs Ireland 🇮🇪 ball escape\nSemi-final · Escape Cup 1\nComing next: Netherlands vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #simulation #italy #ireland",
-  "THE FINAL 🏆 Netherlands 🇳🇱 vs Ireland 🇮🇪 - which country escapes with the cup?\nEscape Cup 1\nEscape Cup 2 starts with a new draw - which country is yours? 👇\n#ballescape #physicssimulation #simulation #netherlands #ireland"
+  "THE FINAL 🏆 Netherlands 🇳🇱 vs Ireland 🇮🇪 - which country escapes with the cup?\nEscape Cup 1\nEscape Cup 2 starts with a new draw - which country is yours? 👇\n#ballescape #physicssimulation #simulation #netherlands #ireland",
+  "Escape Royale heat 8: Which country escapes first? 16 countries in one physics simulation\nFeaturing England, Scotland, Germany, Morocco and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs"
  ],
  "seen_errors": [],
- "excluded_seeds": {}
+ "excluded_seeds": {
+  "royale-8": [
+   174841004000
+  ]
+ }
 }
