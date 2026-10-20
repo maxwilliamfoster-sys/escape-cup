@@ -1,0 +1,24 @@
+name: Ping Bot HQ
+
+# Manual only. Sends one test message to Bot HQ (the phone app) with this repo's
+# APP_EVENTS_TOKEN secret and fails if the app does not accept it, so a wrong or
+# missing token shows up here instead of as silently missing alerts.
+on:
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: app_events.py
+          sparse-checkout-cone-mode: false
+      - name: Send a test event
+        env:
+          BOT: escape
+          APP_URL: https://bot-hq.maxwilliamfoster.workers.dev
+          APP_EVENTS_TOKEN: ${{ secrets.APP_EVENTS_TOKEN }}
+        run: |
+          python3 -c "import os, sys, app_events as a; b = os.environ['BOT']; sys.exit(0 if a.emit(b, 'ping', 'info', b + ' is linked to Bot HQ', 'Test message sent from GitHub Actions.') else 1)"
