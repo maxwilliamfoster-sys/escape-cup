@@ -376,6 +376,106 @@
     "summary": "The video presents a consistent and high-quality physics simulation of a country ball escape game, with clear on-screen text tracking the progress and a definitive winner reveal that matches the caption.",
     "tokens": 4077
    }
+  },
+  {
+   "checked_at": "2026-10-21T17:11:44+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m00_38669349031.mp4",
+   "sha256": "da7b0ee7b55ec3ac3547539ef90cd7e7ee3e66258e0dffeee77545b39fec2335",
+   "head": "Switzerland 🇨🇭 vs Indonesia 🇮🇩: 16 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 20.45,
+    "lufs": -16.7,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The video presents a coherent, polished physics simulation of Switzerland vs Indonesia with consistent on-screen text, a clear winner reveal, and a next-match tease that aligns perfectly with the caption and platform rules.",
+    "tokens": 4088
+   }
+  },
+  {
+   "checked_at": "2026-10-21T17:16:12+00:00",
+   "platform": "tiktok",
+   "file": "royale011_264854410024.mp4",
+   "sha256": "0f13034b959340c3ae7df19c2bb604323347bb8a764b74b3e2835aff4a8cf58a",
+   "head": "Escape Royale heat 11: 16 country balls, 28 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 32.62,
+    "lufs": -13.5,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent physics-simulation story (16 country balls, rings breaking down to a single escape, Belgium winning, next heat teased) with no policy violations.",
+    "tokens": 4070
+   }
+  },
+  {
+   "checked_at": "2026-10-21T17:19:16+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m01_49397826082.mp4",
+   "sha256": "522754d3d629ba6ce24ec7e57963a528dfc201c2c2d8d072bd4805834582ec69",
+   "head": "Mexico 🇲🇽 vs USA 🇺🇸: 16 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 21.43,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The video presents a consistent and high-quality physics simulation of a Mexico vs. USA match, with clear progression from start to finish and a clean end card that matches the caption's teaser.",
+    "tokens": 4089
+   }
+  },
+  {
+   "checked_at": "2026-10-21T17:21:39+00:00",
+   "platform": "tiktok",
+   "file": "royale012_45694311001.mp4",
+   "sha256": "1860f8fbc342ddbf00b3a2ed6a789bfd4534ae362a9431c955ec851c35653622",
+   "head": "Escape Royale heat 12: 16 country balls, 28 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 23.53,
+    "lufs": -14.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent physics-simulation story (16 country balls, 28 rings, Germany escapes first) with clean, readable rendering and no policy violations.",
+    "tokens": 4073
+   }
   }
  ]
 }
