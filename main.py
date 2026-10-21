@@ -15,10 +15,9 @@ before it goes out and can be deleted in Buffer.
 
 Posting plan (research 2026-09-29):
   - first RAMP_DAYS days: 1 video/day at 19:30 UK (new accounts get scrutiny;
-    start slow), then 2/day - far below TikTok's 15/day API cap and the
-    "10+ a day looks like a bot" zone.
-  - weekdays 16:30 (after school) + 20:00 (UK evening peak 7-10pm);
-    weekends 12:00 + 19:30.
+    start slow), then 2/day.
+  - 2026-10-21: 10/day, 08:00-21:30 UK every 90 min (DAY_SLOTS) - still under
+    TikTok's 15/day API cap; more posts = more chances of a heavy-tail hit.
 """
 import argparse
 import copy
@@ -51,22 +50,25 @@ LONDON = ZoneInfo("Europe/London")
 
 RAMP_DAYS = 7
 RAMP_SLOTS = [(19, 30)]
-WEEKDAY_SLOTS = [(16, 30), (20, 0)]
-WEEKEND_SLOTS = [(12, 0), (19, 30)]
-HORIZON = timedelta(hours=26)        # how far ahead to schedule (= your veto window)
+# 10 a day from 2026-10-21 (Max: more posts = more chances of a breakout), 90 min apart, 08:00-21:30 UK.
+DAY_SLOTS = [(8, 0), (9, 30), (11, 0), (12, 30), (14, 0), (15, 30), (17, 0), (18, 30), (20, 0), (21, 30)]
+# How far ahead to schedule (= your veto window). Under 24h so a run never asks Buffer to hold
+# more than one day's 10 posts: the free plan's queue cap is 10 per channel.
+HORIZON = timedelta(hours=20)
 MIN_LEAD = timedelta(minutes=25)     # never schedule a slot closer than this
 # A rejected render never skips a slot: new seeds are tried until one passes the
 # quality gate AND the upload gate, while the run's time budget lasts (job timeout
 # 60 min). MAX_ATTEMPTS is only a per-slot safety cap. If a slot still has nothing,
-# the run stops there and the next 3-hourly run retries it (HORIZON = 26h ahead).
+# the run stops there and the next 3-hourly run retries it (HORIZON = 20h ahead).
 MAX_ATTEMPTS = 12
 # When the director finds no acceptable seed in its usual 400/300 tries, it searches
 # this many once before the slot is given up (x3 the defaults).
 WIDE_TRIES_CUP = 1200
 WIDE_TRIES_ROYALE = 900
 # Real AI reviews per UTC day for this bot. The free Groq quota is shared by 3 bots
-# (chess 10, Escape 8, BCF 20 = ~165k of 200k tokens; growth-lab PLAN_2026-10-19).
-AI_DAILY_CAP = 8
+# (chess 10, Escape 14, BCF 20 = ~190k of 200k tokens; growth-lab PLAN_2026-10-19). 14 = 10
+# posts a day at ~1.1 reviews each (upload_gate_log.json, Oct 2026) plus retries.
+AI_DAILY_CAP = 14
 SYSTEMIC_STOP = "same failure 3 times in a row - stopping (not a content problem; check the log)"
 # Renders finish by 35 min + 15 min hosting/Telegram per slot + ~3 min setup < the
 # 60-min job timeout. Checked before EVERY render (also a later slot's first one),
@@ -118,7 +120,7 @@ def first_post_day(state, fallback):
 def slots_for_day(day, first_day):
     if (day - first_day).days < RAMP_DAYS:
         return RAMP_SLOTS
-    return WEEKEND_SLOTS if day.weekday() >= 5 else WEEKDAY_SLOTS
+    return DAY_SLOTS
 
 
 def upcoming_slots(now, taken, state):

@@ -57,12 +57,28 @@ class ArmTests(unittest.TestCase):
     def test_both_arms_every_day_and_slots_swap(self):
         state = tournament.rebuild(_cup_entries(1))        # first post 2026-10-01: ramp over
         days = []
-        for d in (13, 14):                                   # Tue, Wed (weekday slots)
+        for d in (13, 14):                                   # Tue, Wed
             arms = [main.arm_for(datetime(2026, 10, d, h, m, tzinfo=main.LONDON).astimezone(timezone.utc),
-                                 state) for h, m in main.WEEKDAY_SLOTS]
-            self.assertEqual(sorted(arms), ["cup", "royale"])
+                                 state) for h, m in main.DAY_SLOTS]
+            self.assertEqual(arms.count("cup"), arms.count("royale"))
             days.append(arms)
         self.assertEqual(days[0], days[1][::-1])
+
+
+class SlotTests(unittest.TestCase):
+    STATE = {"log": [{"due": "2026-10-01T18:30:00+00:00"}]}   # ramp long over
+
+    def test_ten_posts_a_day(self):
+        self.assertEqual(len(main.DAY_SLOTS), 10)
+        for d in range(12, 19):                              # a full week, weekend included
+            self.assertEqual(main.slots_for_day(datetime(2026, 10, d).date(), datetime(2026, 10, 1).date()),
+                             main.DAY_SLOTS)
+
+    def test_pending_never_exceeds_the_buffer_queue_cap(self):
+        """Buffer's free plan holds 10 scheduled posts per channel; one run must never ask for more."""
+        for hour in range(24):
+            now = datetime(2026, 10, 14, hour, 5, tzinfo=timezone.utc)
+            self.assertLessEqual(len(main.upcoming_slots(now, [], self.STATE)), 10, now)
 
 
 class FieldTests(unittest.TestCase):

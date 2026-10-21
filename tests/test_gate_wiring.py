@@ -164,7 +164,7 @@ class TestRetries(unittest.TestCase):
     def test_gate_profile_caps_daily_ai_reviews(self):
         with mock.patch.object(main.upload_gate, "check", return_value={"ok": True}) as chk:
             main.gate("x.mp4", "c", {}, (1, 2))
-        self.assertEqual(chk.call_args.kwargs["profile"]["ai_daily_cap"], 8)
+        self.assertEqual(chk.call_args.kwargs["profile"]["ai_daily_cap"], 14)
 
     def test_first_passing_render_is_used(self):
         seeds = iter([5, 6])
