@@ -1119,11 +1119,97 @@
     "de",
     "gb-sct"
    ]
+  },
+  {
+   "edition": 2,
+   "winner": "my",
+   "seed": 119019119047,
+   "theme": "candy",
+   "due": "2026-10-21T20:30:00+00:00",
+   "buffer_id": "6ad8adce3021c1ef52b5da5d",
+   "status": "scheduled",
+   "file": "royale009_119019119047.mp4",
+   "length": 24.1,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "7d5fe6f1300fecc5ced1fb47cb202c752563a4bfb33a0a4edff8a8b8c3650098",
+    "checked_at": "2026-10-21T12:17:51+00:00"
+   },
+   "series": "royale",
+   "heat": 9,
+   "codes": [
+    "ie",
+    "eg",
+    "no",
+    "pl",
+    "gr",
+    "tr",
+    "gb-eng",
+    "dk",
+    "my",
+    "de",
+    "us",
+    "kr",
+    "ng",
+    "jp",
+    "ca",
+    "nz"
+   ],
+   "podium": [
+    "my",
+    "gr",
+    "dk"
+   ]
+  },
+  {
+   "edition": 2,
+   "winner": "id",
+   "seed": 55228539011,
+   "theme": "candy",
+   "due": "2026-10-22T07:00:00+00:00",
+   "buffer_id": "6ad8ae71fe0d0b602287c6f3",
+   "status": "scheduled",
+   "file": "royale010_55228539011.mp4",
+   "length": 33.1,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "3e3c310753c8203807cff1ac3b18adb6d3d1c4cb90aaa7eb1ad681b767237649",
+    "checked_at": "2026-10-21T12:20:37+00:00"
+   },
+   "series": "royale",
+   "heat": 10,
+   "codes": [
+    "gb-eng",
+    "my",
+    "it",
+    "kr",
+    "nz",
+    "ch",
+    "ma",
+    "id",
+    "gh",
+    "ar",
+    "jp",
+    "gb-wls",
+    "fr",
+    "br",
+    "es",
+    "mx"
+   ],
+   "podium": [
+    "id",
+    "gb-wls",
+    "kr"
+   ]
   }
  ],
  "recent_captions": [
-  "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Switzerland 🇨🇭 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nPoland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #scotland #switzerland",
-  "Country ball escape - Poland 🇵🇱 vs Uruguay 🇺🇾\nEscape Cup 1, Round of 32\nNext up: Philippines vs Nigeria - who's your pick? 👇\n#ballescape #physicssimulation #simulation #poland #uruguay",
   "Philippines 🇵🇭 vs Nigeria 🇳🇬: six rings, one way out. Physics simulation\nEscape Cup 1, Round of 32\nComing next: Morocco vs Ukraine. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #philippines #nigeria",
   "Ball escape simulation: Morocco 🇲🇦 vs Ukraine 🇺🇦\nRound of 32 of Escape Cup 1 🏆\nAustralia vs Vietnam is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine",
   "Morocco 🇲🇦 vs Ukraine 🇺🇦 - which country escapes the rings first?\nRound of 32 · Escape Cup 1\nNext up: Australia vs Vietnam - who's your pick? 👇\n#ballescape #physicssimulation #simulation #morocco #ukraine",
@@ -1161,13 +1247,14 @@
   "Escape Royale heat 7: Country ball escape royale - 16 flags, one exit. Find your country\nFeaturing England, Scotland, Mexico, South Korea and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "Which country escapes first? Italy 🇮🇹 vs Ireland 🇮🇪 ball escape\nSemi-final · Escape Cup 1\nComing next: Netherlands vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #simulation #italy #ireland",
   "THE FINAL 🏆 Netherlands 🇳🇱 vs Ireland 🇮🇪 - which country escapes with the cup?\nEscape Cup 1\nEscape Cup 2 starts with a new draw - which country is yours? 👇\n#ballescape #physicssimulation #simulation #netherlands #ireland",
-  "Escape Royale heat 8: Which country escapes first? 16 countries in one physics simulation\nFeaturing England, Scotland, Germany, Morocco and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs"
+  "Escape Royale heat 8: Which country escapes first? 16 countries in one physics simulation\nFeaturing England, Scotland, Germany, Morocco and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
+  "Escape Royale heat 9: 16 country balls, 28 rings, one way out. Physics simulation\nFeaturing England, Ireland, Poland, Turkey and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
+  "Escape Royale heat 10: Which country escapes first? 16 countries in one physics simulation\nFeaturing England, Wales, Italy, South Korea and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #simulation #countryballs"
  ],
  "seen_errors": [],
  "excluded_seeds": {
   "royale-8": [
    174841004000
   ]
- },
- "orphans_alerted": []
+ }
 }

@@ -326,6 +326,56 @@
     "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation, with a clear hook, progressive ring countdown, and a clean end card naming France as the winner and teasing the next heat.",
     "tokens": 4074
    }
+  },
+  {
+   "checked_at": "2026-10-21T12:17:51+00:00",
+   "platform": "tiktok",
+   "file": "royale009_119019119047.mp4",
+   "sha256": "7d5fe6f1300fecc5ced1fb47cb202c752563a4bfb33a0a4edff8a8b8c3650098",
+   "head": "Escape Royale heat 9: 16 country balls, 28 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 24.05,
+    "lufs": -13.7,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell a consistent, coherent story of a physics-based country-ball escape simulation with a clear winner and end card, and no policy violations are present.",
+    "tokens": 4067
+   }
+  },
+  {
+   "checked_at": "2026-10-21T12:20:37+00:00",
+   "platform": "tiktok",
+   "file": "royale010_55228539011.mp4",
+   "sha256": "3e3c310753c8203807cff1ac3b18adb6d3d1c4cb90aaa7eb1ad681b767237649",
+   "head": "Escape Royale heat 10: Which country escapes first? 16 countries in one physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 33.1,
+    "lufs": -13.8,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The video presents a consistent and high-quality physics simulation of a country ball escape game, with clear on-screen text tracking the progress and a definitive winner reveal that matches the caption.",
+    "tokens": 4077
+   }
   }
  ]
 }
