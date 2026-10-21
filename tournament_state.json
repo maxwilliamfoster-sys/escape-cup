@@ -23,20 +23,20 @@
    {
     "a": "ma",
     "b": "pt",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ma",
+    "seed": 27769406028,
+    "melody": "forest",
+    "posted": "2026-10-22T14:30:00+00:00",
+    "buffer_id": "6ad93237cfacd026009711ba"
    },
    {
     "a": "eg",
     "b": "ca",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ca",
+    "seed": 189923844026,
+    "melody": "candy",
+    "posted": "2026-10-22T17:30:00+00:00",
+    "buffer_id": "6ad93367cfacd02600975563"
    },
    {
     "a": "ph",
@@ -158,8 +158,8 @@
     "buffer_id": null
    },
    {
-    "a": null,
-    "b": null,
+    "a": "ma",
+    "b": "ca",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -294,7 +294,7 @@
  "titles": {
   "ie": 1
  },
- "posts": 33,
+ "posts": 35,
  "log": [
   {
    "edition": 1,
@@ -1084,7 +1084,7 @@
    "theme": "candy",
    "due": "2026-10-21T19:00:00+00:00",
    "buffer_id": "6ad7bf20bdfe25c556ef58e0",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale008_174841004021.mp4",
    "length": 27.5,
    "loop": {
@@ -1119,7 +1119,8 @@
     "fr",
     "de",
     "gb-sct"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7699198537392786721"
   },
   {
    "edition": 2,
@@ -1128,7 +1129,7 @@
    "theme": "candy",
    "due": "2026-10-21T20:30:00+00:00",
    "buffer_id": "6ad8adce3021c1ef52b5da5d",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale009_119019119047.mp4",
    "length": 24.1,
    "loop": {
@@ -1163,7 +1164,8 @@
     "my",
     "gr",
     "dk"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7699221201691921696"
   },
   {
    "edition": 2,
@@ -1342,12 +1344,99 @@
     "gb-wls",
     "dk"
    ]
+  },
+  {
+   "edition": 2,
+   "winner": "ma",
+   "seed": 27769406028,
+   "theme": "forest",
+   "due": "2026-10-22T14:30:00+00:00",
+   "buffer_id": "6ad93237cfacd026009711ba",
+   "status": "scheduled",
+   "file": "ec02_r0_m02_27769406028.mp4",
+   "length": 18.9,
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "b073929df3b5533b76e3ac8ee0ce26438f720d148cb5cb12bd90d48142ca17d4",
+    "checked_at": "2026-10-21T21:42:37+00:00"
+   },
+   "r": 0,
+   "m": 2,
+   "a": "ma",
+   "b": "pt"
+  },
+  {
+   "edition": 2,
+   "winner": "th",
+   "seed": 68192607005,
+   "theme": "ocean",
+   "due": "2026-10-22T16:00:00+00:00",
+   "buffer_id": "6ad932f165ffc170d00a5372",
+   "status": "scheduled",
+   "file": "royale013_68192607005.mp4",
+   "length": 31.7,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "b512b8113f5d023f9412ad6bafad2d149f3f30ad324322b5298e701453f54c53",
+    "checked_at": "2026-10-21T21:45:33+00:00"
+   },
+   "series": "royale",
+   "heat": 13,
+   "codes": [
+    "cn",
+    "ie",
+    "at",
+    "gb-eng",
+    "eg",
+    "cm",
+    "de",
+    "co",
+    "ph",
+    "us",
+    "th",
+    "ar",
+    "pt",
+    "cl",
+    "pl",
+    "nl"
+   ],
+   "podium": [
+    "th",
+    "gb-eng",
+    "pl"
+   ]
+  },
+  {
+   "edition": 2,
+   "winner": "ca",
+   "seed": 189923844026,
+   "theme": "candy",
+   "due": "2026-10-22T17:30:00+00:00",
+   "buffer_id": "6ad93367cfacd02600975563",
+   "status": "scheduled",
+   "file": "ec02_r0_m03_189923844026.mp4",
+   "length": 29.5,
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "7eb41f649fa3aa8c1b1ae6b6a433cdf0fd0c72550cea558f964ac3caeb737bf2",
+    "checked_at": "2026-10-21T21:48:10+00:00"
+   },
+   "r": 0,
+   "m": 3,
+   "a": "eg",
+   "b": "ca"
   }
  ],
  "recent_captions": [
-  "USA 🇺🇸 vs Croatia 🇭🇷 - which country escapes the rings first?\nEscape Cup 1, Round of 32\nNext up: Mexico vs Netherlands - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #usa #croatia",
-  "Which country escapes first? Mexico 🇲🇽 vs Netherlands 🇳🇱 ball escape\nRound of 32 of Escape Cup 1 🏆\nNext up: Colombia vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #mexico #netherlands",
-  "Colombia 🇨🇴 vs Portugal 🇵🇹 in the escape rings. Who gets out first?\nRound of 32 · Escape Cup 1\nComing next: Indonesia vs Turkey. Who takes it? 👇\n#ballescape #physicssimulation #simulation #colombia #portugal",
   "Ball escape simulation: Indonesia 🇮🇩 vs Turkey 🇹🇷\nEscape Cup 1, Round of 32\nSouth Korea vs Japan is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #indonesia #turkey",
   "Country ball escape - South Korea 🇰🇷 vs Japan 🇯🇵\nEscape Cup 1, Round of 32\nSpain vs Brazil is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #southkorea #japan",
   "Which country escapes first? Spain 🇪🇸 vs Brazil 🇧🇷 ball escape\nRound of 32 · Escape Cup 1\nNext up: Senegal vs Italy - who's your pick? 👇\n#ballescape #physicssimulation #simulation #spain #brazil",
@@ -1384,13 +1473,13 @@
   "Switzerland 🇨🇭 vs Indonesia 🇮🇩: 16 rings, one way out. Physics simulation\nRound of 32 · Escape Cup 2\nComing next: Mexico vs USA. Who takes it? 👇\n#ballescape #physicssimulation #simulation #switzerland #indonesia",
   "Escape Royale heat 11: 16 country balls, 28 rings, one way out. Physics simulation\nFeaturing England, Wales, Colombia, France and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "Mexico 🇲🇽 vs USA 🇺🇸: 16 rings, one way out. Physics simulation\nEscape Cup 2, Round of 32\nComing next: Morocco vs Portugal. Who takes it? 👇\n#ballescape #physicssimulation #simulation #mexico #usa",
-  "Escape Royale heat 12: 16 country balls, 28 rings, one way out. Physics simulation\nFeaturing England, Wales, Germany, Italy and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs"
+  "Escape Royale heat 12: 16 country balls, 28 rings, one way out. Physics simulation\nFeaturing England, Wales, Germany, Italy and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
+  "Morocco 🇲🇦 vs Portugal 🇵🇹 - which country escapes the rings first?\nEscape Cup 2, Round of 32\nEgypt vs Canada is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #morocco #portugal",
+  "Escape Royale heat 13: 16 countries, 1 way out - which country escapes the rings first?\nFeaturing England, Ireland, Germany, Colombia and 12 more\nWhere did your country finish? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
+  "Egypt 🇪🇬 vs Canada 🇨🇦 - which country escapes the rings first?\nRound of 32 of Escape Cup 2 🏆\nPhilippines vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #egypt #canada"
  ],
  "seen_errors": [],
  "excluded_seeds": {
-  "royale-8": [
-   174841004000
-  ],
   "royale-11": [
    264854410009
   ],

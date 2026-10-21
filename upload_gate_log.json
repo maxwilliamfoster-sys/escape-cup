@@ -476,6 +476,81 @@
     "summary": "The visuals, on-screen text, and caption tell one consistent physics-simulation story (16 country balls, 28 rings, Germany escapes first) with clean, readable rendering and no policy violations.",
     "tokens": 4073
    }
+  },
+  {
+   "checked_at": "2026-10-21T21:42:37+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m02_27769406028.mp4",
+   "sha256": "b073929df3b5533b76e3ac8ee0ce26438f720d148cb5cb12bd90d48142ca17d4",
+   "head": "Morocco 🇲🇦 vs Portugal 🇵🇹 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 18.85,
+    "lufs": -15.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "summary": "The video is a coherent, high-quality physics simulation that matches the caption and title, with a clear winner and next-match tease, and no policy violations.",
+    "tokens": 4080
+   }
+  },
+  {
+   "checked_at": "2026-10-21T21:45:33+00:00",
+   "platform": "tiktok",
+   "file": "royale013_68192607005.mp4",
+   "sha256": "b512b8113f5d023f9412ad6bafad2d149f3f30ad324322b5298e701453f54c53",
+   "head": "Escape Royale heat 13: 16 countries, 1 way out - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 31.7,
+    "lufs": -13.9,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation, with a clear hook, progressive ring counter, and a clean end card naming Thailand as the winner and teasing the next heat.",
+    "tokens": 4079
+   }
+  },
+  {
+   "checked_at": "2026-10-21T21:48:10+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m03_189923844026.mp4",
+   "sha256": "7eb41f649fa3aa8c1b1ae6b6a433cdf0fd0c72550cea558f964ac3caeb737bf2",
+   "head": "Egypt 🇪🇬 vs Canada 🇨🇦 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 29.5,
+    "lufs": -17.5,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "summary": "The video is a coherent, high-quality physics simulation that matches the caption and title, with a clear winner and next-match tease, and no policy violations.",
+    "tokens": 4085
+   }
   }
  ]
 }
