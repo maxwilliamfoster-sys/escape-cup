@@ -77,11 +77,11 @@
    {
     "a": "au",
     "b": "ie",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "au",
+    "seed": 23578248002,
+    "melody": "forest",
+    "posted": "2026-10-23T16:00:00+00:00",
+    "buffer_id": "6ada82cf128ac937cfd1c157"
    },
    {
     "a": "it",
@@ -185,7 +185,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "au",
     "b": null,
     "winner": null,
     "seed": null,
@@ -294,7 +294,7 @@
  "titles": {
   "ie": 1
  },
- "posts": 39,
+ "posts": 40,
  "log": [
   {
    "edition": 1,
@@ -1426,7 +1426,7 @@
    "theme": "candy",
    "due": "2026-10-22T17:30:00+00:00",
    "buffer_id": "6ad93367cfacd02600975563",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec02_r0_m03_189923844026.mp4",
    "length": 29.5,
    "loop": {
@@ -1440,7 +1440,8 @@
    "r": 0,
    "m": 3,
    "a": "eg",
-   "b": "ca"
+   "b": "ca",
+   "link": "https://tiktok.com/@5lmvill/video/7699546113568771361"
   },
   {
    "edition": 2,
@@ -1449,7 +1450,7 @@
    "theme": "sunset",
    "due": "2026-10-22T19:00:00+00:00",
    "buffer_id": "6ad9952d7dadc432f73cbe59",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale014_7214048003.mp4",
    "length": 27.5,
    "loop": {
@@ -1484,7 +1485,8 @@
     "ng",
     "gb-eng",
     "pt"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7699569462130822432"
   },
   {
    "edition": 2,
@@ -1493,7 +1495,7 @@
    "theme": "ember",
    "due": "2026-10-22T20:30:00+00:00",
    "buffer_id": "6ad995f0deacf5d2532d6bfa",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec02_r0_m04_216869868041.mp4",
    "length": 28.4,
    "loop": {
@@ -1507,7 +1509,8 @@
    "r": 0,
    "m": 4,
    "a": "ph",
-   "b": "nl"
+   "b": "nl",
+   "link": "https://tiktok.com/@5lmvill/video/7699592282495814945"
   },
   {
    "edition": 2,
@@ -1665,12 +1668,120 @@
    "m": 7,
    "a": "co",
    "b": "de"
+  },
+  {
+   "edition": 2,
+   "winner": "uy",
+   "seed": 42728766002,
+   "theme": "neon",
+   "due": "2026-10-23T14:30:00+00:00",
+   "buffer_id": "6ada82379daa16478769f4fb",
+   "status": "scheduled",
+   "file": "royale017_42728766002.mp4",
+   "length": 33.0,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "e7ca366e719489a8899b24cba992ad4c31b6ab70238bab9726c041aa906a9fb1",
+    "checked_at": "2026-10-22T21:36:29+00:00"
+   },
+   "series": "royale",
+   "heat": 17,
+   "codes": [
+    "de",
+    "fr",
+    "jp",
+    "uy",
+    "co",
+    "es",
+    "nl",
+    "vn",
+    "tn",
+    "tr",
+    "gb-eng",
+    "ie",
+    "mx",
+    "ro",
+    "sn",
+    "cm"
+   ],
+   "podium": [
+    "uy",
+    "nl",
+    "tr"
+   ]
+  },
+  {
+   "edition": 2,
+   "winner": "au",
+   "seed": 23578248002,
+   "theme": "forest",
+   "due": "2026-10-23T16:00:00+00:00",
+   "buffer_id": "6ada82cf128ac937cfd1c157",
+   "status": "scheduled",
+   "file": "ec02_r0_m08_23578248002.mp4",
+   "length": 26.3,
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "8dd6adbd977db292315f673c100bd52cea3285d2eef6a8cf8da43a3ca6bafc34",
+    "checked_at": "2026-10-22T21:39:02+00:00"
+   },
+   "r": 0,
+   "m": 8,
+   "a": "au",
+   "b": "ie"
+  },
+  {
+   "edition": 2,
+   "winner": "ie",
+   "seed": 178704777015,
+   "theme": "ocean",
+   "due": "2026-10-23T17:30:00+00:00",
+   "buffer_id": "6ada83829daa1647876a49dc",
+   "status": "scheduled",
+   "file": "royale018_178704777015.mp4",
+   "length": 24.1,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "ff8629837143f88be4841ffb3f4f996d1078285233d66e455053cce06011fb2c",
+    "checked_at": "2026-10-22T21:41:58+00:00"
+   },
+   "series": "royale",
+   "heat": 18,
+   "codes": [
+    "ie",
+    "br",
+    "ma",
+    "ro",
+    "gb-eng",
+    "es",
+    "kr",
+    "pl",
+    "ph",
+    "fr",
+    "dz",
+    "ca",
+    "dk",
+    "id",
+    "no",
+    "pt"
+   ],
+   "podium": [
+    "ie",
+    "gb-eng",
+    "ca"
+   ]
   }
  ],
  "recent_captions": [
-  "Ball escape simulation: Ireland 🇮🇪 vs Egypt 🇪🇬\nRound of 32 of Escape Cup 1 🏆\nSwitzerland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #ireland #egypt",
-  "Ball escape simulation: Switzerland 🇨🇭 vs Uruguay 🇺🇾\nRound of 16 of Escape Cup 1 🏆\nNext up: Philippines vs Morocco - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #switzerland #uruguay",
-  "Philippines 🇵🇭 vs Morocco 🇲🇦 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 1\nAustralia vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #philippines #morocco",
   "Ball escape simulation: Australia 🇦🇺 vs Croatia 🇭🇷\nRound of 16 of Escape Cup 1 🏆\nNext up: Netherlands vs Portugal - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #australia #croatia",
   "Netherlands 🇳🇱 vs Portugal 🇵🇹: 16 rings, one way out. Physics simulation\nRound of 16 of Escape Cup 1 🏆\nComing next: Turkey vs South Korea. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #netherlands #portugal",
   "Turkey 🇹🇷 vs South Korea 🇰🇷 in the escape rings. Who gets out first?\nRound of 16 of Escape Cup 1 🏆\nComing next: Spain vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #turkey #southkorea",
@@ -1707,7 +1818,10 @@
   "Escape Royale heat 15: 16 countries, 1 way out - which country escapes the rings first?\nFeaturing England, Wales, Italy, France and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
   "Country ball escape - Vietnam 🇻🇳 vs Belgium 🇧🇪\nRound of 32 of Escape Cup 2 🏆\nColombia vs Germany is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #vietnam #belgium",
   "Escape Royale heat 16: Country ball escape royale - 16 flags, one exit. Find your country\nFeaturing England, Scotland, Italy, Portugal and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs",
-  "Colombia 🇨🇴 vs Germany 🇩🇪 in the escape rings. Who gets out first?\nEscape Cup 2, Round of 32\nComing next: Australia vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #colombia #germany"
+  "Colombia 🇨🇴 vs Germany 🇩🇪 in the escape rings. Who gets out first?\nEscape Cup 2, Round of 32\nComing next: Australia vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #colombia #germany",
+  "Escape Royale heat 17: Country ball escape royale - 16 flags, one exit. Find your country\nFeaturing England, Ireland, Germany, France and 12 more\nWhere did your country finish? 👇\n#ballescape #physicssimulation #simulation #countryballs",
+  "Ball escape simulation: Australia 🇦🇺 vs Ireland 🇮🇪\nEscape Cup 2, Round of 32\nItaly vs Nigeria is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #australia #ireland",
+  "Escape Royale heat 18: Which country escapes first? 16 countries in one physics simulation\nFeaturing England, Ireland, Brazil, Morocco and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #satisfying #countryballs"
  ],
  "seen_errors": [],
  "excluded_seeds": {}

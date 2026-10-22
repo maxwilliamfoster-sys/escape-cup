@@ -726,6 +726,81 @@
     "summary": "The visuals, on-screen text, and caption tell one consistent story of a Colombia vs Germany escape-ring physics simulation, ending with a clear Germany winner card and a teaser for Australia vs Ireland, with no policy or rendering issues.",
     "tokens": 4081
    }
+  },
+  {
+   "checked_at": "2026-10-22T21:36:29+00:00",
+   "platform": "tiktok",
+   "file": "royale017_42728766002.mp4",
+   "sha256": "e7ca366e719489a8899b24cba992ad4c31b6ab70238bab9726c041aa906a9fb1",
+   "head": "Escape Royale heat 17: Country ball escape royale - 16 flags, one exit. Find your country",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 32.98,
+    "lufs": -13.9,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation, with a clear hook, progressive ring counter, and a clean end card naming Uruguay as the winner and teasing the next heat.",
+    "tokens": 4076
+   }
+  },
+  {
+   "checked_at": "2026-10-22T21:39:02+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m08_23578248002.mp4",
+   "sha256": "8dd6adbd977db292315f673c100bd52cea3285d2eef6a8cf8da43a3ca6bafc34",
+   "head": "Ball escape simulation: Australia 🇦🇺 vs Ireland 🇮🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 26.33,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen scoreboard, and end card consistently tell the Australia vs Ireland escape simulation story, with a clean winner reveal and a clear tease for the next match, and no policy violations.",
+    "tokens": 4067
+   }
+  },
+  {
+   "checked_at": "2026-10-22T21:41:58+00:00",
+   "platform": "tiktok",
+   "file": "royale018_178704777015.mp4",
+   "sha256": "ff8629837143f88be4841ffb3f4f996d1078285233d66e455053cce06011fb2c",
+   "head": "Escape Royale heat 18: Which country escapes first? 16 countries in one physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 24.15,
+    "lufs": -14.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "summary": "The video presents a consistent and high-quality physics simulation where country flag balls bounce through rings, culminating in a clear winner (Ireland) and a teaser for the next heat, with no policy violations.",
+    "tokens": 4086
+   }
   }
  ]
 }
