@@ -601,6 +601,31 @@
     "summary": "The video presents a coherent, polished physics simulation of the Philippines vs. Netherlands escape match with consistent on-screen text, a clear winner end card, and a valid next-match tease, with no policy violations.",
     "tokens": 4070
    }
+  },
+  {
+   "checked_at": "2026-10-22T11:50:53+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m05_118385740001.mp4",
+   "sha256": "3f65aeaed2dd1ab9ecfe69c292ca82a60ea8050886d39c54a62a41058524559c",
+   "head": "England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Croatia 🇭🇷 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 19.38,
+    "lufs": -15.5,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "summary": "The video is a high-quality, coherent physics simulation that clearly depicts the match between England and Croatia, with consistent on-screen graphics and a clear winner announcement that matches the caption.",
+    "tokens": 4113
+   }
   }
  ]
 }
