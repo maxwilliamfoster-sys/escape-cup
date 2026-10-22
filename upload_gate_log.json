@@ -626,6 +626,106 @@
     "summary": "The video is a high-quality, coherent physics simulation that clearly depicts the match between England and Croatia, with consistent on-screen graphics and a clear winner announcement that matches the caption.",
     "tokens": 4113
    }
+  },
+  {
+   "checked_at": "2026-10-22T17:11:25+00:00",
+   "platform": "tiktok",
+   "file": "royale015_227102839016.mp4",
+   "sha256": "1a9e4e430e69878e7165995f8bd307d0f5277258d50ca2cb2105ce0793b323e7",
+   "head": "Escape Royale heat 15: 16 countries, 1 way out - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 30.53,
+    "lufs": -14.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation that ends with a clear winner and a teaser for the next heat, with no policy or rendering issues.",
+    "tokens": 4073
+   }
+  },
+  {
+   "checked_at": "2026-10-22T17:14:15+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m06_106182511053.mp4",
+   "sha256": "9e19af6e1d90220f149c8f688e0f985b09546ba0f81773230d042c5889e63a4f",
+   "head": "Country ball escape - Vietnam 🇻🇳 vs Belgium 🇧🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 22.6,
+    "lufs": -18.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The video is a coherent, high-quality physics simulation of a country ball escape match with consistent on-screen text, a clear winner reveal, and a next-match tease that aligns perfectly with the caption.",
+    "tokens": 4087
+   }
+  },
+  {
+   "checked_at": "2026-10-22T17:17:31+00:00",
+   "platform": "tiktok",
+   "file": "royale016_53901469001.mp4",
+   "sha256": "a93fc724e4c02cf5590f6ab35c8ec7c0809ffc3c7049292cabae18313343b4b5",
+   "head": "Escape Royale heat 16: Country ball escape royale - 16 flags, one exit. Find your country",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 26.6,
+    "lufs": -13.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "summary": "The video presents a consistent and high-quality physics simulation of a country ball escape game, with clear on-screen text tracking the progress and a definitive winner card at the end.",
+    "tokens": 4082
+   }
+  },
+  {
+   "checked_at": "2026-10-22T17:20:20+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m07_76005780040.mp4",
+   "sha256": "9beb65787c00259282f289aff43ec9b71aa95abcb1fa249341a9d973f83d6762",
+   "head": "Colombia 🇨🇴 vs Germany 🇩🇪 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 17.25,
+    "lufs": -17.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent story of a Colombia vs Germany escape-ring physics simulation, ending with a clear Germany winner card and a teaser for Australia vs Ireland, with no policy or rendering issues.",
+    "tokens": 4081
+   }
   }
  ]
 }
