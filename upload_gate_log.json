@@ -551,6 +551,56 @@
     "summary": "The video is a coherent, high-quality physics simulation that matches the caption and title, with a clear winner and next-match tease, and no policy violations.",
     "tokens": 4085
    }
+  },
+  {
+   "checked_at": "2026-10-22T04:44:03+00:00",
+   "platform": "tiktok",
+   "file": "royale014_7214048003.mp4",
+   "sha256": "f90b71535aea469abf2f5f0ae36b96afe30a0dded6d71e0ae547ccb19c97814e",
+   "head": "Escape Royale heat 14: Country ball escape royale - 16 flags, one exit. Find your country",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 27.5,
+    "lufs": -15.8,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation, with a clear hook, progressive ring counter, and a clean end card naming Nigeria as the winner and teasing the next heat.",
+    "tokens": 4080
+   }
+  },
+  {
+   "checked_at": "2026-10-22T04:47:34+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m04_216869868041.mp4",
+   "sha256": "63a77b04ad48ff1e5a5b662b5defd8cd2a256d9755c3995d5d40f12acfb3f58c",
+   "head": "Ball escape simulation: Philippines 🇵🇭 vs Netherlands 🇳🇱",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 28.43,
+    "lufs": -17.7,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The video presents a coherent, polished physics simulation of the Philippines vs. Netherlands escape match with consistent on-screen text, a clear winner end card, and a valid next-match tease, with no policy violations.",
+    "tokens": 4070
+   }
   }
  ]
 }
