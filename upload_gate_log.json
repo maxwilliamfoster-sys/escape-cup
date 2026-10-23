@@ -851,6 +851,31 @@
     "summary": "The visuals, on-screen text, and caption tell one consistent, coherent story of a 16-country physics escape simulation that ends with a clear winner and a teaser for the next heat, with no policy or rendering issues.",
     "tokens": 4075
    }
+  },
+  {
+   "checked_at": "2026-10-23T11:38:24+00:00",
+   "platform": "tiktok",
+   "file": "royale020_147484397002.mp4",
+   "sha256": "30cf0510afe0ab50be6a95a41eefa4fdc5be4ff6e286d40a8fe3807d21e15364",
+   "head": "Escape Royale heat 20: Country ball escape royale - 16 flags, one exit. Find your country",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 24.0,
+    "lufs": -13.9,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation that ends with a clear winner and a tease for the next heat, with no policy or rendering issues.",
+    "tokens": 4071
+   }
   }
  ]
 }
