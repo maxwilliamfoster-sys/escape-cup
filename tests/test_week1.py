@@ -90,11 +90,27 @@ class ThemeTests(unittest.TestCase):
                 themes.append(t)
                 state["log"].append({"series": "royale", "theme": t})
             else:
-                cups = [t for t in render.THEMES if t != render.FINAL_THEME]
-                t = cups[state["posts"] % len(cups)]
+                t = main.cup_theme(state)
                 state["log"].append({"theme": t})
                 state["posts"] += 1
         return state, themes
+
+    def test_no_two_consecutive_posts_share_a_theme(self):
+        # live 2026-10-24: royale "neon" at 10:00Z then cup "neon" at 11:30Z (the royale's
+        # theme comes from len(log), the cup's from the cup count, so they could meet)
+        for pattern in ("crcrcrcrcrcrcrcrcrcrcrcr", "crcrcrc" + "rcrcrcr" * 4, "crrcccrrrcrcccccrr",
+                        "rcrcrcrcrc" * 3, "ccccrrrrcccc"):
+            state, _ = self._sim(pattern)
+            seq = [e["theme"] for e in state["log"]]
+            for i, (x, y) in enumerate(zip(seq, seq[1:])):
+                self.assertNotEqual(x, y, (pattern, i, seq))
+
+    def test_cup_keeps_its_rotation_when_there_is_no_clash(self):
+        cups = [t for t in render.THEMES if t != render.FINAL_THEME]
+        for posts in range(len(cups)):
+            state = {"log": [{"theme": "none-of-these"}], "posts": posts}
+            self.assertEqual(main.cup_theme(state), cups[posts % len(cups)])
+        self.assertEqual(main.cup_theme({"log": [], "posts": 2}), cups[2])
 
     def test_consecutive_royales_never_share_a_theme(self):
         # the 10-slot day boundary put two royales back to back with no cup between

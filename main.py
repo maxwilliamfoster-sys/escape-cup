@@ -258,8 +258,7 @@ def build_one(state, exclude_seeds=(), tries=None):
         cta = "Which country is yours?"
 
     # consecutive videos never share a theme; the Final gets its own gold look
-    themes = [t for t in render.THEMES if t != render.FINAL_THEME]
-    theme = render.FINAL_THEME if is_final else themes[state.get("posts", 0) % len(themes)]
+    theme = render.FINAL_THEME if is_final else cup_theme(state)
 
     info = dict(a=a, b=b, header=d["header"], result_line=result, theme=theme,
                 next_label=next_label, next_line=next_line, cta=cta, final=is_final,
@@ -518,6 +517,18 @@ def royale_league(state, extra_podium=()):
             pts[code] = pts.get(code, 0) + p
     top = sorted(pts.items(), key=lambda kv: -kv[1])[:3]
     return "LEAGUE: " + "  ·  ".join(f"{teams.name(c).upper()} {p}" for c, p in top)
+
+
+def cup_theme(state):
+    """Theme for the next cup match: the cup rotation (themes[state["posts"]]), unless the
+    post just before already has that look. Since royale_theme() went by len(log)
+    (2026-10-23) a royale could take the cup's next theme, so royale "neon" was followed
+    by cup "neon" (queued for 2026-10-24); the old fixed offset had ruled that out."""
+    themes = [t for t in render.THEMES if t != render.FINAL_THEME]
+    log = state.get("log", [])
+    prev = log[-1].get("theme") if log else None
+    t = themes[state.get("posts", 0) % len(themes)]
+    return t if t != prev else themes[(state.get("posts", 0) + 1) % len(themes)]
 
 
 def royale_theme(state):
