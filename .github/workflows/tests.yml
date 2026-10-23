@@ -1,0 +1,44 @@
+# Template from growth-lab/templates/tests.yml (MASTER_PLAN S0). Copy to .github/workflows/tests.yml.
+# Runs the bot's unit tests (including tests/test_vendored.py) on every .py push, weekly, and on demand.
+# It never posts anything and needs no secrets. Action versions checked 2026-10-23 via
+# gh api repos/actions/{checkout,setup-python}/releases/latest (v7.0.1 / v7.1.0).
+name: tests
+
+on:
+  push:
+    paths:
+      - "**.py"
+      - "vendored.lock"
+      - ".github/workflows/tests.yml"
+  schedule:
+    - cron: "17 6 * * 1"        # Mondays 06:17 UTC: catches drift from auto-commits and runner updates
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"      # same as the bots' posting workflows
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install ffmpeg + cairo headers (pycairo builds from source, as in post.yml)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libcairo2-dev pkg-config
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v

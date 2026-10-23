@@ -1,0 +1,2 @@
+# Vendored growth-lab modules are hashed with LF endings (growth-lab/sync_vendored.py).
+*.py text eol=lf

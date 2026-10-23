@@ -1,0 +1,22 @@
+{
+  "generated_by": "growth-lab/sync_vendored.py",
+  "gate_version": "2026-10-23",
+  "note": "sha256 with CRLF normalised to LF. Do not edit vendored files here: change the growth-lab master and run sync_vendored.py.",
+  "files": {
+    "experiment_loop.py": {
+      "sha256": "aae399b795260d6b8c5e616460ca961cd933450d7d853d725292d7cd784833d1",
+      "master_sha": "aae399b795260d6b8c5e616460ca961cd933450d7d853d725292d7cd784833d1",
+      "local_patch": false
+    },
+    "growth_stats.py": {
+      "sha256": "51e033746bd3cadd75c9b20689f013912523934a04334290d5d6adeaa797724c",
+      "master_sha": "51e033746bd3cadd75c9b20689f013912523934a04334290d5d6adeaa797724c",
+      "local_patch": false
+    },
+    "upload_gate.py": {
+      "sha256": "c64a9d03992b1f6297c6357279cd44c9eca972659e2bd5ff4a9e734e2451a3f1",
+      "master_sha": "c64a9d03992b1f6297c6357279cd44c9eca972659e2bd5ff4a9e734e2451a3f1",
+      "local_patch": false
+    }
+  }
+}

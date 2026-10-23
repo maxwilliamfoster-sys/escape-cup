@@ -120,11 +120,13 @@ def _lever_map(levers):
     return out
 
 
-def evaluate(ledger, levers, config, posts, today, data_ok=True):
+def evaluate(ledger, levers, config, posts, today, data_ok=True, priority=()):
     """One nightly pass for one channel. Returns (ledger, config, actions).
 
     posts: [{"id", "arms": {exp_id: arm}, "hold": primary metric at 72h or None,
              "views72": views at 72h or None}]
+    priority: lever names the Shorts Radar found stable this week. They only move to the
+    front of the vetted queue; nothing outside levers.json can ever start.
     """
     today = str(today)[:10]
     ledger = ledger if isinstance(ledger, dict) else {}
@@ -202,7 +204,7 @@ def evaluate(ledger, levers, config, posts, today, data_ok=True):
         if today < nb:
             actions.append(f"{channel}: next test not before {nb}")
         else:
-            nxt = next_candidate(ledger, levers, config)
+            nxt = next_candidate(ledger, levers, config, priority)
             if nxt is None:
                 actions.append(f"{channel}: queue empty - add levers/variants to levers.json")
             else:
@@ -219,17 +221,22 @@ def evaluate(ledger, levers, config, posts, today, data_ok=True):
                      "control_metrics": {}, "variant_metrics": {}}
                 ledger["experiments"].append(e)
                 actions.append(f"{channel}: STARTED {e['id']}: {e['lever']} {control!r} -> "
-                               f"{variant!r} ({e['hypothesis']})")
+                               f"{variant!r} ({e['hypothesis']})"
+                               + (" - moved up by the Shorts Radar's weekly read"
+                                  if lever["lever"] in (priority or ()) else ""))
     return ledger, config, actions
 
 
-def next_candidate(ledger, levers, config):
-    """(lever, control, variant) for the first untested variant, or None."""
+def next_candidate(ledger, levers, config, priority=()):
+    """(lever, control, variant) for the first untested variant, or None.
+
+    `priority` (names only) goes first, in its own order; the rest keep the file's order."""
     done = {(x.get("lever"), json.dumps(x.get("variant"), sort_keys=True))
             for x in (ledger or {}).get("experiments", []) if isinstance(x, dict)}
-    for lever in (levers or {}).get("levers") or []:
-        if not isinstance(lever, dict) or "lever" not in lever:
-            continue
+    queue = [l for l in (levers or {}).get("levers") or [] if isinstance(l, dict) and "lever" in l]
+    rank = {name: i for i, name in enumerate(priority or ())}
+    queue.sort(key=lambda l: rank.get(l["lever"], len(rank)))       # stable: ties keep file order
+    for lever in queue:
         current = (config.get("values") or {}).get(lever["lever"], lever.get("control"))
         for v in lever.get("variants") or []:
             if v == current or (lever["lever"], json.dumps(v, sort_keys=True)) in done:

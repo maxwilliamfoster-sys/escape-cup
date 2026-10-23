@@ -1,7 +1,8 @@
 """
 Upload gate: the last check before any video leaves the machine (growth-lab
 MASTER, vendored into each bot like growth_stats / experiment_loop. Edit here,
-re-copy, run each repo's tests).
+bump GATE_VERSION, then roll out with `py sync_vendored.py --bot <name>` - never a plain
+copy, which would wipe a bot-local patch).
 
     verdict = upload_gate.check(path, "tiktok", profile=PROFILE, caption=..., script=...)
     if not verdict["ok"]: ...alert, do not post...
@@ -57,7 +58,11 @@ import urllib.request
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 
-GATE_VERSION = "2026-10-16"
+# Bump on EVERY master edit: the ledger's gate_version attributes block-rate changes to gate
+# edits, and sync_vendored.py writes it into each bot's vendored.lock.
+# 2026-10-23 (S1): staged 413 shrink to fewer images, ai["retryable"], per-bot lufs windows,
+#   head_similarity (warn), doubled-word lint, #fyp/#foryou fail, privacy rule, public-ledger scrub.
+GATE_VERSION = "2026-10-23"
 
 PLATFORMS = {
     "tiktok": {
@@ -108,10 +113,62 @@ DEFAULT_PROFILE = {
     "ai_realistic": False,           # realistic AI voice/visuals -> platform AI label required
     "allowed_domains": (),           # links allowed in descriptions (YouTube only)
     "ledger": None,                  # path of the JSON audit log (None = no log)
+    "bot": None,                     # a BOT_PROFILES name: its windows apply under the bot's own overrides
+    "head_similarity": "warn",       # "off" | "warn" | "fail": near-duplicate first line vs the last 10
+    "head_similarity_max": 0.8,      # difflib ratio on masked heads at or above this = near-duplicate
+    "head_mask": (),                 # recurring proper nouns to mask before comparing ("Magnus Carlsen")
 }
+
+# Per-bot windows (MASTER_PLAN #13, plan-infra action 6). DEFAULT_PROFILE stays the wide safety
+# net shared by everyone; a bot opts in with profile={"bot": "<name>", ...} AFTER its two-pass
+# loudnorm ships, or the tighter window blocks every render. A "lufs" the bot passes still wins.
+BOT_PROFILES = {
+    "chess": {"lufs": (-16.0, -12.0)},       # loudnorm target -14
+    "escape": {"lufs": (-17.0, -15.0)},      # loudnorm target -16
+    "space": {"lufs": (-16.0, -12.0)},
+    "quiz": {"lufs": (-16.0, -12.0)},
+    "bcf": {},                               # keep the default until 3 posts are measured (ebur128)
+}
+
+
+def profile_for(profile):
+    """DEFAULT_PROFILE <- BOT_PROFILES[profile["bot"]] <- the bot's own keys."""
+    profile = dict(profile or {})
+    bot = profile.get("bot")
+    if bot is not None and bot not in BOT_PROFILES:
+        raise ValueError(f"unknown bot profile {bot!r} (known: {', '.join(sorted(BOT_PROFILES))})")
+    return {**DEFAULT_PROFILE, **BOT_PROFILES.get(bot, {}), **profile}
+
+
+def bot_profile(bot, **overrides):
+    """The profile dict a bot passes to check(): bot_profile("chess", ai_review="if_available")."""
+    profile_for({"bot": bot})                      # validates the name
+    return {"bot": bot, **overrides}
+
 
 AI_MODEL = os.environ.get("UPLOAD_GATE_AI_MODEL", "qwen/qwen3.8-27b")
 AI_URL = "https://api.groq.com/openai/v1/chat/completions"
+# Groq's vision docs (console.groq.com/docs/vision, read 2026-10-23): for qwen/qwen3.8-27b "each
+# image counts as 2048 input tokens", max 3 images. The free tier's ITPM (7000) is also a hard
+# per-request cap: a bigger request gets HTTP 413 "Limit 7000, Requested N", and no wait fixes it.
+# BCF's request was 3 x 2048 + ~875 text = 7019, so only FEWER images can make it fit.
+AI_IMAGE_TOKENS = 2048
+AI_INPUT_LIMIT = 7000                # assumed when a 413 doesn't state its limit
+AI_LIMIT_MARGIN = 150                # headroom under the limit for Groq's own text-token estimate
+AI_SCRIPT_CHARS = 2500
+# Review shapes. Normal reviews always use stage 0 (full-size frames catch garbled on-screen text,
+# e.g. "NORLANEUND"). Only after a 413 does the gate move to the first later stage predicted to
+# fit: trim the text first, then fewer images. Each later stage keeps all 12 frames.
+AI_STAGES = (
+    {"name": "full", "script": 1.0, "tags": True,
+     "first": (360, 640), "sheets": 2, "cols": 3, "rows": 2, "tile": (216, 384), "q": 5},
+    {"name": "trim text", "script": 0.6, "tags": False,
+     "first": (360, 640), "sheets": 2, "cols": 3, "rows": 2, "tile": (216, 384), "q": 5},
+    {"name": "fewer frames", "script": 0.6, "tags": False,
+     "first": (288, 512), "sheets": 1, "cols": 4, "rows": 3, "tile": (180, 320), "q": 6},
+    {"name": "one image", "script": 0.6, "tags": False,
+     "first": None, "sheets": 1, "cols": 4, "rows": 3, "tile": (180, 320), "q": 6},
+)
 
 # ---------------------------------------------------------------- policy text --
 # Each pattern names the rule it enforces. Lower-case text is matched.
@@ -133,6 +190,14 @@ MISLEADING = [
     (r"\b(?:guaranteed|proven) to\b", "unverifiable promise"),
 ]
 SPAM_TAGS = {"#fyp", "#foryou", "#foryoupage", "#fypシ", "#viral", "#xyzbca", "#trending", "#blowthisup"}
+# These fail (S1): no reach benefit (research-algorithm-policy: 2-4 specific tags, no #fyp) and
+# they read as spam. The rest of SPAM_TAGS only warn.
+SPAM_FAIL_TAGS = {"#fyp", "#foryou", "#foryoupage", "#fypシ"}
+# "Peter Bergmann case case." shipped on BCF. Letters only (numbers repeat legitimately), same
+# line only (a caption's line break is not a doubled word). Python's re.I makes \1 case-blind.
+DOUBLED_RE = re.compile(r"\b([^\W\d_]+)[ \t]+\1\b", re.I)
+DOUBLED_OK = {"had", "that", "bye", "ha", "haha", "no", "so", "very", "go", "knock", "tsk", "cha", "na",
+              "la", "yeah", "really", "far", "more", "again", "round", "over", "on", "and"}
 URL_RE = re.compile(r"(?:https?://|www\.)[^\s<>()]+|\b[a-z0-9-]+\.(?:com|net|org|io|co|uk|ly|gg|tv|me|app|xyz)/\S*",
                      re.I)
 EMAIL_RE = re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.]{2,}\b")
@@ -207,10 +272,35 @@ def _utf16_len(s):
     return len((s or "").encode("utf-16-le")) // 2
 
 
+def mask_head(s, mask=()):
+    """A headline with what legitimately changes post to post masked out: numbers, punctuation,
+    emoji/flags, and the bot's recurring proper nouns (`mask`), so templates compare equal."""
+    t = unicodedata.normalize("NFKD", s or "").lower()
+    for term in mask or ():
+        if term:
+            t = re.sub(r"(?<!\w)" + re.escape(unicodedata.normalize("NFKD", term).lower()) + r"(?!\w)", "*", t)
+    t = re.sub(r"\d+(?:[.,:]\d+)*", "#", t)
+    t = re.sub(r"[^\w#* ]+", " ", t).replace("_", " ")
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def head_similarity(head, recent, mask=()):
+    """Highest difflib ratio (0-1) between the masked head and any of the masked recent heads."""
+    h = mask_head(head, mask)
+    if not h:
+        return 0.0
+    best = max((SequenceMatcher(None, h, mask_head(r, mask), autojunk=False).ratio()
+                for r in recent or () if r), default=0.0)
+    return round(best, 3)
+
+
 # ----------------------------------------------------------------- layer 1+2 --
 def check_text(platform, *, title="", caption="", description="", tags=(), recent_texts=(),
-               allowed_domains=(), ai_realistic=False, ai_label=None):
+               allowed_domains=(), ai_realistic=False, ai_label=None,
+               similar_texts=None, similarity="warn", similarity_max=0.8, head_mask=()):
     """Platform limits + policy rules for the words that ship with the video.
+    `similar_texts` (default: the last 10 of recent_texts) are the heads the near-duplicate
+    check compares against; `similarity` is "off" | "warn" | "fail".
     Returns (failures, warnings)."""
     P = PLATFORMS[platform]
     fail, warn = [], []
@@ -257,18 +347,38 @@ def check_text(platform, *, title="", caption="", description="", tags=(), recen
     if len(hashtags) > P["max_hashtags"]:
         fail.append(f"{len(hashtags)} hashtags (max {P['max_hashtags']}; excess hashtags read as spam)")
     low_tags = [h.lower() for h in hashtags]
-    spam = sorted(set(low_tags) & SPAM_TAGS)
+    spam_fail = sorted(set(low_tags) & SPAM_FAIL_TAGS)
+    if spam_fail:
+        fail.append(f"generic reach hashtags {' '.join(spam_fail)} - remove them (no reach benefit, "
+                    "they read as spam; use 2-4 specific tags)")
+    spam = sorted(set(low_tags) & (SPAM_TAGS - SPAM_FAIL_TAGS))
     if spam:
         warn.append(f"generic reach hashtags {' '.join(spam)} (no reach benefit; can read as spam)")
     if platform == "tiktok" and len(hashtags) > 5:
         warn.append(f"{len(hashtags)} hashtags - TikTok search uses the first few")
 
+    # Doubled words ("case case") in the words a viewer reads; tags are a list, not prose.
+    for name, txt in texts.items():
+        if name == "tags":
+            continue
+        for m in DOUBLED_RE.finditer(txt):
+            if m.group(1).lower() not in DOUBLED_OK:
+                fail.append(f"doubled word in the {name}: \"{m.group(0)}\" (template bug)")
+
     # Repetition: the same headline as a recent post is the "repetitive content" signal.
-    head = _norm_space(title if platform == "youtube_shorts" else caption.split("\n")[0])
+    raw_head = title if platform == "youtube_shorts" else caption.split("\n")[0]
+    head = _norm_space(raw_head)
+    what = "title" if platform == "youtube_shorts" else "first caption line"
     recent = {_norm_space(t) for t in recent_texts if t}
     if head and head in recent:
-        fail.append(f"same {'title' if platform == 'youtube_shorts' else 'first caption line'} "
-                    f"as a recent post (repetitive content): \"{head[:80]}\"")
+        fail.append(f"same {what} as a recent post (repetitive content): \"{head[:80]}\"")
+    elif head and similarity != "off":
+        pool = list(recent_texts)[-10:] if similar_texts is None else list(similar_texts)
+        sim = head_similarity(raw_head, pool, head_mask)
+        if sim >= similarity_max:
+            msg = (f"near-duplicate {what} (similarity {sim:.2f} >= {similarity_max} to a recent post; "
+                   f"templated heads read as repetitive content): \"{head[:80]}\"")
+            (fail if similarity == "fail" else warn).append(msg)
 
     if ai_realistic and ai_label is not True:
         fail.append(f"realistic AI content without the {P['name']} AI label")
@@ -427,20 +537,23 @@ def speech_match(script, transcript):
     return sum(blk.size for blk in sm.get_matching_blocks()) / len(a)
 
 
-def _images_b64(path, dur, sheets=2, cols=3, rows=2, tile=(216, 384)):
-    """[first frame at 360x640, then `sheets` contact sheets of cols*rows frames spread
-    evenly through the video, left-to-right, top-to-bottom]. The model takes <=3 images."""
+def _images_b64(path, dur, sheets=2, cols=3, rows=2, tile=(216, 384), first=(360, 640), q=5):
+    """[first frame at `first` (skipped when None), then `sheets` contact sheets of cols*rows
+    frames spread evenly through the video, left-to-right, top-to-bottom]. The model takes <=3
+    images, and Groq counts each as AI_IMAGE_TOKENS input tokens whatever its size."""
     import tempfile
-    out = []
+    out, names = [], []
     with tempfile.TemporaryDirectory() as tmp:
-        first = os.path.join(tmp, "first.jpg")
-        _run([ffmpeg_bin(), "-loglevel", "error", "-ss", "0.3", "-i", path, "-frames:v", "1",
-              "-vf", "scale=360:640", "-q:v", "5", first], 120)
+        if first:
+            _run([ffmpeg_bin(), "-loglevel", "error", "-ss", "0.3", "-i", path, "-frames:v", "1",
+                  "-vf", f"scale={first[0]}:{first[1]}", "-q:v", str(q), os.path.join(tmp, "first.jpg")], 120)
+            names.append("first.jpg")
         n = sheets * cols * rows
         _run([ffmpeg_bin(), "-loglevel", "error", "-i", path, "-vf",
               f"fps={n / max(dur, 1):.5f},scale={tile[0]}:{tile[1]},tile={cols}x{rows}", "-frames:v", str(sheets),
-              "-q:v", "5", os.path.join(tmp, "sheet%d.jpg")], 300)
-        for name in ["first.jpg"] + [f"sheet{i}.jpg" for i in range(1, sheets + 1)]:
+              "-q:v", str(q), os.path.join(tmp, "sheet%d.jpg")], 300)
+        names += [f"sheet{i}.jpg" for i in range(1, sheets + 1)]
+        for name in names:
             p = os.path.join(tmp, name)
             if not os.path.exists(p) or not os.path.getsize(p):
                 raise RuntimeError(f"could not grab frames ({name})")
@@ -454,23 +567,43 @@ def _redact(s):
     return re.sub(r"org_[A-Za-z0-9]+", "org_***", s)
 
 
-def ai_review(path, platform, profile, *, title="", caption="", transcript="", seconds=None):
-    """Ask a free vision model to watch the video as a strict pre-publication reviewer.
-    Returns {"ok": bool, "available": bool, "coherence", "quality", "problems": [...], "summary"}."""
-    key = os.environ.get("GROQ_API_KEY", "").strip()
-    if not key:
-        return {"ok": False, "available": False, "problems": ["GROQ_API_KEY not set"]}
-    dur = seconds or float(probe(path)["format"]["duration"])
-    images = _images_b64(path, dur)
-    content = [{"type": "text", "text": (
+def _stage_images(stage):
+    return (1 if stage["first"] else 0) + stage["sheets"]
+
+
+def _ai_prompt(platform, profile, dur, title, caption, transcript, stage):
+    """The reviewer's instructions for one review shape (AI_STAGES)."""
+    per_sheet, sheets = stage["cols"] * stage["rows"], stage["sheets"]
+    frames = per_sheet * sheets
+    if stage["first"] and sheets > 1:
+        images = (f"Image 1 is the first frame (what a scroller sees). Images 2-{1 + sheets} are contact sheets "
+                  f"of {frames} frames")
+    elif stage["first"]:
+        images = f"Image 1 is the first frame (what a scroller sees). Image 2 is a contact sheet of {frames} frames"
+    else:
+        images = (f"Image 1 is a contact sheet of {frames} frames (its first tile is the opening frame, "
+                  "what a scroller sees)")
+    images += f" spread evenly through the {dur:.0f}s video, in reading order.\n"
+    script = transcript or "(no narration)"
+    full = script[:AI_SCRIPT_CHARS]
+    if stage["script"] < 1 and len(full) > 300:
+        keep = max(300, int(len(full) * stage["script"]))
+        narration = (f"Narration script excerpt (the first {keep} of {len(script)} characters; verified to match "
+                     f"the audio - it is shortened here only to fit this request, the video's narration is "
+                     f"complete, so never call it cut off): {full[:keep]}")
+    else:
+        narration = f"Narration script (verified to match the audio): {full}"
+    if not stage["tags"]:                      # trimmed stages: hashtags add tokens, not judgement
+        caption = "\n".join(ln for ln in (re.sub(r"\s+", " ", HASHTAG_RE.sub("", x)).strip()
+                                          for x in (caption or "").split("\n")) if ln)
+    return (
         f"You are the final pre-publication reviewer for a {PLATFORMS[platform]['name']} channel. "
         # Without the date the model called 2025/2026 events "future dates" and blocked them.
         f"Today's date is {datetime.now(timezone.utc):%d %B %Y}; events up to today are in the past.\n"
         f"Channel: {profile.get('ai_context') or 'short vertical videos'}\n"
-        f"Image 1 is the first frame (what a scroller sees). Images 2-3 are contact sheets of 12 "
-        f"frames spread evenly through the {dur:.0f}s video, in reading order.\n"
+        f"{images}"
         f"Title: {title or '-'}\nCaption: {caption or '-'}\n"
-        f"Narration script (verified to match the audio): {(transcript or '(no narration)')[:2500]}\n\n"
+        f"{narration}\n\n"
         f"Platform rules: {POLICY_BRIEF[platform]}\n\n"
         "Judge: (1) COHERENCE - do the visuals, on-screen text, narration and caption tell one "
         "consistent story that matches the title, with nothing irrelevant, contradictory, garbled, "
@@ -484,19 +617,87 @@ def ai_review(path, platform, profile, *, title="", caption="", transcript="", s
         "or mood footage is fine when its mood fits the story; flag footage that is jarringly "
         "unrelated or inappropriate for the subject (e.g. food, animals, parties, sport, "
         "celebrations in a story about a death).\n"
+        # BCF 396565f (audit 2026-10-21 bcf #1): real homes / plates beside crime narration.
+        "PRIVACY (always BLOCK, list it under policy_issues): any frame that shows a real "
+        "private home (a house, cottage, front door or driveway of a residence) or a vehicle "
+        "number plate that can be read. Viewers take a home beside crime narration as the "
+        "crime scene or a suspect's house, which harms uninvolved owners.\n"
         "Only BLOCK for a concrete problem you can point to in the frames or text, not for style.\n"
         'Reply with JSON only: {"verdict":"PASS" or "BLOCK","coherence":1-10,"quality":1-10,'
-        '"policy_issues":["..."],"quality_issues":["..."],"summary":"one sentence"}')}]
-    for b64 in images:
-        content.append({"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + b64}})
-    # Reasoning off: hidden reasoning was ~3k tokens a review, and the model's free
-    # quota is 200k tokens/DAY shared by all three bots (calibration day 2026-10-16
-    # exhausted it). The verdict is a visual judgement; it doesn't need a chain.
-    body = {"model": AI_MODEL, "temperature": 0, "max_tokens": 900, "reasoning_effort": "none",
-            "response_format": {"type": "json_object"},
-            "messages": [{"role": "user", "content": content}]}
-    last, res, tokens = None, {}, None
-    for attempt in range(3):
+        '"policy_issues":["..."],"quality_issues":["..."],"summary":"one sentence"}')
+
+
+def _body_parts(body):
+    content = body["messages"][0]["content"]
+    return content[0]["text"], sum(1 for c in content if c.get("type") == "image_url")
+
+
+def predict_tokens(body, calibrate=None):
+    """Groq's input-token count for a review request: AI_IMAGE_TOKENS per image plus the text.
+    calibrate=(earlier_body, its_requested_tokens) takes the text's tokens-per-character from a
+    413's "Requested N" figure; without it, a conservative 1 token per 3 characters."""
+    text, n_img = _body_parts(body)
+    per_char = 1 / 3
+    if calibrate:
+        ref, requested = calibrate
+        ref_text, ref_img = _body_parts(ref)
+        per_char = max(1.0, requested - AI_IMAGE_TOKENS * ref_img) / max(1, len(ref_text))
+    return int(-(-(n_img * AI_IMAGE_TOKENS + len(text) * per_char) // 1))
+
+
+def _http_body(e):
+    try:
+        return _redact(e.read()[:400].decode(errors="replace"))
+    except Exception:
+        return ""
+
+
+def _is_timeout(e):
+    import socket
+    reason = getattr(e, "reason", None)
+    return (isinstance(e, (socket.timeout, TimeoutError)) or isinstance(reason, (socket.timeout, TimeoutError))
+            or "timed out" in str(e).lower())
+
+
+def _unavailable(reason, problem, retryable=False, **extra):
+    """An AI review that produced no verdict. `retryable` is True ONLY when waiting can fix it
+    (a 429 without "per day", a 5xx, a timeout): callers re-check on that and nothing else."""
+    return {"ok": False, "available": False, "retryable": retryable, "reason": reason,
+            "problems": [problem], **extra}
+
+
+def ai_review(path, platform, profile, *, title="", caption="", transcript="", seconds=None):
+    """Ask a free vision model to watch the video as a strict pre-publication reviewer.
+    Returns {"ok": bool, "available": bool, "retryable": bool, "reason", "coherence", "quality",
+    "problems": [...], "summary"}; "shrunk" when a 413 forced a smaller request.
+    The prompt (_ai_prompt) carries the PRIVACY rule at every stage: a real private home or a
+    readable vehicle number plate in any frame is always a BLOCK."""
+    key = os.environ.get("GROQ_API_KEY", "").strip()
+    if not key:
+        return _unavailable("no_key", "GROQ_API_KEY not set")
+    dur = seconds or float(probe(path)["format"]["duration"])
+    grabbed = {}
+
+    def build(i):
+        st = AI_STAGES[i]
+        geo = {k: st[k] for k in ("sheets", "cols", "rows", "tile", "first", "q")}
+        gkey = json.dumps(geo, sort_keys=True)
+        if gkey not in grabbed:
+            grabbed[gkey] = _images_b64(path, dur, **geo)
+        content = [{"type": "text", "text": _ai_prompt(platform, profile, dur, title, caption, transcript, st)}]
+        for b64 in grabbed[gkey]:
+            content.append({"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + b64}})
+        # Reasoning off: hidden reasoning was ~3k tokens a review, and the model's free
+        # quota is 200k tokens/DAY shared by all three bots (calibration day 2026-10-16
+        # exhausted it). The verdict is a visual judgement; it doesn't need a chain.
+        # max_tokens stays 900 at every stage: it is the reply budget, never the 413 lever.
+        return {"model": AI_MODEL, "temperature": 0, "max_tokens": 900, "reasoning_effort": "none",
+                "response_format": {"type": "json_object"},
+                "messages": [{"role": "user", "content": content}]}
+
+    stage, body = 0, build(0)
+    shrunk, transient, res, tokens = None, 0, {}, None
+    while True:
         try:
             req = urllib.request.Request(AI_URL, data=json.dumps(body).encode(), headers={
                 "Authorization": f"Bearer {key}", "Content-Type": "application/json", "User-Agent": "upload-gate"})
@@ -505,32 +706,79 @@ def ai_review(path, platform, profile, *, title="", caption="", transcript="", s
             out = reply["choices"][0]["message"]["content"]
             tokens = (reply.get("usage") or {}).get("total_tokens")
             m = re.search(r"\{.*\}", out, re.S)
-            res = json.loads(m.group(0)) if m else {}
+            try:
+                res = json.loads(m.group(0)) if m else {}
+            except ValueError:
+                res = {}
             if res.get("verdict") not in ("PASS", "BLOCK"):
-                raise ValueError(f"no verdict in reply: {out[:200]}")
+                transient += 1
+                if transient < 3:
+                    time.sleep(10)
+                    continue
+                return _unavailable("no_verdict", "AI review failed: the model gave no verdict")
             break
         except urllib.error.HTTPError as e:
-            body_txt = _redact(e.read()[:400].decode(errors="replace"))
+            body_txt = _http_body(e)
             last = f"HTTP {e.code}: {body_txt[:200]}"
             if "per day" in body_txt:              # daily quota gone: waiting a minute won't help
-                return {"ok": False, "available": False, "quota": True,
-                        "problems": ["AI review skipped: the free daily AI quota is used up "
-                                     "(it refills over the next 24h)"]}
-            if e.code in (429, 500, 502, 503) and attempt < 2:
-                time.sleep(min(65, float(e.headers.get("retry-after") or 30)))
+                return _unavailable("quota", "AI review skipped: the free daily AI quota is used up "
+                                             "(it refills over the next 24h)", quota=True)
+            if e.code == 413:
+                # A hard per-request input cap (Groq free tier: ITPM 7000). No wait fixes it, so
+                # re-send the first later stage PREDICTED to fit under the limit the 413 states
+                # (calibrated on this very request), or fail closed without another request.
+                lim = re.search(r"Limit\s+(\d+)", body_txt)
+                got = re.search(r"Requested\s+(\d+)", body_txt)
+                limit = int(lim.group(1)) if lim else AI_INPUT_LIMIT
+                # Groq's own count wins; without it, at least the limit + 1 (it was refused).
+                requested = int(got.group(1)) if got else max(limit + 1, predict_tokens(body))
+                cal = (body, requested)
+                nxt = None
+                for j in range(stage + 1, len(AI_STAGES)):
+                    cand = build(j)
+                    p = predict_tokens(cand, calibrate=cal)
+                    if p <= limit - AI_LIMIT_MARGIN:
+                        nxt = (j, cand, p)
+                        break
+                if nxt is None:
+                    return _unavailable(
+                        "too_large", f"AI review request too large ({requested} > {limit} input tokens even "
+                                     f"after shrinking): {last}", too_large=True,
+                        shrunk={"stage": AI_STAGES[stage]["name"], "images": _body_parts(body)[1],
+                                "limit": limit, "requested": requested})
+                stage, body, p = nxt
+                shrunk = {"stage": AI_STAGES[stage]["name"], "images": _body_parts(body)[1], "limit": limit,
+                          "requested": requested, "predicted_tokens": p}
                 continue
-            return {"ok": False, "available": False, "problems": [f"AI review failed: {last}"]}
-        except Exception as e:                     # network / JSON trouble
-            last = str(e)[:200]
-            if attempt < 2:
+            if e.code in (429, 500, 502, 503, 504):
+                transient += 1
+                if transient < 3:
+                    try:
+                        wait = float((e.headers or {}).get("retry-after") or 30)
+                    except (TypeError, ValueError):
+                        wait = 30
+                    time.sleep(min(65, wait))
+                    continue
+                return _unavailable("rate_limited" if e.code == 429 else "server_error",
+                                    f"AI review failed: {last}", retryable=True)
+            return _unavailable(f"http_{e.code}", f"AI review failed: {last}")
+        except Exception as e:                     # network trouble
+            timeout = _is_timeout(e)
+            transient += 1
+            if transient < 3:
                 time.sleep(10)
                 continue
-            return {"ok": False, "available": False, "problems": [f"AI review failed: {last}"]}
+            return _unavailable("timeout" if timeout else "network", f"AI review failed: {str(e)[:200]}",
+                                retryable=timeout)
     coh, qual = int(res.get("coherence") or 0), int(res.get("quality") or 0)
     problems = [str(p) for p in (res.get("policy_issues") or []) + (res.get("quality_issues") or []) if p]
     ok = res["verdict"] == "PASS" and coh >= 5 and qual >= 5 and not (res.get("policy_issues") or [])
-    return {"ok": ok, "available": True, "coherence": coh, "quality": qual, "problems": problems[:6],
-            "summary": str(res.get("summary") or "")[:300], "model": AI_MODEL, "tokens": tokens}
+    out = {"ok": ok, "available": True, "retryable": False, "reason": None, "coherence": coh, "quality": qual,
+           "problems": problems[:6], "summary": str(res.get("summary") or "")[:300], "model": AI_MODEL,
+           "tokens": tokens}
+    if shrunk:
+        out["shrunk"] = shrunk
+    return out
 
 
 # ---------------------------------------------------------------------- main --
@@ -543,11 +791,12 @@ def check(path, platform, *, profile=None, title="", caption="", description="",
     """Run every layer. Returns the verdict dict; approves the file for require() only when ok."""
     if platform not in PLATFORMS:
         raise ValueError(f"unknown platform {platform}")
-    pr = {**DEFAULT_PROFILE, **(profile or {})}
+    pr = profile_for(profile)                    # DEFAULT_PROFILE <- bot window <- bot's keys
     if pr.get("ledger"):                         # headlines this gate approved before count as recent
         recent_texts = list(recent_texts) + recent_heads(pr["ledger"], platform)
+    head = _head(platform, title, caption)
     verdict = {"ok": False, "platform": platform, "file": os.path.basename(path), "sha256": None,
-               "head": _head(platform, title, caption),
+               "head": head, "head_similarity": head_similarity(head, list(recent_texts)[-10:], pr["head_mask"]),
                "failures": list(extra_failures), "warnings": [], "report": {}, "ai": None,
                "checked_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                "gate_version": GATE_VERSION}
@@ -567,7 +816,8 @@ def check(path, platform, *, profile=None, title="", caption="", description="",
     res = stage("text", lambda: check_text(
         platform, title=title, caption=caption, description=description, tags=tags,
         recent_texts=recent_texts, allowed_domains=pr["allowed_domains"],
-        ai_realistic=pr["ai_realistic"], ai_label=ai_label))
+        ai_realistic=pr["ai_realistic"], ai_label=ai_label, similarity=pr["head_similarity"],
+        similarity_max=pr["head_similarity_max"], head_mask=pr["head_mask"]))
     if res:
         F.extend(res[0]); W.extend(res[1])
     res = stage("video", lambda: check_media(path, platform, pr))
@@ -591,7 +841,7 @@ def check(path, platform, *, profile=None, title="", caption="", description="",
     if mode != "off" and not F and cap and pr.get("ledger") and ai_reviews_today(pr["ledger"]) >= cap:
         # The free AI quota is shared by 3 bots; retry loops must not let one bot spend it
         # all. Same outcome as Groq's own "per day" answer, just reached earlier.
-        ai = {"ok": False, "available": False, "quota": True, "cap": True,
+        ai = {"ok": False, "available": False, "quota": True, "cap": True, "retryable": False, "reason": "cap",
               "problems": [f"AI review skipped: this bot's daily AI-review cap ({cap}) is reached "
                            "(the free AI quota is shared by 3 bots)"]}
         verdict["ai"] = ai
@@ -648,6 +898,119 @@ def require(path, platform):
     return digest
 
 
+# The ledger is committed to public repos. An AI reviewer's reason for a legal block
+# ("implies the guilt of an uncharged suspect, <name>") restates the allegation the gate
+# refused to publish (audit 2026-10-21 F12), so such text is withheld from the file.
+# The in-memory verdict (alerts, retries) keeps the full text. (Folded from BCF 396565f.)
+# Security review 2026-10-23: a keyword list is bypassable ("names the man next door as the
+# one who did it"), so the public log is fail-closed: AI-review reasons and summaries are
+# always fixed codes, a gate-generated message is kept only with its quoted / personal-data
+# parts removed, and any other text (e.g. a bot's own extra_failures) becomes a fixed code.
+# _ALLEGATION stays as a second net over what survives.
+_ALLEGATION = re.compile(
+    r"\b(suspect\w*|acquit\w*|convict\w*|uncharged|charged|charges|implicat\w*|accus\w*|guilt\w*|"
+    r"persons? of interest|perpetrator\w*|culprit\w*|killers?|murderers?|wrongdoing|defam\w*|libel\w*|"
+    r"arrest\w*|framed|innocen\w*|hitm[ae]n|accomplice\w*|blame\w*)\b", re.I)
+WITHHELD = "[legal-risk detail withheld from the public log]"
+AI_WITHHELD = "[ai_block] withheld from the public log"
+OTHER_WITHHELD = "[other] detail withheld from the public log"
+# Messages this module writes itself (check_text, check_media, check). Content words only ever
+# appear inside "quotes" or the (parentheses) of the personal-data/link rules; those are cut.
+_PUBLIC_SAFE = re.compile(
+    r"^(?:empty (?:title|caption)|title is \d|description is \d|'<' or '>' in the |tags total \d|caption is \d|"
+    + "|".join(re.escape(why) for _, why in BAIT + MISLEADING) +
+    r"|email address in the text|phone number in the text|link in a TikTok caption|link to an unapproved site"
+    r"|\d+ hashtags|generic reach hashtags|doubled word in the (?:title|caption|description)"
+    r"|same (?:title|first caption line) as a recent post|near-duplicate (?:title|first caption line)"
+    r"|realistic AI content without|no video stream|no audio stream|container \S+ not accepted"
+    r"|video codec \S+ not accepted|[\d.]+ fps|\d+x\d+ |-?[\d.]+s outside|file is [\d.]+ GB|pixel format"
+    r"|resolution \d|video bitrate|ffmpeg could not decode|\d+ decode error|[\d.]+s of black picture"
+    r"|picture frozen|could not measure loudness|loudness -?[\d.]+ LUFS|true peak|[\d.]+s of dead silence"
+    r"|first frame is blank|picture barely changes|video file missing or empty"
+    r"|(?:hash|text|video|speech|AI review) check could not run"
+    r"|narration doesn't match the script|narration only \d+% matched)")
+_PERSONAL = re.compile(r"^((?:email address|phone number) in the text|link in a TikTok caption"
+                       r"|link to an unapproved site) \([^)]*\)")
+_UNAVAILABLE_CODES = (("too large", "too_large"), ("daily AI quota", "quota"), ("daily AI-review cap", "cap"),
+                      ("not set", "no_key"), ("no verdict", "no_verdict"), ("timed out", "timeout"))
+_PUBLIC_KEYS = ("checked_at", "platform", "file", "sha256", "head", "ok", "failures", "warnings",
+                "gate_version", "head_similarity", "report", "ai")
+_PUBLIC_REPORT = ("seconds", "lufs", "speech_match", "longest_freeze")
+_PUBLIC_AI_NUM = ("available", "ok", "coherence", "quality", "tokens", "retryable", "too_large", "quota", "cap")
+_CODE_RE = re.compile(r"^[a-z][a-z0-9_]{0,23}$")
+
+
+def scrub_public(text):
+    """The public-log form of one failure/warning line: a gate-generated technical message
+    (minus quoted words and personal data), else a fixed code. Never free text."""
+    if not isinstance(text, str):
+        return None
+    if text.startswith("AI review unavailable: "):
+        rest = text[len("AI review unavailable: "):]
+        code = next((c for k, c in _UNAVAILABLE_CODES if k in rest), None)
+        if code is None:
+            m = re.search(r"\bHTTP (\d{3})\b", rest)
+            code = f"http_{m.group(1)}" if m else "unavailable"
+        return f"AI review unavailable: [{code}]"
+    if text.startswith("AI review: "):
+        return "AI review: " + AI_WITHHELD
+    if not _PUBLIC_SAFE.match(text):
+        return WITHHELD if _ALLEGATION.search(text) else OTHER_WITHHELD
+    out = _PERSONAL.sub(r"\1 (…)", text)
+    out = re.sub(r"\"[^\"]*\"?", '"…"', out)
+    if _ALLEGATION.search(out):
+        return WITHHELD
+    return out
+
+
+def _num(v):
+    return v if v is None or isinstance(v, (bool, int, float)) else None
+
+
+def _scrub_entry(e):
+    """Allowlist of structured fields for the public ledger. Blocked entries lose `head` and
+    `file` (free text a reviewer refused to publish); recent_heads reads only ok entries."""
+    e = e if isinstance(e, dict) else {}
+    out = {k: e.get(k) for k in _PUBLIC_KEYS}
+    ok = out["ok"] is True
+    out["ok"] = ok if isinstance(e.get("ok"), bool) else None
+    for k in ("checked_at", "platform", "sha256", "gate_version"):
+        if not isinstance(out[k], str) or not re.fullmatch(r"[\w.:+\-]{0,80}", out[k]):
+            out[k] = None
+    if not ok or not isinstance(out["head"], str):
+        out["head"] = None
+    if not ok or not isinstance(out["file"], str):
+        out["file"] = None
+    out["head_similarity"] = _num(out["head_similarity"])
+    out["failures"] = [scrub_public(f) for f in (e.get("failures") or []) if isinstance(f, str)]
+    out["warnings"] = [scrub_public(w) for w in (e.get("warnings") or []) if isinstance(w, str)]
+    rep = e.get("report") if isinstance(e.get("report"), dict) else {}
+    out["report"] = {k: _num(rep.get(k)) for k in _PUBLIC_REPORT}
+    ai = e.get("ai")
+    if isinstance(ai, dict):
+        slim = {k: _num(ai.get(k)) for k in _PUBLIC_AI_NUM if k in ai}
+        reason = ai.get("reason")
+        slim["reason"] = reason if isinstance(reason, str) and _CODE_RE.match(reason) else None
+        model = ai.get("model")
+        if isinstance(model, str) and re.fullmatch(r"[\w./:\-]{1,64}", model):
+            slim["model"] = model
+        if ai.get("skipped") == "earlier failures":
+            slim["skipped"] = "earlier failures"
+        summary = ai.get("summary")
+        if summary is not None:
+            slim["summary"] = "[ai_pass]" if ai.get("ok") is True else AI_WITHHELD
+        if isinstance(ai.get("shrunk"), dict):
+            sh = {k: v for k, v in ai["shrunk"].items()
+                  if k in ("images", "limit", "requested", "predicted_tokens") and isinstance(v, int)}
+            if ai["shrunk"].get("stage") in {s["name"] for s in AI_STAGES}:
+                sh["stage"] = ai["shrunk"]["stage"]
+            slim["shrunk"] = sh
+        out["ai"] = slim
+    else:
+        out.pop("ai")
+    return out
+
+
 def record(verdict, ledger_path, keep=300):
     """Append to the JSON audit log (what was checked, when, and why it passed or failed)."""
     try:
@@ -656,13 +1019,14 @@ def record(verdict, ledger_path, keep=300):
     except (OSError, ValueError):
         data = {"entries": []}
     slim = {k: verdict.get(k) for k in ("checked_at", "platform", "file", "sha256", "head", "ok", "failures",
-                                        "warnings", "gate_version")}
+                                        "warnings", "gate_version", "head_similarity")}
     slim["report"] = {k: verdict["report"].get(k) for k in ("seconds", "lufs", "speech_match", "longest_freeze")}
     if verdict.get("ai"):
         slim["ai"] = {k: verdict["ai"].get(k) for k in ("available", "ok", "coherence", "quality", "summary",
-                                                         "tokens")}
+                                                         "tokens", "retryable", "reason", "too_large", "quota",
+                                                         "cap", "skipped", "model", "shrunk") if k in verdict["ai"]}
     data.setdefault("entries", []).append(slim)
-    data["entries"] = data["entries"][-keep:]
+    data["entries"] = [_scrub_entry(e) for e in data["entries"][-keep:]]
     with open(ledger_path, "w", encoding="utf-8") as fh:
         json.dump(data, fh, indent=1, ensure_ascii=False)
 
