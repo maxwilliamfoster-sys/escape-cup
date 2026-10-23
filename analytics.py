@@ -20,6 +20,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
+import buffer_client
 import growth_stats
 import publish
 import tournament
@@ -37,8 +38,14 @@ BACKFILL_LEN = {
 }
 V2_FROM = "2026-10-02"          # first dense-ring (v2) post
 
-QUERY = """query($i: PostInput!) { post(input: $i) {
-  id status sentAt externalLink text metricsUpdatedAt metrics { type value unit } } }"""
+# Buffer reads go through growth-lab buffer_client (S7; growth-lab audit 2026-10-21, MASTER_PLAN #4):
+# ONE paginated sent-posts query (100 a page, newest first) instead of one call per published
+# post, so the cost stays flat (orgs + channels + 1 page = 3 calls) however many videos go out.
+# One page = 100 posts, about 14 days at 7 a day, more than the 72 h metrics need.
+# The Free plan allows 100 / 15 min, 250 / 24 h and 3,000 / 30 days per API key, shared
+# with BuriedCasefiles. A 429 raises BufferRateLimited and nothing is written.
+SENT_PAGES = 1
+BUFFER_CACHE = os.path.join(ROOT, "work", "buffer_ids.json")   # org/channel ids (gitignored)
 
 
 def load():
@@ -53,17 +60,51 @@ def save(data):
         json.dump(data, f, indent=1, ensure_ascii=False)
 
 
-def collect():
+def buffer():
+    os.makedirs(os.path.dirname(BUFFER_CACHE), exist_ok=True)
+    return buffer_client.BufferClient(cache_path=BUFFER_CACHE)
+
+
+def _quota_alert(windows, limits):
+    """Bot HQ warning when a Buffer window is under 15% (the key is shared with BCF)."""
+    try:
+        import app_events
+        app_events.emit("escape", "buffer_quota", "warning",
+                        f"Buffer API quota low: {', '.join(windows)}",
+                        buffer_client.format_limits(limits), data={"limits": limits},
+                        dedupe_key=f"buffer_quota:{datetime.now(timezone.utc):%Y-%m-%d}")
+    except Exception as e:  # noqa: BLE001 - an alert must never stop the collection
+        print(f"[BotHQ] emit failed: {e}")
+
+
+def _log_quota(client):
+    lim = client.remaining()
+    left = "/".join(str(lim.get(w, {}).get("remaining", "?")) for w in ("24h", "30d"))
+    print(f"buffer calls: {client.calls}, remaining 24h/30d: {left}")
+    low = client.quota_low()
+    if low:
+        print(f"WARNING Buffer quota below {int(client.low_fraction * 100)}% in {', '.join(low)}")
+        _quota_alert(low, lim)
+
+
+def collect(client=None):
+    client = client or buffer()
     state = tournament.load()
     data = load()
     now = datetime.now(timezone.utc).isoformat(timespec="minutes")
+    org, channel = client.find_channel(service="tiktok", channel_id=os.environ.get("BUFFER_CHANNEL_ID") or None,
+                                       exclude_handles=publish.OTHER_PROJECT_HANDLES)
+    try:
+        sent = {p["id"]: p for p in client.sent_posts(org, channel, first=100, max_pages=SENT_PAGES)}
+    finally:
+        _log_quota(client)
     for e in state.get("log", []):
         if e.get("status") != "published" or not e.get("buffer_id"):
             continue
-        post = publish._gql(QUERY, {"i": {"id": e["buffer_id"]}})["post"]
+        post = sent.get(e["buffer_id"])
         if not post:
             continue
-        m = {x["type"]: x["value"] for x in (post.get("metrics") or [])}
+        m = dict(post.get("metrics") or {})
         if "likes" not in m and "reactions" in m:      # Buffer reports TikTok likes as reactions
             m["likes"] = m["reactions"]
         royale = e.get("series") == "royale"
@@ -252,7 +293,12 @@ if __name__ == "__main__":
     elif "--report" in sys.argv:
         report(load())
     else:
-        d = collect()
+        try:
+            d = collect()
+        except buffer_client.BufferRateLimited as e:
+            # never read as "no posts": stop with analytics.json untouched; the next daily run retries
+            print(f"STOPPED: {e}")
+            sys.exit(1)
         report(d)
         print(compare(d))
         # weekly A/B digest to Telegram (Mondays)

@@ -5,7 +5,9 @@ on:
     # Every 3 hours: reconcile with Buffer (mark published posts, rewind the
     # bracket if a scheduled video was deleted/rejected) and fill the next slots.
     # Buffer publishes at the exact slot times, so GitHub's cron delays don't
-    # move posting times. ~8 runs/day stays well inside Buffer's 250 calls/day.
+    # move posting times. Buffer Free allows 100 calls / 15 min, 250 / 24 h and
+    # 3,000 / 30 days (~100 a day) per API key, shared with BuriedCasefiles
+    # (developers.buffer.com/guides/api-limits.html); the 30-day window binds first.
     - cron: '17 */3 * * *'
   workflow_dispatch:
     inputs:
