@@ -29,6 +29,9 @@ jobs:
       - name: Collect
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          # analytics.collect now looks the channel up (buffer_client.find_channel); pin it
+          # to the same channel post.yml posts to, as the Buffer account holds 2 TikToks
+          BUFFER_CHANNEL_ID: ${{ secrets.BUFFER_CHANNEL_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           APP_URL: https://bot-hq.maxwilliamfoster.workers.dev
