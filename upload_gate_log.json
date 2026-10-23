@@ -1037,13 +1037,70 @@
    "ok": true,
    "failures": [],
    "warnings": [
-    "AI review unavailable: [cap]"
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-23",
    "head_similarity": 0.744,
    "report": {
     "seconds": 32.83,
     "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-23T21:24:12+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m12_212747479030.mp4",
+   "sha256": "dd450b9d4f7cf05720a9367f76f684a599c71a314d9dbb38200cfe1f0091de4f",
+   "head": "Which country escapes first? Spain 🇪🇸 vs Ukraine 🇺🇦 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.87 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\"",
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.87,
+   "report": {
+    "seconds": 15.78,
+    "lufs": -15.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-23T21:26:51+00:00",
+   "platform": "tiktok",
+   "file": "royale023_146044163010.mp4",
+   "sha256": "d784f689851e4b9ec4ca0031d50407dad4a31e1b84b847b7c5007f9443c6b840",
+   "head": "England, Ireland, Japan or Germany? 16 country balls, 28 rings. Find your country · heat 23",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.564,
+   "report": {
+    "seconds": 26.13,
+    "lufs": -16.2,
     "speech_match": null,
     "longest_freeze": 0.0
    },
