@@ -66,9 +66,12 @@ MAX_ATTEMPTS = 12
 WIDE_TRIES_CUP = 1200
 WIDE_TRIES_ROYALE = 900
 # Real AI reviews per UTC day for this bot. The free Groq quota is shared by 3 bots
-# (chess 10, Escape 14, BCF 20 = ~190k of 200k tokens; growth-lab PLAN_2026-10-19). 14 = 10
-# posts a day at ~1.1 reviews each (upload_gate_log.json, Oct 2026) plus retries.
-AI_DAILY_CAP = 14
+# (growth-lab PLAN_2026-10-19). Was 14 (10 posts a day at ~1.1 reviews each). 2026-10-23
+# (audit MASTER_PLAN #6): 3 = the first cup and first royale of each UTC day plus one spare.
+# All 15 real Escape reviews passed at 9-10/10 (~4,070 tokens each), so this frees ~45k
+# tokens a day for BCF, whose required review does catch problems. Renders past the cap
+# still post on the deterministic gates ("AI cap reached" is a warning, not a block).
+AI_DAILY_CAP = 3
 SYSTEMIC_STOP = "same failure 3 times in a row - stopping (not a content problem; check the log)"
 # Renders finish by 35 min + 15 min hosting/Telegram per slot + ~3 min setup < the
 # 60-min job timeout. Checked before EVERY render (also a later slot's first one),
