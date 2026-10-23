@@ -9,9 +9,10 @@
    "ok": true,
    "failures": [],
    "warnings": [
-    "AI review unavailable: AI review failed: HTTP 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01krgfnbpdf2jrvn8r60dwmzkz` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested "
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 20.48,
     "lufs": -14.6,
@@ -23,21 +24,22 @@
     "ok": false,
     "coherence": null,
     "quality": null,
-    "summary": null
+    "reason": null
    }
   },
   {
    "checked_at": "2026-10-16T16:41:08+00:00",
    "platform": "tiktok",
-   "file": "royale004_47724846002.mp4",
+   "file": null,
    "sha256": "7597d7ebec6706784f3c906f6dfe877d2eaeefc532e104c9876c2e11d395743e",
-   "head": "Country ball escape royale - 16 flags, one exit. Find your country",
+   "head": null,
    "ok": false,
    "failures": [
-    "same first caption line as a recent post (repetitive content): \"country ball escape royale - 16 flags, one exit. find your country\""
+    "same first caption line as a recent post (repetitive content): \"…\""
    ],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 33.43,
     "lufs": -13.4,
@@ -55,6 +57,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 29.18,
     "lufs": -16.1,
@@ -66,8 +69,9 @@
     "ok": true,
     "coherence": 10,
     "quality": 10,
-    "summary": "The video is a high-quality, coherent physics simulation that clearly tracks the progress of 16 country balls escaping rings, culminating in a clear winner (Jamaica) and a teaser for the next heat, with no policy violations.",
-    "tokens": 4055
+    "tokens": 4055,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -80,6 +84,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 38.2,
     "lufs": -17.2,
@@ -91,8 +96,9 @@
     "ok": true,
     "coherence": 10,
     "quality": 9,
-    "summary": "The video presents a consistent and high-quality physics simulation of country balls escaping rings, with clear on-screen text tracking the progress and a definitive end card that matches the caption's promise.",
-    "tokens": 4047
+    "tokens": 4047,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -105,6 +111,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 21.9,
     "lufs": -17.1,
@@ -116,8 +123,9 @@
     "ok": true,
     "coherence": 10,
     "quality": 10,
-    "summary": "The video is a coherent, high-quality physics simulation that matches the caption and title, with a clear winner and no policy violations.",
-    "tokens": 4035
+    "tokens": 4035,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -130,6 +138,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 21.68,
     "lufs": -15.3,
@@ -141,22 +150,24 @@
     "ok": true,
     "coherence": 10,
     "quality": 10,
-    "summary": "The video is a high-quality, coherent physics simulation that clearly displays the match progression, winner, and next match teaser without any policy violations or rendering errors.",
-    "tokens": 4052
+    "tokens": 4052,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
    "checked_at": "2026-10-18T20:43:04+00:00",
    "platform": "tiktok",
-   "file": "royale006_172107506020.mp4",
+   "file": null,
    "sha256": "26d6bf3626ba448eb61c91d7e031ef78974410125574ced7a02179e3a2baacbe",
-   "head": "Country ball escape royale - 16 flags, one exit. Find your country",
+   "head": null,
    "ok": false,
    "failures": [
-    "same first caption line as a recent post (repetitive content): \"country ball escape royale - 16 flags, one exit. find your country\""
+    "same first caption line as a recent post (repetitive content): \"…\""
    ],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 28.47,
     "lufs": -14.7,
@@ -167,15 +178,16 @@
   {
    "checked_at": "2026-10-18T20:44:40+00:00",
    "platform": "tiktok",
-   "file": "royale006_172107506017.mp4",
+   "file": null,
    "sha256": "fc54eca7e142aa548162e2827a3270a91531b621a54582a16b8cfe270f607b1e",
-   "head": "Ball escape simulation: 16 countries, only one breaks out first",
+   "head": null,
    "ok": false,
    "failures": [
-    "same first caption line as a recent post (repetitive content): \"ball escape simulation: 16 countries, only one breaks out first\""
+    "same first caption line as a recent post (repetitive content): \"…\""
    ],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 24.03,
     "lufs": -14.1,
@@ -186,15 +198,16 @@
   {
    "checked_at": "2026-10-18T20:46:26+00:00",
    "platform": "tiktok",
-   "file": "royale006_172107506024.mp4",
+   "file": null,
    "sha256": "5bf9648748b7fee1f0b049931f4235216f020f2099d77f02035080c81c751a5a",
-   "head": "Country ball escape royale - 16 flags, one exit. Find your country",
+   "head": null,
    "ok": false,
    "failures": [
-    "same first caption line as a recent post (repetitive content): \"country ball escape royale - 16 flags, one exit. find your country\""
+    "same first caption line as a recent post (repetitive content): \"…\""
    ],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 29.72,
     "lufs": -13.8,
@@ -212,6 +225,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 26.27,
     "lufs": -14.6,
@@ -223,8 +237,9 @@
     "ok": true,
     "coherence": 10,
     "quality": 9,
-    "summary": "The video presents a clear, high-quality physics simulation of country balls escaping rings, with consistent on-screen text and a logical progression from start to finish.",
-    "tokens": 4040
+    "tokens": 4040,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -237,6 +252,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 35.92,
     "lufs": -14.7,
@@ -248,8 +264,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation that ends with a clear winner and a tease for the next heat, with no policy or rendering issues.",
-    "tokens": 4061
+    "tokens": 4061,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -262,6 +279,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 17.45,
     "lufs": -16.9,
@@ -273,8 +291,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The video presents a coherent, polished physics simulation of Italy vs. Ireland with clear on-screen text, a consistent scoreboard progression, and a clean end card that matches the caption's teaser for the next match.",
-    "tokens": 4082
+    "tokens": 4082,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -287,6 +306,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 18.22,
     "lufs": -16.8,
@@ -298,8 +318,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The video presents a coherent, polished physics simulation of the Netherlands vs. Ireland final with consistent on-screen text, a clear winner reveal, and a teaser for the next draw, with no policy violations.",
-    "tokens": 4087
+    "tokens": 4087,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -312,6 +333,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 27.53,
     "lufs": -13.6,
@@ -323,8 +345,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation, with a clear hook, progressive ring countdown, and a clean end card naming France as the winner and teasing the next heat.",
-    "tokens": 4074
+    "tokens": 4074,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -337,6 +360,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 24.05,
     "lufs": -13.7,
@@ -348,8 +372,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell a consistent, coherent story of a physics-based country-ball escape simulation with a clear winner and end card, and no policy violations are present.",
-    "tokens": 4067
+    "tokens": 4067,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -362,6 +387,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 33.1,
     "lufs": -13.8,
@@ -373,8 +399,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The video presents a consistent and high-quality physics simulation of a country ball escape game, with clear on-screen text tracking the progress and a definitive winner reveal that matches the caption.",
-    "tokens": 4077
+    "tokens": 4077,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -387,6 +414,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 20.45,
     "lufs": -16.7,
@@ -398,8 +426,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The video presents a coherent, polished physics simulation of Switzerland vs Indonesia with consistent on-screen text, a clear winner reveal, and a next-match tease that aligns perfectly with the caption and platform rules.",
-    "tokens": 4088
+    "tokens": 4088,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -412,6 +441,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 32.62,
     "lufs": -13.5,
@@ -423,8 +453,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent physics-simulation story (16 country balls, rings breaking down to a single escape, Belgium winning, next heat teased) with no policy violations.",
-    "tokens": 4070
+    "tokens": 4070,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -437,6 +468,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 21.43,
     "lufs": -16.5,
@@ -448,8 +480,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The video presents a consistent and high-quality physics simulation of a Mexico vs. USA match, with clear progression from start to finish and a clean end card that matches the caption's teaser.",
-    "tokens": 4089
+    "tokens": 4089,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -462,6 +495,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 23.53,
     "lufs": -14.3,
@@ -473,8 +507,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent physics-simulation story (16 country balls, 28 rings, Germany escapes first) with clean, readable rendering and no policy violations.",
-    "tokens": 4073
+    "tokens": 4073,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -487,6 +522,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 18.85,
     "lufs": -15.2,
@@ -498,8 +534,9 @@
     "ok": true,
     "coherence": 10,
     "quality": 9,
-    "summary": "The video is a coherent, high-quality physics simulation that matches the caption and title, with a clear winner and next-match tease, and no policy violations.",
-    "tokens": 4080
+    "tokens": 4080,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -512,6 +549,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 31.7,
     "lufs": -13.9,
@@ -523,8 +561,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation, with a clear hook, progressive ring counter, and a clean end card naming Thailand as the winner and teasing the next heat.",
-    "tokens": 4079
+    "tokens": 4079,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -537,6 +576,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 29.5,
     "lufs": -17.5,
@@ -548,8 +588,9 @@
     "ok": true,
     "coherence": 10,
     "quality": 10,
-    "summary": "The video is a coherent, high-quality physics simulation that matches the caption and title, with a clear winner and next-match tease, and no policy violations.",
-    "tokens": 4085
+    "tokens": 4085,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -562,6 +603,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 27.5,
     "lufs": -15.8,
@@ -573,8 +615,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation, with a clear hook, progressive ring counter, and a clean end card naming Nigeria as the winner and teasing the next heat.",
-    "tokens": 4080
+    "tokens": 4080,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -587,6 +630,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 28.43,
     "lufs": -17.7,
@@ -598,8 +642,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The video presents a coherent, polished physics simulation of the Philippines vs. Netherlands escape match with consistent on-screen text, a clear winner end card, and a valid next-match tease, with no policy violations.",
-    "tokens": 4070
+    "tokens": 4070,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -612,6 +657,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 19.38,
     "lufs": -15.5,
@@ -623,8 +669,9 @@
     "ok": true,
     "coherence": 10,
     "quality": 10,
-    "summary": "The video is a high-quality, coherent physics simulation that clearly depicts the match between England and Croatia, with consistent on-screen graphics and a clear winner announcement that matches the caption.",
-    "tokens": 4113
+    "tokens": 4113,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -637,6 +684,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 30.53,
     "lufs": -14.0,
@@ -648,8 +696,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation that ends with a clear winner and a teaser for the next heat, with no policy or rendering issues.",
-    "tokens": 4073
+    "tokens": 4073,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -662,6 +711,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 22.6,
     "lufs": -18.0,
@@ -673,8 +723,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The video is a coherent, high-quality physics simulation of a country ball escape match with consistent on-screen text, a clear winner reveal, and a next-match tease that aligns perfectly with the caption.",
-    "tokens": 4087
+    "tokens": 4087,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -687,6 +738,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 26.6,
     "lufs": -13.3,
@@ -698,8 +750,9 @@
     "ok": true,
     "coherence": 10,
     "quality": 10,
-    "summary": "The video presents a consistent and high-quality physics simulation of a country ball escape game, with clear on-screen text tracking the progress and a definitive winner card at the end.",
-    "tokens": 4082
+    "tokens": 4082,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -712,6 +765,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 17.25,
     "lufs": -17.2,
@@ -723,8 +777,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent story of a Colombia vs Germany escape-ring physics simulation, ending with a clear Germany winner card and a teaser for Australia vs Ireland, with no policy or rendering issues.",
-    "tokens": 4081
+    "tokens": 4081,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -737,6 +792,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 32.98,
     "lufs": -13.9,
@@ -748,8 +804,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation, with a clear hook, progressive ring counter, and a clean end card naming Uruguay as the winner and teasing the next heat.",
-    "tokens": 4076
+    "tokens": 4076,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -762,6 +819,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 26.33,
     "lufs": -16.2,
@@ -773,8 +831,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen scoreboard, and end card consistently tell the Australia vs Ireland escape simulation story, with a clean winner reveal and a clear tease for the next match, and no policy violations.",
-    "tokens": 4067
+    "tokens": 4067,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -787,6 +846,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 24.15,
     "lufs": -14.3,
@@ -798,8 +858,9 @@
     "ok": true,
     "coherence": 10,
     "quality": 9,
-    "summary": "The video presents a consistent and high-quality physics simulation where country flag balls bounce through rings, culminating in a clear winner (Ireland) and a teaser for the next heat, with no policy violations.",
-    "tokens": 4086
+    "tokens": 4086,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -812,6 +873,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 17.05,
     "lufs": -16.4,
@@ -823,8 +885,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The video presents a consistent and high-quality physics simulation of an Italy vs. Nigeria match, with clear on-screen graphics and a logical progression from start to finish that matches the caption.",
-    "tokens": 4091
+    "tokens": 4091,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -837,6 +900,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 24.6,
     "lufs": -13.5,
@@ -848,8 +912,9 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent, coherent story of a 16-country physics escape simulation that ends with a clear winner and a teaser for the next heat, with no policy or rendering issues.",
-    "tokens": 4075
+    "tokens": 4075,
+    "reason": null,
+    "summary": "[ai_pass]"
    }
   },
   {
@@ -862,6 +927,7 @@
    "failures": [],
    "warnings": [],
    "gate_version": "2026-10-16",
+   "head_similarity": null,
    "report": {
     "seconds": 24.0,
     "lufs": -13.9,
@@ -873,8 +939,121 @@
     "ok": true,
     "coherence": 9,
     "quality": 9,
-    "summary": "The visuals, on-screen text, and caption tell one consistent story of a 16-country physics escape simulation that ends with a clear winner and a tease for the next heat, with no policy or rendering issues.",
-    "tokens": 4071
+    "tokens": 4071,
+    "reason": null,
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-23T17:50:31+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m10_130919232040.mp4",
+   "sha256": "721eecab2aed440029635c803dfc3cb94d09860e9075735f08957494d8974c3c",
+   "head": "Which country escapes first? Poland 🇵🇱 vs Argentina 🇦🇷 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.469,
+   "report": {
+    "seconds": 18.73,
+    "lufs": -16.8,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-23T17:53:44+00:00",
+   "platform": "tiktok",
+   "file": "royale021_132140870000.mp4",
+   "sha256": "4281ae88a4b0f417edbacbd2adc79cb8d2605e17f45a9755eef6b77abd55d540",
+   "head": "England, Scotland, Italy or Portugal? 16 countries, one way out · heat 21",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.424,
+   "report": {
+    "seconds": 26.25,
+    "lufs": -15.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-23T17:55:59+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m11_111277121017.mp4",
+   "sha256": "7c99db31ea7ab5c194fb3549146a032e457da6f96712edc93f5efaadf6d0db02",
+   "head": "Country ball escape - Uruguay 🇺🇾 vs Turkey 🇹🇷",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.525,
+   "report": {
+    "seconds": 16.28,
+    "lufs": -15.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-23T18:01:20+00:00",
+   "platform": "tiktok",
+   "file": "royale022_71061861015.mp4",
+   "sha256": "6dc7f18933fa8c46ebf5328e869a75c85e21f444093002b640ed79d9cf28c824",
+   "head": "England, Wales, Argentina or Poland? 16 countries, one way out · heat 22",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.744,
+   "report": {
+    "seconds": 32.83,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
    }
   }
  ]
