@@ -14,19 +14,19 @@
    "max_n": 20,
    "metric": "avg % watched at 72h",
    "control_metrics": {
-    "n": 7,
-    "median": 33.6202,
-    "views72": 727.9826
+    "n": 8,
+    "median": 32.8056,
+    "views72": 743.2529
    },
    "variant_metrics": {
-    "n": 5,
-    "median": 28.5574,
-    "views72": 303.3731
+    "n": 6,
+    "median": 28.5122,
+    "views72": 521.458
    },
    "note": "started by hand 2026-10-13 (main.ARMS, slot alternation); arms come from analytics.json 'variant'",
    "verdict": "keep running",
-   "last_judged": "2026-10-22",
-   "result": "escape-cup-format-1 · views@72h: KEEP RUNNING — treatment 0.42x control (303 vs 728; 90% CI 0.35–1.19, p=0.256), n=5 vs 7 (min 10, max 20)"
+   "last_judged": "2026-10-23",
+   "result": "escape-cup-format-1 · views@72h: KEEP RUNNING — treatment 0.70x control (521 vs 743; 90% CI 0.36–1.17, p=0.478), n=6 vs 8 (min 10, max 20)"
   }
  ]
 }
