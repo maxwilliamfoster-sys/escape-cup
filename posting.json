@@ -1,0 +1,9 @@
+{
+ "_doc": "Posting slots (UK time), read by main.load_day_slots() at the start of every run. 2026-10-23 (growth-lab audit 2026-10-21, MASTER_PLAN #5): 18:30/20:00/21:30 dropped (medians 320-414 views@72h vs 748-816 midday), leaving 7/day 08:00-17:00, run as a 7-day pre-registered test (EXPERIMENTS.md, 'Cadence test'). KILL SWITCH: set kill_switch to true (edit this file on GitHub, commit to main) if `python analytics.py --compare` prints 'kill switch ... TRIP' (median views@72h of posts since 2026-10-21 below 375) or TikTok Studio marks any video 'not eligible for For You'. The next 'Schedule Escape Cup matches' run then fills only kill_switch_slots_uk (4/day); posts already queued in Buffer stay. A broken file falls back to the 7 slots in main.DEFAULT_DAY_SLOTS. Other bots (chess-puzzle-automation needs_you.py) can read this file to know Escape's planned posts per day.",
+ "kill_switch": false,
+ "day_slots_uk": ["08:00", "09:30", "11:00", "12:30", "14:00", "15:30", "17:00"],
+ "kill_switch_slots_uk": ["11:00", "12:30", "14:30", "16:30"],
+ "kill_switch_trip_views72": 375,
+ "test_start": "2026-10-23",
+ "test_end": "2026-10-30"
+}

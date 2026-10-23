@@ -18,6 +18,9 @@ Posting plan (research 2026-09-29):
     start slow), then 2/day.
   - 2026-10-21: 10/day, 08:00-21:30 UK every 90 min (DAY_SLOTS) - still under
     TikTok's 15/day API cap; more posts = more chances of a heavy-tail hit.
+  - 2026-10-23: 7/day, 08:00-17:00 UK (growth-lab audit 2026-10-21, MASTER_PLAN #5):
+    the evening slots were the weak ones. Slots and the 4/day kill switch live in
+    posting.json (see its _doc).
 """
 import argparse
 import copy
@@ -50,10 +53,46 @@ LONDON = ZoneInfo("Europe/London")
 
 RAMP_DAYS = 7
 RAMP_SLOTS = [(19, 30)]
-# 10 a day from 2026-10-21 (Max: more posts = more chances of a breakout), 90 min apart, 08:00-21:30 UK.
-DAY_SLOTS = [(8, 0), (9, 30), (11, 0), (12, 30), (14, 0), (15, 30), (17, 0), (18, 30), (20, 0), (21, 30)]
+# 10 a day from 2026-10-21 (Max: more posts = more chances of a breakout), 90 min apart.
+# 2026-10-23: 18:30/20:00/21:30 UK dropped (medians 320-414 views@72h vs 748-816 at midday;
+# growth-lab audit-2026-10-21 MASTER_PLAN #5) -> 7 a day, 08:00-17:00 UK. The live list is
+# read from posting.json, which also holds the 4/day kill switch; this is the fallback.
+DEFAULT_DAY_SLOTS = [(8, 0), (9, 30), (11, 0), (12, 30), (14, 0), (15, 30), (17, 0)]
+POSTING_CONFIG = os.path.join(ROOT, "posting.json")
+
+
+def _parse_slots(items):
+    out = []
+    for s in items:
+        h, m = (int(x) for x in str(s).split(":"))
+        if not (0 <= h < 24 and 0 <= m < 60):
+            raise ValueError(f"bad slot {s}")
+        out.append((h, m))
+    if not out:
+        raise ValueError("no slots")
+    return sorted(out)
+
+
+def load_day_slots(path=POSTING_CONFIG):
+    """Daily posting slots (UK) from posting.json: day_slots_uk, or kill_switch_slots_uk
+    when kill_switch is true. Any problem with the file -> DEFAULT_DAY_SLOTS (never stops
+    posting)."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            cfg = json.load(f)
+        key = "kill_switch_slots_uk" if cfg.get("kill_switch") is True else "day_slots_uk"
+        slots = _parse_slots(cfg[key])
+        if key == "kill_switch_slots_uk":
+            print(f"[main] KILL SWITCH on (posting.json): {len(slots)} slots a day")
+        return slots
+    except Exception as e:
+        print(f"[main] posting.json unusable ({e}) - using the default {len(DEFAULT_DAY_SLOTS)} slots")
+        return list(DEFAULT_DAY_SLOTS)
+
+
+DAY_SLOTS = load_day_slots()
 # How far ahead to schedule (= your veto window). Under 24h so a run never asks Buffer to hold
-# more than one day's 10 posts: the free plan's queue cap is 10 per channel.
+# more than one day's posts: the free plan's queue cap is 10 per channel.
 HORIZON = timedelta(hours=20)
 MIN_LEAD = timedelta(minutes=25)     # never schedule a slot closer than this
 # A rejected render never skips a slot: new seeds are tried until one passes the

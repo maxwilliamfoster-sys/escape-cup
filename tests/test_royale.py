@@ -60,16 +60,22 @@ class ArmTests(unittest.TestCase):
         for d in (13, 14):                                   # Tue, Wed
             arms = [main.arm_for(datetime(2026, 10, d, h, m, tzinfo=main.LONDON).astimezone(timezone.utc),
                                  state) for h, m in main.DAY_SLOTS]
-            self.assertEqual(arms.count("cup"), arms.count("royale"))
+            self.assertLessEqual(abs(arms.count("cup") - arms.count("royale")), 1)
             days.append(arms)
-        self.assertEqual(days[0], days[1][::-1])
+        # 7 slots a day (2026-10-23): each slot swaps arm daily, so two days balance exactly
+        self.assertEqual((days[0] + days[1]).count("cup"), (days[0] + days[1]).count("royale"))
+        self.assertTrue(all(x != y for x, y in zip(days[0], days[1])))
 
 
 class SlotTests(unittest.TestCase):
     STATE = {"log": [{"due": "2026-10-01T18:30:00+00:00"}]}   # ramp long over
 
-    def test_ten_posts_a_day(self):
-        self.assertEqual(len(main.DAY_SLOTS), 10)
+    def test_seven_posts_a_day_none_after_17(self):
+        # 2026-10-23 (growth-lab audit MASTER_PLAN #5): 18:30/20:00/21:30 UK dropped
+        self.assertEqual(len(main.DAY_SLOTS), 7)
+        self.assertLessEqual(max(main.DAY_SLOTS), (17, 0))
+        for gone in ((18, 30), (20, 0), (21, 30)):
+            self.assertNotIn(gone, main.DAY_SLOTS)
         for d in range(12, 19):                              # a full week, weekend included
             self.assertEqual(main.slots_for_day(datetime(2026, 10, d).date(), datetime(2026, 10, 1).date()),
                              main.DAY_SLOTS)

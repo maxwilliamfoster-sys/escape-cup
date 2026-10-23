@@ -32,7 +32,7 @@ BACKFILL_LEN = {
     "gb-sct-ch": 35, "pl-uy": 30, "ph-ng": 24, "ma-ua": 25, "au-vn": 22, "us-hr": 21,
     "mx-nl": 25, "co-pt": 27, "id-tr": 24, "kr-jp": 18, "es-br": 18, "sn-it": 20,
     # 10-13 cup posts (A/B start), before length was stored: frames of sim.simulate(seed)
-    # / FPS + render.CARD_SECONDS, a formula that reproduces 10-14..10-16 exactly.
+    # / FPS + render.CARD_SECONDS (2.8 s then), a formula that reproduces 10-14..10-16 exactly.
     "es-it": 28.9, "ca-fr": 23.7,
 }
 V2_FROM = "2026-10-02"          # first dense-ring (v2) post
@@ -178,6 +178,44 @@ AB_FROM = "2026-10-13"      # cup vs royale A/B started (main.ARMS)
 AB_MIN_N, AB_MAX_N = 10, 20   # per arm (growth-lab README; watch % detects ~1.19x at 15)
 
 
+# Cadence went 2 -> 10/day on 2026-10-21, partway through A1 (then 7/day from 10-23).
+# EXPERIMENTS.md amendment: A1 is also shown split before/after this date. INFO ONLY:
+# the verdict above the split still uses every post since AB_FROM, unchanged.
+CADENCE_FROM = "2026-10-21"
+KILL_TRIP_VIEWS72 = 375       # posting.json kill switch: median views@72h since CADENCE_FROM
+KILL_MIN_N = 5                # scored posts needed before the check can say TRIP
+
+
+def split_lines(data):
+    """A1 before/after the cadence change, plus the 4/day kill-switch check."""
+    def scored(lo, hi):
+        out = {}
+        for arm in ("cup", "royale"):
+            recs = [r for r in data["posts"].values() if r.get("variant", "cup") == arm
+                    and lo <= (r.get("due") or "") < hi]
+            out[arm] = [v for v in (at_age(r)["views"] for r in recs) if v is not None]
+        return out
+
+    fmt = lambda xs: f"{_median(xs):.0f}" if xs else "n/a"
+    lines = [f"split at {CADENCE_FROM} (cadence 2 -> 10/day; info only, verdict above uses all posts):"]
+    for label, lo, hi in ((f"before {CADENCE_FROM}", AB_FROM, CADENCE_FROM),
+                          (f"from {CADENCE_FROM}", CADENCE_FROM, "9999")):
+        s = scored(lo, hi)
+        lines.append(f"  {label}: cup n={len(s['cup'])} views@72h {fmt(s['cup'])}  "
+                     f"royale n={len(s['royale'])} views@72h {fmt(s['royale'])}")
+    since = sum(scored(CADENCE_FROM, "9999").values(), [])
+    if len(since) < KILL_MIN_N:
+        state = f"too few to judge (need {KILL_MIN_N})"
+    elif _median(since) < KILL_TRIP_VIEWS72:
+        state = "TRIP - set kill_switch true in posting.json (4/day)"
+    else:
+        state = "OK"
+    lines.append(f"kill switch (posts since {CADENCE_FROM}, n={len(since)}): median views@72h "
+                 f"{fmt(since)} vs trip < {KILL_TRIP_VIEWS72} -> {state}; also trip on any Studio "
+                 f"'not eligible for For You' (posting.json)")
+    return lines
+
+
 def compare(data):
     """Cup vs Escape Royale since AB_FROM, every post scored at 72h (not its latest
     snapshot). Judged by growth_stats on views@72h; avg % watched and likes per 1k
@@ -200,6 +238,7 @@ def compare(data):
         guardrails={"avg % watched": ([x["watch"] for x in c], [x["watch"] for x in t], True),
                     "likes/1k": ([x["likes_1k"] for x in c], [x["likes_1k"] for x in t], True)})
     lines.append(growth_stats.format_result("royale vs cup", "views@72h", res).replace("**", ""))
+    lines += split_lines(data)
     acct = data.get("account") or []
     if acct:
         lines.append(f"followers {acct[0]['followers']} ({acct[0]['at'][:10]}) -> "
