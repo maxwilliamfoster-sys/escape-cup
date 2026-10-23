@@ -801,6 +801,56 @@
     "summary": "The video presents a consistent and high-quality physics simulation where country flag balls bounce through rings, culminating in a clear winner (Ireland) and a teaser for the next heat, with no policy violations.",
     "tokens": 4086
    }
+  },
+  {
+   "checked_at": "2026-10-23T04:47:56+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m09_72878302022.mp4",
+   "sha256": "e11c7b171065d50eaaf3bb8761363f9131773496b4a2b0317f89b6bf866ebb19",
+   "head": "Italy 🇮🇹 or Nigeria 🇳🇬? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 17.05,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The video presents a consistent and high-quality physics simulation of an Italy vs. Nigeria match, with clear on-screen graphics and a logical progression from start to finish that matches the caption.",
+    "tokens": 4091
+   }
+  },
+  {
+   "checked_at": "2026-10-23T04:51:31+00:00",
+   "platform": "tiktok",
+   "file": "royale019_134773436005.mp4",
+   "sha256": "96e4066bddc913599bdc36528f45ff5fbeca12eb1683c33d81f8e30348e6e69a",
+   "head": "Escape Royale heat 19: Country ball escape royale - 16 flags, one exit. Find your country",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-16",
+   "report": {
+    "seconds": 24.6,
+    "lufs": -13.5,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "summary": "The visuals, on-screen text, and caption tell one consistent, coherent story of a 16-country physics escape simulation that ends with a clear winner and a teaser for the next heat, with no policy or rendering issues.",
+    "tokens": 4075
+   }
   }
  ]
 }
