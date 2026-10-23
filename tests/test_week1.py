@@ -58,6 +58,96 @@ class PostingConfigTests(unittest.TestCase):
             self.assertEqual(main.load_day_slots(os.path.join(d, "missing.json")), main.DEFAULT_DAY_SLOTS)
 
 
+class CapAndCardTests(unittest.TestCase):
+    def test_ai_cap(self):
+        self.assertEqual(main.AI_DAILY_CAP, 3)
+
+    def test_shorter_cards_both_arms(self):
+        self.assertEqual(render.CARD_SECONDS, 1.5)
+        self.assertEqual(render.ROYALE_CARD_SECONDS, 2.0)
+
+    def test_audio_fades_out_instead_of_cutting_the_chime(self):
+        """The win chime rings for 2 s; a 1.5 s card used to cut it mid-note (a click)."""
+        match = SimpleNamespace(events=[], n_balls=2)
+        win = 10.0
+        st = audio.build(match, win + render.CARD_SECONDS, win, 1)
+        tail = np.abs(st[-int(0.01 * audio.SR):]).max()
+        self.assertLess(tail, 0.01 * np.abs(st).max())
+        # the chime itself is still there (fade only touches the very end)
+        body = np.abs(st[int((win + 0.2) * audio.SR):int((win + 0.9) * audio.SR)]).max()
+        self.assertGreater(body, 0.2 * np.abs(st).max())
+
+
+class ThemeTests(unittest.TestCase):
+    @staticmethod
+    def _sim(pattern):
+        """Append entries (c = cup, r = royale) and return the royale themes in order."""
+        state = {"log": [], "posts": 0}
+        themes = []
+        for i, kind in enumerate(pattern):
+            if kind == "r":
+                t = main.royale_theme(state)
+                themes.append(t)
+                state["log"].append({"series": "royale", "theme": t})
+            else:
+                cups = [t for t in render.THEMES if t != render.FINAL_THEME]
+                t = cups[state["posts"] % len(cups)]
+                state["log"].append({"theme": t})
+                state["posts"] += 1
+        return state, themes
+
+    def test_consecutive_royales_never_share_a_theme(self):
+        # the 10-slot day boundary put two royales back to back with no cup between
+        for pattern in ("rrrrrrrrrrrr", "crcrcrcrcrcrcrcr", "crcrcrcrcr" + "rcrcrcrcrc" * 3,
+                        "crcrcrc" + "rcrcrcr" * 4, "crrcccrrrcrcccccrr"):
+            _, themes = self._sim(pattern)
+            for x, y in zip(themes, themes[1:]):
+                self.assertNotEqual(x, y, (pattern, themes))
+
+    def test_royale_never_copies_the_post_just_before(self):
+        state, _ = self._sim("crcrcc")
+        self.assertNotEqual(main.royale_theme(state), state["log"][-1]["theme"])
+
+    def test_theme_comes_from_the_log_not_the_cup_post_count(self):
+        a = main.royale_theme({"log": [{"theme": "x"}] * 3, "posts": 0})
+        b = main.royale_theme({"log": [{"theme": "x"}] * 4, "posts": 0})
+        self.assertNotEqual(a, b)
+
+
+class OverlapTests(unittest.TestCase):
+    def test_long_name_never_reaches_the_score(self):
+        """'SOUTH KOREA4': a 300 px name ran into the score digits. The widest
+        score ('16', popping to 90 px) must clear the widest allowed name."""
+        f = ImageFont.truetype(render.FONT_BLACK, 90)
+        l, _, r, _ = f.getbbox("16")
+        score_left = render.W / 2 - render.SCORE_DX - (r - l) / 2
+        name_right = render.NAME_X + render.NAME_MAX_W
+        self.assertGreaterEqual(score_left - name_right, 20)
+        f40 = ImageFont.truetype(render.FONT_BLACK, 40)
+        self.assertGreater(f40.getlength("SOUTH KOREA"), render.NAME_MAX_W)  # it does shrink
+
+
+class HookTemplateTests(unittest.TestCase):
+    def test_template_names_both_countries(self):
+        self.assertEqual(main.match_hook("{a} vs {b}: who escapes first?", "gb-sct", "ch"),
+                         "Scotland vs Switzerland: who escapes first?")
+
+    def test_plain_hook_and_royale_home(self):
+        self.assertEqual(main.match_hook("Which country escapes first?", "gb-sct", "ch"),
+                         "Which country escapes first?")
+        self.assertEqual(main.match_hook("Can {home} escape first?", home="gb-wls"),
+                         "Can Wales escape first?")
+        self.assertEqual(main.match_hook("{a} vs {b}", None, None), "{a} vs {b}")   # never raises
+
+    def test_lever_is_off(self):
+        self.assertFalse(main.HOOK_TEMPLATE_LEVER)
+        main.apply_loop({"hook_text": "{a} vs {b}: who escapes first?"})
+        try:
+            self.assertEqual(main.hook_for_match("gb-sct", "ch"), "{a} vs {b}: who escapes first?")
+        finally:
+            main.apply_loop({})
+
+
 def _analytics(posts):
     """posts: [(due ISO, arm, views)] with 24h/96h snapshots so views@72h exists."""
     out = {}

@@ -29,8 +29,18 @@ import teams
 
 W, H = 1080, 1920
 FPS = sim.FPS
-CARD_SECONDS = 2.8
+# 2.8 -> 1.5 on 2026-10-23 (growth-lab audit 2026-10-21, MASTER_PLAN #11): viewers
+# leave at ~7 s whatever the length and the shortest post did best. Both A1 arms
+# changed the same day (EXPERIMENTS.md amendment). The winner is fully on screen
+# from 0.3 s into the card and the next-match line from 0.75 s.
+CARD_SECONDS = 1.5
 HOOK_SECONDS = 3.0
+# Cup header: team names left/right of the live score. NAME_MAX_W was 300, which ran
+# long names into the score digits ("SOUTH KOREA4", audit escape-15); 240 leaves
+# >= 20 px to the widest score ("16" popping to 90 px). Names shrink to fit.
+NAME_X = 140
+NAME_MAX_W = 240
+SCORE_DX = 70
 ROOT = os.path.dirname(os.path.abspath(__file__))
 FONT_BLACK = os.path.join(ROOT, "assets", "fonts", "Montserrat-900.ttf")
 FONT_BOLD = os.path.join(ROOT, "assets", "fonts", "Montserrat-800.ttf")
@@ -280,7 +290,7 @@ def _ring_colors(theme, n=None):
     return out
 
 
-def _static_layer(theme, codes, text, flags, small_line):
+def _static_layer(theme, codes, text, flags, small_line, hook=None):
     """Background + hook box + team names, baked once (the score is drawn live)."""
     s = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H)
     cr = cairo.Context(s)
@@ -292,15 +302,15 @@ def _static_layer(theme, codes, text, flags, small_line):
     rg.add_color_stop_rgba(1, *rgb(THEMES[theme][2]), 0.0)
     cr.set_source(rg)
     cr.paint()
-    _hook_box(cr, text, HOOK_TEXT, 232)
+    _hook_box(cr, text, hook or HOOK_TEXT, 232)
     for side, code in enumerate(codes):
         name = teams.name(code).upper()
         if side == 0:
             flags.rect(cr, code, 92, 352, 66, 44, radius=8, border=3)
-            text.draw(cr, name, 140, 368, 40, "#FFFFFF", align="left", max_w=300)
+            text.draw(cr, name, NAME_X, 368, 40, "#FFFFFF", align="left", max_w=NAME_MAX_W)
         else:
             flags.rect(cr, code, W - 92, 352, 66, 44, radius=8, border=3)
-            text.draw(cr, name, W - 140, 368, 40, "#FFFFFF", align="right", max_w=300)
+            text.draw(cr, name, W - NAME_X, 368, 40, "#FFFFFF", align="right", max_w=NAME_MAX_W)
     text.draw(cr, small_line, W / 2, 428, 24, "#9AA3BF", bold=True, max_w=900, shadow=False)
     return s
 
@@ -335,7 +345,7 @@ def render_match(match, info, out_path, workdir):
 
     theme = info.get("theme", "neon")
     ring_cols = _ring_colors(theme)
-    layer = _static_layer(theme, codes, text, flags, info["header"])
+    layer = _static_layer(theme, codes, text, flags, info["header"], info.get("hook"))
 
     breaks_by_frame = {}
     for e in match.events:
@@ -386,7 +396,7 @@ def render_match(match, info, out_path, workdir):
         for side in (0, 1):
             pop = max(0.0, 1 - (t - bump[side]) / 0.25)
             size = int(64 + 26 * pop)
-            x = W / 2 - 70 if side == 0 else W / 2 + 70
+            x = W / 2 - SCORE_DX if side == 0 else W / 2 + SCORE_DX
             text.draw(cr, str(score[side]), x, 378, size, tcol[side])
         text.draw(cr, "-", W / 2, 372, 48, "#FFFFFF")
 
@@ -474,10 +484,10 @@ def render_match(match, info, out_path, workdir):
 # COMMENT YOUR COUNTRY", 31k-208k views at 464 followers). Same hook box as the 1v1
 # so the A/B isolates the format, plus the stake lines from frame 0.
 # ----------------------------------------------------------------------------
-ROYALE_CARD_SECONDS = 3.4
+ROYALE_CARD_SECONDS = 2.0       # 3.4 -> 2.0 on 2026-10-23, with CARD_SECONDS (see there)
 
 
-def _royale_layer(theme, n_countries, text, header):
+def _royale_layer(theme, n_countries, text, header, hook=None):
     s = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H)
     cr = cairo.Context(s)
     cr.set_source_rgb(*[c * 0.55 for c in rgb(THEMES[theme][0])])
@@ -487,7 +497,7 @@ def _royale_layer(theme, n_countries, text, header):
     rg.add_color_stop_rgba(1, *rgb(THEMES[theme][2]), 0.0)
     cr.set_source(rg)
     cr.paint()
-    _hook_box(cr, text, HOOK_TEXT, 232)
+    _hook_box(cr, text, hook or HOOK_TEXT, 232)
     text.draw(cr, f"{n_countries} COUNTRIES  ·  1 WAY OUT", W / 2, 338, 44, "#FFFFFF", max_w=940)
     text.draw(cr, "COMMENT YOUR COUNTRY", W / 2, 390, 32, "#FFD84D", max_w=900)
     text.draw(cr, header, W / 2, 1512, 24, "#9AA3BF", bold=True, max_w=900, shadow=False)
@@ -510,7 +520,7 @@ def render_royale(match, info, out_path, workdir):
     theme = info.get("theme", "neon")
     n_rings = len(match.rings)
     ring_cols = _ring_colors(theme, n_rings)
-    layer = _royale_layer(theme, n, text, info["header"])
+    layer = _royale_layer(theme, n, text, info["header"], info.get("hook"))
     r_ball = match.ball_r
     outer = match.rings[-1].radius
     podium = sim.standings(match)[:3]

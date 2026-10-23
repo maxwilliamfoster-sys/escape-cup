@@ -162,6 +162,11 @@ def build(match, total_seconds, win_time, rng_seed=0):
         mix = _lowpass(_lowpass(mix, 2500), 2500)    # steep: nothing sharp survives
         out.append(_highpass(mix, 150))               # no inaudible rumble eating headroom
     stereo = np.stack(out, axis=1)[: int(total_seconds * SR)]
+    # The win chime rings ~2 s; since the 1.5 s card (2026-10-23) the video ends while
+    # it still sounds. Fade the last 0.25 s so the end is never a cut (a click).
+    nf = min(len(stereo), int(0.25 * SR))
+    if nf:
+        stereo[-nf:] *= np.linspace(1.0, 0.0, nf)[:, None] ** 2
     stereo = stereo / (np.max(np.abs(stereo)) or 1.0) * OUT_PEAK * LIFT
     mag = np.abs(stereo)
     over = mag > KNEE

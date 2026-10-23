@@ -48,7 +48,24 @@ class TestRoyaleCaption(unittest.TestCase):
     def test_second_line_does_not_repeat_heat(self):
         c = main.make_royale_caption(self.codes, 7, random.Random(1))
         self.assertNotIn("heat 7", c.split("\n")[1].lower())
-        self.assertIn("England", c.split("\n")[1])
+        # 2026-10-23: England and the home nation moved to the first line; the
+        # second line names other countries in the heat, not the same ones again
+        self.assertNotIn("England", c.split("\n")[1])
+        self.assertIn("more", c.split("\n")[1])
+
+    def test_first_line_starts_with_countries_heat_at_end(self):
+        """Audit 2026-10-21 (MASTER_PLAN #11): countries first (search keywords and a
+        stake), 'heat N' moves to the end so every heat's first line is still unique."""
+        for heat in range(1, 80):
+            codes = main.royale_field(heat)
+            c = main.make_royale_caption(codes, heat, random.Random(heat))
+            first = c.split("\n")[0]
+            self.assertTrue(first.startswith("England, "), first)
+            home = next(x for x in codes if x in main.teams.HOME_NATIONS)
+            self.assertIn(main.teams.name(home), first.split("?")[0])
+            self.assertTrue(first.endswith(f"· heat {heat}"), first)
+            self.assertLessEqual(len(first), 110, first)
+            self.assertEqual(quality.check_caption(c, None, None, []), [], c)
 
 
 class TestCaptionFirst(unittest.TestCase):

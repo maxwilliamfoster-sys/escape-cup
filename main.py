@@ -262,7 +262,8 @@ def build_one(state, exclude_seeds=(), tries=None):
     theme = render.FINAL_THEME if is_final else themes[state.get("posts", 0) % len(themes)]
 
     info = dict(a=a, b=b, header=d["header"], result_line=result, theme=theme,
-                next_label=next_label, next_line=next_line, cta=cta, final=is_final)
+                next_label=next_label, next_line=next_line, cta=cta, final=is_final,
+                hook=hook_for_match(a, b))
     fname = f"ec{state['edition']:02d}_r{r}_m{m:02d}_{seed}.mp4"
     caption, cap_fail = _pick_caption(
         lambda g: make_caption(state, a, b, d, preview, g), seed,
@@ -413,12 +414,14 @@ ARMS = ("cup", "royale")
 ROYALE_SIZE = 16
 ROYALE_POINTS = (3, 2, 1)                 # podium points for the running league table
 
+# The middle of the royale first line: "<countries>? <head> · heat N". Kept to 50
+# chars or fewer so the longest country list still fits in 110 (2026-10-23).
 ROYALE_HEADS = [
-    "16 countries, 1 way out - which country escapes the rings first?",
-    "Ball escape simulation: 16 countries, only one breaks out first",
-    "Country ball escape royale - 16 flags, one exit. Find your country",
-    "Which country escapes first? 16 countries in one physics simulation",
-    "16 country balls, 28 rings, one way out. Physics simulation",
+    "16 countries, one way out",
+    "Country ball escape: 16 flags, one exit",
+    "Ball escape simulation, only one breaks out first",
+    "16 country balls, 28 rings. Find your country",
+    "Physics decides which flag escapes the rings first",
 ]
 ROYALE_TEASES = ["Is your country in this one? 👇", "Which flag were you backing? 👇",
                  "Where did your country finish? 👇"]
@@ -512,19 +515,72 @@ def royale_league(state, extra_podium=()):
     return "LEAGUE: " + "  ·  ".join(f"{teams.name(c).upper()} {p}" for c, p in top)
 
 
+def royale_theme(state):
+    """Theme for the next royale. Was themes[state["posts"] + 3]: "posts" counts cup
+    matches only, so royales with no cup between them (the day boundary at 10 slots,
+    or every slot once A1 picks royale) all got the same look - royale008/009/010
+    were all "candy" (audit 2026-10-21, MASTER_PLAN #11). Now from len(state["log"])
+    (every post), and never the theme of the previous royale or the post just before."""
+    themes = [t for t in render.THEMES if t != render.FINAL_THEME]
+    log = state.get("log", [])
+    avoid = {log[-1].get("theme")} if log else set()
+    avoid.add(next((e.get("theme") for e in reversed(log) if e.get("series") == "royale"), None))
+    start = len(log) + len(themes) // 2          # offset from the cup's rotation
+    for k in range(len(themes)):
+        t = themes[(start + k) % len(themes)]
+        if t not in avoid:
+            return t
+    return themes[start % len(themes)]
+
+
+# Per-match hook (audit 2026-10-21, plan-escape #4): a hook_text value may name the
+# countries, e.g. "{a} vs {b}: who escapes first?" (royale: "{home}"). Built but OFF: it
+# goes through the experiment loop only after the length lever, never random rotation.
+# To switch on: set True AND add the template as a hook_text variant in levers.json.
+HOOK_TEMPLATE_LEVER = False
+
+
+def match_hook(template, a=None, b=None, home=None):
+    """Fill {a}/{b}/{home} with country names. A template whose countries aren't
+    known is returned unchanged (never raises)."""
+    names = {k: teams.name(v) for k, v in (("a", a), ("b", b), ("home", home)) if v}
+    try:
+        return template.format(**names)
+    except (KeyError, IndexError, ValueError):
+        return template
+
+
+def hook_for_match(a=None, b=None, home=None):
+    """The on-screen hook for one video: the loop's hook_text, filled in only when
+    HOOK_TEMPLATE_LEVER is on."""
+    if not HOOK_TEMPLATE_LEVER:
+        return render.HOOK_TEXT
+    return match_hook(render.HOOK_TEXT, a, b, home)
+
+
+def _list_names(codes):
+    names = [teams.name(c) for c in codes]
+    return names[0] if len(names) == 1 else ", ".join(names[:-1]) + " or " + names[-1]
+
+
 def make_royale_caption(codes, heat, rng, recent_heads=()):
-    """The first line names the heat, so it differs from every earlier heat's. With
-    only the 5 bare ROYALE_HEADS, all 5 were "recent" by 2026-10-19 and the gate's
-    repeat rule blocked every royale render. A re-render of the same heat (after a
-    Buffer veto) takes a phrasing that isn't recent yet."""
+    """First line: the countries first (search keywords + the stake), then a phrasing,
+    then "· heat N" at the end, so it still differs from every earlier heat's (with only
+    the 5 bare ROYALE_HEADS all were "recent" by 2026-10-19 and the repeat rule blocked
+    every royale render). Countries-first since 2026-10-23 (audit MASTER_PLAN #11; was
+    "Escape Royale heat N: ..."). A re-render of the same heat (after a Buffer veto)
+    takes a phrasing that isn't recent yet."""
     home = next(c for c in codes if c in teams.HOME_NATIONS)
     named = ["gb-eng", home] + [c for c in codes if c in teams.BIG_FANBASES and c != "gb-eng"][:2]
-    second = ("Featuring " + ", ".join(teams.name(c) for c in named)
-              + f" and {len(codes) - len(named)} more")
+    others = [c for c in codes if c not in named][:2]
+    second = ("Also in it: " + ", ".join(teams.name(c) for c in others)
+              + f" and {len(codes) - len(named) - len(others)} more")
     heads = list(ROYALE_HEADS)
     rng.shuffle(heads)
     recent = {upload_gate._norm_space(h) for h in recent_heads if h}
-    firsts = [f"Escape Royale heat {heat}: {h}" for h in heads]
+    lead = _list_names(named) + "?"
+    firsts = [f"{lead} {h} · heat {heat}" for h in heads]
+    firsts = [f for f in firsts if len(f) <= 110] or [f"{lead} 16 countries, one way out · heat {heat}"]
     first = next((f for f in firsts if upload_gate._norm_space(f) not in recent), firsts[0])
     tags = NICHE_TAGS + [rng.choice(ROTATING_TAG), "#countryballs"]
     return f"{first}\n{second}\n{rng.choice(ROYALE_TEASES)}\n{' '.join(tags)}"
@@ -538,10 +594,9 @@ def build_royale(state, exclude_seeds=(), tries=None):
     phys = sim.simulate(seed, **sim.ROYALE)
     winner = codes[phys.winner]
     podium = [codes[i] for i in sim.standings(phys)[:3]]
-    themes = [t for t in render.THEMES if t != render.FINAL_THEME]
-    # offset from the cup's rotation so back-to-back posts rarely share a look
-    theme = themes[(state.get("posts", 0) + len(themes) // 2) % len(themes)]
+    theme = royale_theme(state)
     info = dict(codes=codes, header=f"ESCAPE ROYALE  ·  HEAT {heat}", theme=theme,
+                hook=hook_for_match(home=next(c for c in codes if c in teams.HOME_NATIONS)),
                 league_line=royale_league(state, podium), next_line="NEW HEAT, 16 NEW COUNTRIES NEXT")
     fname = f"royale{heat:03d}_{seed}.mp4"
     heads = _recent_heads(state)
