@@ -69,6 +69,28 @@ def ffmpeg_bin():
             or r"C:\ffmpeg\ffmpeg-8.1.1-essentials_build\bin\ffmpeg.exe")
 
 
+# Two-pass linear loudnorm before muxing (growth-lab audit 2026-10-21, MASTER_PLAN #13,
+# plan-escape #8): royales came out at -13.5 LUFS and cups at -17, so renders were thrown
+# away by the loudness check. -16 sits in the middle of the gate's escape window (-17..-15).
+# A constant gain leaves quality.py's band-energy percentages (the sharp-sound rule) unchanged.
+LOUDNESS_TARGET = -16.0
+
+
+def normalize_audio(wav):
+    """Return a copy of `wav` normalised to LOUDNESS_TARGET, or `wav` itself if that fails
+    (quality.LUFS_RANGE and the upload gate still judge the raw mix)."""
+    import audio_norm
+    out = os.path.splitext(wav)[0] + "_norm.wav"
+    try:
+        res = audio_norm.normalize(wav, out, target=LOUDNESS_TARGET, ffmpeg=ffmpeg_bin())
+    except Exception as e:  # noqa: BLE001 - a raw mix is still checked downstream
+        print(f"[render] loudnorm failed ({type(e).__name__}: {e}); using the raw mix")
+        return wav
+    print(f"[render] loudnorm {res.get('input_i')} -> {res.get('output_i')} LUFS "
+          f"({res.get('normalization_type')}{', limited' if res.get('limited') else ''})")
+    return out
+
+
 def rgb(hexstr):
     h = hexstr.lstrip("#")
     return tuple(int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
@@ -357,6 +379,7 @@ def render_match(match, info, out_path, workdir):
 
     wav = os.path.join(workdir, "audio.wav")
     audio.write_wav(audio.build(match, total / FPS, win_t, match.seed), wav)
+    wav = normalize_audio(wav)
 
     cmd = [ffmpeg_bin(), "-y", "-loglevel", "error",
            "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
@@ -535,6 +558,7 @@ def render_royale(match, info, out_path, workdir):
 
     wav = os.path.join(workdir, "audio.wav")
     audio.write_wav(audio.build(match, total / FPS, win_t, match.seed), wav)
+    wav = normalize_audio(wav)
     cmd = [ffmpeg_bin(), "-y", "-loglevel", "error",
            "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
            "-i", wav,

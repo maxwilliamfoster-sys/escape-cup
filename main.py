@@ -297,13 +297,18 @@ GATE_CONTEXT = ("Escape Cup: physics simulation. Country flag balls bounce insid
                 "real; results are not rigged.")
 
 
+def gate_profile(seconds):
+    """The escape BOT_PROFILES window (-17..-15 LUFS) applies now that render.py normalises
+    to -16 (MASTER_PLAN #13). quality.LUFS_RANGE stays the wide backstop, so no "lufs" here."""
+    return upload_gate.bot_profile(
+        "escape", fps=60, seconds=seconds, min_video_kbps=quality.MIN_VIDEO_KBPS,
+        ai_review="if_available", ai_daily_cap=AI_DAILY_CAP, ai_context=GATE_CONTEXT,
+        ledger=GATE_LEDGER)
+
+
 def gate(path, caption, state, seconds):
-    return upload_gate.check(path, "tiktok", profile={
-        "fps": 60, "seconds": seconds, "min_video_kbps": quality.MIN_VIDEO_KBPS,
-        "lufs": quality.LUFS_RANGE, "ai_review": "if_available", "ai_daily_cap": AI_DAILY_CAP,
-        "ai_context": GATE_CONTEXT,
-        "ledger": GATE_LEDGER}, caption=caption, ai_label=False,
-        recent_texts=_recent_heads(state))
+    return upload_gate.check(path, "tiktok", profile=gate_profile(seconds), caption=caption,
+                             ai_label=False, recent_texts=_recent_heads(state))
 
 
 def _recent_heads(state):
