@@ -1094,13 +1094,133 @@
    "ok": true,
    "failures": [],
    "warnings": [
-    "AI review unavailable: [cap]"
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-23",
    "head_similarity": 0.564,
    "report": {
     "seconds": 26.13,
     "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-24T15:56:28+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m13_229264121002.mp4",
+   "sha256": "9ce4b1387aefe37c20d40029a3042a4f760053138813beadcbe69f530d4c1f29",
+   "head": "South Korea 🇰🇷 vs France 🇫🇷 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.472,
+   "report": {
+    "seconds": 19.52,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4168,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-24T15:58:50+00:00",
+   "platform": "tiktok",
+   "file": null,
+   "sha256": "a8e019b9d12deac22c0f7f427936f1b8f06245be9ce262e9229299bc3781e74a",
+   "head": null,
+   "ok": false,
+   "failures": [
+    "AI review: [ai_block] withheld from the public log"
+   ],
+   "warnings": [],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.641,
+   "report": {
+    "seconds": 30.98,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": false,
+    "coherence": 4,
+    "quality": 9,
+    "tokens": 4216,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_block] withheld from the public log"
+   }
+  },
+  {
+   "checked_at": "2026-10-24T15:59:59+00:00",
+   "platform": "tiktok",
+   "file": "royale024_112298449002.mp4",
+   "sha256": "7330097dbc22ac3418a8f222201623b0e4a142a7803c0d98936c345c8bebb6f7",
+   "head": "England, Ireland, Italy or Nigeria? 16 country balls, 28 rings. Find your country · heat 24",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.91 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\""
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.914,
+   "report": {
+    "seconds": 23.85,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4164,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-24T16:02:03+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m14_144062368038.mp4",
+   "sha256": "9156cc12d09e108b42734cc5dd302bf2f75cf5ec2eba6ab2ad803695ba69e325",
+   "head": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Senegal 🇸🇳 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.81 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\"",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.814,
+   "report": {
+    "seconds": 23.87,
+    "lufs": -15.8,
     "speech_match": null,
     "longest_freeze": 0.0
    },
