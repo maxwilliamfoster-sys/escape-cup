@@ -1299,13 +1299,61 @@
    "ok": true,
    "failures": [],
    "warnings": [
-    "AI review unavailable: [cap]"
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-23",
    "head_similarity": 0.55,
    "report": {
     "seconds": 29.65,
     "lufs": -16.1,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-24T23:13:42+00:00",
+   "platform": "tiktok",
+   "file": null,
+   "sha256": "b92c102181881b97075b9b504d7d79b5ddec52967b2745c5c0ac48d92d34f0c7",
+   "head": null,
+   "ok": false,
+   "failures": [
+    "loudness -17.1 LUFS outside (-17.0, -15.0)"
+   ],
+   "warnings": [],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.569,
+   "report": {
+    "seconds": 16.82,
+    "lufs": -17.1,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   }
+  },
+  {
+   "checked_at": "2026-10-24T23:14:31+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r1_m00_79369648049.mp4",
+   "sha256": "2e9ff0b924bb479a56b9271928c796a68f795bc4789aa7ec077b1b78967b91b9",
+   "head": "Country ball escape - Switzerland 🇨🇭 vs Mexico 🇲🇽",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.692,
+   "report": {
+    "seconds": 22.65,
+    "lufs": -16.5,
     "speech_match": null,
     "longest_freeze": 0.0
    },

@@ -151,11 +151,11 @@
    {
     "a": "ch",
     "b": "mx",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "mx",
+    "seed": 79369648049,
+    "melody": "ember",
+    "posted": "2026-10-25T17:00:00+00:00",
+    "buffer_id": "6add3c1d0b5343d070a76a42"
    },
    {
     "a": "ma",
@@ -223,7 +223,7 @@
   ],
   [
    {
-    "a": null,
+    "a": "mx",
     "b": null,
     "winner": null,
     "seed": null,
@@ -294,7 +294,7 @@
  "titles": {
   "ie": 1
  },
- "posts": 47,
+ "posts": 48,
  "log": [
   {
    "edition": 1,
@@ -2309,10 +2309,32 @@
     "se",
     "co"
    ]
+  },
+  {
+   "edition": 2,
+   "winner": "mx",
+   "seed": 79369648049,
+   "theme": "ember",
+   "due": "2026-10-25T17:00:00+00:00",
+   "buffer_id": "6add3c1d0b5343d070a76a42",
+   "status": "scheduled",
+   "file": "ec02_r1_m00_79369648049.mp4",
+   "length": 22.6,
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "2e9ff0b924bb479a56b9271928c796a68f795bc4789aa7ec077b1b78967b91b9",
+    "checked_at": "2026-10-24T23:14:31+00:00"
+   },
+   "r": 1,
+   "m": 0,
+   "a": "ch",
+   "b": "mx"
   }
  ],
  "recent_captions": [
-  "Philippines 🇵🇭 vs Netherlands 🇳🇱 in the escape rings. Who gets out first?\nSemi-final of Escape Cup 1 🏆\nItaly vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #philippines #netherlands",
   "16 countries, 1 way out - which country escapes the rings first?\nEscape Royale heat 6: England, Scotland, Portugal, Morocco and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
   "Escape Royale heat 7: Country ball escape royale - 16 flags, one exit. Find your country\nFeaturing England, Scotland, Mexico, South Korea and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "Which country escapes first? Italy 🇮🇹 vs Ireland 🇮🇪 ball escape\nSemi-final · Escape Cup 1\nComing next: Netherlands vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #simulation #italy #ireland",
@@ -2351,12 +2373,16 @@
   "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Senegal 🇸🇳 in the escape rings. Who gets out first?\nEscape Cup 2, Round of 32\nNext up: Brazil vs Japan - who's your pick? 👇\n#ballescape #physicssimulation #simulation #scotland #senegal",
   "England, Scotland, Poland or Nigeria? 16 countries, one way out · heat 25\nAlso in it: Belgium, Mexico and 10 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
   "Country ball escape - Brazil 🇧🇷 vs Japan 🇯🇵\nEscape Cup 2, Round of 32\nComing next: Switzerland vs Mexico. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #brazil #japan",
-  "England, Wales, USA or Poland? Physics decides which flag escapes the rings first · heat 26\nAlso in it: Turkey, Belgium and 10 more\nWhere did your country finish? 👇\n#ballescape #physicssimulation #simulation #countryballs"
+  "England, Wales, USA or Poland? Physics decides which flag escapes the rings first · heat 26\nAlso in it: Turkey, Belgium and 10 more\nWhere did your country finish? 👇\n#ballescape #physicssimulation #simulation #countryballs",
+  "Country ball escape - Switzerland 🇨🇭 vs Mexico 🇲🇽\nRound of 16 of Escape Cup 2 🏆\nMorocco vs Canada is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #switzerland #mexico"
  ],
  "seen_errors": [],
  "excluded_seeds": {
   "royale-24": [
    112298449019
+  ],
+  "2-1-0": [
+   79369648003
   ]
  }
 }
