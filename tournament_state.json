@@ -1864,7 +1864,7 @@
    "theme": "sunset",
    "due": "2026-10-24T07:00:00+00:00",
    "buffer_id": "6adb47a11304dd674c8bb806",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale020_147484397002.mp4",
    "length": 24.0,
    "loop": {
@@ -1899,7 +1899,8 @@
     "co",
     "jp",
     "nl"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7700125746726980896"
   },
   {
    "edition": 2,
@@ -1908,7 +1909,7 @@
    "theme": "ember",
    "due": "2026-10-24T08:30:00+00:00",
    "buffer_id": "6adb9ec33d5b27036b461d36",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec02_r0_m10_130919232040.mp4",
    "length": 18.7,
    "loop": {
@@ -1922,7 +1923,8 @@
    "r": 0,
    "m": 10,
    "a": "pl",
-   "b": "ar"
+   "b": "ar",
+   "link": "https://tiktok.com/@5lmvill/video/7700148910991346976"
   },
   {
    "edition": 2,
@@ -1931,7 +1933,7 @@
    "theme": "neon",
    "due": "2026-10-24T10:00:00+00:00",
    "buffer_id": "6adb9f86bd33ce99c3e375ec",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale021_132140870000.mp4",
    "length": 26.2,
    "loop": {
@@ -1966,7 +1968,8 @@
     "pt",
     "us",
     "tn"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7700172326930877728"
   },
   {
    "edition": 2,
