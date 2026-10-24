@@ -1214,13 +1214,98 @@
    "failures": [],
    "warnings": [
     "near-duplicate first caption line (similarity 0.81 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\"",
-    "AI review unavailable: [cap]"
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-23",
    "head_similarity": 0.814,
    "report": {
     "seconds": 23.87,
     "lufs": -15.8,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-24T20:49:34+00:00",
+   "platform": "tiktok",
+   "file": "royale025_90110980038.mp4",
+   "sha256": "552efcbc78aa6abc9d2a26569488150325b0ed8da0031f6160151e0d3ccb6392",
+   "head": "England, Scotland, Poland or Nigeria? 16 countries, one way out · heat 25",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.85 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\"",
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.846,
+   "report": {
+    "seconds": 31.2,
+    "lufs": -16.1,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-24T20:51:53+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r0_m15_71234673015.mp4",
+   "sha256": "7b8bdaa8db0d61883c51d8eb4e1e24645a35e0e2b6035ff1f8e3825b808910b2",
+   "head": "Country ball escape - Brazil 🇧🇷 vs Japan 🇯🇵",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.722,
+   "report": {
+    "seconds": 22.2,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-24T20:54:52+00:00",
+   "platform": "tiktok",
+   "file": "royale026_251887018004.mp4",
+   "sha256": "0a4fa554b36cdf4648385a41e36651aaaae91236277aeb1ff47d100d5eb1adac",
+   "head": "England, Wales, USA or Poland? Physics decides which flag escapes the rings first · heat 26",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.55,
+   "report": {
+    "seconds": 29.65,
+    "lufs": -16.1,
     "speech_match": null,
     "longest_freeze": 0.0
    },
