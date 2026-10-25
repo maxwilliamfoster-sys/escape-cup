@@ -2116,7 +2116,7 @@
    "theme": "sunset",
    "due": "2026-10-25T08:00:00+00:00",
    "buffer_id": "6adcd569bd33ce99c32ef057",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec02_r0_m13_229264121002.mp4",
    "length": 19.5,
    "loop": {
@@ -2130,7 +2130,8 @@
    "r": 0,
    "m": 13,
    "a": "kr",
-   "b": "fr"
+   "b": "fr",
+   "link": "https://tiktok.com/@5lmvill/video/7700512400985967904"
   },
   {
    "edition": 2,
@@ -2139,7 +2140,7 @@
    "theme": "ember",
    "due": "2026-10-25T09:30:00+00:00",
    "buffer_id": "6adcd6510b5343d0708f9b29",
-   "status": "scheduled",
+   "status": "published",
    "file": "royale024_112298449002.mp4",
    "length": 23.9,
    "loop": {
@@ -2174,7 +2175,8 @@
     "pe",
     "mx",
     "kr"
-   ]
+   ],
+   "link": "https://tiktok.com/@5lmvill/video/7700535429828709665"
   },
   {
    "edition": 2,
@@ -2183,7 +2185,7 @@
    "theme": "forest",
    "due": "2026-10-25T11:00:00+00:00",
    "buffer_id": "6adcd6d88b3d437ddcc91f77",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec02_r0_m14_144062368038.mp4",
    "length": 23.9,
    "loop": {
@@ -2197,7 +2199,8 @@
    "r": 0,
    "m": 14,
    "a": "gb-sct",
-   "b": "sn"
+   "b": "sn",
+   "link": "https://tiktok.com/@5lmvill/video/7700558749244591393"
   },
   {
    "edition": 2,
@@ -2378,9 +2381,6 @@
  ],
  "seen_errors": [],
  "excluded_seeds": {
-  "royale-24": [
-   112298449019
-  ],
   "2-1-0": [
    79369648003
   ]
