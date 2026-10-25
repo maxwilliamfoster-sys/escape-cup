@@ -1347,13 +1347,134 @@
    "ok": true,
    "failures": [],
    "warnings": [
-    "AI review unavailable: [cap]"
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-23",
    "head_similarity": 0.692,
    "report": {
     "seconds": 22.65,
     "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-25T16:18:08+00:00",
+   "platform": "tiktok",
+   "file": null,
+   "sha256": "a8c585b07cc13e257592d89bf3357470e386c97f606aebfa765a4e9d16d04a77",
+   "head": null,
+   "ok": false,
+   "failures": [
+    "AI review: [ai_block] withheld from the public log"
+   ],
+   "warnings": [],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.793,
+   "report": {
+    "seconds": 35.5,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": false,
+    "coherence": 4,
+    "quality": 8,
+    "tokens": 4284,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_block] withheld from the public log"
+   }
+  },
+  {
+   "checked_at": "2026-10-25T16:19:58+00:00",
+   "platform": "tiktok",
+   "file": "royale027_155047090034.mp4",
+   "sha256": "f519c49d45bda00eccc700ce6c343ba886f5028ca7add7d70f5b491745550a7a",
+   "head": "England, Wales, Philippines or Japan? 16 countries, one way out · heat 27",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.84 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\""
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.837,
+   "report": {
+    "seconds": 24.2,
+    "lufs": -16.1,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4155,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-25T16:22:36+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r1_m01_238995128009.mp4",
+   "sha256": "78a04f7990af3e0cc2045634cdbdb38f59851e51f6737c834050a41bf9bb7e8d",
+   "head": "Which country escapes first? Morocco 🇲🇦 vs Canada 🇨🇦 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.81 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\""
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.814,
+   "report": {
+    "seconds": 26.05,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4135,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-25T16:25:30+00:00",
+   "platform": "tiktok",
+   "file": "royale028_107804489012.mp4",
+   "sha256": "9f4fae8928c76c84ebbb36e5d4c5ea9ecffb9f48313a411451a5b79a71672452",
+   "head": "England, Ireland, Mexico or Poland? 16 countries, one way out · heat 28",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.781,
+   "report": {
+    "seconds": 26.33,
+    "lufs": -16.3,
     "speech_match": null,
     "longest_freeze": 0.0
    },
