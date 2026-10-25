@@ -1552,13 +1552,42 @@
    "ok": true,
    "failures": [],
    "warnings": [
-    "AI review unavailable: [cap]"
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-23",
    "head_similarity": 0.525,
    "report": {
     "seconds": 18.42,
     "lufs": -15.8,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-25T23:18:22+00:00",
+   "platform": "tiktok",
+   "file": "royale030_89971450002.mp4",
+   "sha256": "b018dd5478e9ac727fab844534530ccaadd4df732d80ad27ebd2324258e4822f",
+   "head": "England, Scotland, Germany or Portugal? Physics decides which flag escapes the rings first · heat 30",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.84 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\"",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.838,
+   "report": {
+    "seconds": 32.3,
+    "lufs": -16.4,
     "speech_match": null,
     "longest_freeze": 0.0
    },

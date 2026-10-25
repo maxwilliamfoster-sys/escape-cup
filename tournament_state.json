@@ -2540,10 +2540,53 @@
    "m": 3,
    "a": "vn",
    "b": "de"
+  },
+  {
+   "edition": 2,
+   "winner": "my",
+   "seed": 89971450002,
+   "theme": "ember",
+   "due": "2026-10-26T17:00:00+00:00",
+   "buffer_id": "6ade8e970b5343d070f7df9b",
+   "status": "scheduled",
+   "file": "royale030_89971450002.mp4",
+   "length": 32.3,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "b018dd5478e9ac727fab844534530ccaadd4df732d80ad27ebd2324258e4822f",
+    "checked_at": "2026-10-25T23:18:22+00:00"
+   },
+   "series": "royale",
+   "heat": 30,
+   "codes": [
+    "gb-sct",
+    "my",
+    "de",
+    "hr",
+    "pt",
+    "kr",
+    "dz",
+    "ua",
+    "jp",
+    "gb-eng",
+    "br",
+    "tn",
+    "co",
+    "pe",
+    "ng",
+    "no"
+   ],
+   "podium": [
+    "my",
+    "hr",
+    "tn"
+   ]
   }
  ],
  "recent_captions": [
-  "Escape Royale heat 10: Which country escapes first? 16 countries in one physics simulation\nFeaturing England, Wales, Italy, South Korea and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "Switzerland 🇨🇭 vs Indonesia 🇮🇩: 16 rings, one way out. Physics simulation\nRound of 32 · Escape Cup 2\nComing next: Mexico vs USA. Who takes it? 👇\n#ballescape #physicssimulation #simulation #switzerland #indonesia",
   "Escape Royale heat 11: 16 country balls, 28 rings, one way out. Physics simulation\nFeaturing England, Wales, Colombia, France and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "Mexico 🇲🇽 vs USA 🇺🇸: 16 rings, one way out. Physics simulation\nEscape Cup 2, Round of 32\nComing next: Morocco vs Portugal. Who takes it? 👇\n#ballescape #physicssimulation #simulation #mexico #usa",
@@ -2582,7 +2625,8 @@
   "England, Ireland, Mexico or Poland? 16 countries, one way out · heat 28\nAlso in it: Ghana, Chile and 10 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
   "Philippines 🇵🇭 vs Croatia 🇭🇷 - which country escapes the rings first?\nRound of 16 · Escape Cup 2\nComing next: Vietnam vs Germany. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #philippines #croatia",
   "England, Scotland, Spain or Japan? Country ball escape: 16 flags, one exit · heat 29\nAlso in it: Thailand, Indonesia and 10 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
-  "Vietnam 🇻🇳 vs Germany 🇩🇪: 16 rings, one way out. Physics simulation\nRound of 16 of Escape Cup 2 🏆\nComing next: Australia vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #vietnam #germany"
+  "Vietnam 🇻🇳 vs Germany 🇩🇪: 16 rings, one way out. Physics simulation\nRound of 16 of Escape Cup 2 🏆\nComing next: Australia vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #vietnam #germany",
+  "England, Scotland, Germany or Portugal? Physics decides which flag escapes the rings first · heat 30\nAlso in it: Malaysia, Croatia and 10 more\nWhere did your country finish? 👇\n#ballescape #physicssimulation #simulation #countryballs"
  ],
  "seen_errors": [],
  "excluded_seeds": {
