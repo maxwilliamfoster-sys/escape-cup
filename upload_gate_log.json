@@ -1468,13 +1468,97 @@
    "ok": true,
    "failures": [],
    "warnings": [
-    "AI review unavailable: [cap]"
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-23",
    "head_similarity": 0.781,
    "report": {
     "seconds": 26.33,
     "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-25T20:51:01+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r1_m02_254239990010.mp4",
+   "sha256": "12c1177d8756928c8318d2cc8358e18bc118fafb14b0e82ac750792a18c0f9d9",
+   "head": "Philippines 🇵🇭 vs Croatia 🇭🇷 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.552,
+   "report": {
+    "seconds": 28.88,
+    "lufs": -15.9,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-25T20:53:50+00:00",
+   "platform": "tiktok",
+   "file": "royale029_58067861000.mp4",
+   "sha256": "4d5291a936d173e0af8d9232ac843c10c14afbd55d0cddaca3302629d2fb9f02",
+   "head": "England, Scotland, Spain or Japan? Country ball escape: 16 flags, one exit · heat 29",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.671,
+   "report": {
+    "seconds": 24.6,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-25T20:56:08+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r1_m03_138659293044.mp4",
+   "sha256": "70f272539ff2729a7825ffd7100e3fa2b0c38242a906596ebd9193dfd72221fc",
+   "head": "Vietnam 🇻🇳 vs Germany 🇩🇪: 16 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.525,
+   "report": {
+    "seconds": 18.42,
+    "lufs": -15.8,
     "speech_match": null,
     "longest_freeze": 0.0
    },

@@ -169,20 +169,20 @@
    {
     "a": "ph",
     "b": "hr",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ph",
+    "seed": 254239990010,
+    "melody": "ocean",
+    "posted": "2026-10-26T12:30:00+00:00",
+    "buffer_id": "6ade6c036887a2efc1241c16"
    },
    {
     "a": "vn",
     "b": "de",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "de",
+    "seed": 138659293044,
+    "melody": "sunset",
+    "posted": "2026-10-26T15:30:00+00:00",
+    "buffer_id": "6ade6d3b6887a2efc12461c1"
    },
    {
     "a": "au",
@@ -232,8 +232,8 @@
     "buffer_id": null
    },
    {
-    "a": null,
-    "b": null,
+    "a": "ph",
+    "b": "de",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -294,7 +294,7 @@
  "titles": {
   "ie": 1
  },
- "posts": 49,
+ "posts": 51,
  "log": [
   {
    "edition": 1,
@@ -2323,7 +2323,7 @@
    "theme": "ember",
    "due": "2026-10-25T17:00:00+00:00",
    "buffer_id": "6add3c1d0b5343d070a76a42",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec02_r1_m00_79369648049.mp4",
    "length": 22.6,
    "loop": {
@@ -2337,7 +2337,8 @@
    "r": 1,
    "m": 0,
    "a": "ch",
-   "b": "mx"
+   "b": "mx",
+   "link": "https://tiktok.com/@5lmvill/video/7700651710393470241"
   },
   {
    "edition": 2,
@@ -2449,12 +2450,99 @@
     "ie",
     "jm"
    ]
+  },
+  {
+   "edition": 2,
+   "winner": "ph",
+   "seed": 254239990010,
+   "theme": "ocean",
+   "due": "2026-10-26T12:30:00+00:00",
+   "buffer_id": "6ade6c036887a2efc1241c16",
+   "status": "scheduled",
+   "file": "ec02_r1_m02_254239990010.mp4",
+   "length": 28.9,
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "12c1177d8756928c8318d2cc8358e18bc118fafb14b0e82ac750792a18c0f9d9",
+    "checked_at": "2026-10-25T20:51:01+00:00"
+   },
+   "r": 1,
+   "m": 2,
+   "a": "ph",
+   "b": "hr"
+  },
+  {
+   "edition": 2,
+   "winner": "es",
+   "seed": 58067861000,
+   "theme": "forest",
+   "due": "2026-10-26T14:00:00+00:00",
+   "buffer_id": "6ade6cb20b5343d070ef9125",
+   "status": "scheduled",
+   "file": "royale029_58067861000.mp4",
+   "length": 24.6,
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "4d5291a936d173e0af8d9232ac843c10c14afbd55d0cddaca3302629d2fb9f02",
+    "checked_at": "2026-10-25T20:53:50+00:00"
+   },
+   "series": "royale",
+   "heat": 29,
+   "codes": [
+    "es",
+    "th",
+    "jp",
+    "gb-eng",
+    "gb-sct",
+    "id",
+    "it",
+    "cn",
+    "ph",
+    "jm",
+    "pl",
+    "mx",
+    "tn",
+    "tr",
+    "pt",
+    "ma"
+   ],
+   "podium": [
+    "es",
+    "pt",
+    "gb-sct"
+   ]
+  },
+  {
+   "edition": 2,
+   "winner": "de",
+   "seed": 138659293044,
+   "theme": "sunset",
+   "due": "2026-10-26T15:30:00+00:00",
+   "buffer_id": "6ade6d3b6887a2efc12461c1",
+   "status": "scheduled",
+   "file": "ec02_r1_m03_138659293044.mp4",
+   "length": 18.4,
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "70f272539ff2729a7825ffd7100e3fa2b0c38242a906596ebd9193dfd72221fc",
+    "checked_at": "2026-10-25T20:56:08+00:00"
+   },
+   "r": 1,
+   "m": 3,
+   "a": "vn",
+   "b": "de"
   }
  ],
  "recent_captions": [
-  "THE FINAL 🏆 Netherlands 🇳🇱 vs Ireland 🇮🇪 - which country escapes with the cup?\nEscape Cup 1\nEscape Cup 2 starts with a new draw - which country is yours? 👇\n#ballescape #physicssimulation #simulation #netherlands #ireland",
-  "Escape Royale heat 8: Which country escapes first? 16 countries in one physics simulation\nFeaturing England, Scotland, Germany, Morocco and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
-  "Escape Royale heat 9: 16 country balls, 28 rings, one way out. Physics simulation\nFeaturing England, Ireland, Poland, Turkey and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
   "Escape Royale heat 10: Which country escapes first? 16 countries in one physics simulation\nFeaturing England, Wales, Italy, South Korea and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "Switzerland 🇨🇭 vs Indonesia 🇮🇩: 16 rings, one way out. Physics simulation\nRound of 32 · Escape Cup 2\nComing next: Mexico vs USA. Who takes it? 👇\n#ballescape #physicssimulation #simulation #switzerland #indonesia",
   "Escape Royale heat 11: 16 country balls, 28 rings, one way out. Physics simulation\nFeaturing England, Wales, Colombia, France and 12 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #simulation #countryballs",
@@ -2491,13 +2579,13 @@
   "Country ball escape - Switzerland 🇨🇭 vs Mexico 🇲🇽\nRound of 16 of Escape Cup 2 🏆\nMorocco vs Canada is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #switzerland #mexico",
   "England, Wales, Philippines or Japan? 16 countries, one way out · heat 27\nAlso in it: Spain, Colombia and 10 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
   "Which country escapes first? Morocco 🇲🇦 vs Canada 🇨🇦 ball escape\nEscape Cup 2, Round of 16\nNext up: Philippines vs Croatia - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #morocco #canada",
-  "England, Ireland, Mexico or Poland? 16 countries, one way out · heat 28\nAlso in it: Ghana, Chile and 10 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs"
+  "England, Ireland, Mexico or Poland? 16 countries, one way out · heat 28\nAlso in it: Ghana, Chile and 10 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
+  "Philippines 🇵🇭 vs Croatia 🇭🇷 - which country escapes the rings first?\nRound of 16 · Escape Cup 2\nComing next: Vietnam vs Germany. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #philippines #croatia",
+  "England, Scotland, Spain or Japan? Country ball escape: 16 flags, one exit · heat 29\nAlso in it: Thailand, Indonesia and 10 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
+  "Vietnam 🇻🇳 vs Germany 🇩🇪: 16 rings, one way out. Physics simulation\nRound of 16 of Escape Cup 2 🏆\nComing next: Australia vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #vietnam #germany"
  ],
  "seen_errors": [],
  "excluded_seeds": {
-  "2-1-0": [
-   79369648003
-  ],
   "royale-27": [
    155047090015
   ]
