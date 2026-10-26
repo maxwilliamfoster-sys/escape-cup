@@ -1630,6 +1630,152 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-10-26T20:30:56+00:00",
+   "platform": "tiktok",
+   "file": "royale031_59126465017.mp4",
+   "sha256": "26041b17305f55a72bf85ea336e9e48a9c70772cc499199f8e8c94909268e319",
+   "head": "England, Wales, Indonesia or Portugal? 16 countries, one way out · heat 31",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.84 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\""
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.84,
+   "report": {
+    "seconds": 27.58,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4160,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-26T20:34:34+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r1_m05_121089401021.mp4",
+   "sha256": "348ec278d22d13154fcde171e8550a552e63b4b58e722f53bb26511564f976df",
+   "head": "Poland 🇵🇱 vs Uruguay 🇺🇾 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.5,
+   "report": {
+    "seconds": 17.45,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "tokens": 4174,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-26T20:38:22+00:00",
+   "platform": "tiktok",
+   "file": "royale032_91905268009.mp4",
+   "sha256": "2814e15a8a56277454819aed0811de47105820d0a45ec40176c3cefd198898d2",
+   "head": "England, Scotland, Colombia or Poland? Physics decides which flag escapes the rings first · heat 32",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.90 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\"",
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.898,
+   "report": {
+    "seconds": 35.93,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-26T20:40:59+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r1_m06_37444233057.mp4",
+   "sha256": "df1e896ed923636dc26ea1eedb6d3355b629eb6d19d2523260da1d299882ef2c",
+   "head": "Country ball escape - Spain 🇪🇸 vs France 🇫🇷",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [unavailable]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.442,
+   "report": {
+    "seconds": 22.8,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-26T20:44:41+00:00",
+   "platform": "tiktok",
+   "file": "royale033_83982770012.mp4",
+   "sha256": "6fd7d59fff523e7daa77c43d9c2cc2ce2a3fb5e6311ee6cbc3c0b23ced1ec667",
+   "head": "England, Wales, Indonesia or Italy? 16 countries, one way out · heat 33",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.95 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\"",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.946,
+   "report": {
+    "seconds": 30.23,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
