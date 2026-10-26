@@ -1581,7 +1581,7 @@
    "failures": [],
    "warnings": [
     "near-duplicate first caption line (similarity 0.84 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\"",
-    "AI review unavailable: [cap]"
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-23",
    "head_similarity": 0.838,
@@ -1598,6 +1598,37 @@
     "quota": true,
     "cap": true,
     "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-26T13:06:44+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r1_m04_135772755026.mp4",
+   "sha256": "ec3c4de747606ff02bb8ecd4add707eab2bc755fb4830a43317cc209c9c72dce",
+   "head": "Australia 🇦🇺 vs Italy 🇮🇹: 16 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.81 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\""
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.807,
+   "report": {
+    "seconds": 16.37,
+    "lufs": -15.8,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4165,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
    }
   }
  ]
