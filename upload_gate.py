@@ -659,6 +659,15 @@ def _is_timeout(e):
             or "timed out" in str(e).lower())
 
 
+def _score(v):
+    """A model's 1-10 score as an int in 0..10. Anything unreadable ("8/10", "high") is 0,
+    which fails the >=5 bar instead of crashing the review."""
+    try:
+        return max(0, min(10, int(float(v))))
+    except (TypeError, ValueError):
+        return 0
+
+
 def _unavailable(reason, problem, retryable=False, **extra):
     """An AI review that produced no verdict. `retryable` is True ONLY when waiting can fix it
     (a 429 without "per day", a 5xx, a timeout): callers re-check on that and nothing else."""
@@ -770,7 +779,7 @@ def ai_review(path, platform, profile, *, title="", caption="", transcript="", s
                 continue
             return _unavailable("timeout" if timeout else "network", f"AI review failed: {str(e)[:200]}",
                                 retryable=timeout)
-    coh, qual = int(res.get("coherence") or 0), int(res.get("quality") or 0)
+    coh, qual = _score(res.get("coherence")), _score(res.get("quality"))
     problems = [str(p) for p in (res.get("policy_issues") or []) + (res.get("quality_issues") or []) if p]
     ok = res["verdict"] == "PASS" and coh >= 5 and qual >= 5 and not (res.get("policy_issues") or [])
     out = {"ok": ok, "available": True, "retryable": False, "reason": None, "coherence": coh, "quality": qual,
@@ -904,9 +913,11 @@ def require(path, platform):
 # The in-memory verdict (alerts, retries) keeps the full text. (Folded from BCF 396565f.)
 # Security review 2026-10-23: a keyword list is bypassable ("names the man next door as the
 # one who did it"), so the public log is fail-closed: AI-review reasons and summaries are
-# always fixed codes, a gate-generated message is kept only with its quoted / personal-data
-# parts removed, and any other text (e.g. a bot's own extra_failures) becomes a fixed code.
-# _ALLEGATION stays as a second net over what survives.
+# always fixed codes, a gate-generated message keeps only the part _PUBLIC_SAFE matched (fixed
+# words and numbers; whatever followed becomes " (…)"), and any other text (e.g. a bot's own
+# extra_failures) becomes a fixed code. A second review (3x MEDIUM) showed that stripping
+# quotes/parentheses out of the tail leaked exception text and unbalanced quotes, so nothing
+# after the match is kept. _ALLEGATION stays as a second net over what survives.
 _ALLEGATION = re.compile(
     r"\b(suspect\w*|acquit\w*|convict\w*|uncharged|charged|charges|implicat\w*|accus\w*|guilt\w*|"
     r"persons? of interest|perpetrator\w*|culprit\w*|killers?|murderers?|wrongdoing|defam\w*|libel\w*|"
@@ -914,25 +925,26 @@ _ALLEGATION = re.compile(
 WITHHELD = "[legal-risk detail withheld from the public log]"
 AI_WITHHELD = "[ai_block] withheld from the public log"
 OTHER_WITHHELD = "[other] detail withheld from the public log"
-# Messages this module writes itself (check_text, check_media, check). Content words only ever
-# appear inside "quotes" or the (parentheses) of the personal-data/link rules; those are cut.
+# Opening words of the messages this module writes itself (check_text, check_media, check).
+# Each alternative may match only fixed words and numbers, never content.
 _PUBLIC_SAFE = re.compile(
-    r"^(?:empty (?:title|caption)|title is \d|description is \d|'<' or '>' in the |tags total \d|caption is \d|"
+    r"^(?:empty (?:title|caption)|title is \d+|description is \d+|'<' or '>' in the |tags total \d+|caption is \d+|"
     + "|".join(re.escape(why) for _, why in BAIT + MISLEADING) +
     r"|email address in the text|phone number in the text|link in a TikTok caption|link to an unapproved site"
     r"|\d+ hashtags|generic reach hashtags|doubled word in the (?:title|caption|description)"
     r"|same (?:title|first caption line) as a recent post|near-duplicate (?:title|first caption line)"
     r"|realistic AI content without|no video stream|no audio stream|container \S+ not accepted"
     r"|video codec \S+ not accepted|[\d.]+ fps|\d+x\d+ |-?[\d.]+s outside|file is [\d.]+ GB|pixel format"
-    r"|resolution \d|video bitrate|ffmpeg could not decode|\d+ decode error|[\d.]+s of black picture"
-    r"|picture frozen|could not measure loudness|loudness -?[\d.]+ LUFS|true peak|[\d.]+s of dead silence"
-    r"|first frame is blank|picture barely changes|video file missing or empty"
+    r"|resolution \d+|video bitrate(?: \d+ kbps)?|ffmpeg could not decode|\d+ decode error|[\d.]+s of black picture"
+    r"|picture frozen|could not measure loudness|loudness -?[\d.]+ LUFS(?: outside \(-?[\d.]+, -?[\d.]+\))?"
+    r"|true peak|[\d.]+s of dead silence"
+    r"|first frame is blank|picture barely changes(?: \(\d+/\d+ sampled gaps differ\))?|video file missing or empty"
     r"|(?:hash|text|video|speech|AI review) check could not run"
     r"|narration doesn't match the script|narration only \d+% matched)")
-_PERSONAL = re.compile(r"^((?:email address|phone number) in the text|link in a TikTok caption"
-                       r"|link to an unapproved site) \([^)]*\)")
 _UNAVAILABLE_CODES = (("too large", "too_large"), ("daily AI quota", "quota"), ("daily AI-review cap", "cap"),
                       ("not set", "no_key"), ("no verdict", "no_verdict"), ("timed out", "timeout"))
+# An already-scrubbed reason: only codes scrub_public itself writes, so no other token passes through.
+_CODED = re.compile(r"^\[(?:" + "|".join(c for _, c in _UNAVAILABLE_CODES) + r"|unavailable|http_\d{3})\]$")
 _PUBLIC_KEYS = ("checked_at", "platform", "file", "sha256", "head", "ok", "failures", "warnings",
                 "gate_version", "head_similarity", "report", "ai")
 _PUBLIC_REPORT = ("seconds", "lufs", "speech_match", "longest_freeze")
@@ -941,12 +953,17 @@ _CODE_RE = re.compile(r"^[a-z][a-z0-9_]{0,23}$")
 
 
 def scrub_public(text):
-    """The public-log form of one failure/warning line: a gate-generated technical message
-    (minus quoted words and personal data), else a fixed code. Never free text."""
+    """The public-log form of one failure/warning line: the gate-written opening of a message
+    this module produced, else a fixed code. Never free text. Idempotent, because record()
+    re-scrubs the whole ledger on every write."""
     if not isinstance(text, str):
         return None
+    if text in (WITHHELD, OTHER_WITHHELD):
+        return text
     if text.startswith("AI review unavailable: "):
         rest = text[len("AI review unavailable: "):]
+        if _CODED.match(rest):
+            return text
         code = next((c for k, c in _UNAVAILABLE_CODES if k in rest), None)
         if code is None:
             m = re.search(r"\bHTTP (\d{3})\b", rest)
@@ -954,10 +971,12 @@ def scrub_public(text):
         return f"AI review unavailable: [{code}]"
     if text.startswith("AI review: "):
         return "AI review: " + AI_WITHHELD
-    if not _PUBLIC_SAFE.match(text):
+    m = _PUBLIC_SAFE.match(text)
+    if not m:
         return WITHHELD if _ALLEGATION.search(text) else OTHER_WITHHELD
-    out = _PERSONAL.sub(r"\1 (…)", text)
-    out = re.sub(r"\"[^\"]*\"?", '"…"', out)
+    out = m.group(0).rstrip(" :(-")
+    if text[m.end():].strip():
+        out += " (…)"
     if _ALLEGATION.search(out):
         return WITHHELD
     return out

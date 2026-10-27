@@ -24,8 +24,8 @@
       "local_patch": false
     },
     "upload_gate.py": {
-      "sha256": "c64a9d03992b1f6297c6357279cd44c9eca972659e2bd5ff4a9e734e2451a3f1",
-      "master_sha": "c64a9d03992b1f6297c6357279cd44c9eca972659e2bd5ff4a9e734e2451a3f1",
+      "sha256": "4411336abe4dc23c9c6fde745fcc2e52941a239c535e256f766ea352092c8d29",
+      "master_sha": "4411336abe4dc23c9c6fde745fcc2e52941a239c535e256f766ea352092c8d29",
       "local_patch": false
     }
   }
