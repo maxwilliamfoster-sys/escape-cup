@@ -9,24 +9,25 @@
    "control": "cup",
    "variant": "royale",
    "start_date": "2026-10-13",
-   "status": "running",
+   "status": "reverted",
    "min_n": 10,
    "max_n": 20,
    "metric": "avg % watched at 72h",
    "control_metrics": {
-    "n": 14,
-    "median": 34.4961,
-    "views72": 724.4407
+    "n": 21,
+    "median": 33.2845,
+    "views72": 282.2057
    },
    "variant_metrics": {
-    "n": 13,
-    "median": 28.2185,
-    "views72": 739.5429
+    "n": 21,
+    "median": 22.0142,
+    "views72": 264.0
    },
    "note": "started by hand 2026-10-13 (main.ARMS, slot alternation); arms come from analytics.json 'variant'",
-   "verdict": "keep running",
-   "last_judged": "2026-10-26",
-   "result": "escape-cup-format-1 · views@72h: KEEP RUNNING — treatment 1.02x control (740 vs 724; 90% CI 0.37–2.08, p=0.716), n=13 vs 14 (min 10, max 20) · guardrail worse: hold"
+   "verdict": "inconclusive at max n",
+   "last_judged": "2026-10-27",
+   "result": "escape-cup-format-1 · views@72h: INCONCLUSIVE AT MAX N — treatment 0.94x control (264 vs 282; 90% CI 0.09–5.12, p=0.960), n=21 vs 21 (min 10, max 20) · guardrail worse: hold",
+   "ended": "2026-10-27"
   }
  ]
 }

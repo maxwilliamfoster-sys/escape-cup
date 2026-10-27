@@ -258,6 +258,19 @@
      "totalTimeWatched": 118.42,
      "averageTimeWatched": 7.68,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 910,
+     "shares": 0,
+     "reach": 832,
+     "totalTimeWatched": 118.42,
+     "averageTimeWatched": 7.68,
+     "likes": 0
     }
    ],
    "variant": "cup",
@@ -512,6 +525,19 @@
     {
      "at": "2026-10-26T14:36+00:00",
      "metrics_updated": "2026-10-25T17:38:59.792Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 297,
+     "shares": 0,
+     "reach": 263,
+     "totalTimeWatched": 26.42,
+     "averageTimeWatched": 5.1,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -784,6 +810,19 @@
      "totalTimeWatched": 28.95,
      "averageTimeWatched": 5.64,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.33,
+     "views": 299,
+     "shares": 0,
+     "reach": 276,
+     "totalTimeWatched": 28.95,
+     "averageTimeWatched": 5.64,
+     "likes": 1
     }
    ],
    "variant": "cup",
@@ -1038,6 +1077,19 @@
     {
      "at": "2026-10-26T14:36+00:00",
      "metrics_updated": "2026-10-25T17:38:59.792Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.69,
+     "views": 289,
+     "shares": 0,
+     "reach": 266,
+     "totalTimeWatched": 25.1,
+     "averageTimeWatched": 5.02,
+     "likes": 2
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
      "reactions": 2,
      "comments": 0,
      "engagementRate": 0.69,
@@ -1310,6 +1362,19 @@
      "totalTimeWatched": 63.75,
      "averageTimeWatched": 4.9,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.13,
+     "views": 766,
+     "shares": 0,
+     "reach": 711,
+     "totalTimeWatched": 63.77,
+     "averageTimeWatched": 4.89,
+     "likes": 1
     }
    ],
    "variant": "cup",
@@ -1564,6 +1629,19 @@
     {
      "at": "2026-10-26T14:36+00:00",
      "metrics_updated": "2026-10-25T17:38:59.792Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 268,
+     "shares": 0,
+     "reach": 255,
+     "totalTimeWatched": 18.13,
+     "averageTimeWatched": 4,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -1836,6 +1914,19 @@
      "totalTimeWatched": 82.22,
      "averageTimeWatched": 6.5,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.13,
+     "views": 750,
+     "shares": 0,
+     "reach": 709,
+     "totalTimeWatched": 82.22,
+     "averageTimeWatched": 6.5,
+     "likes": 1
     }
    ],
    "variant": "cup",
@@ -2090,6 +2181,19 @@
     {
      "at": "2026-10-26T14:36+00:00",
      "metrics_updated": "2026-10-25T17:38:59.791Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 1.07,
+     "views": 281,
+     "shares": 0,
+     "reach": 263,
+     "totalTimeWatched": 29.28,
+     "averageTimeWatched": 6.06,
+     "likes": 3
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
      "reactions": 3,
      "comments": 0,
      "engagementRate": 1.07,
@@ -2362,6 +2466,19 @@
      "totalTimeWatched": 27.77,
      "averageTimeWatched": 5.73,
      "likes": 2
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.69,
+     "views": 288,
+     "shares": 0,
+     "reach": 272,
+     "totalTimeWatched": 27.88,
+     "averageTimeWatched": 5.71,
+     "likes": 2
     }
    ],
    "variant": "cup",
@@ -2625,6 +2742,19 @@
      "totalTimeWatched": 61.98,
      "averageTimeWatched": 4.76,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 766,
+     "shares": 0,
+     "reach": 712,
+     "totalTimeWatched": 61.98,
+     "averageTimeWatched": 4.75,
+     "likes": 0
     }
    ],
    "variant": "cup",
@@ -2879,6 +3009,19 @@
     {
      "at": "2026-10-26T14:36+00:00",
      "metrics_updated": "2026-10-25T17:38:59.791Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 298,
+     "shares": 0,
+     "reach": 279,
+     "totalTimeWatched": 25.87,
+     "averageTimeWatched": 5.12,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -3151,6 +3294,19 @@
      "totalTimeWatched": 95.4,
      "averageTimeWatched": 7.09,
      "likes": 4
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.658Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.51,
+     "views": 791,
+     "shares": 0,
+     "reach": 741,
+     "totalTimeWatched": 95.47,
+     "averageTimeWatched": 7.08,
+     "likes": 4
     }
    ],
    "variant": "cup",
@@ -3401,6 +3557,19 @@
      "totalTimeWatched": 33.37,
      "averageTimeWatched": 6.07,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 322,
+     "shares": 0,
+     "reach": 293,
+     "totalTimeWatched": 33.37,
+     "averageTimeWatched": 6.07,
+     "likes": 0
     }
    ],
    "variant": "cup",
@@ -3633,6 +3802,19 @@
      "comments": 0,
      "engagementRate": 0.55,
      "views": 363,
+     "shares": 0,
+     "reach": 316,
+     "totalTimeWatched": 50.13,
+     "averageTimeWatched": 8,
+     "likes": 2
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.55,
+     "views": 366,
      "shares": 0,
      "reach": 316,
      "totalTimeWatched": 50.13,
@@ -3875,6 +4057,19 @@
      "totalTimeWatched": 53.22,
      "averageTimeWatched": 7.5,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 423,
+     "shares": 0,
+     "reach": 377,
+     "totalTimeWatched": 53.22,
+     "averageTimeWatched": 7.5,
+     "likes": 0
     }
    ],
    "variant": "cup",
@@ -4099,6 +4294,19 @@
      "totalTimeWatched": 1494.57,
      "averageTimeWatched": 10.6,
      "likes": 171
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 171,
+     "comments": 1,
+     "engagementRate": 2.17,
+     "views": 8221,
+     "shares": 6,
+     "reach": 7432,
+     "totalTimeWatched": 1499.08,
+     "averageTimeWatched": 10.6,
+     "likes": 171
     }
    ],
    "variant": "cup",
@@ -4318,6 +4526,19 @@
      "comments": 0,
      "engagementRate": 0.42,
      "views": 957,
+     "shares": 0,
+     "reach": 844,
+     "totalTimeWatched": 90.8,
+     "averageTimeWatched": 5.55,
+     "likes": 4
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.42,
+     "views": 958,
      "shares": 0,
      "reach": 844,
      "totalTimeWatched": 90.8,
@@ -4547,6 +4768,19 @@
      "totalTimeWatched": 70.7,
      "averageTimeWatched": 8.16,
      "likes": 6
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 6,
+     "comments": 0,
+     "engagementRate": 1.19,
+     "views": 504,
+     "shares": 0,
+     "reach": 436,
+     "totalTimeWatched": 70.72,
+     "averageTimeWatched": 8.14,
+     "likes": 6
     }
    ],
    "variant": "cup",
@@ -4758,6 +4992,19 @@
      "totalTimeWatched": 85.03,
      "averageTimeWatched": 5.86,
      "likes": 2
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 2,
+     "comments": 2,
+     "engagementRate": 0.5,
+     "views": 807,
+     "shares": 0,
+     "reach": 735,
+     "totalTimeWatched": 85.03,
+     "averageTimeWatched": 5.86,
+     "likes": 2
     }
    ],
    "variant": "cup",
@@ -4948,6 +5195,19 @@
     {
      "at": "2026-10-26T14:36+00:00",
      "metrics_updated": "2026-10-25T17:38:59.791Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 0.29,
+     "views": 1363,
+     "shares": 0,
+     "reach": 1257,
+     "totalTimeWatched": 164.77,
+     "averageTimeWatched": 6.99,
+     "likes": 4
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
      "reactions": 4,
      "comments": 0,
      "engagementRate": 0.29,
@@ -5155,6 +5415,19 @@
      "totalTimeWatched": 30.58,
      "averageTimeWatched": 5.01,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.29,
+     "views": 347,
+     "shares": 0,
+     "reach": 311,
+     "totalTimeWatched": 30.58,
+     "averageTimeWatched": 5.01,
+     "likes": 1
     }
    ],
    "loop": {}
@@ -5331,6 +5604,19 @@
     {
      "at": "2026-10-26T14:36+00:00",
      "metrics_updated": "2026-10-25T17:38:59.790Z",
+     "reactions": 5,
+     "comments": 0,
+     "engagementRate": 0.65,
+     "views": 768,
+     "shares": 0,
+     "reach": 688,
+     "totalTimeWatched": 75.58,
+     "averageTimeWatched": 5.81,
+     "likes": 5
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
      "reactions": 5,
      "comments": 0,
      "engagementRate": 0.65,
@@ -5525,6 +5811,19 @@
      "totalTimeWatched": 62.85,
      "averageTimeWatched": 5.03,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 1,
+     "comments": 1,
+     "engagementRate": 0.27,
+     "views": 730,
+     "shares": 0,
+     "reach": 666,
+     "totalTimeWatched": 62.85,
+     "averageTimeWatched": 5.03,
+     "likes": 1
     }
    ],
    "loop": {}
@@ -5696,6 +5995,19 @@
      "reach": 248,
      "totalTimeWatched": 38.7,
      "averageTimeWatched": 7.98,
+     "likes": 5
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.657Z",
+     "reactions": 5,
+     "comments": 1,
+     "engagementRate": 2.08,
+     "views": 288,
+     "shares": 0,
+     "reach": 251,
+     "totalTimeWatched": 38.92,
+     "averageTimeWatched": 7.92,
      "likes": 5
     }
    ],
@@ -5869,6 +6181,19 @@
      "totalTimeWatched": 152.35,
      "averageTimeWatched": 8.64,
      "likes": 14
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 14,
+     "comments": 1,
+     "engagementRate": 1.45,
+     "views": 1035,
+     "shares": 0,
+     "reach": 870,
+     "totalTimeWatched": 152.48,
+     "averageTimeWatched": 8.63,
+     "likes": 14
     }
    ],
    "loop": {}
@@ -6041,6 +6366,19 @@
      "totalTimeWatched": 83.05,
      "averageTimeWatched": 6.59,
      "likes": 3
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 0.41,
+     "views": 737,
+     "shares": 0,
+     "reach": 695,
+     "totalTimeWatched": 83.07,
+     "averageTimeWatched": 6.58,
+     "likes": 3
     }
    ],
    "loop": {}
@@ -6201,6 +6539,19 @@
      "totalTimeWatched": 43.55,
      "averageTimeWatched": 7.89,
      "likes": 2
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 2,
+     "comments": 0,
+     "engagementRate": 0.63,
+     "views": 319,
+     "shares": 0,
+     "reach": 288,
+     "totalTimeWatched": 43.6,
+     "averageTimeWatched": 7.86,
+     "likes": 2
     }
    ]
   },
@@ -6346,6 +6697,19 @@
      "reach": 680,
      "totalTimeWatched": 94.9,
      "averageTimeWatched": 7.48,
+     "likes": 5
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 5,
+     "comments": 1,
+     "engagementRate": 0.8,
+     "views": 751,
+     "shares": 0,
+     "reach": 681,
+     "totalTimeWatched": 94.92,
+     "averageTimeWatched": 7.46,
      "likes": 5
     }
    ]
@@ -6493,6 +6857,19 @@
      "totalTimeWatched": 95.87,
      "averageTimeWatched": 7,
      "likes": 5
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 5,
+     "comments": 0,
+     "engagementRate": 0.73,
+     "views": 817,
+     "shares": 1,
+     "reach": 733,
+     "totalTimeWatched": 94.67,
+     "averageTimeWatched": 6.88,
+     "likes": 5
     }
    ]
   },
@@ -6627,6 +7004,19 @@
      "reach": 680,
      "totalTimeWatched": 96.23,
      "averageTimeWatched": 7.63,
+     "likes": 11
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 11,
+     "comments": 1,
+     "engagementRate": 1.61,
+     "views": 744,
+     "shares": 0,
+     "reach": 680,
+     "totalTimeWatched": 93.67,
+     "averageTimeWatched": 7.41,
      "likes": 11
     }
    ]
@@ -6763,6 +7153,19 @@
      "totalTimeWatched": 44.58,
      "averageTimeWatched": 9.2,
      "likes": 5
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 5,
+     "comments": 1,
+     "engagementRate": 2.14,
+     "views": 281,
+     "shares": 0,
+     "reach": 248,
+     "totalTimeWatched": 44.58,
+     "averageTimeWatched": 9.2,
+     "likes": 5
     }
    ]
   },
@@ -6882,6 +7285,19 @@
      "views": 910,
      "shares": 0,
      "reach": 793,
+     "totalTimeWatched": 157.05,
+     "averageTimeWatched": 10.11,
+     "likes": 7
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 7,
+     "comments": 0,
+     "engagementRate": 0.77,
+     "views": 910,
+     "shares": 0,
+     "reach": 794,
      "totalTimeWatched": 157.05,
      "averageTimeWatched": 10.11,
      "likes": 7
@@ -7007,6 +7423,19 @@
      "totalTimeWatched": 53.87,
      "averageTimeWatched": 8.44,
      "likes": 19
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 19,
+     "comments": 1,
+     "engagementRate": 5.38,
+     "views": 372,
+     "shares": 0,
+     "reach": 298,
+     "totalTimeWatched": 53.87,
+     "averageTimeWatched": 8.44,
+     "likes": 19
     }
    ]
   },
@@ -7113,6 +7542,19 @@
      "views": 772,
      "shares": 0,
      "reach": 641,
+     "totalTimeWatched": 83.43,
+     "averageTimeWatched": 6.43,
+     "likes": 5
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 5,
+     "comments": 1,
+     "engagementRate": 0.78,
+     "views": 772,
+     "shares": 0,
+     "reach": 644,
      "totalTimeWatched": 83.43,
      "averageTimeWatched": 6.43,
      "likes": 5
@@ -7225,6 +7667,19 @@
      "totalTimeWatched": 108.5,
      "averageTimeWatched": 7.38,
      "likes": 6
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 6,
+     "comments": 1,
+     "engagementRate": 0.93,
+     "views": 860,
+     "shares": 1,
+     "reach": 755,
+     "totalTimeWatched": 108.52,
+     "averageTimeWatched": 7.37,
+     "likes": 6
     }
    ]
   },
@@ -7320,6 +7775,19 @@
      "reach": 792,
      "totalTimeWatched": 116.52,
      "averageTimeWatched": 7.67,
+     "likes": 3
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 0.33,
+     "views": 898,
+     "shares": 0,
+     "reach": 792,
+     "totalTimeWatched": 116.53,
+     "averageTimeWatched": 7.66,
      "likes": 3
     }
    ]
@@ -7417,6 +7885,19 @@
      "totalTimeWatched": 111.57,
      "averageTimeWatched": 8.74,
      "likes": 25
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.656Z",
+     "reactions": 25,
+     "comments": 3,
+     "engagementRate": 3.75,
+     "views": 747,
+     "shares": 0,
+     "reach": 622,
+     "totalTimeWatched": 111.63,
+     "averageTimeWatched": 8.72,
+     "likes": 25
     }
    ]
   },
@@ -7499,6 +7980,19 @@
      "reach": 1755,
      "totalTimeWatched": 372.35,
      "averageTimeWatched": 11.15,
+     "likes": 50
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.655Z",
+     "reactions": 50,
+     "comments": 6,
+     "engagementRate": 2.98,
+     "views": 1944,
+     "shares": 2,
+     "reach": 1783,
+     "totalTimeWatched": 375.13,
+     "averageTimeWatched": 11.18,
      "likes": 50
     }
    ]
@@ -7583,6 +8077,19 @@
      "totalTimeWatched": 80.52,
      "averageTimeWatched": 5.8,
      "likes": 7
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.655Z",
+     "reactions": 7,
+     "comments": 0,
+     "engagementRate": 0.86,
+     "views": 814,
+     "shares": 0,
+     "reach": 726,
+     "totalTimeWatched": 80.52,
+     "averageTimeWatched": 5.79,
+     "likes": 7
     }
    ]
   },
@@ -7657,6 +8164,19 @@
     {
      "at": "2026-10-26T14:36+00:00",
      "metrics_updated": "2026-10-25T17:38:59.789Z",
+     "reactions": 9,
+     "comments": 1,
+     "engagementRate": 1.22,
+     "views": 819,
+     "shares": 0,
+     "reach": 731,
+     "totalTimeWatched": 101.77,
+     "averageTimeWatched": 7.24,
+     "likes": 9
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.655Z",
      "reactions": 9,
      "comments": 1,
      "engagementRate": 1.22,
@@ -7749,6 +8269,19 @@
      "totalTimeWatched": 132.27,
      "averageTimeWatched": 9.55,
      "likes": 11
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.655Z",
+     "reactions": 11,
+     "comments": 1,
+     "engagementRate": 1.6,
+     "views": 815,
+     "shares": 1,
+     "reach": 740,
+     "totalTimeWatched": 132.43,
+     "averageTimeWatched": 9.54,
+     "likes": 11
     }
    ]
   },
@@ -7831,6 +8364,19 @@
      "reach": 253,
      "totalTimeWatched": 34.53,
      "averageTimeWatched": 7.2,
+     "likes": 5
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.655Z",
+     "reactions": 5,
+     "comments": 0,
+     "engagementRate": 1.76,
+     "views": 284,
+     "shares": 0,
+     "reach": 253,
+     "totalTimeWatched": 34.53,
+     "averageTimeWatched": 7.17,
      "likes": 5
     }
    ]
@@ -7915,6 +8461,19 @@
      "totalTimeWatched": 42.3,
      "averageTimeWatched": 7.17,
      "likes": 4
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.655Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 1.16,
+     "views": 345,
+     "shares": 0,
+     "reach": 301,
+     "totalTimeWatched": 42.35,
+     "averageTimeWatched": 7.16,
+     "likes": 4
     }
    ]
   },
@@ -7998,6 +8557,19 @@
      "totalTimeWatched": 15.5,
      "averageTimeWatched": 7.82,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-26T16:38:37.655Z",
+     "reactions": 0,
+     "comments": 1,
+     "engagementRate": 0.86,
+     "views": 116,
+     "shares": 0,
+     "reach": 105,
+     "totalTimeWatched": 15.52,
+     "averageTimeWatched": 7.76,
+     "likes": 0
     }
    ]
   },
@@ -8067,6 +8639,19 @@
      "reach": 47,
      "totalTimeWatched": 5.23,
      "averageTimeWatched": 4.84,
+     "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.885Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 1.54,
+     "views": 65,
+     "shares": 0,
+     "reach": 49,
+     "totalTimeWatched": 5.23,
+     "averageTimeWatched": 4.77,
      "likes": 1
     }
    ]
@@ -8138,6 +8723,19 @@
      "totalTimeWatched": 5.62,
      "averageTimeWatched": 5.44,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.938Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 1.64,
+     "views": 61,
+     "shares": 0,
+     "reach": 48,
+     "totalTimeWatched": 5.62,
+     "averageTimeWatched": 5.36,
+     "likes": 1
     }
    ]
   },
@@ -8207,6 +8805,19 @@
      "reach": 44,
      "totalTimeWatched": 8.92,
      "averageTimeWatched": 8.49,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.966Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 64,
+     "shares": 0,
+     "reach": 46,
+     "totalTimeWatched": 8.92,
+     "averageTimeWatched": 8.37,
      "likes": 0
     }
    ]
@@ -8278,6 +8889,19 @@
      "totalTimeWatched": 1.42,
      "averageTimeWatched": 3.18,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.920Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 29,
+     "shares": 0,
+     "reach": 20,
+     "totalTimeWatched": 1.43,
+     "averageTimeWatched": 3.1,
+     "likes": 0
     }
    ]
   },
@@ -8347,6 +8971,19 @@
      "reach": 32,
      "totalTimeWatched": 3.75,
      "averageTimeWatched": 5.64,
+     "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:07.035Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 2.38,
+     "views": 42,
+     "shares": 0,
+     "reach": 32,
+     "totalTimeWatched": 3.77,
+     "averageTimeWatched": 5.52,
      "likes": 1
     }
    ]
@@ -8418,6 +9055,19 @@
      "totalTimeWatched": 1.48,
      "averageTimeWatched": 2.56,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.907Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 36,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 1.5,
+     "averageTimeWatched": 2.51,
+     "likes": 0
     }
    ]
   },
@@ -8488,6 +9138,19 @@
      "totalTimeWatched": 15.95,
      "averageTimeWatched": 6.47,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.948Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 145,
+     "shares": 0,
+     "reach": 124,
+     "totalTimeWatched": 15.97,
+     "averageTimeWatched": 6.43,
+     "likes": 0
     }
    ]
   },
@@ -8501,8 +9164,8 @@
    "seed": 227102839016,
    "format": "v2",
    "length": 30.5,
-   "link": "https://tiktok.com/@5lmvill/video/7699777809442491680",
-   "caption": "Escape Royale heat 15: 16 countries, 1 way out - which country escapes the rings first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7699777809442491680?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Escape Royale heat 15: 16 countries, 1 way out - which country escapes the rings first? Featuring England, Wales, Italy,",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -8558,6 +9221,19 @@
      "totalTimeWatched": 0.83,
      "averageTimeWatched": 2.21,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.903Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 24,
+     "shares": 0,
+     "reach": 20,
+     "totalTimeWatched": 0.85,
+     "averageTimeWatched": 2.15,
+     "likes": 0
     }
    ]
   },
@@ -8571,8 +9247,8 @@
    "seed": 106182511053,
    "format": "v2",
    "length": 22.6,
-   "link": "https://tiktok.com/@5lmvill/video/7699801311939759392",
-   "caption": "Country ball escape - Vietnam 🇻🇳 vs Belgium 🇧🇪",
+   "link": "https://www.tiktok.com/@5lmvill/video/7699801311939759392?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Vietnam 🇻🇳 vs Belgium 🇧🇪 Round of 32 of Escape Cup 2 🏆 Colombia vs Germany is next - who are you b",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -8628,6 +9304,19 @@
      "totalTimeWatched": 1.22,
      "averageTimeWatched": 3.06,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:07.020Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 3.85,
+     "views": 26,
+     "shares": 0,
+     "reach": 20,
+     "totalTimeWatched": 1.25,
+     "averageTimeWatched": 2.89,
+     "likes": 1
     }
    ]
   },
@@ -8641,8 +9330,8 @@
    "seed": 53901469001,
    "format": "v2",
    "length": 26.6,
-   "link": "https://tiktok.com/@5lmvill/video/7699824328023608608",
-   "caption": "Escape Royale heat 16: Country ball escape royale - 16 flags, one exit. Find your country",
+   "link": "https://www.tiktok.com/@5lmvill/video/7699824328023608608?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Escape Royale heat 16: Country ball escape royale - 16 flags, one exit. Find your country Featuring England, Scotland, I",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -8698,6 +9387,19 @@
      "totalTimeWatched": 3.58,
      "averageTimeWatched": 6.33,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:07.073Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 36,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 3.58,
+     "averageTimeWatched": 6.16,
+     "likes": 0
     }
    ]
   },
@@ -8711,8 +9413,8 @@
    "seed": 76005780040,
    "format": "v2",
    "length": 17.2,
-   "link": "https://tiktok.com/@5lmvill/video/7699848290048822560",
-   "caption": "Colombia 🇨🇴 vs Germany 🇩🇪 in the escape rings. Who gets out first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7699848290048822560?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Colombia 🇨🇴 vs Germany 🇩🇪 in the escape rings. Who gets out first? Escape Cup 2, Round of 32 Coming next: Australia vs I",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -8755,6 +9457,19 @@
      "totalTimeWatched": 1.87,
      "averageTimeWatched": 5.62,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.973Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 23,
+     "shares": 0,
+     "reach": 18,
+     "totalTimeWatched": 1.88,
+     "averageTimeWatched": 5.15,
+     "likes": 0
     }
    ]
   },
@@ -8768,8 +9483,8 @@
    "seed": 42728766002,
    "format": "v2",
    "length": 33.0,
-   "link": "https://tiktok.com/@5lmvill/video/7699870901466041633",
-   "caption": "Escape Royale heat 17: Country ball escape royale - 16 flags, one exit. Find your country",
+   "link": "https://www.tiktok.com/@5lmvill/video/7699870901466041633?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Escape Royale heat 17: Country ball escape royale - 16 flags, one exit. Find your country Featuring England, Ireland, Ge",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -8812,6 +9527,19 @@
      "totalTimeWatched": 2.87,
      "averageTimeWatched": 4.54,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.923Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 38,
+     "shares": 0,
+     "reach": 32,
+     "totalTimeWatched": 2.87,
+     "averageTimeWatched": 4.43,
+     "likes": 0
     }
    ]
   },
@@ -8825,8 +9553,8 @@
    "seed": 23578248002,
    "format": "v2",
    "length": 26.3,
-   "link": "https://tiktok.com/@5lmvill/video/7699894857946467617",
-   "caption": "Ball escape simulation: Australia 🇦🇺 vs Ireland 🇮🇪",
+   "link": "https://www.tiktok.com/@5lmvill/video/7699894857946467617?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Ball escape simulation: Australia 🇦🇺 vs Ireland 🇮🇪 Escape Cup 2, Round of 32 Italy vs Nigeria is next - who are you back",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -8869,6 +9597,19 @@
      "totalTimeWatched": 8.72,
      "averageTimeWatched": 12.17,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.955Z",
+     "reactions": 0,
+     "comments": 1,
+     "engagementRate": 2.27,
+     "views": 44,
+     "shares": 0,
+     "reach": 35,
+     "totalTimeWatched": 8.72,
+     "averageTimeWatched": 11.9,
+     "likes": 0
     }
    ]
   },
@@ -8882,8 +9623,8 @@
    "seed": 178704777015,
    "format": "v2",
    "length": 24.1,
-   "link": "https://tiktok.com/@5lmvill/video/7699917175959735584",
-   "caption": "Escape Royale heat 18: Which country escapes first? 16 countries in one physics simulation",
+   "link": "https://www.tiktok.com/@5lmvill/video/7699917175959735584?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Escape Royale heat 18: Which country escapes first? 16 countries in one physics simulation Featuring England, Ireland, B",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -8926,6 +9667,19 @@
      "totalTimeWatched": 1.05,
      "averageTimeWatched": 2.88,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.912Z",
+     "reactions": 0,
+     "comments": 1,
+     "engagementRate": 4.35,
+     "views": 23,
+     "shares": 0,
+     "reach": 18,
+     "totalTimeWatched": 1.05,
+     "averageTimeWatched": 2.77,
+     "likes": 0
     }
    ]
   },
@@ -8939,8 +9693,8 @@
    "seed": 72878302022,
    "format": "v2",
    "length": 17.1,
-   "link": "https://tiktok.com/@5lmvill/video/7699940681229405473",
-   "caption": "Italy 🇮🇹 or Nigeria 🇳🇬? Physics decides which country breaks out first",
+   "link": "https://www.tiktok.com/@5lmvill/video/7699940681229405473?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Italy 🇮🇹 or Nigeria 🇳🇬? Physics decides which country breaks out first Round of 32 of Escape Cup 2 🏆 Poland vs Argentina",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -8983,6 +9737,19 @@
      "totalTimeWatched": 2.02,
      "averageTimeWatched": 3.69,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.952Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 33,
+     "shares": 0,
+     "reach": 26,
+     "totalTimeWatched": 2.03,
+     "averageTimeWatched": 3.59,
+     "likes": 0
     }
    ]
   },
@@ -8996,8 +9763,8 @@
    "seed": 134773436005,
    "format": "v2",
    "length": 24.6,
-   "link": "https://tiktok.com/@5lmvill/video/7699963461605838113",
-   "caption": "Escape Royale heat 19: Country ball escape royale - 16 flags, one exit. Find your country",
+   "link": "https://www.tiktok.com/@5lmvill/video/7699963461605838113?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Escape Royale heat 19: Country ball escape royale - 16 flags, one exit. Find your country Featuring England, Scotland, I",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9040,6 +9807,19 @@
      "totalTimeWatched": 1.18,
      "averageTimeWatched": 2.04,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.978Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 35,
+     "shares": 0,
+     "reach": 28,
+     "totalTimeWatched": 1.18,
+     "averageTimeWatched": 2,
+     "likes": 0
     }
    ]
   },
@@ -9053,8 +9833,8 @@
    "seed": 147484397002,
    "format": "v2",
    "length": 24.0,
-   "link": "https://tiktok.com/@5lmvill/video/7700125746726980896",
-   "caption": "Escape Royale heat 20: Country ball escape royale - 16 flags, one exit. Find your country",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700125746726980896?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Escape Royale heat 20: Country ball escape royale - 16 flags, one exit. Find your country Featuring England, Scotland, C",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9097,6 +9877,19 @@
      "totalTimeWatched": 0.87,
      "averageTimeWatched": 1.93,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.964Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 28,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 0.87,
+     "averageTimeWatched": 1.87,
+     "likes": 0
     }
    ]
   },
@@ -9110,8 +9903,8 @@
    "seed": 130919232040,
    "format": "v2",
    "length": 18.7,
-   "link": "https://tiktok.com/@5lmvill/video/7700148910991346976",
-   "caption": "Which country escapes first? Poland 🇵🇱 vs Argentina 🇦🇷 ball escape",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700148910991346976?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Which country escapes first? Poland 🇵🇱 vs Argentina 🇦🇷 ball escape Escape Cup 2, Round of 32 Next up: Uruguay vs Turkey ",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -9154,6 +9947,19 @@
      "totalTimeWatched": 4.1,
      "averageTimeWatched": 7.46,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.980Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 31,
+     "shares": 0,
+     "reach": 29,
+     "totalTimeWatched": 4.1,
+     "averageTimeWatched": 7.46,
+     "likes": 0
     }
    ]
   },
@@ -9167,8 +9973,8 @@
    "seed": 132140870000,
    "format": "v2",
    "length": 26.2,
-   "link": "https://tiktok.com/@5lmvill/video/7700172326930877728",
-   "caption": "England, Scotland, Italy or Portugal? 16 countries, one way out · heat 21",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700172326930877728?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Scotland, Italy or Portugal? 16 countries, one way out · heat 21 Also in it: Uruguay, Ghana and 10 more Which f",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9211,6 +10017,19 @@
      "totalTimeWatched": 2.32,
      "averageTimeWatched": 4.49,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:07.076Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 31,
+     "shares": 0,
+     "reach": 26,
+     "totalTimeWatched": 2.32,
+     "averageTimeWatched": 4.36,
+     "likes": 0
     }
    ]
   },
@@ -9224,8 +10043,8 @@
    "seed": 111277121017,
    "format": "v2",
    "length": 16.3,
-   "link": "https://tiktok.com/@5lmvill/video/7700195292636843297",
-   "caption": "Country ball escape - Uruguay 🇺🇾 vs Turkey 🇹🇷",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700195292636843297?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Uruguay 🇺🇾 vs Turkey 🇹🇷 Round of 32 · Escape Cup 2 Spain vs Ukraine is next - who are you backing?",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -9255,6 +10074,19 @@
      "totalTimeWatched": 2.22,
      "averageTimeWatched": 5.12,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.932Z",
+     "reactions": 1,
+     "comments": 2,
+     "engagementRate": 12,
+     "views": 25,
+     "shares": 0,
+     "reach": 20,
+     "totalTimeWatched": 2.23,
+     "averageTimeWatched": 4.79,
+     "likes": 1
     }
    ]
   },
@@ -9268,8 +10100,8 @@
    "seed": 71061861015,
    "format": "v2",
    "length": 32.8,
-   "link": "https://tiktok.com/@5lmvill/video/7700218900507561248",
-   "caption": "England, Wales, Argentina or Poland? 16 countries, one way out · heat 22",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700218900507561248?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Wales, Argentina or Poland? 16 countries, one way out · heat 22 Also in it: Austria, Algeria and 10 more Is you",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9299,6 +10131,19 @@
      "totalTimeWatched": 5.13,
      "averageTimeWatched": 11.86,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.987Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 26,
+     "shares": 0,
+     "reach": 25,
+     "totalTimeWatched": 5.15,
+     "averageTimeWatched": 11.45,
+     "likes": 0
     }
    ]
   },
@@ -9312,8 +10157,8 @@
    "seed": 212747479030,
    "format": "v2",
    "length": 15.8,
-   "link": "https://tiktok.com/@5lmvill/video/7700241779563498785",
-   "caption": "Which country escapes first? Spain 🇪🇸 vs Ukraine 🇺🇦 ball escape",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700241779563498785?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Which country escapes first? Spain 🇪🇸 vs Ukraine 🇺🇦 ball escape Escape Cup 2, Round of 32 South Korea vs France is next ",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -9343,6 +10188,19 @@
      "totalTimeWatched": 2.2,
      "averageTimeWatched": 3.39,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:07.027Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 36,
+     "shares": 0,
+     "reach": 31,
+     "totalTimeWatched": 2.2,
+     "averageTimeWatched": 3.24,
+     "likes": 0
     }
    ]
   },
@@ -9356,8 +10214,8 @@
    "seed": 146044163010,
    "format": "v2",
    "length": 26.1,
-   "link": "https://tiktok.com/@5lmvill/video/7700265917569158432",
-   "caption": "England, Ireland, Japan or Germany? 16 country balls, 28 rings. Find your country · heat 23",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700265917569158432?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Ireland, Japan or Germany? 16 country balls, 28 rings. Find your country · heat 23 Also in it: Denmark, Nigeria",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9387,6 +10245,19 @@
      "totalTimeWatched": 6.27,
      "averageTimeWatched": 7.69,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:07.024Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 1.96,
+     "views": 51,
+     "shares": 0,
+     "reach": 40,
+     "totalTimeWatched": 6.5,
+     "averageTimeWatched": 7.36,
+     "likes": 1
     }
    ]
   },
@@ -9400,8 +10271,8 @@
    "seed": 229264121002,
    "format": "v2",
    "length": 19.5,
-   "link": "https://tiktok.com/@5lmvill/video/7700512400985967904",
-   "caption": "South Korea 🇰🇷 vs France 🇫🇷 in the escape rings. Who gets out first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700512400985967904?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "South Korea 🇰🇷 vs France 🇫🇷 in the escape rings. Who gets out first? Round of 32 of Escape Cup 2 🏆 Coming next: Scotland",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -9431,6 +10302,19 @@
      "totalTimeWatched": 75,
      "averageTimeWatched": 6.1,
      "likes": 1
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:07.010Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.14,
+     "views": 730,
+     "shares": 0,
+     "reach": 670,
+     "totalTimeWatched": 75.05,
+     "averageTimeWatched": 6.07,
+     "likes": 1
     }
    ]
   },
@@ -9444,8 +10328,8 @@
    "seed": 112298449002,
    "format": "v2",
    "length": 23.9,
-   "link": "https://tiktok.com/@5lmvill/video/7700535429828709665",
-   "caption": "England, Ireland, Italy or Nigeria? 16 country balls, 28 rings. Find your country · heat 24",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700535429828709665?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Ireland, Italy or Nigeria? 16 country balls, 28 rings. Find your country · heat 24 Also in it: Peru, Egypt and ",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9475,6 +10359,19 @@
      "totalTimeWatched": 1.7,
      "averageTimeWatched": 5.12,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.915Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 25,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 1.8,
+     "averageTimeWatched": 4.5,
+     "likes": 0
     }
    ]
   },
@@ -9488,8 +10385,8 @@
    "seed": 144062368038,
    "format": "v2",
    "length": 23.9,
-   "link": "https://tiktok.com/@5lmvill/video/7700558749244591393",
-   "caption": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Senegal 🇸🇳 in the escape rings. Who gets out first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700558749244591393?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Senegal 🇸🇳 in the escape rings. Who gets out first? Escape Cup 2, Round of 32 Next up: Brazil vs Jap",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -9519,6 +10416,19 @@
      "totalTimeWatched": 3.42,
      "averageTimeWatched": 7.08,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.996Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 35,
+     "shares": 0,
+     "reach": 30,
+     "totalTimeWatched": 3.68,
+     "averageTimeWatched": 6.5,
+     "likes": 0
     }
    ]
   },
@@ -9532,8 +10442,8 @@
    "seed": 90110980038,
    "format": "v2",
    "length": 31.2,
-   "link": "https://tiktok.com/@5lmvill/video/7700581883913964832",
-   "caption": "England, Scotland, Poland or Nigeria? 16 countries, one way out · heat 25",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700581883913964832?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Scotland, Poland or Nigeria? 16 countries, one way out · heat 25 Also in it: Belgium, Mexico and 10 more Which ",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9550,6 +10460,19 @@
      "totalTimeWatched": 1.5,
      "averageTimeWatched": 5.32,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.917Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 25,
+     "shares": 0,
+     "reach": 20,
+     "totalTimeWatched": 1.62,
+     "averageTimeWatched": 3.89,
+     "likes": 0
     }
    ]
   },
@@ -9563,8 +10486,8 @@
    "seed": 71234673015,
    "format": "v2",
    "length": 22.2,
-   "link": "https://tiktok.com/@5lmvill/video/7700605207415164192",
-   "caption": "Country ball escape - Brazil 🇧🇷 vs Japan 🇯🇵",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700605207415164192?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Brazil 🇧🇷 vs Japan 🇯🇵 Escape Cup 2, Round of 32 Coming next: Switzerland vs Mexico. Who takes it? ",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -9581,6 +10504,19 @@
      "totalTimeWatched": 1.57,
      "averageTimeWatched": 5.88,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.895Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 27,
+     "shares": 0,
+     "reach": 23,
+     "totalTimeWatched": 2.68,
+     "averageTimeWatched": 5.97,
+     "likes": 0
     }
    ]
   },
@@ -9594,8 +10530,8 @@
    "seed": 251887018004,
    "format": "v2",
    "length": 29.6,
-   "link": "https://tiktok.com/@5lmvill/video/7700628305032006944",
-   "caption": "England, Wales, USA or Poland? Physics decides which flag escapes the rings first · heat 26",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700628305032006944?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Wales, USA or Poland? Physics decides which flag escapes the rings first · heat 26 Also in it: Turkey, Belgium ",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9612,6 +10548,19 @@
      "totalTimeWatched": 0.92,
      "averageTimeWatched": 4.25,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.982Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 22,
+     "shares": 0,
+     "reach": 18,
+     "totalTimeWatched": 1.15,
+     "averageTimeWatched": 3.17,
+     "likes": 0
     }
    ]
   },
@@ -9625,8 +10574,8 @@
    "seed": 79369648049,
    "format": "v2",
    "length": 22.6,
-   "link": "https://tiktok.com/@5lmvill/video/7700651710393470241",
-   "caption": "Country ball escape - Switzerland 🇨🇭 vs Mexico 🇲🇽",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700651710393470241?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Switzerland 🇨🇭 vs Mexico 🇲🇽 Round of 16 of Escape Cup 2 🏆 Morocco vs Canada is next - who are you ",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -9643,6 +10592,19 @@
      "totalTimeWatched": 0.12,
      "averageTimeWatched": 2.61,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.946Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 38,
+     "shares": 0,
+     "reach": 22,
+     "totalTimeWatched": 3.15,
+     "averageTimeWatched": 4.85,
+     "likes": 0
     }
    ]
   },
@@ -9656,8 +10618,8 @@
    "seed": 155047090034,
    "format": "v2",
    "length": 24.2,
-   "link": "https://tiktok.com/@5lmvill/video/7700883490308492576",
-   "caption": "England, Wales, Philippines or Japan? 16 countries, one way out · heat 27",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700883490308492576?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Wales, Philippines or Japan? 16 countries, one way out · heat 27 Also in it: Spain, Colombia and 10 more Which ",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9674,6 +10636,19 @@
      "totalTimeWatched": 0,
      "averageTimeWatched": 0,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.900Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 23,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 1.42,
+     "averageTimeWatched": 3.57,
+     "likes": 0
     }
    ]
   },
@@ -9687,8 +10662,8 @@
    "seed": 238995128009,
    "format": "v2",
    "length": 26.1,
-   "link": "https://tiktok.com/@5lmvill/video/7700906560414813472",
-   "caption": "Which country escapes first? Morocco 🇲🇦 vs Canada 🇨🇦 ball escape",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700906560414813472?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Which country escapes first? Morocco 🇲🇦 vs Canada 🇨🇦 ball escape Escape Cup 2, Round of 16 Next up: Philippines vs Croat",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -9705,6 +10680,19 @@
      "totalTimeWatched": 0,
      "averageTimeWatched": 0,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.934Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 28,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 1.35,
+     "averageTimeWatched": 2.92,
+     "likes": 0
     }
    ]
   },
@@ -9718,8 +10706,8 @@
    "seed": 107804489012,
    "format": "v2",
    "length": 26.3,
-   "link": "https://tiktok.com/@5lmvill/video/7700930006066777376",
-   "caption": "England, Ireland, Mexico or Poland? 16 countries, one way out · heat 28",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700930006066777376?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Ireland, Mexico or Poland? 16 countries, one way out · heat 28 Also in it: Ghana, Chile and 10 more Is your cou",
    "loop": {
     "escape-cup-format-1": "variant"
    },
@@ -9736,6 +10724,19 @@
      "totalTimeWatched": 0,
      "averageTimeWatched": 0,
      "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.926Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 20,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 1.38,
+     "averageTimeWatched": 3.98,
+     "likes": 0
     }
    ]
   },
@@ -9749,8 +10750,8 @@
    "seed": 254239990010,
    "format": "v2",
    "length": 28.9,
-   "link": "https://tiktok.com/@5lmvill/video/7700953055969266977",
-   "caption": "Philippines 🇵🇭 vs Croatia 🇭🇷 - which country escapes the rings first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7700953055969266977?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Philippines 🇵🇭 vs Croatia 🇭🇷 - which country escapes the rings first? Round of 16 · Escape Cup 2 Coming next: Vietnam vs",
    "loop": {
     "escape-cup-format-1": "control"
    },
@@ -9766,6 +10767,143 @@
      "reach": 0,
      "totalTimeWatched": 0,
      "averageTimeWatched": 0,
+     "likes": 0
+    },
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.869Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 14,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 0.27,
+     "averageTimeWatched": 1.25,
+     "likes": 0
+    }
+   ]
+  },
+  "6ade6cb20b5343d070ef9125": {
+   "match": "royale 29",
+   "variant": "royale",
+   "edition": 2,
+   "round": null,
+   "due": "2026-10-26T14:00:00+00:00",
+   "theme": "forest",
+   "seed": 58067861000,
+   "format": "v2",
+   "length": 24.6,
+   "link": "https://www.tiktok.com/@5lmvill/video/7700977013363985697?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Scotland, Spain or Japan? Country ball escape: 16 flags, one exit · heat 29 Also in it: Thailand, Indonesia and",
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "snapshots": [
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.936Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 25,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 0.75,
+     "averageTimeWatched": 1.63,
+     "likes": 0
+    }
+   ]
+  },
+  "6ade6d3b6887a2efc12461c1": {
+   "match": "vn v de",
+   "variant": "cup",
+   "edition": 2,
+   "round": 1,
+   "due": "2026-10-26T15:30:00+00:00",
+   "theme": "sunset",
+   "seed": 138659293044,
+   "format": "v2",
+   "length": 18.4,
+   "link": "https://www.tiktok.com/@5lmvill/video/7700999585493241120?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Vietnam 🇻🇳 vs Germany 🇩🇪: 16 rings, one way out. Physics simulation Round of 16 of Escape Cup 2 🏆 Coming next: Australia",
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "snapshots": [
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.976Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 18,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 0.47,
+     "averageTimeWatched": 1.69,
+     "likes": 0
+    }
+   ]
+  },
+  "6ade8e970b5343d070f7df9b": {
+   "match": "royale 30",
+   "variant": "royale",
+   "edition": 2,
+   "round": null,
+   "due": "2026-10-26T17:00:00+00:00",
+   "theme": "ember",
+   "seed": 89971450002,
+   "format": "v2",
+   "length": 32.3,
+   "link": "https://www.tiktok.com/@5lmvill/video/7701023381684047137?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "England, Scotland, Germany or Portugal? Physics decides which flag escapes the rings first · heat 30 Also in it: Malaysi",
+   "loop": {
+    "escape-cup-format-1": "variant"
+   },
+   "snapshots": [
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.985Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 33,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 1.77,
+     "averageTimeWatched": 3.05,
+     "likes": 0
+    }
+   ]
+  },
+  "6adf50c19e56d704c2cbc95c": {
+   "match": "au v it",
+   "variant": "cup",
+   "edition": 2,
+   "round": 1,
+   "due": "2026-10-27T08:00:00+00:00",
+   "theme": "forest",
+   "seed": 135772755026,
+   "format": "v2",
+   "length": 16.4,
+   "link": "https://www.tiktok.com/@5lmvill/video/7701254490388761889?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Australia 🇦🇺 vs Italy 🇮🇹: 16 rings, one way out. Physics simulation Round of 16 · Escape Cup 2 Poland vs Uruguay is next",
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "snapshots": [
+    {
+     "at": "2026-10-27T13:33+00:00",
+     "metrics_updated": "2026-10-27T11:20:06.944Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 1,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 0,
+     "averageTimeWatched": 0.87,
      "likes": 0
     }
    ]
@@ -9849,6 +10987,12 @@
    "followers": 26,
    "likes": 414,
    "videos": 79
+  },
+  {
+   "at": "2026-10-27T13:33+00:00",
+   "followers": 26,
+   "likes": 414,
+   "videos": 85
   }
  ]
 }
