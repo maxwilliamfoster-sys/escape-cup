@@ -62,7 +62,9 @@ from difflib import SequenceMatcher
 # edits, and sync_vendored.py writes it into each bot's vendored.lock.
 # 2026-10-23 (S1): staged 413 shrink to fewer images, ai["retryable"], per-bot lufs windows,
 #   head_similarity (warn), doubled-word lint, #fyp/#foryou fail, privacy rule, public-ledger scrub.
-GATE_VERSION = "2026-10-23"
+# 2026-10-27: public-ledger scrub rewrite, speech check fails closed on an empty transcript,
+#   doubled-word lint spares real doubled names (Sirhan Sirhan, Boutros Boutros-Ghali, doubled_ok).
+GATE_VERSION = "2026-10-27"
 
 PLATFORMS = {
     "tiktok": {
@@ -117,6 +119,7 @@ DEFAULT_PROFILE = {
     "head_similarity": "warn",       # "off" | "warn" | "fail": near-duplicate first line vs the last 10
     "head_similarity_max": 0.8,      # difflib ratio on masked heads at or above this = near-duplicate
     "head_mask": (),                 # recurring proper nouns to mask before comparing ("Magnus Carlsen")
+    "doubled_ok": (),                # words/names this bot repeats legitimately (doubled-word lint)
 }
 
 # Per-bot windows (MASTER_PLAN #13, plan-infra action 6). DEFAULT_PROFILE stays the wide safety
@@ -195,9 +198,13 @@ SPAM_TAGS = {"#fyp", "#foryou", "#foryoupage", "#fypシ", "#viral", "#xyzbca", "
 SPAM_FAIL_TAGS = {"#fyp", "#foryou", "#foryoupage", "#fypシ"}
 # "Peter Bergmann case case." shipped on BCF. Letters only (numbers repeat legitimately), same
 # line only (a caption's line break is not a doubled word). Python's re.I makes \1 case-blind.
-DOUBLED_RE = re.compile(r"\b([^\W\d_]+)[ \t]+\1\b", re.I)
+# A hyphen after the repeat is a compound name ("Boutros Boutros-Ghali"), not a doubled word.
+DOUBLED_RE = re.compile(r"\b([^\W\d_]+)[ \t]+\1\b(?!-)", re.I)
 DOUBLED_OK = {"had", "that", "bye", "ha", "haha", "no", "so", "very", "go", "knock", "tsk", "cha", "na",
               "la", "yeah", "really", "far", "more", "again", "round", "over", "on", "and"}
+# Real doubled names, allowed only when both words are capitalised ("Sirhan Sirhan", Sing Sing
+# prison). A bot adds its own with profile["doubled_ok"].
+DOUBLED_NAMES = {"sirhan", "sing", "bora", "walla", "pago", "duran", "mahi", "baden", "tora"}
 URL_RE = re.compile(r"(?:https?://|www\.)[^\s<>()]+|\b[a-z0-9-]+\.(?:com|net|org|io|co|uk|ly|gg|tv|me|app|xyz)/\S*",
                      re.I)
 EMAIL_RE = re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.]{2,}\b")
@@ -297,7 +304,7 @@ def head_similarity(head, recent, mask=()):
 # ----------------------------------------------------------------- layer 1+2 --
 def check_text(platform, *, title="", caption="", description="", tags=(), recent_texts=(),
                allowed_domains=(), ai_realistic=False, ai_label=None,
-               similar_texts=None, similarity="warn", similarity_max=0.8, head_mask=()):
+               similar_texts=None, similarity="warn", similarity_max=0.8, head_mask=(), doubled_ok=()):
     """Platform limits + policy rules for the words that ship with the video.
     `similar_texts` (default: the last 10 of recent_texts) are the heads the near-duplicate
     check compares against; `similarity` is "off" | "warn" | "fail".
@@ -358,12 +365,18 @@ def check_text(platform, *, title="", caption="", description="", tags=(), recen
         warn.append(f"{len(hashtags)} hashtags - TikTok search uses the first few")
 
     # Doubled words ("case case") in the words a viewer reads; tags are a list, not prose.
+    extra_ok = {str(w).lower() for w in (doubled_ok or ()) if w}
     for name, txt in texts.items():
         if name == "tags":
             continue
         for m in DOUBLED_RE.finditer(txt):
-            if m.group(1).lower() not in DOUBLED_OK:
-                fail.append(f"doubled word in the {name}: \"{m.group(0)}\" (template bug)")
+            word, second = m.group(1), m.group(0).split()[-1]
+            low_w = word.lower()
+            if low_w in DOUBLED_OK or low_w in extra_ok:
+                continue
+            if low_w in DOUBLED_NAMES and word[:1].isupper() and second[:1].isupper():
+                continue
+            fail.append(f"doubled word in the {name}: \"{m.group(0)}\" (template bug)")
 
     # Repetition: the same headline as a recent post is the "repetitive content" signal.
     raw_head = title if platform == "youtube_shorts" else caption.split("\n")[0]
@@ -826,7 +839,7 @@ def check(path, platform, *, profile=None, title="", caption="", description="",
         platform, title=title, caption=caption, description=description, tags=tags,
         recent_texts=recent_texts, allowed_domains=pr["allowed_domains"],
         ai_realistic=pr["ai_realistic"], ai_label=ai_label, similarity=pr["head_similarity"],
-        similarity_max=pr["head_similarity_max"], head_mask=pr["head_mask"]))
+        similarity_max=pr["head_similarity_max"], head_mask=pr["head_mask"], doubled_ok=pr["doubled_ok"]))
     if res:
         F.extend(res[0]); W.extend(res[1])
     res = stage("video", lambda: check_media(path, platform, pr))
@@ -835,8 +848,9 @@ def check(path, platform, *, profile=None, title="", caption="", description="",
 
     transcript = ""
     if pr.get("speech_min") and script:
-        transcript = stage("speech", lambda: transcribe(path, pr["whisper_model"])) or ""
-        if transcript:
+        heard = stage("speech", lambda: transcribe(path, pr["whisper_model"]))
+        transcript = heard or ""
+        if heard is not None:                    # "" = no speech heard: a 0% match, not a skip
             match = speech_match(script, transcript)
             verdict["report"]["speech_match"] = round(match, 2)
             if match < pr["speech_min"]:
