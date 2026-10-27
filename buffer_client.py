@@ -1,4 +1,4 @@
-# vendored from growth-lab/buffer_client.py @ 460d0a43dd36de57fbf3cb904bd92ca88a91001d
+# vendored from growth-lab/buffer_client.py @ e45909d
 # Do not edit here: change the growth-lab master and run sync_vendored.py.
 """buffer_client: one lean Buffer GraphQL client for every Buffer bot (growth-lab S7, master copy).
 
@@ -156,6 +156,11 @@ def _http_post(url, body, headers, timeout):
 
 # ------------------------------------------------------------------- client --
 
+class SentPosts(list):
+    """A plain list of posts plus `complete`: False when a page cap cut the read short."""
+    complete = True
+
+
 class BufferClient:
     def __init__(self, api_key=None, cache_path=None, transport=None, log=print,
                  low_fraction=LOW_FRACTION, timeout=TIMEOUT):
@@ -298,11 +303,12 @@ class BufferClient:
 
     # -- posts --
     def sent_posts(self, org_id, channel_id, first=100, max_pages=5):
-        """Every sent post (newest first) with metrics, as plain dicts with a
-        `metrics` dict {type: value}. One query per page of `first` (100), at
-        most `max_pages` pages. Raises BufferRateLimited part-way rather than
-        return a partial list as if it were complete."""
-        out, after = [], None
+        """Sent posts (newest first) with metrics, as plain dicts with a `metrics`
+        dict {type: value}. One query per page of `first` (100), at most
+        `max_pages` pages. The list's `.complete` is False when the page cap cut
+        it short (older posts exist beyond it). Raises BufferRateLimited part-way
+        rather than return what it had as if the read had finished."""
+        out, after = SentPosts(), None
         for _ in range(max_pages):
             data = self.gql(SENT_POSTS_QUERY,
                             {"o": org_id, "c": [channel_id], "n": int(first), "a": after})
@@ -316,7 +322,8 @@ class BufferClient:
                 break
             after = info["endCursor"]
         else:
-            self.log(f"[buffer] stopped after {max_pages} pages ({len(out)} posts)")
+            out.complete = False
+            self.log(f"[buffer] stopped after {max_pages} pages ({len(out)} posts; older ones not read)")
         self._save_limits()
         return out
 

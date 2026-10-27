@@ -9,8 +9,8 @@
       "local_patch": true
     },
     "buffer_client.py": {
-      "sha256": "4e14ad1204b770dc448205d90ba4bd7a8f360cb15c8536ff76c2c8094d268798",
-      "master_sha": "cdc873836f87d8d51b7fbaa77632d30b23f55952718828643c4bb6a6ea46947c",
+      "sha256": "b24a7bacda54610706c1ca8744b7a5d531476881ccb05a7279ffb88ce0c43f5a",
+      "master_sha": "707f8617e76d9b7ec481db83aa7b8b115b94c24985463d835ae713dba47a5b19",
       "local_patch": true
     },
     "experiment_loop.py": {

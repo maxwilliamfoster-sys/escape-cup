@@ -35,7 +35,13 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.txt
       - name: Install ffmpeg + cairo headers (pycairo builds from source, as in post.yml)
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libcairo2-dev pkg-config
+        timeout-minutes: 8           # a stuck apt mirror once hung this step 20 minutes (chess, 2026-10-26)
+        run: |
+          for try in 1 2; do
+            sudo timeout 180 apt-get update -qq && sudo timeout 180 apt-get install -y -qq ffmpeg libcairo2-dev pkg-config && exit 0
+            echo "apt attempt $try failed or timed out"
+          done
+          exit 1
       - name: Install requirements
         run: |
           python -m pip install --upgrade pip
