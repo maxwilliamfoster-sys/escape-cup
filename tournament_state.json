@@ -214,11 +214,11 @@
    {
     "a": "gb-sct",
     "b": "br",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "br",
+    "seed": 249930305055,
+    "melody": "ocean",
+    "posted": "2026-10-27T17:00:00+00:00",
+    "buffer_id": "6adfefee4a3f2ecb1baecfc6"
    }
   ],
   [
@@ -251,7 +251,7 @@
    },
    {
     "a": "fr",
-    "b": null,
+    "b": "br",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -294,7 +294,7 @@
  "titles": {
   "ie": 1
  },
- "posts": 54,
+ "posts": 55,
  "log": [
   {
    "edition": 1,
@@ -2792,10 +2792,32 @@
     "fr",
     "gb-eng"
    ]
+  },
+  {
+   "edition": 2,
+   "winner": "br",
+   "seed": 249930305055,
+   "theme": "ocean",
+   "due": "2026-10-27T17:00:00+00:00",
+   "buffer_id": "6adfefee4a3f2ecb1baecfc6",
+   "status": "scheduled",
+   "file": "ec02_r1_m07_249930305055.mp4",
+   "length": 18.6,
+   "loop": {
+    "escape-cup-format-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "afa7c2ca74d9493bf781e91e8ca1edf629bf26c58fb5fb0f1e4f20b3215199f3",
+    "checked_at": "2026-10-27T00:26:12+00:00"
+   },
+   "r": 1,
+   "m": 7,
+   "a": "gb-sct",
+   "b": "br"
   }
  ],
  "recent_captions": [
-  "Egypt 🇪🇬 vs Canada 🇨🇦 - which country escapes the rings first?\nRound of 32 of Escape Cup 2 🏆\nPhilippines vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #egypt #canada",
   "Escape Royale heat 14: Country ball escape royale - 16 flags, one exit. Find your country\nFeaturing England, Wales, France, USA and 12 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
   "Ball escape simulation: Philippines 🇵🇭 vs Netherlands 🇳🇱\nEscape Cup 2, Round of 32\nComing next: England vs Croatia. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #philippines #netherlands",
   "England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Croatia 🇭🇷 - which country escapes the rings first?\nRound of 32 of Escape Cup 2 🏆\nComing next: Vietnam vs Belgium. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #england #croatia",
@@ -2834,7 +2856,8 @@
   "Poland 🇵🇱 vs Uruguay 🇺🇾 in the escape rings. Who gets out first?\nEscape Cup 2, Round of 16\nSpain vs France is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #poland #uruguay",
   "England, Scotland, Colombia or Poland? Physics decides which flag escapes the rings first · heat 32\nAlso in it: Denmark, Ukraine and 10 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #simulation #countryballs",
   "Country ball escape - Spain 🇪🇸 vs France 🇫🇷\nRound of 16 · Escape Cup 2\nScotland vs Brazil is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #spain #france",
-  "England, Wales, Indonesia or Italy? 16 countries, one way out · heat 33\nAlso in it: Czechia, Argentina and 10 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs"
+  "England, Wales, Indonesia or Italy? 16 countries, one way out · heat 33\nAlso in it: Czechia, Argentina and 10 more\nIs your country in this one? 👇\n#ballescape #physicssimulation #simulation #countryballs",
+  "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Brazil 🇧🇷 in the escape rings. Who gets out first?\nEscape Cup 2, Round of 16\nMexico vs Canada is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #scotland #brazil"
  ],
  "seen_errors": [],
  "excluded_seeds": {}

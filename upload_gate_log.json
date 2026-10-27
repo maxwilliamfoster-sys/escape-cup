@@ -1758,7 +1758,7 @@
    "failures": [],
    "warnings": [
     "near-duplicate first caption line (similarity 0.95 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\"",
-    "AI review unavailable: [cap]"
+    "AI review unavailable: [unavailable]"
    ],
    "gate_version": "2026-10-23",
    "head_similarity": 0.946,
@@ -1775,6 +1775,37 @@
     "quota": true,
     "cap": true,
     "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-27T00:26:12+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r1_m07_249930305055.mp4",
+   "sha256": "afa7c2ca74d9493bf781e91e8ca1edf629bf26c58fb5fb0f1e4f20b3215199f3",
+   "head": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Brazil 🇧🇷 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (similarity 0.89 >= 0.8 to a recent post; templated heads read as repetitive content): \"…\""
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.885,
+   "report": {
+    "seconds": 18.65,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4186,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
    }
   }
  ]
