@@ -1807,6 +1807,92 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-10-27T15:21:37+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r2_m00_155114728050.mp4",
+   "sha256": "8c25f3c03c9648b16941d8eb226a9a00ecfec22ee427984fc173ad7152c249d1",
+   "head": "Which country escapes first? Mexico 🇲🇽 vs Canada 🇨🇦 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.418,
+   "report": {
+    "seconds": 18.2,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4164,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-27T15:23:44+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r2_m01_170366438027.mp4",
+   "sha256": "e85f228c2c3fecc61903c8a4ba921361d4b55569d1aeaee825a2e475023f71a3",
+   "head": "Country ball escape - Philippines 🇵🇭 vs Germany 🇩🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.779,
+   "report": {
+    "seconds": 19.07,
+    "lufs": -15.8,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4149,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-27T15:26:31+00:00",
+   "platform": "tiktok",
+   "file": "ec02_r2_m02_199693172005.mp4",
+   "sha256": "4313f44f81ecf518bd60228055d75aa01002b4b1eb90979f7879f902adce0863",
+   "head": "Australia 🇦🇺 vs Poland 🇵🇱 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-23",
+   "head_similarity": 0.789,
+   "report": {
+    "seconds": 19.75,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
