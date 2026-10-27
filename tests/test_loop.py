@@ -50,6 +50,20 @@ class Sandbox(unittest.TestCase):
         self.tmp = tempfile.mkdtemp()
         for f in ("experiments.json", "levers.json", "loop_config.json"):
             shutil.copy(os.path.join(ROOT, f), self.tmp)
+        # Start from the seeded state (format test running, no loop values), not from the live
+        # files the nightly loop rewrites (it reverted the format test on 2026-10-27).
+        exps = self.read("experiments.json")
+        seed = [e for e in exps["experiments"] if e["id"] == FMT][:1]
+        for e in seed:
+            for k in ("verdict", "result", "last_judged", "ended"):
+                e.pop(k, None)
+            e.update(status="running", control_metrics={}, variant_metrics={})
+        exps["experiments"] = seed
+        cfg = self.read("loop_config.json")
+        cfg.update(paused=False, values={})
+        for name, data in (("experiments.json", exps), ("loop_config.json", cfg)):
+            with open(os.path.join(self.tmp, name), "w", encoding="utf-8") as fh:
+                json.dump(data, fh)
         mock.patch.object(ln, "HERE", self.tmp).start()
 
     def tearDown(self):
