@@ -28,6 +28,22 @@
    "last_judged": "2026-10-27",
    "result": "escape-cup-format-1 · views@72h: INCONCLUSIVE AT MAX N — treatment 0.94x control (264 vs 282; 90% CI 0.09–5.12, p=0.960), n=21 vs 21 (min 10, max 20) · guardrail worse: hold",
    "ended": "2026-10-27"
+  },
+  {
+   "id": "escape-cup-hook_text-1",
+   "channel": "escape-cup",
+   "lever": "hook_text",
+   "kind": "hook style",
+   "hypothesis": "Asking viewers to commit to a country before the first ring breaks makes them stay to see it through, raising avg % watched.",
+   "control": "Which country escapes first?",
+   "variant": "Pick a country before it starts!",
+   "start_date": "2026-10-28",
+   "status": "running",
+   "min_n": 10,
+   "max_n": 20,
+   "metric": "avg % watched at 72h",
+   "control_metrics": {},
+   "variant_metrics": {}
   }
  ]
 }
