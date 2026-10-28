@@ -2038,6 +2038,151 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-10-28T20:16:26+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m01_194013583009.mp4",
+   "sha256": "d23ebc5859789013d2910023123d6983aa26ecf7b8c4a71d768424364b406d93",
+   "head": "Brazil 🇧🇷 vs Portugal 🇵🇹: 16 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.517,
+   "report": {
+    "seconds": 20.48,
+    "lufs": -16.9,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4164,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-28T20:18:57+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m02_39993762030.mp4",
+   "sha256": "c63e58e41629a29a6671e2fed2577bcd9643e92f503e7086ca141aad7e80ffe5",
+   "head": "Ball escape simulation: Senegal 🇸🇳 vs Ukraine 🇺🇦",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.578,
+   "report": {
+    "seconds": 17.12,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4160,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-28T20:21:15+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m03_97405520040.mp4",
+   "sha256": "6e766623c4dd520277b7497a3a6db8318e86236870b6ca35527f4ebeba99c30f",
+   "head": "Which country escapes first? Croatia 🇭🇷 vs Netherlands 🇳🇱 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.831,
+   "report": {
+    "seconds": 18.42,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-28T20:24:03+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m04_38357549049.mp4",
+   "sha256": "dcc48eca83cefb828e873563205ea9383bea33ac59f001ac7b42ed8e54925bfa",
+   "head": "Mexico 🇲🇽 vs France 🇫🇷 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.818,
+   "report": {
+    "seconds": 28.33,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-28T20:27:40+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m05_119442024059.mp4",
+   "sha256": "0a97f7591994e4082d6f734e47d1c20f238f1c8f00e36128085be5bb78fc72ec",
+   "head": "South Korea 🇰🇷 vs Japan 🇯🇵 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.807,
+   "report": {
+    "seconds": 22.17,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
