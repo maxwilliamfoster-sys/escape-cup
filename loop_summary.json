@@ -1,13 +1,13 @@
 {
- "updated": "2026-10-28 14:30 UTC",
+ "updated": "2026-10-29 14:39 UTC",
  "summary": {
-  "views": 7233,
-  "retention": 0.2029787234042553,
+  "views": 2460,
+  "retention": 0.19999999999999998,
   "swipe_away": null,
-  "posts": 55,
+  "posts": 51,
   "note": "views = latest totals of posts from the last 7 days; retention = median avg % watched; TikTok gives no swipe-away via Buffer"
  },
  "actions": [
-  "escape-cup: STARTED escape-cup-hook_text-1: hook_text 'Which country escapes first?' -> 'Pick a country before it starts!' (Asking viewers to commit to a country before the first ring breaks makes them stay to see it through, raising avg % watched.)"
+  "escape-cup: running escape-cup-hook_text-1 (escape-cup-hook_text-1 · avg % watched at 72h: KEEP RUNNING — n=0 vs 0 (min 10, max 20))"
  ]
 }

@@ -42,8 +42,17 @@
    "min_n": 10,
    "max_n": 20,
    "metric": "avg % watched at 72h",
-   "control_metrics": {},
-   "variant_metrics": {}
+   "control_metrics": {
+    "n": 0,
+    "views72": null
+   },
+   "variant_metrics": {
+    "n": 0,
+    "views72": null
+   },
+   "verdict": "keep running",
+   "last_judged": "2026-10-29",
+   "result": "escape-cup-hook_text-1 · avg % watched at 72h: KEEP RUNNING — n=0 vs 0 (min 10, max 20)"
   }
  ]
 }
