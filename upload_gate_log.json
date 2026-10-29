@@ -2212,6 +2212,152 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-10-29T18:28:32+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m07_106737214022.mp4",
+   "sha256": "8828f1794b15cb933f9550c86d5803b627852e1b2aa3745823512992b5d4a7a6",
+   "head": "Which country escapes first? Canada 🇨🇦 vs Vietnam 🇻🇳 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.84,
+   "report": {
+    "seconds": 18.5,
+    "lufs": -16.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4142,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-29T18:30:36+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m08_58333046063.mp4",
+   "sha256": "e360d3f1251cfe90e63b55d373d07cd40bea3befbb9133462033e8943be6d6b0",
+   "head": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Poland 🇵🇱 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.86,
+   "report": {
+    "seconds": 21.92,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4184,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-29T18:33:35+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m09_221804817027.mp4",
+   "sha256": "cec05a5900a5a1af13f792aff3281eac5c5335b1fb9c15fd8e9b21158d91e7b6",
+   "head": "Turkey 🇹🇷 vs Indonesia 🇮🇩 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.526,
+   "report": {
+    "seconds": 23.8,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-29T18:36:15+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m10_167149332010.mp4",
+   "sha256": "3568623af0bad57c3f08a311cdca5c1c6431977ebda2853d513bd7c9da1b6be2",
+   "head": "Ball escape simulation: Nigeria 🇳🇬 vs Belgium 🇧🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.756,
+   "report": {
+    "seconds": 20.88,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-29T18:38:32+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m11_216923366028.mp4",
+   "sha256": "3dfd8b19ece559ee6717668d872698fc227a9df6d29ddc2f7d2f15339751fab5",
+   "head": "Country ball escape - Egypt 🇪🇬 vs Switzerland 🇨🇭",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.775,
+   "report": {
+    "seconds": 25.62,
+    "lufs": -17.0,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
