@@ -2985,7 +2985,7 @@
    "theme": "sunset",
    "due": "2026-10-29T08:00:00+00:00",
    "buffer_id": "6ae1f09206fb8ec00cf4f230",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec03_r0_m00_250927057047.mp4",
    "length": 21.4,
    "loop": {},
@@ -2997,7 +2997,8 @@
    "r": 0,
    "m": 0,
    "a": "es",
-   "b": "au"
+   "b": "au",
+   "link": "https://tiktok.com/@5lmvill/video/7701996770120797472"
   },
   {
    "edition": 3,
@@ -3006,7 +3007,7 @@
    "theme": "forest",
    "due": "2026-10-29T09:30:00+00:00",
    "buffer_id": "6ae258823e779512a88517b7",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec03_r0_m01_194013583009.mp4",
    "length": 20.5,
    "loop": {
@@ -3020,7 +3021,8 @@
    "r": 0,
    "m": 1,
    "a": "br",
-   "b": "pt"
+   "b": "pt",
+   "link": "https://tiktok.com/@5lmvill/video/7702019853363825953"
   },
   {
    "edition": 3,
@@ -3181,5 +3183,6 @@
   "Country ball escape - Argentina 🇦🇷 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿\nEscape Cup 3, Round of 32\nNext up: Canada vs Vietnam - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #argentina #england"
  ],
  "seen_errors": [],
- "excluded_seeds": {}
+ "excluded_seeds": {},
+ "orphans_alerted": []
 }
