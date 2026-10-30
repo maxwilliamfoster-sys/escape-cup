@@ -3151,7 +3151,7 @@
    "theme": "forest",
    "due": "2026-10-30T08:00:00+00:00",
    "buffer_id": "6ae3909618a6132aaf6b1b11",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec03_r0_m07_106737214022.mp4",
    "length": 18.5,
    "loop": {
@@ -3165,7 +3165,8 @@
    "r": 0,
    "m": 7,
    "a": "ca",
-   "b": "vn"
+   "b": "vn",
+   "link": "https://tiktok.com/@5lmvill/video/7702367800567811361"
   },
   {
    "edition": 3,
@@ -3174,7 +3175,7 @@
    "theme": "candy",
    "due": "2026-10-30T09:30:00+00:00",
    "buffer_id": "6ae391434ae687d9696a44be",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec03_r0_m08_58333046063.mp4",
    "length": 21.9,
    "loop": {
@@ -3188,7 +3189,8 @@
    "r": 0,
    "m": 8,
    "a": "gb-sct",
-   "b": "pl"
+   "b": "pl",
+   "link": "https://tiktok.com/@5lmvill/video/7702390862940065057"
   },
   {
    "edition": 3,
@@ -3349,5 +3351,6 @@
   "Morocco 🇲🇦 vs Germany 🇩🇪 in the escape rings. Who gets out first?\nRound of 32 · Escape Cup 3\nUruguay vs Philippines is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #morocco #germany"
  ],
  "seen_errors": [],
- "excluded_seeds": {}
+ "excluded_seeds": {},
+ "orphans_alerted": []
 }
