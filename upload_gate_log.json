@@ -2418,6 +2418,150 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-10-30T18:01:14+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m14_7080134046.mp4",
+   "sha256": "c6430ad01be81f8e20bce9a05720215244580719d945a1cf4bdcef7b021ff928",
+   "head": "Uruguay 🇺🇾 vs Philippines 🇵🇭 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.84,
+   "report": {
+    "seconds": 29.08,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "tokens": 4170,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-30T18:10:50+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m15_39023929040.mp4",
+   "sha256": "f7483d012d7b776daeeafde695196c3d46df978af2f43e5a86c6d41c7d9e3903",
+   "head": "Country ball escape - Italy 🇮🇹 vs USA 🇺🇸",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.761,
+   "report": {
+    "seconds": 18.78,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-30T18:13:30+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r1_m00_27891135029.mp4",
+   "sha256": "47952a622d2bcbec55f90619141bf4eb0d80639a187f2e79e547c8e561a95aa9",
+   "head": "Spain 🇪🇸 vs Brazil 🇧🇷 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.811,
+   "report": {
+    "seconds": 19.6,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-30T18:15:24+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r1_m01_58541429022.mp4",
+   "sha256": "26cab23b6d06beb672902a7065793e5c252e9e4a90f0fd7cf5384194cb343860",
+   "head": "Ball escape simulation: Senegal 🇸🇳 vs Croatia 🇭🇷",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.732,
+   "report": {
+    "seconds": 24.4,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-30T18:17:31+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r1_m02_53521267075.mp4",
+   "sha256": "5de59daddbdcca705024602572158820b1e26f920d76b645038ed8169ec457c1",
+   "head": "France 🇫🇷 or South Korea 🇰🇷? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.532,
+   "report": {
+    "seconds": 23.95,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
