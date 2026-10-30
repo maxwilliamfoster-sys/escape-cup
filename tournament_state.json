@@ -113,20 +113,20 @@
    {
     "a": "co",
     "b": "ie",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ie",
+    "seed": 90661559054,
+    "melody": "sunset",
+    "posted": "2026-10-30T15:30:00+00:00",
+    "buffer_id": "6ae3ec372782e7f331c4de0f"
    },
    {
     "a": "ma",
     "b": "de",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ma",
+    "seed": 199482833088,
+    "melody": "forest",
+    "posted": "2026-10-30T17:00:00+00:00",
+    "buffer_id": "6ae3ecd94b8768bfb2d109b8"
    },
    {
     "a": "uy",
@@ -203,8 +203,8 @@
     "buffer_id": null
    },
    {
-    "a": null,
-    "b": null,
+    "a": "ie",
+    "b": "ma",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -295,7 +295,7 @@
   "ie": 1,
   "au": 1
  },
- "posts": 74,
+ "posts": 76,
  "log": [
   {
    "edition": 1,
@@ -3258,11 +3258,55 @@
    "m": 11,
    "a": "eg",
    "b": "ch"
+  },
+  {
+   "edition": 3,
+   "winner": "ie",
+   "seed": 90661559054,
+   "theme": "sunset",
+   "due": "2026-10-30T15:30:00+00:00",
+   "buffer_id": "6ae3ec372782e7f331c4de0f",
+   "status": "scheduled",
+   "file": "ec03_r0_m12_90661559054.mp4",
+   "length": 29.5,
+   "loop": {
+    "escape-cup-hook_text-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "40af09c6564494ab07e1c96441c3f439e8f76e28e24bb91d5a30b633d26d8ecc",
+    "checked_at": "2026-10-30T00:59:34+00:00"
+   },
+   "r": 0,
+   "m": 12,
+   "a": "co",
+   "b": "ie"
+  },
+  {
+   "edition": 3,
+   "winner": "ma",
+   "seed": 199482833088,
+   "theme": "forest",
+   "due": "2026-10-30T17:00:00+00:00",
+   "buffer_id": "6ae3ecd94b8768bfb2d109b8",
+   "status": "scheduled",
+   "file": "ec03_r0_m13_199482833088.mp4",
+   "length": 25.4,
+   "loop": {
+    "escape-cup-hook_text-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "b481acfede5fc3d593f96d10ba8e3f906a6b25c338f2d4540aadf94f39c8fab5",
+    "checked_at": "2026-10-30T01:01:30+00:00"
+   },
+   "r": 0,
+   "m": 13,
+   "a": "ma",
+   "b": "de"
   }
  ],
  "recent_captions": [
-  "South Korea 🇰🇷 vs France 🇫🇷 in the escape rings. Who gets out first?\nRound of 32 of Escape Cup 2 🏆\nComing next: Scotland vs Senegal. Who takes it? 👇\n#ballescape #physicssimulation #simulation #southkorea #france",
-  "England, Ireland, Italy or Nigeria? 16 country balls, 28 rings. Find your country · heat 24\nAlso in it: Peru, Egypt and 10 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #countryballs",
   "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Senegal 🇸🇳 in the escape rings. Who gets out first?\nEscape Cup 2, Round of 32\nNext up: Brazil vs Japan - who's your pick? 👇\n#ballescape #physicssimulation #simulation #scotland #senegal",
   "England, Scotland, Poland or Nigeria? 16 countries, one way out · heat 25\nAlso in it: Belgium, Mexico and 10 more\nWhich flag were you backing? 👇\n#ballescape #physicssimulation #satisfying #countryballs",
   "Country ball escape - Brazil 🇧🇷 vs Japan 🇯🇵\nEscape Cup 2, Round of 32\nComing next: Switzerland vs Mexico. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #brazil #japan",
@@ -3300,7 +3344,9 @@
   "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Poland 🇵🇱 - which country escapes the rings first?\nEscape Cup 3, Round of 32\nTurkey vs Indonesia is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #scotland #poland",
   "Turkey 🇹🇷 vs Indonesia 🇮🇩 in the escape rings. Who gets out first?\nEscape Cup 3, Round of 32\nNigeria vs Belgium is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #turkey #indonesia",
   "Ball escape simulation: Nigeria 🇳🇬 vs Belgium 🇧🇪\nRound of 32 · Escape Cup 3\nEgypt vs Switzerland is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #nigeria #belgium",
-  "Country ball escape - Egypt 🇪🇬 vs Switzerland 🇨🇭\nRound of 32 of Escape Cup 3 🏆\nNext up: Colombia vs Ireland - who's your pick? 👇\n#ballescape #physicssimulation #simulation #egypt #switzerland"
+  "Country ball escape - Egypt 🇪🇬 vs Switzerland 🇨🇭\nRound of 32 of Escape Cup 3 🏆\nNext up: Colombia vs Ireland - who's your pick? 👇\n#ballescape #physicssimulation #simulation #egypt #switzerland",
+  "Country ball escape - Colombia 🇨🇴 vs Ireland 🇮🇪\nEscape Cup 3, Round of 32\nNext up: Morocco vs Germany - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #colombia #ireland",
+  "Morocco 🇲🇦 vs Germany 🇩🇪 in the escape rings. Who gets out first?\nRound of 32 · Escape Cup 3\nUruguay vs Philippines is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #morocco #germany"
  ],
  "seen_errors": [],
  "excluded_seeds": {}

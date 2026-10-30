@@ -2358,6 +2358,66 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-10-30T00:59:34+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m12_90661559054.mp4",
+   "sha256": "40af09c6564494ab07e1c96441c3f439e8f76e28e24bb91d5a30b633d26d8ecc",
+   "head": "Country ball escape - Colombia 🇨🇴 vs Ireland 🇮🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.785,
+   "report": {
+    "seconds": 29.5,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "tokens": 4165,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-30T01:01:30+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r0_m13_199482833088.mp4",
+   "sha256": "b481acfede5fc3d593f96d10ba8e3f906a6b25c338f2d4540aadf94f39c8fab5",
+   "head": "Morocco 🇲🇦 vs Germany 🇩🇪 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.8,
+   "report": {
+    "seconds": 25.43,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4165,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
