@@ -2562,6 +2562,63 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-10-30T22:17:55+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r1_m03_108022153001.mp4",
+   "sha256": "af8c348c13e6643d1cc948bce5f4841b2886c15dac8b11ecde3aff274288a483",
+   "head": "Which country escapes first? England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Canada 🇨🇦 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.427,
+   "report": {
+    "seconds": 24.75,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-30T22:20:15+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r1_m04_91708332057.mp4",
+   "sha256": "39fa05fb1576f881e968f5e7011db394800b653358d58eeded852385d9e71868",
+   "head": "Poland 🇵🇱 vs Indonesia 🇮🇩 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.839,
+   "report": {
+    "seconds": 18.62,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
