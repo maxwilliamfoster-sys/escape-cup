@@ -2650,6 +2650,124 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-10-31T19:17:57+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r1_m06_104483079060.mp4",
+   "sha256": "669f5109ec0334a4a5954d6bc5149a20be7a8abc3dfc5c495e1772fbc8a07168",
+   "head": "Ireland 🇮🇪 vs Morocco 🇲🇦 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.532,
+   "report": {
+    "seconds": 19.38,
+    "lufs": -16.1,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4168,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-31T19:20:14+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r1_m07_67854259045.mp4",
+   "sha256": "fa80d0e13623c67ba33334ef471ed12c537637c1b04e0f361c8e5bce164b6ed6",
+   "head": "Philippines 🇵🇭 vs Italy 🇮🇹 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.85,
+   "report": {
+    "seconds": 21.53,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4166,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-10-31T19:23:14+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r2_m00_55986810014.mp4",
+   "sha256": "7da57db1a6b51fdb6b2afd74c910d7c13632d636537206d17f782db858624627",
+   "head": "Which country escapes first? Spain 🇪🇸 vs Senegal 🇸🇳 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.85,
+   "report": {
+    "seconds": 26.23,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-10-31T19:25:23+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r2_m01_96049135025.mp4",
+   "sha256": "b116c701f236a27cfd2d31da142bf04088e886f7590275f98e9539af0cbc7f36",
+   "head": "France 🇫🇷 vs Canada 🇨🇦 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.836,
+   "report": {
+    "seconds": 29.0,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
