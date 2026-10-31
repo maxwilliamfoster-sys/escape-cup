@@ -2619,6 +2619,37 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-10-31T12:26:11+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r1_m05_186255690020.mp4",
+   "sha256": "4ae91bcd53240edc6c75312ca1bd50c5208418cd5c0297a249944782978b9691",
+   "head": "Country ball escape - Nigeria 🇳🇬 vs Switzerland 🇨🇭",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.878,
+   "report": {
+    "seconds": 18.5,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4141,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
