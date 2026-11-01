@@ -2768,6 +2768,66 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-01T00:08:35+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r2_m02_252235946012.mp4",
+   "sha256": "990bf7165ef21cfa215f674adfd6538f0f6d70bb97463fba4072171087fa9b37",
+   "head": "Country ball escape - Poland 🇵🇱 vs Nigeria 🇳🇬",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.684,
+   "report": {
+    "seconds": 24.83,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4149,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-01T00:10:35+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r2_m03_69331046042.mp4",
+   "sha256": "2dcbbdbf1a21056b2b4926e47ce8b079cc0ef502a5b2d181c51f34c000249725",
+   "head": "Ireland 🇮🇪 or Philippines 🇵🇭? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.818,
+   "report": {
+    "seconds": 18.93,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4140,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
