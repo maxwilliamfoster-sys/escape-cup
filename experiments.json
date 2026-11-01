@@ -47,12 +47,13 @@
     "views72": null
    },
    "variant_metrics": {
-    "n": 0,
-    "views72": null
+    "n": 1,
+    "median": 24.3651,
+    "views72": 27.9461
    },
    "verdict": "keep running",
-   "last_judged": "2026-10-31",
-   "result": "escape-cup-hook_text-1 · avg % watched at 72h: KEEP RUNNING — n=0 vs 0 (min 10, max 20)"
+   "last_judged": "2026-11-01",
+   "result": "escape-cup-hook_text-1 · avg % watched at 72h: KEEP RUNNING — n=1 vs 0 (min 10, max 20)"
   }
  ]
 }
