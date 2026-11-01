@@ -2857,6 +2857,149 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-01T19:40:18+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r3_m01_78650001032.mp4",
+   "sha256": "7062a622245bb11889876f65c74c23443f4e6489b436c916debbf65ef8b20e1c",
+   "head": "Nigeria 🇳🇬 or Ireland 🇮🇪? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.806,
+   "report": {
+    "seconds": 20.65,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-11-01T19:42:12+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r4_m00_250693597009.mp4",
+   "sha256": "9afe2036b41e126f044cc37665c63f9fe72424897e2f2c6bfb91ae28002d70a0",
+   "head": "Escape Cup final: Canada 🇨🇦 vs Ireland 🇮🇪. Physics simulation decides it 🏆",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.481,
+   "report": {
+    "seconds": 29.4,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-11-01T19:44:29+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m00_14038442052.mp4",
+   "sha256": "c4d0a00d3fbee2548c2e6b229f9cdfc87c49a3afd24460e63b4771c891e61abc",
+   "head": "Country ball escape - Japan 🇯🇵 vs Philippines 🇵🇭",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.753,
+   "report": {
+    "seconds": 22.53,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-11-01T19:46:24+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m01_243583240028.mp4",
+   "sha256": "3280464e43beac2ba9e9ee07605cd4dd6e073fb1e5f96150b341970f9f11c776",
+   "head": "Which country escapes first? Italy 🇮🇹 vs Mexico 🇲🇽 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.829,
+   "report": {
+    "seconds": 19.25,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-11-01T19:48:47+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m02_173727515050.mp4",
+   "sha256": "a79ba91292d7c99431f1ccc3fc7462ebaa781f1bcbc375045f16ee7aafb95a2d",
+   "head": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs France 🇫🇷 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.8,
+   "report": {
+    "seconds": 26.5,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
