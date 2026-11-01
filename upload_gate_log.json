@@ -2828,6 +2828,35 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-01T13:21:33+00:00",
+   "platform": "tiktok",
+   "file": "ec03_r3_m00_237163514034.mp4",
+   "sha256": "60b7fd88f27b9089613e97cc7a252b42677258de1523aa4705eb46b170530ead",
+   "head": "Country ball escape - Senegal 🇸🇳 vs Canada 🇨🇦",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.734,
+   "report": {
+    "seconds": 19.68,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4161,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
