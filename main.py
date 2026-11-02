@@ -131,7 +131,7 @@ HEADS = [
     "{A} or {B}? Physics decides which country breaks out first",
     "Country ball escape - {A} vs {B}",
     "{A} vs {B} in the escape rings. Who gets out first?",
-    "{A} vs {B}: 16 rings, one way out. Physics simulation",
+    "{A} vs {B}: 12 rings, one way out. Physics simulation",
     "Which country escapes first? {A} vs {B} ball escape",
 ]
 FINAL_HEADS = [

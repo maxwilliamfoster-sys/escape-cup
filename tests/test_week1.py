@@ -33,21 +33,21 @@ def _write(d, obj):
 
 
 class PostingConfigTests(unittest.TestCase):
-    def test_repo_config_is_seven_slots_without_kill_switch(self):
+    def test_repo_config_is_three_slots_with_kill_switch(self):
         with open(os.path.join(ROOT, "posting.json"), encoding="utf-8") as f:
             cfg = json.load(f)
-        self.assertFalse(cfg["kill_switch"])
+        self.assertTrue(cfg["kill_switch"])
         self.assertEqual(main.load_day_slots(), main.DAY_SLOTS)
-        self.assertEqual(len(main.DAY_SLOTS), 7)
+        self.assertEqual(len(main.DAY_SLOTS), 3)
 
-    def test_kill_switch_drops_to_four_midday_slots(self):
+    def test_kill_switch_uses_three_daytime_slots(self):
         with tempfile.TemporaryDirectory() as d:
             with open(os.path.join(ROOT, "posting.json"), encoding="utf-8") as f:
                 cfg = json.load(f)
             cfg["kill_switch"] = True
             slots = main.load_day_slots(_write(d, cfg))
-        self.assertEqual(len(slots), 4)
-        self.assertGreaterEqual(min(slots), (11, 0))
+        self.assertEqual(len(slots), 3)
+        self.assertGreaterEqual(min(slots), (9, 0))
         self.assertLessEqual(max(slots), (16, 30))
 
     def test_broken_config_never_stops_posting(self):

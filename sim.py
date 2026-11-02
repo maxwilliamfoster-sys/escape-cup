@@ -7,7 +7,7 @@ and the ball scores it. Whoever breaks the final (outermost) ring wins.
 
 v2 (2026-10-01): 6 thick rings with tiny balls lost viewers at 0:01 (avg watch
 6-8s, <2% completion). The format that wins on TikTok is many thin rings
-filling the screen with a ring popping every second or so - so 16 rings, a
+filling the screen with a ring popping every second or so - so 12 rings, a
 ring breaks the instant a ball enters its gap (needed anyway: with dense rings
 a ball can never fully clear one before touching the next).
 
@@ -23,11 +23,11 @@ from dataclasses import dataclass, field
 
 # Arena geometry (pixels, in the 1080x1920 frame)
 CX, CY = 540.0, 930.0
-N_RINGS = 16
-INNER_R, OUTER_R = 96.0, 470.0
+N_RINGS = 12
+INNER_R, OUTER_R = 110.0, 470.0
 RING_RADII = [INNER_R + (OUTER_R - INNER_R) * i / (N_RINGS - 1) for i in range(N_RINGS)]
 RING_THICK = 6.0
-BALL_R = 22.0
+BALL_R = 34.0                     # 2026-11-02: r22 flags were unreadable white dots on a phone; 12 rings keep the gaps passable
 GAP_DEG = 40.0                    # every ring's gap is the same ANGLE: a wedge, like the
 FINAL_GAP_SCALE = 0.75            # top ball-escape videos; the last ring's gap is narrower
 TWIST = (0.10, 0.30)              # per-ring phase offset (rad) -> a spiral of gaps

@@ -23,6 +23,11 @@ These rules come from `Projects/Content-Bots/growth-lab` (README, EXPERIMENT_TEM
 - Judge on 10-30: total views@72h per day and followers gained per day vs the baseline; median views@72h per post as a guardrail.
 - Kill switch (4/day, 11:00-16:30 UK): set `"kill_switch": true` in `posting.json` if the median views@72h of posts since 10-21 falls below **375** (`analytics.py --compare` prints the check), or if TikTok Studio marks any video "not eligible for For You". Max adds 2 rows a week to `studio_manual.csv` (completion %, For You %, followers gained).
 
+- Result 2026-11-02: FAILED, kill switch on. Median views@72h fell from 724 at 2/day to 31 at 7/day; followers did not move. Space-edits ran the same natural test: 10/day gave 10-50 views, then 3/day recovered to ~730 within a week. Now 3/day (09:00, 12:30, 16:30 UK).
+
+## Format change 2026-11-02: readable flags (both arms)
+Ball radius 22 -> 34, rings 16 -> 12 (`sim.py`): flags were white dots on a phone. Applies to both hook_text arms, so that test stays comparable. Watch avg % watched at 72h, but read it against the rate change above: both landed together.
+
 ## Queue (research 2026-10-15: growth-lab/research/reports/TikTok growth and testing methods.md)
 1. **Pacing:** the first ring breaks within 1s, and no stall lasts over 5s (viewers leave at about 6s, right where the 10-13 sheet showed a 5s gap).
 2. A stake-first hook: deadline/number text plus a visible counter of rings or countries left.

@@ -70,9 +70,9 @@ class ArmTests(unittest.TestCase):
 class SlotTests(unittest.TestCase):
     STATE = {"log": [{"due": "2026-10-01T18:30:00+00:00"}]}   # ramp long over
 
-    def test_seven_posts_a_day_none_after_17(self):
-        # 2026-10-23 (growth-lab audit MASTER_PLAN #5): 18:30/20:00/21:30 UK dropped
-        self.assertEqual(len(main.DAY_SLOTS), 7)
+    def test_three_posts_a_day_none_after_17(self):
+        # 2026-11-02: kill switch on (posting.json). 7/day held views near 30; 3/day is the known cure.
+        self.assertEqual(len(main.DAY_SLOTS), 3)
         self.assertLessEqual(max(main.DAY_SLOTS), (17, 0))
         for gone in ((18, 30), (20, 0), (21, 30)):
             self.assertNotIn(gone, main.DAY_SLOTS)
