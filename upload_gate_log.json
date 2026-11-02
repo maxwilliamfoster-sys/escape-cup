@@ -3000,6 +3000,35 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-02T00:45:12+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m03_39244779019.mp4",
+   "sha256": "1f83784cf5184cc2def4c2ada51ecdd6217a6125eab6efadcc985e35594192a3",
+   "head": "Ball escape simulation: Portugal 🇵🇹 vs Croatia 🇭🇷",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.608,
+   "report": {
+    "seconds": 22.55,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4160,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
