@@ -43,17 +43,18 @@
    "max_n": 20,
    "metric": "avg % watched at 72h",
    "control_metrics": {
-    "n": 0,
-    "views72": null
+    "n": 4,
+    "median": 29.4418,
+    "views72": 83.1416
    },
    "variant_metrics": {
-    "n": 1,
-    "median": 24.3651,
-    "views72": 27.9461
+    "n": 4,
+    "median": 20.2931,
+    "views72": 27.5112
    },
    "verdict": "keep running",
-   "last_judged": "2026-11-01",
-   "result": "escape-cup-hook_text-1 · avg % watched at 72h: KEEP RUNNING — n=1 vs 0 (min 10, max 20)"
+   "last_judged": "2026-11-02",
+   "result": "escape-cup-hook_text-1 · avg % watched at 72h: KEEP RUNNING — treatment 0.69x control (20.3 vs 29.4; 90% CI 0.46–1.27, p=0.312), n=4 vs 4 (min 10, max 20)"
   }
  ]
 }
