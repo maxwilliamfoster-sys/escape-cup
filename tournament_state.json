@@ -3655,7 +3655,7 @@
    "theme": "neon",
    "due": "2026-11-02T08:00:00+00:00",
    "buffer_id": "6ae73d20f0984eef33689fbd",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec03_r3_m00_237163514034.mp4",
    "length": 19.7,
    "loop": {
@@ -3669,7 +3669,8 @@
    "r": 3,
    "m": 0,
    "a": "sn",
-   "b": "ca"
+   "b": "ca",
+   "link": "https://tiktok.com/@5lmvill/video/7703481187406187809"
   },
   {
    "edition": 3,
@@ -3678,7 +3679,7 @@
    "theme": "ocean",
    "due": "2026-11-02T09:30:00+00:00",
    "buffer_id": "6ae795cd026a1294e55c611f",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec03_r3_m01_78650001032.mp4",
    "length": 20.6,
    "loop": {
@@ -3692,7 +3693,8 @@
    "r": 3,
    "m": 1,
    "a": "ng",
-   "b": "ie"
+   "b": "ie",
+   "link": "https://tiktok.com/@5lmvill/video/7703504120572857632"
   },
   {
    "edition": 3,
@@ -3853,5 +3855,6 @@
   "Ball escape simulation: Portugal 🇵🇹 vs Croatia 🇭🇷\nRound of 32 · Escape Cup 4\nComing next: Nigeria vs Poland. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #portugal #croatia"
  ],
  "seen_errors": [],
- "excluded_seeds": {}
+ "excluded_seeds": {},
+ "orphans_alerted": []
 }
