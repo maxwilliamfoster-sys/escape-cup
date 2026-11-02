@@ -3029,6 +3029,92 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-02T21:44:01+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m04_108723353018.mp4",
+   "sha256": "b3a0bd8b986db2ca0e471e46e7784521970d7bc1ac8c19c110e900f2502af1f7",
+   "head": "Nigeria 🇳🇬 vs Poland 🇵🇱: 12 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.483,
+   "report": {
+    "seconds": 18.35,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4163,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-02T21:46:25+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m05_136452520183.mp4",
+   "sha256": "289ba171e6132788d5a7f4bb1c126540f425966a86af9cb098921d6470838074",
+   "head": "Country ball escape - Uruguay 🇺🇾 vs Ireland 🇮🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.773,
+   "report": {
+    "seconds": 17.97,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4163,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-02T21:48:39+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m06_155391543072.mp4",
+   "sha256": "3d125e0649701faa6b5e03b8668ff41e581547f91c33e435295c8f09f5804998",
+   "head": "Country ball escape - Morocco 🇲🇦 vs Ukraine 🇺🇦",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.737,
+   "report": {
+    "seconds": 16.77,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
