@@ -150,6 +150,29 @@ def save(state):
         json.dump(state, f, indent=1, ensure_ascii=False)
 
 
+def title_race(state, new_champion=None, top=3):
+    """The titles table, most first, counting a champion crowned in this very video."""
+    titles = dict(state.get("titles") or {})
+    if new_champion:
+        titles[new_champion] = titles.get(new_champion, 0) + 1
+    if not titles:
+        return "FIRST TITLE UP FOR GRABS"
+    best = sorted(titles.items(), key=lambda kv: -kv[1])[:top]
+    return "TITLES: " + "  ·  ".join(f"{teams.name(c).upper()} {n}" for c, n in best)
+
+
+def reigning(state):
+    """The winner of the last Final in the log, or None before the first one."""
+    finals = [e for e in state.get("log", []) if e.get("r") == 4 and e.get("series") != "royale"]
+    return finals[-1]["winner"] if finals else None
+
+
+def road_line(size):
+    """Wins the winner of a round of this many matches still needs. None after the Final."""
+    left = {16: 4, 8: 3, 4: 2, 2: 1}.get(size)
+    return f"{left} WIN{'S' if left > 1 else ''} FROM THE TROPHY" if left else None
+
+
 def preview_after(state, r, m, winner):
     """What the end card teases, computed as if `winner` had just been recorded."""
     probe = json.loads(json.dumps(state))

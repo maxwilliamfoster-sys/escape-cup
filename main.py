@@ -230,6 +230,22 @@ def _caption_only(caption, fails, **fields):
             "failures": [f"caption: {f}" for f in fails], **fields}
 
 
+# Research test, 2026-11-03: Earclacks built seasons and characters, and our titles exist but viewers never see them. Cup videos
+# only (royales have their league). Off until the 2 Nov results are read on 9 Nov. Judge on follows and breakouts per 1,000 views.
+STANDINGS_TEST = os.environ.get("STANDINGS_TEST", "0") == "1"
+
+
+def standings_info(state, size, a, b, winner):
+    """Extra on-screen lines for render_match: the titles table, and what the winner still needs."""
+    if not STANDINGS_TEST:
+        return {}
+    champ = tournament.reigning(state)
+    table = tournament.title_race(state)
+    called_out = f"{teams.name(champ).upper()} ARE CHAMPIONS  ·  " if champ in (a, b) else ""
+    return {"standing": called_out + table,
+            "road": tournament.road_line(size) or tournament.title_race(state, new_champion=winner)}
+
+
 def build_one(state, exclude_seeds=(), tries=None):
     """Render + gate the next match. Returns dict with path, caption, report, failures..."""
     r, m = tournament.next_match(state)
@@ -262,7 +278,7 @@ def build_one(state, exclude_seeds=(), tries=None):
 
     info = dict(a=a, b=b, header=d["header"], result_line=result, theme=theme,
                 next_label=next_label, next_line=next_line, cta=cta, final=is_final,
-                hook=hook_for_match(a, b))
+                hook=hook_for_match(a, b), **standings_info(state, d["size"], a, b, winner))
     fname = f"ec{state['edition']:02d}_r{r}_m{m:02d}_{seed}.mp4"
     caption, cap_fail = _pick_caption(
         lambda g: make_caption(state, a, b, d, preview, g), seed,

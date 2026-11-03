@@ -338,6 +338,7 @@ def _static_layer(theme, codes, text, flags, small_line, hook=None):
 
 
 CONTRAST = ["#FFFFFF", "#4CC9F0", "#FF4D6D", "#3DDC97", "#B388FF"]
+STANDING_Y = sim.CY + sim.OUTER_R + 118     # below "LAST RING", above TikTok's bottom buttons and caption
 
 
 def team_colors(a, b):
@@ -465,6 +466,8 @@ def render_match(match, info, out_path, workdir):
         if not in_card and final_phase:
             pulse = 0.55 + 0.45 * abs(math.sin(t * 6))
             text.draw(cr, "LAST RING", W / 2, sim.CY + sim.OUTER_R + 62, 40, "#FF4D6D", alpha=pulse)
+        if not in_card and info.get("standing"):
+            text.draw(cr, info["standing"], W / 2, STANDING_Y, 34, "#FFD84D", bold=True, max_w=960)
 
         # --- winner card -----------------------------------------------------------
         if in_card:
@@ -483,6 +486,8 @@ def render_match(match, info, out_path, workdir):
                       alpha=k, max_w=940)
             text.draw(cr, info["result_line"], W / 2, 1010 + slide, 38, "#C9D3F5", bold=True,
                       alpha=k, max_w=940)
+            if info.get("road"):
+                text.draw(cr, info["road"], W / 2, 1062 + slide, 38, "#FFD84D", bold=True, alpha=k, max_w=940)
             k2 = min(1.0, max(0.0, (ct - 0.4) / 0.35))
             if k2 > 0:
                 text.draw(cr, info["next_label"], W / 2, 1130, 32, "#9FB0E6", bold=True, alpha=k2)
