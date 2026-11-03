@@ -3175,6 +3175,35 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-03T23:22:28+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m09_126628143242.mp4",
+   "sha256": "5d181cd14f0feddb36175a0c5ebc559a16212100d9e27a8e045150644d504d35",
+   "head": "Ball escape simulation: Spain 🇪🇸 vs Argentina 🇦🇷",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.795,
+   "report": {
+    "seconds": 18.08,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4160,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
