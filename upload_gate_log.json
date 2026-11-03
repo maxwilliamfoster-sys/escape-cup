@@ -3115,6 +3115,66 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-03T17:02:57+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m07_57307138139.mp4",
+   "sha256": "a9664f9402943dd0a1182398a8f5cb95d1c3d2ee14c75ef19cf4f8d7afbd82bc",
+   "head": "South Korea 🇰🇷 vs Turkey 🇹🇷 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.517,
+   "report": {
+    "seconds": 27.53,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4166,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-03T17:07:56+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m08_118196230013.mp4",
+   "sha256": "cde555358278fb9d89e5b4918c7d0c5debac8d0642fccd3ba8a6c173a8a5eef7",
+   "head": "Which country escapes first? Senegal 🇸🇳 vs Canada 🇨🇦 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.839,
+   "report": {
+    "seconds": 21.93,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4146,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
