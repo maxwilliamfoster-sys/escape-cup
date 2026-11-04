@@ -3204,6 +3204,64 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-04T17:15:13+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m10_174585132026.mp4",
+   "sha256": "c72ae24c6a0d1d0ba6c5ae26b7aa52c14d49f7db300114c104215a5f3518f7d4",
+   "head": "Switzerland 🇨🇭 or USA 🇺🇸? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.595,
+   "report": {
+    "seconds": 21.38,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4166,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-04T17:17:57+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m11_159965276051.mp4",
+   "sha256": "777d75ceee6bf4255cded1eceda349dd3c755daca94f3d2d2aa4c2ab45c41a93",
+   "head": "Country ball escape - Colombia 🇨🇴 vs Egypt 🇪🇬",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-10-27",
+   "head_similarity": 0.72,
+   "report": {
+    "seconds": 20.42,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4164,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
