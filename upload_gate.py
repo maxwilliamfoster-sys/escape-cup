@@ -64,7 +64,9 @@ from difflib import SequenceMatcher
 #   head_similarity (warn), doubled-word lint, #fyp/#foryou fail, privacy rule, public-ledger scrub.
 # 2026-10-27: public-ledger scrub rewrite, speech check fails closed on an empty transcript,
 #   doubled-word lint spares real doubled names (Sirhan Sirhan, Boutros Boutros-Ghali, doubled_ok).
-GATE_VERSION = "2026-10-27"
+# 2026-11-04: check_media also runs media_qc (vendored beside this file): its new rules only warn
+#   for now, and media_qc not being able to run is a failure.
+GATE_VERSION = "2026-11-04"
 
 PLATFORMS = {
     "tiktok": {
@@ -515,7 +517,25 @@ def check_media(path, platform, profile):
     rep["changes"] = sum(d > 2.0 for d in diffs)
     if rep["changes"] < pr["min_changes"]:
         fail.append(f"picture barely changes ({rep['changes']}/{len(diffs)} sampled gaps differ) - looks stuck")
+    _shared_qc(path, pr, rep, fail, warn)
     return rep, fail, warn
+
+
+def _shared_qc(path, pr, rep, fail, warn):
+    """media_qc's rules (warnings during rollout, see media_qc.ENFORCED) plus their numbers."""
+    try:
+        import media_qc                          # vendored beside this file, inside the try: fail-closed
+        qc = media_qc.check(path, bot=pr.get("bot"), audio=bool(pr.get("audio")))
+        print(media_qc.log_line(qc, path))
+    except Exception as exc:
+        fail.append(f"media QC check could not run: {str(exc)[:160]}")
+        return
+    m = qc["metrics"]
+    rep.update(qc_flash_est=m.get("flash_est_per_s"), qc_sample_rate=m.get("sample_rate"),
+               qc_audio_short=m.get("audio_short_by"), qc_clipped_runs=m.get("clipped_runs"),
+               qc_seconds=m.get("seconds_taken"))
+    fail.extend(qc["failures"])
+    warn.extend(qc["warnings"])
 
 
 # ------------------------------------------------------------------- layer 4 --
@@ -953,7 +973,7 @@ _PUBLIC_SAFE = re.compile(
     r"|picture frozen|could not measure loudness|loudness -?[\d.]+ LUFS(?: outside \(-?[\d.]+, -?[\d.]+\))?"
     r"|true peak|[\d.]+s of dead silence"
     r"|first frame is blank|picture barely changes(?: \(\d+/\d+ sampled gaps differ\))?|video file missing or empty"
-    r"|(?:hash|text|video|speech|AI review) check could not run"
+    r"|(?:hash|text|video|speech|AI review|media QC) check could not run|QC [a-z_]+(?=:| \(…\)$)"
     r"|narration doesn't match the script|narration only \d+% matched)")
 _UNAVAILABLE_CODES = (("too large", "too_large"), ("daily AI quota", "quota"), ("daily AI-review cap", "cap"),
                       ("not set", "no_key"), ("no verdict", "no_verdict"), ("timed out", "timeout"))
@@ -961,7 +981,8 @@ _UNAVAILABLE_CODES = (("too large", "too_large"), ("daily AI quota", "quota"), (
 _CODED = re.compile(r"^\[(?:" + "|".join(c for _, c in _UNAVAILABLE_CODES) + r"|unavailable|http_\d{3})\]$")
 _PUBLIC_KEYS = ("checked_at", "platform", "file", "sha256", "head", "ok", "failures", "warnings",
                 "gate_version", "head_similarity", "report", "ai")
-_PUBLIC_REPORT = ("seconds", "lufs", "speech_match", "longest_freeze")
+_PUBLIC_REPORT = ("seconds", "lufs", "speech_match", "longest_freeze", "true_peak", "qc_flash_est",
+                  "qc_sample_rate", "qc_audio_short", "qc_clipped_runs", "qc_seconds")
 _PUBLIC_AI_NUM = ("available", "ok", "coherence", "quality", "tokens", "retryable", "too_large", "quota", "cap")
 _CODE_RE = re.compile(r"^[a-z][a-z0-9_]{0,23}$")
 
