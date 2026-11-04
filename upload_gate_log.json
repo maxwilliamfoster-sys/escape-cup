@@ -17,7 +17,13 @@
     "seconds": 20.48,
     "lufs": -14.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -44,7 +50,13 @@
     "seconds": 33.43,
     "lufs": -13.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    }
   },
   {
@@ -62,7 +74,13 @@
     "seconds": 29.18,
     "lufs": -16.1,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -89,7 +107,13 @@
     "seconds": 38.2,
     "lufs": -17.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -116,7 +140,13 @@
     "seconds": 21.9,
     "lufs": -17.1,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -143,7 +173,13 @@
     "seconds": 21.68,
     "lufs": -15.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -172,7 +208,13 @@
     "seconds": 28.47,
     "lufs": -14.7,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    }
   },
   {
@@ -192,7 +234,13 @@
     "seconds": 24.03,
     "lufs": -14.1,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    }
   },
   {
@@ -212,7 +260,13 @@
     "seconds": 29.72,
     "lufs": -13.8,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    }
   },
   {
@@ -230,7 +284,13 @@
     "seconds": 26.27,
     "lufs": -14.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -257,7 +317,13 @@
     "seconds": 35.92,
     "lufs": -14.7,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -284,7 +350,13 @@
     "seconds": 17.45,
     "lufs": -16.9,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -311,7 +383,13 @@
     "seconds": 18.22,
     "lufs": -16.8,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -338,7 +416,13 @@
     "seconds": 27.53,
     "lufs": -13.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -365,7 +449,13 @@
     "seconds": 24.05,
     "lufs": -13.7,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -392,7 +482,13 @@
     "seconds": 33.1,
     "lufs": -13.8,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -419,7 +515,13 @@
     "seconds": 20.45,
     "lufs": -16.7,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -446,7 +548,13 @@
     "seconds": 32.62,
     "lufs": -13.5,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -473,7 +581,13 @@
     "seconds": 21.43,
     "lufs": -16.5,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -500,7 +614,13 @@
     "seconds": 23.53,
     "lufs": -14.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -527,7 +647,13 @@
     "seconds": 18.85,
     "lufs": -15.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -554,7 +680,13 @@
     "seconds": 31.7,
     "lufs": -13.9,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -581,7 +713,13 @@
     "seconds": 29.5,
     "lufs": -17.5,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -608,7 +746,13 @@
     "seconds": 27.5,
     "lufs": -15.8,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -635,7 +779,13 @@
     "seconds": 28.43,
     "lufs": -17.7,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -662,7 +812,13 @@
     "seconds": 19.38,
     "lufs": -15.5,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -689,7 +845,13 @@
     "seconds": 30.53,
     "lufs": -14.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -716,7 +878,13 @@
     "seconds": 22.6,
     "lufs": -18.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -743,7 +911,13 @@
     "seconds": 26.6,
     "lufs": -13.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -770,7 +944,13 @@
     "seconds": 17.25,
     "lufs": -17.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -797,7 +977,13 @@
     "seconds": 32.98,
     "lufs": -13.9,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -824,7 +1010,13 @@
     "seconds": 26.33,
     "lufs": -16.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -851,7 +1043,13 @@
     "seconds": 24.15,
     "lufs": -14.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -878,7 +1076,13 @@
     "seconds": 17.05,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -905,7 +1109,13 @@
     "seconds": 24.6,
     "lufs": -13.5,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -932,7 +1142,13 @@
     "seconds": 24.0,
     "lufs": -13.9,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -961,7 +1177,13 @@
     "seconds": 18.73,
     "lufs": -16.8,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -989,7 +1211,13 @@
     "seconds": 26.25,
     "lufs": -15.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1017,7 +1245,13 @@
     "seconds": 16.28,
     "lufs": -15.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1045,7 +1279,13 @@
     "seconds": 32.83,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1074,7 +1314,13 @@
     "seconds": 15.78,
     "lufs": -15.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1102,7 +1348,13 @@
     "seconds": 26.13,
     "lufs": -16.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1128,7 +1380,13 @@
     "seconds": 19.52,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1159,7 +1417,13 @@
     "seconds": 30.98,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1190,7 +1454,13 @@
     "seconds": 23.85,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1222,7 +1492,13 @@
     "seconds": 23.87,
     "lufs": -15.8,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1251,7 +1527,13 @@
     "seconds": 31.2,
     "lufs": -16.1,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1279,7 +1561,13 @@
     "seconds": 22.2,
     "lufs": -16.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1307,7 +1595,13 @@
     "seconds": 29.65,
     "lufs": -16.1,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1335,7 +1629,13 @@
     "seconds": 16.82,
     "lufs": -17.1,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    }
   },
   {
@@ -1355,7 +1655,13 @@
     "seconds": 22.65,
     "lufs": -16.5,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1383,7 +1689,13 @@
     "seconds": 35.5,
     "lufs": -16.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1414,7 +1726,13 @@
     "seconds": 24.2,
     "lufs": -16.1,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1445,7 +1763,13 @@
     "seconds": 26.05,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1476,7 +1800,13 @@
     "seconds": 26.33,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1504,7 +1834,13 @@
     "seconds": 28.88,
     "lufs": -15.9,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1532,7 +1868,13 @@
     "seconds": 24.6,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1560,7 +1902,13 @@
     "seconds": 18.42,
     "lufs": -15.8,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1589,7 +1937,13 @@
     "seconds": 32.3,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1617,7 +1971,13 @@
     "seconds": 16.37,
     "lufs": -15.8,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1648,7 +2008,13 @@
     "seconds": 27.58,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1677,7 +2043,13 @@
     "seconds": 17.45,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1709,7 +2081,13 @@
     "seconds": 35.93,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1737,7 +2115,13 @@
     "seconds": 22.8,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1766,7 +2150,13 @@
     "seconds": 30.23,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1794,7 +2184,13 @@
     "seconds": 18.65,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1823,7 +2219,13 @@
     "seconds": 18.2,
     "lufs": -16.5,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1852,7 +2254,13 @@
     "seconds": 19.07,
     "lufs": -15.8,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -1883,7 +2291,13 @@
     "seconds": 19.75,
     "lufs": -16.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1911,7 +2325,13 @@
     "seconds": 19.78,
     "lufs": -16.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1940,7 +2360,13 @@
     "seconds": 29.05,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1969,7 +2395,13 @@
     "seconds": 19.23,
     "lufs": -16.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -1997,7 +2429,13 @@
     "seconds": 18.22,
     "lufs": -16.7,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2025,7 +2463,13 @@
     "seconds": 21.35,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2054,7 +2498,13 @@
     "seconds": 20.48,
     "lufs": -16.9,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2083,7 +2533,13 @@
     "seconds": 17.12,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2115,7 +2571,13 @@
     "seconds": 18.42,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2144,7 +2606,13 @@
     "seconds": 28.33,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2173,7 +2641,13 @@
     "seconds": 22.17,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2199,7 +2673,13 @@
     "seconds": 16.7,
     "lufs": -16.1,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2230,7 +2710,13 @@
     "seconds": 18.5,
     "lufs": -16.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2261,7 +2747,13 @@
     "seconds": 21.92,
     "lufs": -16.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2292,7 +2784,13 @@
     "seconds": 23.8,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2320,7 +2818,13 @@
     "seconds": 20.88,
     "lufs": -16.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2348,7 +2852,13 @@
     "seconds": 25.62,
     "lufs": -17.0,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2374,7 +2884,13 @@
     "seconds": 29.5,
     "lufs": -16.5,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2405,7 +2921,13 @@
     "seconds": 25.43,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2436,7 +2958,13 @@
     "seconds": 29.08,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2467,7 +2995,13 @@
     "seconds": 18.78,
     "lufs": -16.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2496,7 +3030,13 @@
     "seconds": 19.6,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2524,7 +3064,13 @@
     "seconds": 24.4,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2552,7 +3098,13 @@
     "seconds": 23.95,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2580,7 +3132,13 @@
     "seconds": 24.75,
     "lufs": -16.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2609,7 +3167,13 @@
     "seconds": 18.62,
     "lufs": -16.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2637,7 +3201,13 @@
     "seconds": 18.5,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2666,7 +3236,13 @@
     "seconds": 19.38,
     "lufs": -16.1,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2697,7 +3273,13 @@
     "seconds": 21.53,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2729,7 +3311,13 @@
     "seconds": 26.23,
     "lufs": -16.5,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2758,7 +3346,13 @@
     "seconds": 29.0,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2784,7 +3378,13 @@
     "seconds": 24.83,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2815,7 +3415,13 @@
     "seconds": 18.93,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2844,7 +3450,13 @@
     "seconds": 19.68,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -2876,7 +3488,13 @@
     "seconds": 20.65,
     "lufs": -16.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2904,7 +3522,13 @@
     "seconds": 29.4,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2932,7 +3556,13 @@
     "seconds": 22.53,
     "lufs": -16.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2961,7 +3591,13 @@
     "seconds": 19.25,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -2990,7 +3626,13 @@
     "seconds": 26.5,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -3016,7 +3658,13 @@
     "seconds": 22.55,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -3045,7 +3693,13 @@
     "seconds": 18.35,
     "lufs": -16.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -3074,7 +3728,13 @@
     "seconds": 17.97,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -3105,7 +3765,13 @@
     "seconds": 16.77,
     "lufs": -16.6,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": false,
@@ -3131,7 +3797,13 @@
     "seconds": 27.53,
     "lufs": -16.3,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -3162,7 +3834,13 @@
     "seconds": 21.93,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -3191,7 +3869,13 @@
     "seconds": 18.08,
     "lufs": -16.2,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -3220,7 +3904,13 @@
     "seconds": 21.38,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -3249,7 +3939,13 @@
     "seconds": 20.42,
     "lufs": -16.4,
     "speech_match": null,
-    "longest_freeze": 0.0
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
    },
    "ai": {
     "available": true,
@@ -3257,6 +3953,43 @@
     "coherence": 9,
     "quality": 9,
     "tokens": 4164,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-04T23:40:43+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m12_193618521015.mp4",
+   "sha256": "2979f5007feb57e331086085ec42544569820b8f9c9e26eac1088db66dfabe1a",
+   "head": "Australia 🇦🇺 vs Vietnam 🇻🇳: 12 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.817,
+   "report": {
+    "seconds": 16.07,
+    "lufs": -16.7,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4171,
     "retryable": false,
     "reason": null,
     "model": "qwen/qwen3.8-27b",
