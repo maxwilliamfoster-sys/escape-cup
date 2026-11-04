@@ -9726,6 +9726,19 @@
      "totalTimeWatched": 114.03,
      "averageTimeWatched": 7.49,
      "likes": 3
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 3,
+     "comments": 0,
+     "engagementRate": 0.33,
+     "views": 898,
+     "shares": 0,
+     "reach": 792,
+     "totalTimeWatched": 114.03,
+     "averageTimeWatched": 7.49,
+     "likes": 3
     }
    ]
   },
@@ -9926,6 +9939,19 @@
      "totalTimeWatched": 109.75,
      "averageTimeWatched": 8.43,
      "likes": 25
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 25,
+     "comments": 3,
+     "engagementRate": 3.67,
+     "views": 762,
+     "shares": 0,
+     "reach": 638,
+     "totalTimeWatched": 109.8,
+     "averageTimeWatched": 8.42,
+     "likes": 25
     }
    ]
   },
@@ -10113,6 +10139,19 @@
      "totalTimeWatched": 371.23,
      "averageTimeWatched": 10.69,
      "likes": 53
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 53,
+     "comments": 6,
+     "engagementRate": 3,
+     "views": 2030,
+     "shares": 2,
+     "reach": 1875,
+     "totalTimeWatched": 372.12,
+     "averageTimeWatched": 10.68,
+     "likes": 53
     }
    ]
   },
@@ -10291,6 +10330,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.054Z",
+     "reactions": 7,
+     "comments": 0,
+     "engagementRate": 0.86,
+     "views": 815,
+     "shares": 0,
+     "reach": 729,
+     "totalTimeWatched": 77.8,
+     "averageTimeWatched": 5.59,
+     "likes": 7
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
      "reactions": 7,
      "comments": 0,
      "engagementRate": 0.86,
@@ -10487,6 +10539,19 @@
      "totalTimeWatched": 98.88,
      "averageTimeWatched": 7.01,
      "likes": 9
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 9,
+     "comments": 1,
+     "engagementRate": 1.22,
+     "views": 822,
+     "shares": 0,
+     "reach": 731,
+     "totalTimeWatched": 98.88,
+     "averageTimeWatched": 7.01,
+     "likes": 9
     }
    ]
   },
@@ -10665,6 +10730,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.054Z",
+     "reactions": 11,
+     "comments": 1,
+     "engagementRate": 1.59,
+     "views": 818,
+     "shares": 1,
+     "reach": 740,
+     "totalTimeWatched": 129.1,
+     "averageTimeWatched": 9.27,
+     "likes": 11
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
      "reactions": 11,
      "comments": 1,
      "engagementRate": 1.59,
@@ -10861,6 +10939,19 @@
      "totalTimeWatched": 33.57,
      "averageTimeWatched": 6.97,
      "likes": 5
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 5,
+     "comments": 0,
+     "engagementRate": 1.76,
+     "views": 284,
+     "shares": 0,
+     "reach": 253,
+     "totalTimeWatched": 33.57,
+     "averageTimeWatched": 6.97,
+     "likes": 5
     }
    ]
   },
@@ -11039,6 +11130,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 4,
+     "comments": 0,
+     "engagementRate": 1.16,
+     "views": 346,
+     "shares": 0,
+     "reach": 301,
+     "totalTimeWatched": 40.65,
+     "averageTimeWatched": 6.85,
+     "likes": 4
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
      "reactions": 4,
      "comments": 0,
      "engagementRate": 1.16,
@@ -11235,6 +11339,19 @@
      "totalTimeWatched": 14.87,
      "averageTimeWatched": 7.25,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 0,
+     "comments": 1,
+     "engagementRate": 0.84,
+     "views": 119,
+     "shares": 0,
+     "reach": 108,
+     "totalTimeWatched": 14.87,
+     "averageTimeWatched": 7.25,
+     "likes": 0
     }
    ]
   },
@@ -11400,6 +11517,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 1.54,
+     "views": 65,
+     "shares": 0,
+     "reach": 49,
+     "totalTimeWatched": 5.03,
+     "averageTimeWatched": 4.58,
+     "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
      "reactions": 1,
      "comments": 0,
      "engagementRate": 1.54,
@@ -11583,6 +11713,19 @@
      "totalTimeWatched": 5.35,
      "averageTimeWatched": 5.02,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 1.61,
+     "views": 62,
+     "shares": 0,
+     "reach": 49,
+     "totalTimeWatched": 5.35,
+     "averageTimeWatched": 5.02,
+     "likes": 1
     }
    ]
   },
@@ -11748,6 +11891,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 74,
+     "shares": 0,
+     "reach": 48,
+     "totalTimeWatched": 9.23,
+     "averageTimeWatched": 7.49,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -11931,6 +12087,19 @@
      "totalTimeWatched": 1.45,
      "averageTimeWatched": 3,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 30,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 1.45,
+     "averageTimeWatched": 3,
+     "likes": 0
     }
    ]
   },
@@ -12100,6 +12269,19 @@
      "comments": 0,
      "engagementRate": 2.38,
      "views": 42,
+     "shares": 0,
+     "reach": 32,
+     "totalTimeWatched": 3.77,
+     "averageTimeWatched": 5.51,
+     "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 2.33,
+     "views": 43,
      "shares": 0,
      "reach": 32,
      "totalTimeWatched": 3.77,
@@ -12279,6 +12461,19 @@
      "totalTimeWatched": 1.43,
      "averageTimeWatched": 2.32,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.733Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 38,
+     "shares": 0,
+     "reach": 25,
+     "totalTimeWatched": 1.43,
+     "averageTimeWatched": 2.32,
+     "likes": 0
     }
    ]
   },
@@ -12444,6 +12639,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 147,
+     "shares": 0,
+     "reach": 126,
+     "totalTimeWatched": 16.15,
+     "averageTimeWatched": 6.42,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -12627,6 +12835,19 @@
      "totalTimeWatched": 0.82,
      "averageTimeWatched": 1.96,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 25,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 0.82,
+     "averageTimeWatched": 1.96,
+     "likes": 0
     }
    ]
   },
@@ -12792,6 +13013,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 3.7,
+     "views": 27,
+     "shares": 0,
+     "reach": 22,
+     "totalTimeWatched": 1.22,
+     "averageTimeWatched": 2.7,
+     "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 1,
      "comments": 0,
      "engagementRate": 3.7,
@@ -12975,6 +13209,19 @@
      "totalTimeWatched": 3.5,
      "averageTimeWatched": 5.83,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 37,
+     "shares": 0,
+     "reach": 25,
+     "totalTimeWatched": 3.5,
+     "averageTimeWatched": 5.83,
+     "likes": 0
     }
    ]
   },
@@ -13127,6 +13374,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 28,
+     "shares": 0,
+     "reach": 22,
+     "totalTimeWatched": 1.93,
+     "averageTimeWatched": 4.3,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -13297,6 +13557,19 @@
      "totalTimeWatched": 2.72,
      "averageTimeWatched": 3.88,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 41,
+     "shares": 0,
+     "reach": 33,
+     "totalTimeWatched": 2.72,
+     "averageTimeWatched": 3.88,
+     "likes": 0
     }
    ]
   },
@@ -13449,6 +13722,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 1,
+     "engagementRate": 2.17,
+     "views": 46,
+     "shares": 0,
+     "reach": 36,
+     "totalTimeWatched": 8.6,
+     "averageTimeWatched": 10.98,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 0,
      "comments": 1,
      "engagementRate": 2.17,
@@ -13619,6 +13905,19 @@
      "totalTimeWatched": 1.03,
      "averageTimeWatched": 2.48,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 1,
+     "engagementRate": 4.17,
+     "views": 24,
+     "shares": 0,
+     "reach": 19,
+     "totalTimeWatched": 1.03,
+     "averageTimeWatched": 2.48,
+     "likes": 0
     }
    ]
   },
@@ -13771,6 +14070,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 37,
+     "shares": 0,
+     "reach": 29,
+     "totalTimeWatched": 1.93,
+     "averageTimeWatched": 3.05,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -13941,6 +14253,19 @@
      "totalTimeWatched": 1.1,
      "averageTimeWatched": 1.74,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 37,
+     "shares": 0,
+     "reach": 29,
+     "totalTimeWatched": 1.1,
+     "averageTimeWatched": 1.74,
+     "likes": 0
     }
    ]
   },
@@ -14093,6 +14418,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 29,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 0.83,
+     "averageTimeWatched": 1.72,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -14263,6 +14601,19 @@
      "totalTimeWatched": 3.82,
      "averageTimeWatched": 6.36,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 33,
+     "shares": 0,
+     "reach": 31,
+     "totalTimeWatched": 3.82,
+     "averageTimeWatched": 6.36,
+     "likes": 0
     }
    ]
   },
@@ -14424,6 +14775,19 @@
      "totalTimeWatched": 2.22,
      "averageTimeWatched": 3.69,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 35,
+     "shares": 0,
+     "reach": 26,
+     "totalTimeWatched": 2.22,
+     "averageTimeWatched": 3.69,
+     "likes": 0
     }
    ]
   },
@@ -14563,6 +14927,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 1,
+     "comments": 2,
+     "engagementRate": 11.54,
+     "views": 26,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 2.02,
+     "averageTimeWatched": 4.17,
+     "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 1,
      "comments": 2,
      "engagementRate": 11.54,
@@ -14720,6 +15097,19 @@
      "totalTimeWatched": 4.97,
      "averageTimeWatched": 10.64,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 27,
+     "shares": 0,
+     "reach": 26,
+     "totalTimeWatched": 4.97,
+     "averageTimeWatched": 10.64,
+     "likes": 0
     }
    ]
   },
@@ -14868,6 +15258,19 @@
      "totalTimeWatched": 1.83,
      "averageTimeWatched": 2.68,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 37,
+     "shares": 0,
+     "reach": 31,
+     "totalTimeWatched": 1.83,
+     "averageTimeWatched": 2.68,
+     "likes": 0
     }
    ]
   },
@@ -15007,6 +15410,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 1.85,
+     "views": 54,
+     "shares": 0,
+     "reach": 46,
+     "totalTimeWatched": 6.58,
+     "averageTimeWatched": 7.05,
+     "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 1,
      "comments": 0,
      "engagementRate": 1.85,
@@ -15164,6 +15580,19 @@
      "totalTimeWatched": 73.63,
      "averageTimeWatched": 5.94,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.14,
+     "views": 732,
+     "shares": 0,
+     "reach": 671,
+     "totalTimeWatched": 73.63,
+     "averageTimeWatched": 5.94,
+     "likes": 1
     }
    ]
   },
@@ -15311,6 +15740,19 @@
      "reach": 22,
      "totalTimeWatched": 1.8,
      "averageTimeWatched": 4.5,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 26,
+     "shares": 0,
+     "reach": 22,
+     "totalTimeWatched": 1.83,
+     "averageTimeWatched": 4.58,
      "likes": 0
     }
    ]
@@ -15460,6 +15902,19 @@
      "totalTimeWatched": 3.68,
      "averageTimeWatched": 6.5,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 36,
+     "shares": 0,
+     "reach": 32,
+     "totalTimeWatched": 3.97,
+     "averageTimeWatched": 6.8,
+     "likes": 0
     }
    ]
   },
@@ -15594,6 +16049,19 @@
      "reach": 24,
      "totalTimeWatched": 1.7,
      "averageTimeWatched": 3.8,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 27,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 1.63,
+     "averageTimeWatched": 3.63,
      "likes": 0
     }
    ]
@@ -15730,6 +16198,19 @@
      "totalTimeWatched": 2.75,
      "averageTimeWatched": 5.7,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 29,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 2.72,
+     "averageTimeWatched": 5.62,
+     "likes": 0
     }
    ]
   },
@@ -15864,6 +16345,19 @@
      "reach": 21,
      "totalTimeWatched": 1.15,
      "averageTimeWatched": 3.17,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 23,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 1.13,
+     "averageTimeWatched": 3.09,
      "likes": 0
     }
    ]
@@ -16000,6 +16494,19 @@
      "totalTimeWatched": 4.83,
      "averageTimeWatched": 6.92,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 42,
+     "shares": 0,
+     "reach": 30,
+     "totalTimeWatched": 4.68,
+     "averageTimeWatched": 6.53,
+     "likes": 0
     }
    ]
   },
@@ -16126,6 +16633,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 25,
+     "shares": 0,
+     "reach": 19,
+     "totalTimeWatched": 1.75,
+     "averageTimeWatched": 4.05,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -16270,6 +16790,19 @@
      "totalTimeWatched": 1.67,
      "averageTimeWatched": 3.24,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 31,
+     "shares": 0,
+     "reach": 19,
+     "totalTimeWatched": 1.67,
+     "averageTimeWatched": 3.24,
+     "likes": 0
     }
    ]
   },
@@ -16396,6 +16929,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 22,
+     "shares": 0,
+     "reach": 17,
+     "totalTimeWatched": 1.57,
+     "averageTimeWatched": 4.12,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -16540,6 +17086,19 @@
      "totalTimeWatched": 0.38,
      "averageTimeWatched": 1.37,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 18,
+     "shares": 0,
+     "reach": 15,
+     "totalTimeWatched": 0.38,
+     "averageTimeWatched": 1.37,
+     "likes": 0
     }
    ]
   },
@@ -16662,6 +17221,19 @@
      "totalTimeWatched": 1.47,
      "averageTimeWatched": 2.38,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 32,
+     "shares": 0,
+     "reach": 22,
+     "totalTimeWatched": 1.47,
+     "averageTimeWatched": 2.38,
+     "likes": 0
     }
    ]
   },
@@ -16775,6 +17347,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 19,
+     "shares": 0,
+     "reach": 13,
+     "totalTimeWatched": 0.6,
+     "averageTimeWatched": 2.04,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -16906,6 +17491,19 @@
      "totalTimeWatched": 2.25,
      "averageTimeWatched": 3.01,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 41,
+     "shares": 0,
+     "reach": 29,
+     "totalTimeWatched": 2.25,
+     "averageTimeWatched": 3.01,
+     "likes": 0
     }
    ]
   },
@@ -17028,6 +17626,19 @@
      "totalTimeWatched": 0.1,
      "averageTimeWatched": 1.72,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 4,
+     "shares": 0,
+     "reach": 4,
+     "totalTimeWatched": 0.1,
+     "averageTimeWatched": 1.72,
+     "likes": 0
     }
    ]
   },
@@ -17128,6 +17739,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.053Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 22,
+     "shares": 0,
+     "reach": 18,
+     "totalTimeWatched": 0.75,
+     "averageTimeWatched": 1.83,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -17246,6 +17870,19 @@
      "totalTimeWatched": 1.03,
      "averageTimeWatched": 2.7,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.732Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 21,
+     "shares": 0,
+     "reach": 19,
+     "totalTimeWatched": 1.03,
+     "averageTimeWatched": 2.7,
+     "likes": 0
     }
    ]
   },
@@ -17346,6 +17983,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 26,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 1.02,
+     "averageTimeWatched": 2.05,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -17464,6 +18114,19 @@
      "totalTimeWatched": 1.83,
      "averageTimeWatched": 4.44,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 24,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 1.83,
+     "averageTimeWatched": 4.44,
+     "likes": 0
     }
    ]
   },
@@ -17564,6 +18227,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 23,
+     "shares": 0,
+     "reach": 18,
+     "totalTimeWatched": 0.55,
+     "averageTimeWatched": 1.41,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -17682,6 +18358,19 @@
      "totalTimeWatched": 2.83,
      "averageTimeWatched": 5.01,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 34,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 2.83,
+     "averageTimeWatched": 5.01,
+     "likes": 0
     }
    ]
   },
@@ -17780,6 +18469,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 99,
+     "shares": 0,
+     "reach": 90,
+     "totalTimeWatched": 11.8,
+     "averageTimeWatched": 6.95,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -17896,6 +18598,19 @@
      "totalTimeWatched": 0.65,
      "averageTimeWatched": 1.7,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 23,
+     "shares": 0,
+     "reach": 14,
+     "totalTimeWatched": 0.65,
+     "averageTimeWatched": 1.7,
+     "likes": 0
     }
    ]
   },
@@ -17994,6 +18709,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 23,
+     "shares": 0,
+     "reach": 15,
+     "totalTimeWatched": 1.52,
+     "averageTimeWatched": 4,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -18110,6 +18838,19 @@
      "totalTimeWatched": 1.98,
      "averageTimeWatched": 3.98,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 31,
+     "shares": 0,
+     "reach": 19,
+     "totalTimeWatched": 1.98,
+     "averageTimeWatched": 3.98,
+     "likes": 0
     }
    ]
   },
@@ -18203,6 +18944,19 @@
      "reach": 19,
      "totalTimeWatched": 2.52,
      "averageTimeWatched": 5.61,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 29,
+     "shares": 0,
+     "reach": 19,
+     "totalTimeWatched": 2.87,
+     "averageTimeWatched": 5.94,
      "likes": 0
     }
    ]
@@ -18298,6 +19052,19 @@
      "totalTimeWatched": 2.57,
      "averageTimeWatched": 4.41,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 2.86,
+     "views": 35,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 2.57,
+     "averageTimeWatched": 4.3,
+     "likes": 1
     }
    ]
   },
@@ -18392,6 +19159,19 @@
      "totalTimeWatched": 3.2,
      "averageTimeWatched": 4.93,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T07:47:21.731Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 3.03,
+     "views": 33,
+     "shares": 0,
+     "reach": 29,
+     "totalTimeWatched": 3.2,
+     "averageTimeWatched": 4.93,
+     "likes": 1
     }
    ]
   },
@@ -18477,6 +19257,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.72,
+     "views": 139,
+     "shares": 0,
+     "reach": 127,
+     "totalTimeWatched": 15.43,
+     "averageTimeWatched": 6.48,
+     "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.995Z",
      "reactions": 1,
      "comments": 0,
      "engagementRate": 0.72,
@@ -18582,6 +19375,19 @@
      "totalTimeWatched": 2.43,
      "averageTimeWatched": 4.71,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.813Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 30,
+     "shares": 0,
+     "reach": 26,
+     "totalTimeWatched": 2.43,
+     "averageTimeWatched": 4.71,
+     "likes": 0
     }
    ]
   },
@@ -18656,6 +19462,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 103,
+     "shares": 0,
+     "reach": 83,
+     "totalTimeWatched": 9.2,
+     "averageTimeWatched": 5.07,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.981Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -18748,6 +19567,19 @@
      "totalTimeWatched": 1.3,
      "averageTimeWatched": 2.52,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.817Z",
+     "reactions": 0,
+     "comments": 1,
+     "engagementRate": 3.45,
+     "views": 29,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 1.3,
+     "averageTimeWatched": 2.52,
+     "likes": 0
     }
    ]
   },
@@ -18822,6 +19654,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 32,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 3,
+     "averageTimeWatched": 5.16,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.988Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -18914,6 +19759,19 @@
      "totalTimeWatched": 1.3,
      "averageTimeWatched": 3.12,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.789Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 26,
+     "shares": 0,
+     "reach": 19,
+     "totalTimeWatched": 1.3,
+     "averageTimeWatched": 3.12,
+     "likes": 0
     }
    ]
   },
@@ -18988,6 +19846,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 67,
+     "shares": 0,
+     "reach": 55,
+     "totalTimeWatched": 7.58,
+     "averageTimeWatched": 6.6,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.913Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -19080,6 +19951,19 @@
      "totalTimeWatched": 31.57,
      "averageTimeWatched": 6.69,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.941Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.36,
+     "views": 276,
+     "shares": 0,
+     "reach": 238,
+     "totalTimeWatched": 31.57,
+     "averageTimeWatched": 6.69,
+     "likes": 1
     }
    ]
   },
@@ -19163,6 +20047,19 @@
      "totalTimeWatched": 15.77,
      "averageTimeWatched": 6.19,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.806Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.66,
+     "views": 151,
+     "shares": 0,
+     "reach": 124,
+     "totalTimeWatched": 15.77,
+     "averageTimeWatched": 6.19,
+     "likes": 1
     }
    ]
   },
@@ -19224,6 +20121,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 28,
+     "shares": 0,
+     "reach": 18,
+     "totalTimeWatched": 1.07,
+     "averageTimeWatched": 2.1,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.977Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -19303,6 +20213,19 @@
      "totalTimeWatched": 0.63,
      "averageTimeWatched": 1.46,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.986Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 26,
+     "shares": 0,
+     "reach": 18,
+     "totalTimeWatched": 0.63,
+     "averageTimeWatched": 1.46,
+     "likes": 0
     }
    ]
   },
@@ -19364,6 +20287,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 38,
+     "shares": 0,
+     "reach": 26,
+     "totalTimeWatched": 2.27,
+     "averageTimeWatched": 3.49,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.971Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -19443,6 +20379,19 @@
      "totalTimeWatched": 6.63,
      "averageTimeWatched": 8.48,
      "likes": 3
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:05.033Z",
+     "reactions": 3,
+     "comments": 1,
+     "engagementRate": 8.7,
+     "views": 46,
+     "shares": 0,
+     "reach": 26,
+     "totalTimeWatched": 6.63,
+     "averageTimeWatched": 8.48,
+     "likes": 3
     }
    ]
   },
@@ -19504,6 +20453,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 250,
+     "shares": 0,
+     "reach": 218,
+     "totalTimeWatched": 22.6,
+     "averageTimeWatched": 5.24,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.973Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -19583,6 +20545,19 @@
      "totalTimeWatched": 1.47,
      "averageTimeWatched": 3.54,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.938Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 24,
+     "shares": 0,
+     "reach": 18,
+     "totalTimeWatched": 1.47,
+     "averageTimeWatched": 3.54,
+     "likes": 0
     }
    ]
   },
@@ -19644,6 +20619,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 1,
+     "engagementRate": 3.57,
+     "views": 28,
+     "shares": 0,
+     "reach": 18,
+     "totalTimeWatched": 2.65,
+     "averageTimeWatched": 5.51,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.856Z",
      "reactions": 0,
      "comments": 1,
      "engagementRate": 3.57,
@@ -19723,6 +20711,19 @@
      "totalTimeWatched": 2.37,
      "averageTimeWatched": 5.94,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.895Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 24,
+     "shares": 0,
+     "reach": 17,
+     "totalTimeWatched": 2.37,
+     "averageTimeWatched": 5.94,
+     "likes": 0
     }
    ]
   },
@@ -19771,6 +20772,19 @@
     {
      "at": "2026-11-03T15:28+00:00",
      "metrics_updated": "2026-11-03T08:46:30.052Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 36,
+     "shares": 0,
+     "reach": 22,
+     "totalTimeWatched": 2.83,
+     "averageTimeWatched": 4.74,
+     "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.991Z",
      "reactions": 0,
      "comments": 0,
      "engagementRate": 0,
@@ -19837,6 +20851,19 @@
      "totalTimeWatched": 3.28,
      "averageTimeWatched": 6.18,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.840Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 30,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 3.28,
+     "averageTimeWatched": 6.18,
+     "likes": 0
     }
    ]
   },
@@ -19894,6 +20921,19 @@
      "totalTimeWatched": 3.32,
      "averageTimeWatched": 5.4,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.844Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 37,
+     "shares": 0,
+     "reach": 25,
+     "totalTimeWatched": 3.32,
+     "averageTimeWatched": 5.4,
+     "likes": 0
     }
    ]
   },
@@ -19907,8 +20947,8 @@
    "seed": 91708332057,
    "format": "v2",
    "length": 18.6,
-   "link": "https://tiktok.com/@5lmvill/video/7702878445214272800",
-   "caption": "Poland 🇵🇱 vs Indonesia 🇮🇩 in the escape rings. Who gets out first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7702878445214272800?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Poland 🇵🇱 vs Indonesia 🇮🇩 in the escape rings. Who gets out first? Round of 16 of Escape Cup 3 🏆 Nigeria vs Switzerland ",
    "loop": {
     "escape-cup-hook_text-1": "control"
    },
@@ -19951,6 +20991,19 @@
      "totalTimeWatched": 2.55,
      "averageTimeWatched": 4.67,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.824Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 32,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 2.55,
+     "averageTimeWatched": 4.67,
+     "likes": 0
     }
    ]
   },
@@ -19964,8 +21017,8 @@
    "seed": 186255690020,
    "format": "v2",
    "length": 18.5,
-   "link": "https://tiktok.com/@5lmvill/video/7703109916650638625",
-   "caption": "Country ball escape - Nigeria 🇳🇬 vs Switzerland 🇨🇭",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703109916650638625?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Nigeria 🇳🇬 vs Switzerland 🇨🇭 Escape Cup 3, Round of 16 Next up: Ireland vs Morocco - who's your pi",
    "loop": {
     "escape-cup-hook_text-1": "variant"
    },
@@ -20008,6 +21061,19 @@
      "totalTimeWatched": 1.67,
      "averageTimeWatched": 4.39,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.848Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 23,
+     "shares": 0,
+     "reach": 16,
+     "totalTimeWatched": 1.7,
+     "averageTimeWatched": 4.26,
+     "likes": 0
     }
    ]
   },
@@ -20021,8 +21087,8 @@
    "seed": 104483079060,
    "format": "v2",
    "length": 19.4,
-   "link": "https://tiktok.com/@5lmvill/video/7703133005220482337",
-   "caption": "Ireland 🇮🇪 vs Morocco 🇲🇦 - which country escapes the rings first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703133005220482337?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Ireland 🇮🇪 vs Morocco 🇲🇦 - which country escapes the rings first? Round of 16 of Escape Cup 3 🏆 Philippines vs Italy is ",
    "loop": {
     "escape-cup-hook_text-1": "control"
    },
@@ -20065,6 +21131,19 @@
      "totalTimeWatched": 4.27,
      "averageTimeWatched": 6.1,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.899Z",
+     "reactions": 1,
+     "comments": 1,
+     "engagementRate": 4.65,
+     "views": 43,
+     "shares": 0,
+     "reach": 28,
+     "totalTimeWatched": 4.3,
+     "averageTimeWatched": 5.87,
+     "likes": 1
     }
    ]
   },
@@ -20078,8 +21157,8 @@
    "seed": 67854259045,
    "format": "v2",
    "length": 21.5,
-   "link": "https://tiktok.com/@5lmvill/video/7703156347025542432",
-   "caption": "Philippines 🇵🇭 vs Italy 🇮🇹 in the escape rings. Who gets out first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703156347025542432?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Philippines 🇵🇭 vs Italy 🇮🇹 in the escape rings. Who gets out first? Round of 16 · Escape Cup 3 Next up: Spain vs Senegal",
    "loop": {
     "escape-cup-hook_text-1": "variant"
    },
@@ -20122,6 +21201,19 @@
      "totalTimeWatched": 0.75,
      "averageTimeWatched": 2.38,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.802Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 19,
+     "shares": 0,
+     "reach": 14,
+     "totalTimeWatched": 0.78,
+     "averageTimeWatched": 2.26,
+     "likes": 0
     }
    ]
   },
@@ -20135,8 +21227,8 @@
    "seed": 55986810014,
    "format": "v2",
    "length": 26.2,
-   "link": "https://tiktok.com/@5lmvill/video/7703179488573525281",
-   "caption": "Which country escapes first? Spain 🇪🇸 vs Senegal 🇸🇳 ball escape",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703179488573525281?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Which country escapes first? Spain 🇪🇸 vs Senegal 🇸🇳 ball escape Quarter-final of Escape Cup 3 🏆 France vs Canada is next",
    "loop": {
     "escape-cup-hook_text-1": "control"
    },
@@ -20179,6 +21271,19 @@
      "totalTimeWatched": 2.6,
      "averageTimeWatched": 4.76,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.907Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 33,
+     "shares": 0,
+     "reach": 23,
+     "totalTimeWatched": 2.63,
+     "averageTimeWatched": 4.53,
+     "likes": 0
     }
    ]
   },
@@ -20192,8 +21297,8 @@
    "seed": 96049135025,
    "format": "v2",
    "length": 29.0,
-   "link": "https://tiktok.com/@5lmvill/video/7703202925912378656",
-   "caption": "France 🇫🇷 vs Canada 🇨🇦 - which country escapes the rings first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703202925912378656?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "France 🇫🇷 vs Canada 🇨🇦 - which country escapes the rings first? Escape Cup 3, Quarter-final Next up: Poland vs Nigeria -",
    "loop": {
     "escape-cup-hook_text-1": "variant"
    },
@@ -20223,6 +21328,19 @@
      "totalTimeWatched": 3.1,
      "averageTimeWatched": 6.02,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.878Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 30,
+     "shares": 0,
+     "reach": 20,
+     "totalTimeWatched": 3.72,
+     "averageTimeWatched": 6.78,
+     "likes": 0
     }
    ]
   },
@@ -20236,8 +21354,8 @@
    "seed": 252235946012,
    "format": "v2",
    "length": 24.8,
-   "link": "https://tiktok.com/@5lmvill/video/7703225856704941344",
-   "caption": "Country ball escape - Poland 🇵🇱 vs Nigeria 🇳🇬",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703225856704941344?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Poland 🇵🇱 vs Nigeria 🇳🇬 Quarter-final of Escape Cup 3 🏆 Coming next: Ireland vs Philippines. Who t",
    "loop": {
     "escape-cup-hook_text-1": "control"
    },
@@ -20267,6 +21385,19 @@
      "totalTimeWatched": 1.32,
      "averageTimeWatched": 2.72,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.932Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 34,
+     "shares": 0,
+     "reach": 20,
+     "totalTimeWatched": 1.62,
+     "averageTimeWatched": 2.88,
+     "likes": 0
     }
    ]
   },
@@ -20280,8 +21411,8 @@
    "seed": 69331046042,
    "format": "v2",
    "length": 18.9,
-   "link": "https://tiktok.com/@5lmvill/video/7703249319691898144",
-   "caption": "Ireland 🇮🇪 or Philippines 🇵🇭? Physics decides which country breaks out first",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703249319691898144?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Ireland 🇮🇪 or Philippines 🇵🇭? Physics decides which country breaks out first Quarter-final of Escape Cup 3 🏆 Next up: Se",
    "loop": {
     "escape-cup-hook_text-1": "variant"
    },
@@ -20311,6 +21442,19 @@
      "totalTimeWatched": 6.57,
      "averageTimeWatched": 8.58,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.863Z",
+     "reactions": 0,
+     "comments": 1,
+     "engagementRate": 1.82,
+     "views": 55,
+     "shares": 0,
+     "reach": 28,
+     "totalTimeWatched": 7.25,
+     "averageTimeWatched": 7.91,
+     "likes": 0
     }
    ]
   },
@@ -20324,8 +21468,8 @@
    "seed": 237163514034,
    "format": "v2",
    "length": 19.7,
-   "link": "https://tiktok.com/@5lmvill/video/7703481187406187809",
-   "caption": "Country ball escape - Senegal 🇸🇳 vs Canada 🇨🇦",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703481187406187809?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Senegal 🇸🇳 vs Canada 🇨🇦 Semi-final · Escape Cup 3 Nigeria vs Ireland is next - who are you backing",
    "loop": {
     "escape-cup-hook_text-1": "control"
    },
@@ -20355,6 +21499,19 @@
      "totalTimeWatched": 1.68,
      "averageTimeWatched": 3.49,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.860Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 37,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 2.95,
+     "averageTimeWatched": 4.67,
+     "likes": 0
     }
    ]
   },
@@ -20368,8 +21525,8 @@
    "seed": 78650001032,
    "format": "v2",
    "length": 20.6,
-   "link": "https://tiktok.com/@5lmvill/video/7703504120572857632",
-   "caption": "Nigeria 🇳🇬 or Ireland 🇮🇪? Physics decides which country breaks out first",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703504120572857632?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Nigeria 🇳🇬 or Ireland 🇮🇪? Physics decides which country breaks out first Semi-final · Escape Cup 3 Canada vs Ireland is ",
    "loop": {
     "escape-cup-hook_text-1": "variant"
    },
@@ -20399,6 +21556,19 @@
      "totalTimeWatched": 6,
      "averageTimeWatched": 10,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.882Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 2.08,
+     "views": 48,
+     "shares": 0,
+     "reach": 24,
+     "totalTimeWatched": 7.5,
+     "averageTimeWatched": 9.38,
+     "likes": 1
     }
    ]
   },
@@ -20412,8 +21582,8 @@
    "seed": 250693597009,
    "format": "v2",
    "length": 29.4,
-   "link": "https://tiktok.com/@5lmvill/video/7703527472339438880",
-   "caption": "Escape Cup final: Canada 🇨🇦 vs Ireland 🇮🇪. Physics simulation decides it 🏆",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703527472339438880?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Escape Cup final: Canada 🇨🇦 vs Ireland 🇮🇪. Physics simulation decides it 🏆 Escape Cup 3 Escape Cup 4 starts with a new d",
    "loop": {
     "escape-cup-hook_text-1": "control"
    },
@@ -20430,6 +21600,19 @@
      "totalTimeWatched": 9.88,
      "averageTimeWatched": 13.18,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:05.001Z",
+     "reactions": 1,
+     "comments": 1,
+     "engagementRate": 3.51,
+     "views": 57,
+     "shares": 0,
+     "reach": 26,
+     "totalTimeWatched": 12.27,
+     "averageTimeWatched": 12.48,
+     "likes": 1
     }
    ]
   },
@@ -20443,8 +21626,8 @@
    "seed": 14038442052,
    "format": "v2",
    "length": 22.5,
-   "link": "https://tiktok.com/@5lmvill/video/7703550635773398304",
-   "caption": "Country ball escape - Japan 🇯🇵 vs Philippines 🇵🇭",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703550635773398304?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Japan 🇯🇵 vs Philippines 🇵🇭 Escape Cup 4, Round of 32 Italy vs Mexico is next - who are you backing",
    "loop": {
     "escape-cup-hook_text-1": "variant"
    },
@@ -20461,6 +21644,19 @@
      "totalTimeWatched": 0.58,
      "averageTimeWatched": 1.53,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.869Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 32,
+     "shares": 0,
+     "reach": 16,
+     "totalTimeWatched": 1.5,
+     "averageTimeWatched": 3.02,
+     "likes": 0
     }
    ]
   },
@@ -20474,8 +21670,8 @@
    "seed": 243583240028,
    "format": "v2",
    "length": 19.2,
-   "link": "https://tiktok.com/@5lmvill/video/7703576468592315680",
-   "caption": "Which country escapes first? Italy 🇮🇹 vs Mexico 🇲🇽 ball escape",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703576468592315680?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Which country escapes first? Italy 🇮🇹 vs Mexico 🇲🇽 ball escape Escape Cup 4, Round of 32 Scotland vs France is next - wh",
    "loop": {
     "escape-cup-hook_text-1": "control"
    },
@@ -20492,6 +21688,19 @@
      "totalTimeWatched": 1.23,
      "averageTimeWatched": 2.27,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.794Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 2.56,
+     "views": 39,
+     "shares": 0,
+     "reach": 21,
+     "totalTimeWatched": 2.5,
+     "averageTimeWatched": 3.76,
+     "likes": 1
     }
    ]
   },
@@ -20505,8 +21714,8 @@
    "seed": 173727515050,
    "format": "v2",
    "length": 26.5,
-   "link": "https://tiktok.com/@5lmvill/video/7703598478492028192",
-   "caption": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs France 🇫🇷 - which country escapes the rings first?",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703598478492028192?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs France 🇫🇷 - which country escapes the rings first? Escape Cup 4, Round of 32 Portugal vs Croatia is ",
    "loop": {
     "escape-cup-hook_text-1": "variant"
    },
@@ -20523,6 +21732,19 @@
      "totalTimeWatched": 5.07,
      "averageTimeWatched": 5.74,
      "likes": 1
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.998Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 1.32,
+     "views": 76,
+     "shares": 0,
+     "reach": 27,
+     "totalTimeWatched": 8,
+     "averageTimeWatched": 6.17,
+     "likes": 1
     }
    ]
   },
@@ -20536,8 +21758,8 @@
    "seed": 39244779019,
    "format": "v2",
    "length": 22.6,
-   "link": "https://tiktok.com/@5lmvill/video/7703622478639189281",
-   "caption": "Ball escape simulation: Portugal 🇵🇹 vs Croatia 🇭🇷",
+   "link": "https://www.tiktok.com/@5lmvill/video/7703622478639189281?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Ball escape simulation: Portugal 🇵🇹 vs Croatia 🇭🇷 Round of 32 · Escape Cup 4 Coming next: Nigeria vs Poland. Who takes i",
    "loop": {
     "escape-cup-hook_text-1": "control"
    },
@@ -20554,6 +21776,112 @@
      "totalTimeWatched": 4.68,
      "averageTimeWatched": 5.31,
      "likes": 0
+    },
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.739Z",
+     "reactions": 1,
+     "comments": 0,
+     "engagementRate": 0.95,
+     "views": 105,
+     "shares": 0,
+     "reach": 25,
+     "totalTimeWatched": 17.33,
+     "averageTimeWatched": 9.37,
+     "likes": 1
+    }
+   ]
+  },
+  "6ae90477d0e732df448e92da": {
+   "match": "ng v pl",
+   "variant": "cup",
+   "edition": 4,
+   "round": 0,
+   "due": "2026-11-03T09:00:00+00:00",
+   "theme": "ocean",
+   "seed": 108723353018,
+   "format": "v2",
+   "length": 18.4,
+   "link": "https://www.tiktok.com/@5lmvill/video/7703867554292305184?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Nigeria 🇳🇬 vs Poland 🇵🇱: 12 rings, one way out. Physics simulation Escape Cup 4, Round of 32 Coming next: Uruguay vs Ire",
+   "loop": {
+    "escape-cup-hook_text-1": "variant"
+   },
+   "snapshots": [
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.810Z",
+     "reactions": 0,
+     "comments": 0,
+     "engagementRate": 0,
+     "views": 157,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 21.08,
+     "averageTimeWatched": 7.91,
+     "likes": 0
+    }
+   ]
+  },
+  "6ae9050b8d258062778dc6c5": {
+   "match": "uy v ie",
+   "variant": "cup",
+   "edition": 4,
+   "round": 0,
+   "due": "2026-11-03T12:30:00+00:00",
+   "theme": "sunset",
+   "seed": 136452520183,
+   "format": "v2",
+   "length": 18.0,
+   "link": "https://www.tiktok.com/@5lmvill/video/7703921679742799136?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Uruguay 🇺🇾 vs Ireland 🇮🇪 Round of 32 of Escape Cup 4 🏆 Morocco vs Ukraine is next - who are you ba",
+   "loop": {
+    "escape-cup-hook_text-1": "control"
+   },
+   "snapshots": [
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.885Z",
+     "reactions": 23,
+     "comments": 12,
+     "engagementRate": 0.9,
+     "views": 4010,
+     "shares": 1,
+     "reach": 0,
+     "totalTimeWatched": 648.42,
+     "averageTimeWatched": 9.45,
+     "likes": 23
+    }
+   ]
+  },
+  "6ae9057aa49200278eb94432": {
+   "match": "ma v ua",
+   "variant": "cup",
+   "edition": 4,
+   "round": 0,
+   "due": "2026-11-03T16:30:00+00:00",
+   "theme": "forest",
+   "seed": 155391543072,
+   "format": "v2",
+   "length": 16.8,
+   "link": "https://www.tiktok.com/@5lmvill/video/7703983945406303521?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+   "caption": "Country ball escape - Morocco 🇲🇦 vs Ukraine 🇺🇦 Round of 32 of Escape Cup 4 🏆 Next up: South Korea vs Turkey - who's your",
+   "loop": {
+    "escape-cup-hook_text-1": "variant"
+   },
+   "snapshots": [
+    {
+     "at": "2026-11-04T15:45+00:00",
+     "metrics_updated": "2026-11-04T15:17:04.903Z",
+     "reactions": 5,
+     "comments": 1,
+     "engagementRate": 0.75,
+     "views": 805,
+     "shares": 0,
+     "reach": 0,
+     "totalTimeWatched": 105.68,
+     "averageTimeWatched": 7.72,
+     "likes": 5
     }
    ]
   }
@@ -20678,6 +22006,12 @@
    "followers": 30,
    "likes": 435,
    "videos": 132
+  },
+  {
+   "at": "2026-11-04T15:45+00:00",
+   "followers": 39,
+   "likes": 470,
+   "videos": 135
   }
  ]
 }
