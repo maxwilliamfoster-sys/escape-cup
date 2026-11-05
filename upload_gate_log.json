@@ -3995,6 +3995,78 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-05T17:23:35+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m13_185634872045.mp4",
+   "sha256": "340e1f6484763d6e40658438676ba2c1d95fd2ab220424a57797dae43e7e756c",
+   "head": "Indonesia 🇮🇩 vs Germany 🇩🇪 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.52,
+   "report": {
+    "seconds": 24.62,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4165,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-05T17:25:44+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r0_m14_239818980102.mp4",
+   "sha256": "322e713bb2df17935ea7bff1bc44f8aef56c72ed22a851f78eeb11dfa7c7c452",
+   "head": "Brazil 🇧🇷 vs Netherlands 🇳🇱 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.803,
+   "report": {
+    "seconds": 27.8,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4158,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
