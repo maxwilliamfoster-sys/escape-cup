@@ -4136,6 +4136,80 @@
     "quota": true,
     "reason": "quota"
    }
+  },
+  {
+   "checked_at": "2026-11-06T23:07:15+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r1_m00_178697027062.mp4",
+   "sha256": "39506d073eff732ff86e1300e3d7122bef10298a272d3f50c7668e6194a3af40",
+   "head": "Ball escape simulation: Japan 🇯🇵 vs Italy 🇮🇹",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.821,
+   "report": {
+    "seconds": 25.57,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4144,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-06T23:09:07+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r1_m01_58653633119.mp4",
+   "sha256": "9cf44c218f66dd334beab57e8518193361f7162a123cebe5b36580d654fb0025",
+   "head": "France 🇫🇷 vs Croatia 🇭🇷 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.807,
+   "report": {
+    "seconds": 23.72,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4165,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }

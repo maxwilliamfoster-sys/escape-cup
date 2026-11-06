@@ -151,11 +151,11 @@
    {
     "a": "jp",
     "b": "it",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "it",
+    "seed": 178697027062,
+    "melody": "ocean",
+    "posted": "2026-11-07T09:00:00+00:00",
+    "buffer_id": "6aee5de79214322f68b91258"
    },
    {
     "a": "fr",
@@ -223,7 +223,7 @@
   ],
   [
    {
-    "a": null,
+    "a": "it",
     "b": null,
     "winner": null,
     "seed": null,
@@ -295,7 +295,7 @@
   "ie": 2,
   "au": 1
  },
- "posts": 109,
+ "posts": 110,
  "log": [
   {
    "edition": 1,
@@ -4103,10 +4103,32 @@
    "a": "be",
    "b": "gb-eng",
    "link": "https://tiktok.com/@5lmvill/video/7705097132310662432"
+  },
+  {
+   "edition": 4,
+   "winner": "it",
+   "seed": 178697027062,
+   "theme": "ocean",
+   "due": "2026-11-07T09:00:00+00:00",
+   "buffer_id": "6aee5de79214322f68b91258",
+   "status": "scheduled",
+   "file": "ec04_r1_m00_178697027062.mp4",
+   "length": 25.6,
+   "loop": {
+    "escape-cup-hook_text-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "39506d073eff732ff86e1300e3d7122bef10298a272d3f50c7668e6194a3af40",
+    "checked_at": "2026-11-06T23:07:15+00:00"
+   },
+   "r": 1,
+   "m": 0,
+   "a": "jp",
+   "b": "it"
   }
  ],
  "recent_captions": [
-  "Which country escapes first? Canada 🇨🇦 vs Vietnam 🇻🇳 ball escape\nEscape Cup 3, Round of 32\nComing next: Scotland vs Poland. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #canada #vietnam",
   "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Poland 🇵🇱 - which country escapes the rings first?\nEscape Cup 3, Round of 32\nTurkey vs Indonesia is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #scotland #poland",
   "Turkey 🇹🇷 vs Indonesia 🇮🇩 in the escape rings. Who gets out first?\nEscape Cup 3, Round of 32\nNigeria vs Belgium is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #turkey #indonesia",
   "Ball escape simulation: Nigeria 🇳🇬 vs Belgium 🇧🇪\nRound of 32 · Escape Cup 3\nEgypt vs Switzerland is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #nigeria #belgium",
@@ -4145,9 +4167,9 @@
   "Australia 🇦🇺 vs Vietnam 🇻🇳: 12 rings, one way out. Physics simulation\nRound of 32 · Escape Cup 4\nNext up: Indonesia vs Germany - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #australia #vietnam",
   "Indonesia 🇮🇩 vs Germany 🇩🇪 - which country escapes the rings first?\nRound of 32 · Escape Cup 4\nBrazil vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #indonesia #germany",
   "Brazil 🇧🇷 vs Netherlands 🇳🇱 - which country escapes the rings first?\nEscape Cup 4, Round of 32\nNext up: Belgium vs England - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #brazil #netherlands",
-  "Ball escape simulation: Belgium 🇧🇪 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿\nEscape Cup 4, Round of 32\nComing next: Japan vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #belgium #england"
+  "Ball escape simulation: Belgium 🇧🇪 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿\nEscape Cup 4, Round of 32\nComing next: Japan vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #belgium #england",
+  "Ball escape simulation: Japan 🇯🇵 vs Italy 🇮🇹\nEscape Cup 4, Round of 16\nFrance vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #japan #italy"
  ],
  "seen_errors": [],
- "excluded_seeds": {},
- "orphans_alerted": []
+ "excluded_seeds": {}
 }
