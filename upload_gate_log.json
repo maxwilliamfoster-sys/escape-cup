@@ -4210,6 +4210,78 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-07T05:58:03+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r1_m01_58653633119.mp4",
+   "sha256": "fcc1223851023cbd78c5eacc9bb2684b0c3a68abfa6112bd5908237ab2ef59ea",
+   "head": "France 🇫🇷 vs Croatia 🇭🇷 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.721,
+   "report": {
+    "seconds": 23.72,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4177,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-07T06:01:46+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r1_m02_195329358045.mp4",
+   "sha256": "94346c29f6346b76e60ef02b2dabf9476d5bcfc6e1fb26cd2abb5c37d04d4c1c",
+   "head": "Which country escapes first? Poland 🇵🇱 vs Uruguay 🇺🇾 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.883,
+   "report": {
+    "seconds": 20.18,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4148,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }

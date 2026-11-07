@@ -160,20 +160,20 @@
    {
     "a": "fr",
     "b": "hr",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "fr",
+    "seed": 58653633119,
+    "melody": "sunset",
+    "posted": "2026-11-07T12:30:00+00:00",
+    "buffer_id": "6aeebe71229bf05daf2ef912"
    },
    {
     "a": "pl",
     "b": "uy",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "uy",
+    "seed": 195329358045,
+    "melody": "forest",
+    "posted": "2026-11-07T16:30:00+00:00",
+    "buffer_id": "6aeebf109214322f68d2b30b"
    },
    {
     "a": "ua",
@@ -224,7 +224,7 @@
   [
    {
     "a": "it",
-    "b": null,
+    "b": "fr",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -232,7 +232,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "uy",
     "b": null,
     "winner": null,
     "seed": null,
@@ -295,7 +295,7 @@
   "ie": 2,
   "au": 1
  },
- "posts": 110,
+ "posts": 112,
  "log": [
   {
    "edition": 1,
@@ -4126,11 +4126,55 @@
    "m": 0,
    "a": "jp",
    "b": "it"
+  },
+  {
+   "edition": 4,
+   "winner": "fr",
+   "seed": 58653633119,
+   "theme": "sunset",
+   "due": "2026-11-07T12:30:00+00:00",
+   "buffer_id": "6aeebe71229bf05daf2ef912",
+   "status": "scheduled",
+   "file": "ec04_r1_m01_58653633119.mp4",
+   "length": 23.7,
+   "loop": {
+    "escape-cup-hook_text-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "fcc1223851023cbd78c5eacc9bb2684b0c3a68abfa6112bd5908237ab2ef59ea",
+    "checked_at": "2026-11-07T05:58:03+00:00"
+   },
+   "r": 1,
+   "m": 1,
+   "a": "fr",
+   "b": "hr"
+  },
+  {
+   "edition": 4,
+   "winner": "uy",
+   "seed": 195329358045,
+   "theme": "forest",
+   "due": "2026-11-07T16:30:00+00:00",
+   "buffer_id": "6aeebf109214322f68d2b30b",
+   "status": "scheduled",
+   "file": "ec04_r1_m02_195329358045.mp4",
+   "length": 20.2,
+   "loop": {
+    "escape-cup-hook_text-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "94346c29f6346b76e60ef02b2dabf9476d5bcfc6e1fb26cd2abb5c37d04d4c1c",
+    "checked_at": "2026-11-07T06:01:46+00:00"
+   },
+   "r": 1,
+   "m": 2,
+   "a": "pl",
+   "b": "uy"
   }
  ],
  "recent_captions": [
-  "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Poland 🇵🇱 - which country escapes the rings first?\nEscape Cup 3, Round of 32\nTurkey vs Indonesia is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #scotland #poland",
-  "Turkey 🇹🇷 vs Indonesia 🇮🇩 in the escape rings. Who gets out first?\nEscape Cup 3, Round of 32\nNigeria vs Belgium is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #turkey #indonesia",
   "Ball escape simulation: Nigeria 🇳🇬 vs Belgium 🇧🇪\nRound of 32 · Escape Cup 3\nEgypt vs Switzerland is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #nigeria #belgium",
   "Country ball escape - Egypt 🇪🇬 vs Switzerland 🇨🇭\nRound of 32 of Escape Cup 3 🏆\nNext up: Colombia vs Ireland - who's your pick? 👇\n#ballescape #physicssimulation #simulation #egypt #switzerland",
   "Country ball escape - Colombia 🇨🇴 vs Ireland 🇮🇪\nEscape Cup 3, Round of 32\nNext up: Morocco vs Germany - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #colombia #ireland",
@@ -4168,8 +4212,14 @@
   "Indonesia 🇮🇩 vs Germany 🇩🇪 - which country escapes the rings first?\nRound of 32 · Escape Cup 4\nBrazil vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #indonesia #germany",
   "Brazil 🇧🇷 vs Netherlands 🇳🇱 - which country escapes the rings first?\nEscape Cup 4, Round of 32\nNext up: Belgium vs England - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #brazil #netherlands",
   "Ball escape simulation: Belgium 🇧🇪 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿\nEscape Cup 4, Round of 32\nComing next: Japan vs Italy. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #belgium #england",
-  "Ball escape simulation: Japan 🇯🇵 vs Italy 🇮🇹\nEscape Cup 4, Round of 16\nFrance vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #japan #italy"
+  "Ball escape simulation: Japan 🇯🇵 vs Italy 🇮🇹\nEscape Cup 4, Round of 16\nFrance vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #japan #italy",
+  "France 🇫🇷 vs Croatia 🇭🇷 in the escape rings. Who gets out first?\nRound of 16 of Escape Cup 4 🏆\nPoland vs Uruguay is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #france #croatia",
+  "Which country escapes first? Poland 🇵🇱 vs Uruguay 🇺🇾 ball escape\nRound of 16 · Escape Cup 4\nNext up: Ukraine vs South Korea - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #poland #uruguay"
  ],
  "seen_errors": [],
- "excluded_seeds": {}
+ "excluded_seeds": {
+  "4-1-2": [
+   195329358069
+  ]
+ }
 }
