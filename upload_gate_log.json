@@ -4354,6 +4354,43 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-08T00:35:25+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r1_m05_198671760023.mp4",
+   "sha256": "9885d210349b7008e9d70b857af5ed434822c6a5e8dfb5011564853d995eaa28",
+   "head": "Switzerland 🇨🇭 vs Colombia 🇨🇴 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.847,
+   "report": {
+    "seconds": 25.93,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4140,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
