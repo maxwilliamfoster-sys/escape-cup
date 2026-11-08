@@ -4391,6 +4391,78 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-08T17:55:58+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r1_m06_198241028170.mp4",
+   "sha256": "5b9ef80ca65b00d9bef1fedf4ab69396e7fa20f90b2fe373a687a24f30b0839a",
+   "head": "Australia 🇦🇺 or Germany 🇩🇪? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.587,
+   "report": {
+    "seconds": 18.55,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4160,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-08T17:57:19+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r1_m07_42116694184.mp4",
+   "sha256": "853ed7451dd618db1a64a27537b25b74e1f975495edfcae602d8f50a1983961d",
+   "head": "Which country escapes first? Netherlands 🇳🇱 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.84,
+   "report": {
+    "seconds": 17.65,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4159,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
