@@ -38,23 +38,40 @@
    "control": "Which country escapes first?",
    "variant": "Pick a country before it starts!",
    "start_date": "2026-10-28",
-   "status": "running",
+   "status": "reverted",
    "min_n": 10,
    "max_n": 20,
    "metric": "avg % watched at 72h",
    "control_metrics": {
-    "n": 18,
-    "median": 27.3135,
-    "views72": 40.2931
+    "n": 20,
+    "median": 29.4418,
+    "views72": 43.0898
    },
    "variant_metrics": {
-    "n": 19,
-    "median": 22.7004,
-    "views72": 36.0
+    "n": 20,
+    "median": 22.9476,
+    "views72": 36.2359
    },
-   "verdict": "keep running",
-   "last_judged": "2026-11-07",
-   "result": "escape-cup-hook_text-1 · avg % watched at 72h: KEEP RUNNING — treatment 0.83x control (22.7 vs 27.3; 90% CI 0.65–1.10, p=0.533), n=19 vs 18 (min 10, max 20)"
+   "verdict": "inconclusive at max n",
+   "last_judged": "2026-11-08",
+   "result": "escape-cup-hook_text-1 · avg % watched at 72h: INCONCLUSIVE AT MAX N — treatment 0.78x control (22.9 vs 29.4; 90% CI 0.66–1.09, p=0.441), n=20 vs 20 (min 10, max 20)",
+   "ended": "2026-11-08"
+  },
+  {
+   "id": "escape-cup-pacing-1",
+   "channel": "escape-cup",
+   "lever": "pacing",
+   "kind": "hook style",
+   "hypothesis": "A first ring inside ~1s and no lull over 4.5s (vs 2s / 6s) removes the early dead moments where viewers swipe.",
+   "control": "normal",
+   "variant": "fast",
+   "start_date": "2026-11-08",
+   "status": "running",
+   "min_n": 10,
+   "max_n": 20,
+   "metric": "avg % watched at 72h",
+   "control_metrics": {},
+   "variant_metrics": {}
   }
  ]
 }
