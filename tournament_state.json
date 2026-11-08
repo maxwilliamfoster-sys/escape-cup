@@ -225,11 +225,11 @@
    {
     "a": "it",
     "b": "fr",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "fr",
+    "seed": 156657573097,
+    "melody": "forest",
+    "posted": "2026-11-09T16:30:00+00:00",
+    "buffer_id": "6af0f1c19214322f687c7dfb"
    },
    {
     "a": "uy",
@@ -261,7 +261,7 @@
   ],
   [
    {
-    "a": null,
+    "a": "fr",
     "b": null,
     "winner": null,
     "seed": null,
@@ -295,7 +295,7 @@
   "ie": 2,
   "au": 1
  },
- "posts": 117,
+ "posts": 118,
  "log": [
   {
    "edition": 1,
@@ -4293,10 +4293,32 @@
    "m": 7,
    "a": "nl",
    "b": "gb-eng"
+  },
+  {
+   "edition": 4,
+   "winner": "fr",
+   "seed": 156657573097,
+   "theme": "forest",
+   "due": "2026-11-09T16:30:00+00:00",
+   "buffer_id": "6af0f1c19214322f687c7dfb",
+   "status": "scheduled",
+   "file": "ec04_r2_m00_156657573097.mp4",
+   "length": 17.8,
+   "loop": {
+    "escape-cup-pacing-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "50c7728b8503b3072a168b4acb06489e5d77ec74b6eb5f2e73754ed1e104929d",
+    "checked_at": "2026-11-08T22:02:42+00:00"
+   },
+   "r": 2,
+   "m": 0,
+   "a": "it",
+   "b": "fr"
   }
  ],
  "recent_captions": [
-  "Country ball escape - Italy 🇮🇹 vs USA 🇺🇸\nRound of 32 of Escape Cup 3 🏆\nNext up: Spain vs Brazil - who's your pick? 👇\n#ballescape #physicssimulation #simulation #italy #usa",
   "Spain 🇪🇸 vs Brazil 🇧🇷 in the escape rings. Who gets out first?\nEscape Cup 3, Round of 16\nNext up: Senegal vs Croatia - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #spain #brazil",
   "Ball escape simulation: Senegal 🇸🇳 vs Croatia 🇭🇷\nRound of 16 of Escape Cup 3 🏆\nNext up: France vs South Korea - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #senegal #croatia",
   "France 🇫🇷 or South Korea 🇰🇷? Physics decides which country breaks out first\nEscape Cup 3, Round of 16\nNext up: England vs Canada - who's your pick? 👇\n#ballescape #physicssimulation #simulation #france #southkorea",
@@ -4335,7 +4357,8 @@
   "Canada 🇨🇦 vs Argentina 🇦🇷 in the escape rings. Who gets out first?\nRound of 16 of Escape Cup 4 🏆\nNext up: Switzerland vs Colombia - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #canada #argentina",
   "Switzerland 🇨🇭 vs Colombia 🇨🇴 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 4\nComing next: Australia vs Germany. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #switzerland #colombia",
   "Australia 🇦🇺 or Germany 🇩🇪? Physics decides which country breaks out first\nRound of 16 · Escape Cup 4\nNext up: Netherlands vs England - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #australia #germany",
-  "Which country escapes first? Netherlands 🇳🇱 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 ball escape\nEscape Cup 4, Round of 16\nNext up: Italy vs France - who's your pick? 👇\n#ballescape #physicssimulation #simulation #netherlands #england"
+  "Which country escapes first? Netherlands 🇳🇱 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 ball escape\nEscape Cup 4, Round of 16\nNext up: Italy vs France - who's your pick? 👇\n#ballescape #physicssimulation #simulation #netherlands #england",
+  "Italy 🇮🇹 vs France 🇫🇷 - which country escapes the rings first?\nEscape Cup 4, Quarter-final\nNext up: Uruguay vs South Korea - who's your pick? 👇\n#ballescape #physicssimulation #simulation #italy #france"
  ],
  "seen_errors": [],
  "excluded_seeds": {}

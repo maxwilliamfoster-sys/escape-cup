@@ -4463,6 +4463,41 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-08T22:02:42+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r2_m00_156657573097.mp4",
+   "sha256": "50c7728b8503b3072a168b4acb06489e5d77ec74b6eb5f2e73754ed1e104929d",
+   "head": "Italy 🇮🇹 vs France 🇫🇷 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.815,
+   "report": {
+    "seconds": 17.75,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
