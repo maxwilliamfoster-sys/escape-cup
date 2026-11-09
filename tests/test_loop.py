@@ -178,7 +178,7 @@ class TestRenderSide(unittest.TestCase):
     def test_every_lever_value_is_one_apply_loop_knows(self):
         lev = el.load_json(os.path.join(ROOT, "levers.json"), {})
         known = {"format": {"cup", "royale"}, "pacing": {"normal", "fast"},
-                 "length": {"normal", "short"}}
+                 "length": {"normal", "short"}, "standings": {"off", "on"}}
         for l in lev["levers"]:
             vals = [l["control"]] + l["variants"]
             if l["lever"] == "hook_text":

@@ -70,6 +70,23 @@ class Info(unittest.TestCase):
         self.assertFalse(main.STANDINGS_TEST)
         self.assertEqual(main.standings_info(state({A: 1}), 16, A, B, A), {})
 
+    def test_the_loop_lever_switches_it_per_video(self):
+        # 2026-11-09: standings run as a loop lever (50/50 per post), not all-or-nothing
+        try:
+            main.apply_loop({"standings": "on"})
+            self.assertNotEqual(main.standings_info(state({A: 1}), 16, A, B, A), {})
+            main.apply_loop({"standings": "off"})
+            self.assertEqual(main.standings_info(state({A: 1}), 16, A, B, A), {})
+        finally:
+            main.apply_loop({})
+        self.assertEqual(main.standings_info(state({A: 1}), 16, A, B, A), {})
+
+    def test_standings_lever_is_queued_right_after_pacing(self):
+        import json, os
+        lev = json.load(open(os.path.join(os.path.dirname(main.__file__), "levers.json"), encoding="utf-8"))
+        names = [l["lever"] for l in lev["levers"]]
+        self.assertEqual(names.index("standings"), names.index("pacing") + 1)
+
     def test_during_a_match_the_titles_table_is_on_screen(self):
         info = self._on(state({A: 1, B: 2}), 16, C, CODES[4], C)
         self.assertEqual(info["standing"], f"TITLES: {NAME[B]} 2  ·  {NAME[A]} 1")

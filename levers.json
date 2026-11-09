@@ -14,6 +14,8 @@
    "hypothesis": "Asking viewers to commit to a country before the first ring breaks makes them stay to see it through, raising avg % watched."},
   {"lever": "pacing", "kind": "hook style", "control": "normal", "variants": ["fast"],
    "hypothesis": "A first ring inside ~1s and no lull over 4.5s (vs 2s / 6s) removes the early dead moments where viewers swipe."},
+  {"lever": "standings", "kind": "stakes", "control": "off", "variants": ["on"],
+   "hypothesis": "A visible titles table and an 'N wins from the trophy' line give each cup match a stake, raising avg % watched (review 2026-11-09)."},
   {"lever": "length", "kind": "length", "control": "normal", "variants": ["short"], "primary": "views72",
    "hypothesis": "Capping matches at 20s (royale 26s) gets more full watches and replays, which TikTok rewards with more views."}
  ]

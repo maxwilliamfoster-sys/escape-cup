@@ -233,11 +233,13 @@ def _caption_only(caption, fails, **fields):
 # Research test, 2026-11-03: Earclacks built seasons and characters, and our titles exist but viewers never see them. Cup videos
 # only (royales have their league). Off until the 2 Nov results are read on 9 Nov. Judge on follows and breakouts per 1,000 views.
 STANDINGS_TEST = os.environ.get("STANDINGS_TEST", "0") == "1"
+# 2026-11-09: run as the experiment loop's "standings" lever (off/on per post), set by apply_loop.
+STANDINGS_ON = False
 
 
 def standings_info(state, size, a, b, winner):
     """Extra on-screen lines for render_match: the titles table, and what the winner still needs."""
-    if not STANDINGS_TEST:
+    if not (STANDINGS_TEST or STANDINGS_ON):
         return {}
     champ = tournament.reigning(state)
     table = tournament.title_race(state)
@@ -492,6 +494,8 @@ def loop_for(slot, state):
 def apply_loop(vals):
     """Set the render/director knobs for one video, starting from the defaults
     every time (control and variant alternate within one run)."""
+    global STANDINGS_ON
+    STANDINGS_ON = vals.get("standings") == "on"
     d = LOOP_DEFAULTS
     royale = dict(d["royale"])
     render.HOOK_TEXT = vals.get("hook_text") or d["hook"]
