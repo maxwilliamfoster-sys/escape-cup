@@ -5,7 +5,7 @@ These rules come from `Projects/Content-Bots/growth-lab` (README, EXPERIMENT_TEM
 - Each arm needs at least 10 and at most 20 posts. At 15 per arm, watch % can detect a lift of about 1.19x; views would need about 2.1x.
 - Nothing live changes without the owner's yes.
 
-## A1: cup (1v1) vs Escape Royale (16 countries)           status: running
+## A1: cup (1v1) vs Escape Royale (16 countries)           status: ended - inconclusive, royale retired
 - Hypothesis: Giving viewers a stake (many countries at once, a league table, "comment your country") raises avg % watched compared with 1v1 matches between two random countries (growth-report-2026-10-08).
 - Variable: the format. Arms swap time slots daily (`main.arm_for`), so slot time is balanced.
 - Primary metric: median avg % watched at 72h. Guardrails: views@72h, likes per 1k.
@@ -34,3 +34,11 @@ Ball radius 22 -> 34, rings 16 -> 12 (`sim.py`): flags were white dots on a phon
 3. Fewer, bigger flags (a 3-flag rivalry) vs the 16-flag heat, if royale wins on stake but loses on readability.
 4. **Owner's call (sound):** the big accounts sync each break to a recognisable tune ("which song/anthem?" drives their comments). That only goes ahead as a *soft-sound* option that passes the existing audio gates (no sharp/high sounds; background music was rejected before).
 5. A loop ending that cuts straight into the next match's first frame.
+
+## Result 2026-11-09: the 3/day cut worked
+Since 2026-11-03 (3/day + flags r34 / 12 rings): median ~870 views@72h (n=10), 8-9 s avg watched, vs ~31 views at 7/day. Do not raise the rate.
+
+## Loop tests (experiment_loop, one at a time)
+- pacing normal vs fast: running since 2026-11-08 (avg % watched, 10-20 per arm).
+- standings off vs on: queued next (added 2026-11-09 on the owner's yes). Cup videos show a titles table and "N wins from the trophy". Was an all-or-nothing env switch (STANDINGS_TEST); now a per-post lever so it reads cleanly while the account recovers.
+- Next idea (not built): fill the empty bottom third of the frame.
