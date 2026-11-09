@@ -234,20 +234,20 @@
    {
     "a": "uy",
     "b": "kr",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "uy",
+    "seed": 68359233101,
+    "melody": "candy",
+    "posted": "2026-11-10T09:00:00+00:00",
+    "buffer_id": "6af224614edc9538ca00b2b1"
    },
    {
     "a": "ca",
     "b": "ch",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ca",
+    "seed": 166927981313,
+    "melody": "ember",
+    "posted": "2026-11-10T12:30:00+00:00",
+    "buffer_id": "6af224ca4edc9538ca00cd5e"
    },
    {
     "a": "au",
@@ -262,7 +262,7 @@
   [
    {
     "a": "fr",
-    "b": null,
+    "b": "uy",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -270,7 +270,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "ca",
     "b": null,
     "winner": null,
     "seed": null,
@@ -295,7 +295,7 @@
   "ie": 2,
   "au": 1
  },
- "posts": 118,
+ "posts": 120,
  "log": [
   {
    "edition": 1,
@@ -4255,7 +4255,7 @@
    "theme": "ocean",
    "due": "2026-11-09T09:00:00+00:00",
    "buffer_id": "6af0b7dc51492b796e5166d1",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec04_r1_m06_198241028170.mp4",
    "length": 18.6,
    "loop": {
@@ -4269,7 +4269,8 @@
    "r": 1,
    "m": 6,
    "a": "au",
-   "b": "de"
+   "b": "de",
+   "link": "https://tiktok.com/@5lmvill/video/7706094205898214689"
   },
   {
    "edition": 4,
@@ -4278,7 +4279,7 @@
    "theme": "sunset",
    "due": "2026-11-09T12:30:00+00:00",
    "buffer_id": "6af0b83d229bf05dafc78506",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec04_r1_m07_42116694184.mp4",
    "length": 17.6,
    "loop": {
@@ -4292,7 +4293,8 @@
    "r": 1,
    "m": 7,
    "a": "nl",
-   "b": "gb-eng"
+   "b": "gb-eng",
+   "link": "https://tiktok.com/@5lmvill/video/7706148264881458464"
   },
   {
    "edition": 4,
@@ -4301,7 +4303,7 @@
    "theme": "forest",
    "due": "2026-11-09T16:30:00+00:00",
    "buffer_id": "6af0f1c19214322f687c7dfb",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec04_r2_m00_156657573097.mp4",
    "length": 17.8,
    "loop": {
@@ -4315,12 +4317,57 @@
    "r": 2,
    "m": 0,
    "a": "it",
-   "b": "fr"
+   "b": "fr",
+   "link": "https://tiktok.com/@5lmvill/video/7706210301657533729"
+  },
+  {
+   "edition": 4,
+   "winner": "uy",
+   "seed": 68359233101,
+   "theme": "candy",
+   "due": "2026-11-10T09:00:00+00:00",
+   "buffer_id": "6af224614edc9538ca00b2b1",
+   "status": "scheduled",
+   "file": "ec04_r2_m01_68359233101.mp4",
+   "length": 25.0,
+   "loop": {
+    "escape-cup-pacing-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "d560178ba22d80f57b1fea44d37c7bc36fe561d57f307991c5f0af1bf5018e8e",
+    "checked_at": "2026-11-09T19:48:24+00:00"
+   },
+   "r": 2,
+   "m": 1,
+   "a": "uy",
+   "b": "kr"
+  },
+  {
+   "edition": 4,
+   "winner": "ca",
+   "seed": 166927981313,
+   "theme": "ember",
+   "due": "2026-11-10T12:30:00+00:00",
+   "buffer_id": "6af224ca4edc9538ca00cd5e",
+   "status": "scheduled",
+   "file": "ec04_r2_m02_166927981313.mp4",
+   "length": 17.3,
+   "loop": {
+    "escape-cup-pacing-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "70753eddff75c36f71eb02dc7c4903020f47f199de64815acb3aea5a97555608",
+    "checked_at": "2026-11-09T19:52:39+00:00"
+   },
+   "r": 2,
+   "m": 2,
+   "a": "ca",
+   "b": "ch"
   }
  ],
  "recent_captions": [
-  "Spain 🇪🇸 vs Brazil 🇧🇷 in the escape rings. Who gets out first?\nEscape Cup 3, Round of 16\nNext up: Senegal vs Croatia - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #spain #brazil",
-  "Ball escape simulation: Senegal 🇸🇳 vs Croatia 🇭🇷\nRound of 16 of Escape Cup 3 🏆\nNext up: France vs South Korea - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #senegal #croatia",
   "France 🇫🇷 or South Korea 🇰🇷? Physics decides which country breaks out first\nEscape Cup 3, Round of 16\nNext up: England vs Canada - who's your pick? 👇\n#ballescape #physicssimulation #simulation #france #southkorea",
   "Which country escapes first? England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Canada 🇨🇦 ball escape\nEscape Cup 3, Round of 16\nComing next: Poland vs Indonesia. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #england #canada",
   "Poland 🇵🇱 vs Indonesia 🇮🇩 in the escape rings. Who gets out first?\nRound of 16 of Escape Cup 3 🏆\nNigeria vs Switzerland is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #poland #indonesia",
@@ -4358,9 +4405,10 @@
   "Switzerland 🇨🇭 vs Colombia 🇨🇴 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 4\nComing next: Australia vs Germany. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #switzerland #colombia",
   "Australia 🇦🇺 or Germany 🇩🇪? Physics decides which country breaks out first\nRound of 16 · Escape Cup 4\nNext up: Netherlands vs England - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #australia #germany",
   "Which country escapes first? Netherlands 🇳🇱 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 ball escape\nEscape Cup 4, Round of 16\nNext up: Italy vs France - who's your pick? 👇\n#ballescape #physicssimulation #simulation #netherlands #england",
-  "Italy 🇮🇹 vs France 🇫🇷 - which country escapes the rings first?\nEscape Cup 4, Quarter-final\nNext up: Uruguay vs South Korea - who's your pick? 👇\n#ballescape #physicssimulation #simulation #italy #france"
+  "Italy 🇮🇹 vs France 🇫🇷 - which country escapes the rings first?\nEscape Cup 4, Quarter-final\nNext up: Uruguay vs South Korea - who's your pick? 👇\n#ballescape #physicssimulation #simulation #italy #france",
+  "Uruguay 🇺🇾 or South Korea 🇰🇷? Physics decides which country breaks out first\nEscape Cup 4, Quarter-final\nComing next: Canada vs Switzerland. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #uruguay #southkorea",
+  "Country ball escape - Canada 🇨🇦 vs Switzerland 🇨🇭\nQuarter-final · Escape Cup 4\nAustralia vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #canada #switzerland"
  ],
  "seen_errors": [],
- "excluded_seeds": {},
- "orphans_alerted": []
+ "excluded_seeds": {}
 }
