@@ -1,14 +1,13 @@
 {
- "updated": "2026-11-08 14:30 UTC",
+ "updated": "2026-11-09 17:48 UTC",
  "summary": {
-  "views": 20218,
-  "retention": 0.38676470588235295,
+  "views": 22479,
+  "retention": 0.4235849056603774,
   "swipe_away": null,
-  "posts": 25,
+  "posts": 18,
   "note": "views = latest totals of posts from the last 7 days; retention = median avg % watched; TikTok gives no swipe-away via Buffer"
  },
  "actions": [
-  "escape-cup: REVERTED hook_text to 'Which country escapes first?' (escape-cup-hook_text-1 · avg % watched at 72h: INCONCLUSIVE AT MAX N — treatment 0.78x control (22.9 vs 29.4; 90% CI 0.66–1.09, p=0.441), n=20 vs 20 (min 10, max 20))",
-  "escape-cup: STARTED escape-cup-pacing-1: pacing 'normal' -> 'fast' (A first ring inside ~1s and no lull over 4.5s (vs 2s / 6s) removes the early dead moments where viewers swipe.)"
+  "escape-cup: running escape-cup-pacing-1 (escape-cup-pacing-1 · avg % watched at 72h: KEEP RUNNING — n=0 vs 0 (min 10, max 20))"
  ]
 }
