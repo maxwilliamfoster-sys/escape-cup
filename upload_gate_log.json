@@ -4605,6 +4605,43 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-10T14:55:44+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r3_m00_185899840350.mp4",
+   "sha256": "cd2ebe7bd7d9e9096e2e26365a8dee46b02f63afe0ef040c226c6931937a6841",
+   "head": "France 🇫🇷 vs Uruguay 🇺🇾 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.852,
+   "report": {
+    "seconds": 26.67,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4157,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
