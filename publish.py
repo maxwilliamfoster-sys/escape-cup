@@ -34,15 +34,28 @@ class PublishError(RuntimeError):
 
 # ---------------------------------------------------------------- hosting --
 
+# git commands that talk to GitHub. GitHub sometimes refuses one for a few seconds
+# ("fatal error in commit_refs_rules" lost Escape two runs on 2026-11-06), so these
+# are retried. They are safe to repeat: the media branch is a throwaway orphan.
+GIT_NETWORK = ("push", "fetch", "ls-remote", "clone")
+GIT_RETRY_WAITS = (10, 30, 60)
+
+
 def _git(args, cwd):
-    r = subprocess.run(["git"] + args, cwd=cwd, capture_output=True, text=True)
-    if r.returncode != 0:
+    network = any(a in GIT_NETWORK for a in args[:4])
+    waits = GIT_RETRY_WAITS if network else ()
+    for attempt in range(len(waits) + 1):
+        r = subprocess.run(["git"] + args, cwd=cwd, capture_output=True, text=True)
+        if r.returncode == 0:
+            return r.stdout
         err = r.stderr.strip()
         token = os.environ.get("GITHUB_TOKEN")
         if token:
             err = err.replace(token, "***")     # the remote URL carries the token
-        raise PublishError(f"git {' '.join(args[:2])} failed: {err[:300]}")
-    return r.stdout
+        if attempt < len(waits):
+            print(f"[git] {' '.join(args[:2])} failed (try {attempt + 1}): {err[:160]} - retrying in {waits[attempt]}s")
+            time.sleep(waits[attempt])
+    raise PublishError(f"git {' '.join(args[:2])} failed: {err[:300]}")
 
 
 def pages_base():
@@ -207,6 +220,25 @@ def recent_posts(org_id, channel_id, statuses=("sent", "error"), first=10):
     return [e["node"] for e in data["posts"]["edges"]]
 
 
+# Buffer fetches the video URL when the post is created. Right after a Pages deploy
+# the CDN can still answer oddly for a moment ("Video could not be read from its
+# URL" lost Space a run on 2026-11-09). Nothing was created, so asking again is safe.
+CREATE_RETRY_WAITS = (30, 60, 120)
+CREATE_RETRY_MARKS = ("could not be read", "could not be fetched", "try again", "timed out", "timeout")
+
+
+def _create_post(query, variables):
+    """createPost, asked again when Buffer could not read the video yet."""
+    for attempt in range(len(CREATE_RETRY_WAITS) + 1):
+        res = _gql(query, variables)["createPost"]
+        msg = str(res.get("message") or "")
+        if "post" in res or attempt == len(CREATE_RETRY_WAITS) \
+                or not any(m in msg.lower() for m in CREATE_RETRY_MARKS):
+            return res
+        print(f"[buffer] createPost refused (try {attempt + 1}): {msg[:160]} - retrying in {CREATE_RETRY_WAITS[attempt]}s")
+        time.sleep(CREATE_RETRY_WAITS[attempt])
+
+
 def schedule_tiktok(channel_id, video_url, caption, due_at, thumb_ms=2500):
     now = datetime.now(timezone.utc)
     mode = "customScheduled" if (due_at - now).total_seconds() > 300 else "shareNow"
@@ -222,10 +254,9 @@ def schedule_tiktok(channel_id, video_url, caption, due_at, thumb_ms=2500):
     }
     if mode == "customScheduled":
         inp["dueAt"] = due_at.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-    data = _gql("""mutation($i: CreatePostInput!) { createPost(input: $i) {
+    res = _create_post("""mutation($i: CreatePostInput!) { createPost(input: $i) {
         ... on PostActionSuccess { post { id status dueAt } }
         ... on MutationError { message } } }""", {"i": inp})
-    res = data["createPost"]
     if "post" not in res:
         raise PublishError(f"Buffer rejected the post: {res.get('message')}")
     print(f"[buffer] {mode}: {res['post']}")
