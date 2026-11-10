@@ -4642,6 +4642,109 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-10T21:19:14+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r3_m00_185899840350.mp4",
+   "sha256": "08f9e1776365d6f130df630ebaa824fd8e781708433f9c15fa184da21919cab4",
+   "head": "Ball escape simulation: France 🇫🇷 vs Uruguay 🇺🇾",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.747,
+   "report": {
+    "seconds": 26.67,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "tokens": 4158,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-10T21:21:28+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r3_m01_23101397030.mp4",
+   "sha256": "ac611da0622c088dc961218caff4c01b463ef681409f8b8fc363d473732f8553",
+   "head": "Canada 🇨🇦 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿: 12 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.544,
+   "report": {
+    "seconds": 24.15,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-11-10T21:26:56+00:00",
+   "platform": "tiktok",
+   "file": "ec04_r4_m00_191174588149.mp4",
+   "sha256": "1184cbdaf0454a821b13639c7430666586c4171f505f1ce9507c1b412ecccee1",
+   "head": "Escape Cup final: France 🇫🇷 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿. Physics simulation decides it 🏆",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-11-04",
+   "head_similarity": 0.583,
+   "report": {
+    "seconds": 17.08,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
