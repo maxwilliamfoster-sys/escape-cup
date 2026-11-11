@@ -50,6 +50,19 @@ class PostingConfigTests(unittest.TestCase):
         self.assertGreaterEqual(min(slots), (9, 0))
         self.assertLessEqual(max(slots), (16, 30))
 
+    def test_no_config_can_post_more_than_three_a_day_by_accident(self):
+        seven = ["08:00", "09:30", "11:00", "12:30", "14:00", "15:30", "17:00"]
+        with tempfile.TemporaryDirectory() as d:
+            slots = main.load_day_slots(_write(d, {"kill_switch": False, "day_slots_uk": seven}))
+            self.assertEqual(slots, [(8, 0), (12, 30), (17, 0)])            # first, middle, last
+            allowed = main.load_day_slots(_write(d, {"kill_switch": False, "day_slots_uk": seven,
+                                                     "max_slots_per_day": 5}))
+            self.assertEqual(len(allowed), 5)                                # only a deliberate setting raises it
+            for junk in (True, "7", 0, -2):
+                self.assertEqual(len(main.load_day_slots(_write(d, {"kill_switch": False, "day_slots_uk": seven,
+                                                                    "max_slots_per_day": junk}))), 3, junk)
+        self.assertLessEqual(len(main.DEFAULT_DAY_SLOTS), main.MAX_SLOTS_PER_DAY)   # a broken file is capped too
+
     def test_broken_config_never_stops_posting(self):
         with tempfile.TemporaryDirectory() as d:
             for bad in ("{not json", {"kill_switch": False, "day_slots_uk": ["25:99"]},

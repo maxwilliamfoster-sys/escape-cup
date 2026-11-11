@@ -57,7 +57,13 @@ RAMP_SLOTS = [(19, 30)]
 # 2026-10-23: 18:30/20:00/21:30 UK dropped (medians 320-414 views@72h vs 748-816 at midday;
 # growth-lab audit-2026-10-21 MASTER_PLAN #5) -> 7 a day, 08:00-17:00 UK. The live list is
 # read from posting.json, which also holds the 4/day kill switch; this is the fallback.
-DEFAULT_DAY_SLOTS = [(8, 0), (9, 30), (11, 0), (12, 30), (14, 0), (15, 30), (17, 0)]
+# The fallback when posting.json cannot be read. It was the 7-a-day list, so a broken file would have
+# more than doubled the posting rate, and the rate is the one thing proven to collapse this account's views.
+DEFAULT_DAY_SLOTS = [(9, 0), (12, 30), (16, 30)]
+# Hard ceiling on posts a day (view-cap research, 2026-11-10). 10 a day took views from ~750 to ~30 within
+# a day, and the manual kill switch then took 10 days to be flipped. More than this needs a deliberate
+# "max_slots_per_day" in posting.json; nothing else can raise it.
+MAX_SLOTS_PER_DAY = 3
 POSTING_CONFIG = os.path.join(ROOT, "posting.json")
 
 
@@ -73,6 +79,17 @@ def _parse_slots(items):
     return sorted(out)
 
 
+def _cap_slots(slots, allowed=None):
+    """At most MAX_SLOTS_PER_DAY slots (or the number posting.json explicitly allows), spread over the day."""
+    limit = allowed if isinstance(allowed, int) and not isinstance(allowed, bool) and allowed > 0 else MAX_SLOTS_PER_DAY
+    if len(slots) <= limit:
+        return slots
+    step = (len(slots) - 1) / (limit - 1) if limit > 1 else 0
+    kept = sorted({slots[round(i * step)] for i in range(limit)})
+    print(f"[main] posting.json lists {len(slots)} slots a day; capped at {limit}: {kept}")
+    return kept
+
+
 def load_day_slots(path=POSTING_CONFIG):
     """Daily posting slots (UK) from posting.json: day_slots_uk, or kill_switch_slots_uk
     when kill_switch is true. Any problem with the file -> DEFAULT_DAY_SLOTS (never stops
@@ -81,7 +98,7 @@ def load_day_slots(path=POSTING_CONFIG):
         with open(path, encoding="utf-8") as f:
             cfg = json.load(f)
         key = "kill_switch_slots_uk" if cfg.get("kill_switch") is True else "day_slots_uk"
-        slots = _parse_slots(cfg[key])
+        slots = _cap_slots(_parse_slots(cfg[key]), cfg.get("max_slots_per_day"))
         if key == "kill_switch_slots_uk":
             print(f"[main] KILL SWITCH on (posting.json): {len(slots)} slots a day")
         return slots
