@@ -66,7 +66,7 @@ from difflib import SequenceMatcher
 #   doubled-word lint spares real doubled names (Sirhan Sirhan, Boutros Boutros-Ghali, doubled_ok).
 # 2026-11-04: check_media also runs media_qc (vendored beside this file): its new rules only warn
 #   for now, and media_qc not being able to run is a failure.
-GATE_VERSION = "2026-11-04"
+GATE_VERSION = "2026-11-11"
 
 PLATFORMS = {
     "tiktok": {
@@ -701,6 +701,18 @@ def _score(v):
         return 0
 
 
+QUOTA_SOON_S = 600      # a daily-quota refusal that clears within this long is worth waiting for
+
+
+def _retry_in_seconds(text):
+    """Seconds from Groq's "Please try again in 1h2m3.5s" (any of the parts), else None."""
+    m = re.search(r"try again in\s+(?:(\d+)h)?(?:(\d+)m(?!s))?(?:([\d.]+)s)?", text or "")
+    if not m or not any(m.groups()):
+        return None
+    h, mins, s = m.groups()
+    return int(h or 0) * 3600 + int(mins or 0) * 60 + float(s or 0)
+
+
 def _unavailable(reason, problem, retryable=False, **extra):
     """An AI review that produced no verdict. `retryable` is True ONLY when waiting can fix it
     (a 429 without "per day", a 5xx, a timeout): callers re-check on that and nothing else."""
@@ -763,6 +775,15 @@ def ai_review(path, platform, profile, *, title="", caption="", transcript="", s
             body_txt = _http_body(e)
             last = f"HTTP {e.code}: {body_txt[:200]}"
             if "per day" in body_txt:              # daily quota gone: waiting a minute won't help
+                # ...unless Groq says it frees up within minutes. The daily bucket is a rolling
+                # 24 h window, and a request that is only just over it is told e.g. "try again
+                # in 3m13s" (seen 2026-11-10 at 198,382 of 200,000). That is an outage the
+                # caller can wait out, not a spent day: BCF lost a finished video to it.
+                soon = _retry_in_seconds(body_txt)
+                if soon is not None and soon <= QUOTA_SOON_S:
+                    return _unavailable("quota_soon", f"AI review waiting: the daily AI quota frees up in "
+                                                      f"about {int(soon // 60) + 1} min", retryable=True,
+                                        retry_in=round(soon))
                 return _unavailable("quota", "AI review skipped: the free daily AI quota is used up "
                                              "(it refills over the next 24h)", quota=True)
             if e.code == 413:

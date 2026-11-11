@@ -76,5 +76,34 @@ class CreatePostRetries(unittest.TestCase):
         self.assertEqual(calls, n)
 
 
+class RawFallback(unittest.TestCase):
+    """Pages down: the branch copy is used, but only when it is the whole file."""
+
+    def setUp(self):
+        import tempfile
+        self.f = tempfile.NamedTemporaryFile(delete=False, suffix=".mp4")
+        self.f.write(b"x" * 1234)
+        self.f.close()
+        self.env = mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "me/repo"})
+        self.env.start()
+
+    def tearDown(self):
+        self.env.stop()
+        os.unlink(self.f.name)
+
+    def head(self, status, length):
+        return lambda url, **k: types.SimpleNamespace(status_code=status, headers={"content-length": str(length)})
+
+    def test_complete_file_on_the_branch_is_used(self):
+        url = pub.raw_fallback("https://pages/v/a.mp4", "a.mp4", self.f.name, head=self.head(200, 1234))
+        self.assertEqual(url, "https://raw.githubusercontent.com/me/repo/media/v/a.mp4")
+
+    def test_missing_or_partial_file_keeps_the_old_error(self):
+        for status, length in ((404, 0), (200, 99)):
+            with self.assertRaises(pub.PublishError) as e:
+                pub.raw_fallback("https://pages/v/a.mp4", "a.mp4", self.f.name, head=self.head(status, length))
+            self.assertIn("Pages never served", str(e.exception))
+
+
 if __name__ == "__main__":
     unittest.main()

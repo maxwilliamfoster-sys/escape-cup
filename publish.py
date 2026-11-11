@@ -80,6 +80,25 @@ def prune_plan(present, order, filename, protect=(), keep=None):
     return delete, order + [filename]
 
 
+def raw_fallback(pages_url, filename, path, head=None):
+    """The same file straight from the media branch, for when Pages will not serve it.
+    On 2026-11-10 GitHub's Pages deploys timed out for hours and Escape, Space and
+    Buried Case Files each lost a run with a finished video in hand. The file is
+    already pushed by then, and raw.githubusercontent.com serves a public repo's
+    branch with no build step. Used only after Pages failed, and only when the file
+    there is complete; otherwise the old error is raised."""
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    raw = f"https://raw.githubusercontent.com/{repo}/media/v/{filename}"
+    try:
+        r = (head or requests.head)(raw, timeout=20, allow_redirects=False)
+        if repo and r.status_code == 200 and int(r.headers.get("content-length", 0)) == os.path.getsize(path):
+            print(f"[host] Pages never served the video - using the branch copy instead: {raw}")
+            return raw
+    except (requests.RequestException, ValueError, OSError):
+        pass
+    raise PublishError(f"Pages never served {pages_url} (is Pages enabled on the media branch?)")
+
+
 def host_video(path, filename, protect=()):
     """protect = file names still needed by scheduled posts (never pruned)."""
     # Only a file the upload gate approved in this run may be published.
@@ -157,7 +176,7 @@ def host_video(path, filename, protect=()):
                       "commit", "--allow-empty", "-q", "-m", "media: retrigger Pages"], tmp)
                 _git(["push", "-q", remote, "media"], tmp)
             time.sleep(15)
-        raise PublishError(f"Pages never served {url} (is Pages enabled on the media branch?)")
+        return raw_fallback(url, filename, path)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

@@ -1,6 +1,6 @@
 {
   "generated_by": "growth-lab/sync_vendored.py",
-  "gate_version": "2026-11-04",
+  "gate_version": "2026-11-11",
   "note": "sha256 with CRLF normalised to LF. Do not edit vendored files here: change the growth-lab master and run sync_vendored.py.",
   "files": {
     "audio_norm.py": {
@@ -29,8 +29,8 @@
       "local_patch": false
     },
     "upload_gate.py": {
-      "sha256": "e6c2903c0fd28c1eed2f21c8f5ccbd991f3d1a9a3317a1eaef39c6ae024cbf37",
-      "master_sha": "e6c2903c0fd28c1eed2f21c8f5ccbd991f3d1a9a3317a1eaef39c6ae024cbf37",
+      "sha256": "0aba26b4c401efda21617fd5b5f15483c7a67afae67bd6107d353ef01d918214",
+      "master_sha": "0aba26b4c401efda21617fd5b5f15483c7a67afae67bd6107d353ef01d918214",
       "local_patch": false
     }
   }
