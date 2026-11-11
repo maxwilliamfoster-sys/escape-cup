@@ -4745,6 +4745,113 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-11T21:57:20+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m00_205072073081.mp4",
+   "sha256": "3c66e87d4f2c3044290d1b1f93da5521b9b2f0c1280cd457d8aede3705739194",
+   "head": "South Korea 🇰🇷 vs Ukraine 🇺🇦 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.579,
+   "report": {
+    "seconds": 26.17,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4161,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-11T21:59:15+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m01_66584706124.mp4",
+   "sha256": "30445a92be8a5be742ef34c7a2debbc9f2f13bc59442adfa5fb34b14178e2897",
+   "head": "Country ball escape - Senegal 🇸🇳 vs Japan 🇯🇵",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.727,
+   "report": {
+    "seconds": 15.75,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4170,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-11T22:01:13+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m02_4613972001.mp4",
+   "sha256": "eacdf24280df191cb3a4e5ffcfbd81c7724b491f52f9061575728e3659d522f2",
+   "head": "Country ball escape - Vietnam 🇻🇳 vs Switzerland 🇨🇭",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.892,
+   "report": {
+    "seconds": 18.82,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4166,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
