@@ -36,7 +36,13 @@ jobs:
           cache: 'pip'
 
       - name: System packages
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg libcairo2-dev pkg-config
+        timeout-minutes: 12          # apt hung 45 min on a runner with broken DNS (GifTok, 2026-11-11)
+        run: |
+          for try in 1 2 3; do
+            sudo timeout 150 apt-get update -qq; sudo timeout 240 apt-get install -y -qq ffmpeg libcairo2-dev pkg-config && exit 0
+            echo "apt attempt $try failed or timed out"; sleep 20
+          done
+          exit 1
 
       - run: pip install -r requirements.txt
 
