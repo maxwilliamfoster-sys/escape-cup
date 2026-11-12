@@ -4852,6 +4852,78 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-12T17:36:07+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m03_25288352019.mp4",
+   "sha256": "5f1558c482600119b78332c730fb7cf1d55d875a4364f7fb60eb67ed697d8453",
+   "head": "Country ball escape - Italy 🇮🇹 vs Spain 🇪🇸",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.829,
+   "report": {
+    "seconds": 15.78,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4155,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-12T17:38:35+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m04_121569456004.mp4",
+   "sha256": "b9a673bc1d0c10e54dd5c908f1780843a851355f42cbb928d83c758d0e99155b",
+   "head": "Which country escapes first? Egypt 🇪🇬 vs Argentina 🇦🇷 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.478,
+   "report": {
+    "seconds": 18.9,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4160,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
