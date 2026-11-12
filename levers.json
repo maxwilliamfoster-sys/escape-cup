@@ -1,5 +1,5 @@
 {
- "_doc": "Allowed levers for the nightly experiment loop (experiment_loop.py). ONLY these levers and values can ever be applied (main.apply_loop / arm_for). Order = test queue. pacing 'fast' and length 'short' were checked 2026-10-16 for seed acceptance (cup 1.25% / 4.3%, royale 20% / 19% of seeds - enough inside the director's 300-400 tries). Length is judged on views@72h: a shorter video gets a higher % watched for free.",
+ "_doc": "Allowed levers for the nightly experiment loop (experiment_loop.py). ONLY these levers and values can ever be applied (main.apply_loop / arm_for). Order = test queue. pacing 'fast' and length 'short' were checked 2026-10-16 for seed acceptance (cup 1.25% / 4.3%, royale 20% / 19% of seeds - enough inside the director's 300-400 tries). 2026-11-12: 'short' is now a 12-15 s video (10.5-13.5 s match, ~0.6% of cup seeds, the director searches 1200) that loops into its first frame; moved ahead of standings. Length is judged on views@72h: a shorter video gets a higher % watched for free.",
  "channel": "escape-cup",
  "metric": "avg % watched at 72h",
  "min_n": 10,
@@ -14,9 +14,9 @@
    "hypothesis": "Asking viewers to commit to a country before the first ring breaks makes them stay to see it through, raising avg % watched."},
   {"lever": "pacing", "kind": "hook style", "control": "normal", "variants": ["fast"],
    "hypothesis": "A first ring inside ~1s and no lull over 4.5s (vs 2s / 6s) removes the early dead moments where viewers swipe."},
-  {"lever": "standings", "kind": "stakes", "control": "off", "variants": ["on"],
-   "hypothesis": "A visible titles table and an 'N wins from the trophy' line give each cup match a stake, raising avg % watched (review 2026-11-09)."},
   {"lever": "length", "kind": "length", "control": "normal", "variants": ["short"], "primary": "views72",
-   "hypothesis": "Capping matches at 20s (royale 26s) gets more full watches and replays, which TikTok rewards with more views."}
+   "hypothesis": "12-15 s matches whose end dissolves back into the first frame get watched through and replayed (views track % watched, r=0.7 in Nov), which TikTok rewards with more views."},
+  {"lever": "standings", "kind": "stakes", "control": "off", "variants": ["on"],
+   "hypothesis": "A visible titles table and an 'N wins from the trophy' line give each cup match a stake, raising avg % watched (review 2026-11-09)."}
  ]
 }

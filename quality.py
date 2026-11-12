@@ -39,6 +39,7 @@ MIN_PHONE_PCT = 55.0                               # % of energy above 400 Hz: p
 MIN_VIDEO_KBPS = 1500
 MAX_BYTES = 90 * 1024 * 1024                       # GitHub Pages file limit is 100 MB
 DURATION_RANGE = (15.0, 32.0)
+SHORT_DURATION_RANGE = (11.5, 16.0)                  # the length lever's 'short' arm: 10.5-13.5 s match + 1.5 s card
 ROYALE_DURATION_RANGE = (20.0, 42.0)                # director: 20-36s heat + 2.0s card (3.4 before 2026-10-23)
 BAIT = [r"\bfollow\b", r"\blike\s*(for|4)\s*like\b", r"\bl4l\b", r"\bf4f\b", r"\blike if\b",
         r"\bgift", r"\bshare (this|if)\b", r"\bsubscribe\b", r"#fyp", r"#foryou", r"#viral",

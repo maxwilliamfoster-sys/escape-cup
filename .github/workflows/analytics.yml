@@ -15,7 +15,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     permissions:
       contents: write
     steps:
@@ -24,7 +24,14 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
-      - run: sudo apt-get update && sudo apt-get install -y libcairo2-dev pkg-config
+      - name: System packages
+        timeout-minutes: 12          # apt hung on a runner with broken DNS (2026-11-11); this step got the 11 Nov analytics run cancelled
+        run: |
+          for try in 1 2 3; do
+            sudo timeout 150 apt-get update -qq; sudo timeout 240 apt-get install -y -qq libcairo2-dev pkg-config && exit 0
+            echo "apt attempt $try failed or timed out"; sleep 20
+          done
+          exit 1
       - run: pip install -r requirements.txt
       - name: Collect
         env:

@@ -297,7 +297,7 @@ def build_one(state, exclude_seeds=(), tries=None):
 
     info = dict(a=a, b=b, header=d["header"], result_line=result, theme=theme,
                 next_label=next_label, next_line=next_line, cta=cta, final=is_final,
-                hook=hook_for_match(a, b), **standings_info(state, d["size"], a, b, winner))
+                hook=hook_for_match(a, b), loop=LENGTH_SHORT_ON, **standings_info(state, d["size"], a, b, winner))
     fname = f"ec{state['edition']:02d}_r{r}_m{m:02d}_{seed}.mp4"
     caption, cap_fail = _pick_caption(
         lambda g: make_caption(state, a, b, d, preview, g), seed,
@@ -310,9 +310,10 @@ def build_one(state, exclude_seeds=(), tries=None):
     path = os.path.join(OUT, fname)
     render.render_match(phys, info, path, WORK)
 
-    report, failures = quality.check_video(path, len(phys.frames) / sim.FPS)
+    span = quality.SHORT_DURATION_RANGE if LENGTH_SHORT_ON else quality.DURATION_RANGE
+    report, failures = quality.check_video(path, len(phys.frames) / sim.FPS, span)
     failures += quality.check_content(a, b, winner, phys.breaks)
-    verdict = gate(path, caption, state, quality.DURATION_RANGE) if not failures else None
+    verdict = gate(path, caption, state, span) if not failures else None
     if verdict:
         failures += verdict["failures"]
     return {"path": path, "caption": caption, "file": fname, "seed": seed, "winner": winner,
@@ -489,11 +490,15 @@ def arm_for(slot, state, loop_vals=None):
 # the running test and promotes/reverts it in loop_config.json. Arms follow
 # the same slot alternation as cup vs royale (control = parity 0), so neither
 # arm owns the better hour. Allowed levers and values: levers.json only.
-LOOP_DEFAULTS = {"hook": render.HOOK_TEXT, "max_s": director.MAX_SECONDS,
+LOOP_DEFAULTS = {"hook": render.HOOK_TEXT, "max_s": director.MAX_SECONDS, "min_s": director.MIN_SECONDS,
                  "first_break": director.MAX_FIRST_BREAK, "wait": director.MAX_WAIT,
                  "royale": dict(director.ROYALE_RULES)}
 PACING_FAST = {"first_break": 1.2, "wait": 4.5, "royale_first_break": 1.0, "royale_wait": 4.5}
-LENGTH_SHORT = {"max_s": 20.0, "royale_max_s": 26.0}
+# 'short' (2026-11-12, was max 20 s): 12-15 s videos that loop. Escape's views track % watched (r=0.7 over the
+# Nov posts; both 3,000+ hits held 42-52%) and shorter videos hold more (r=-0.4), and the end dissolves into the
+# first frame so a replay looks seamless. Only cup matches; ~0.6% of seeds fit, so director.pick searches 1200.
+LENGTH_SHORT = {"min_s": 10.5, "max_s": 13.5, "royale_max_s": 26.0}
+LENGTH_SHORT_ON = False
 
 
 def loop_for(slot, state):
@@ -511,17 +516,19 @@ def loop_for(slot, state):
 def apply_loop(vals):
     """Set the render/director knobs for one video, starting from the defaults
     every time (control and variant alternate within one run)."""
-    global STANDINGS_ON
+    global STANDINGS_ON, LENGTH_SHORT_ON
     STANDINGS_ON = vals.get("standings") == "on"
+    LENGTH_SHORT_ON = vals.get("length") == "short"
     d = LOOP_DEFAULTS
     royale = dict(d["royale"])
     render.HOOK_TEXT = vals.get("hook_text") or d["hook"]
     director.MAX_SECONDS, director.MAX_FIRST_BREAK, director.MAX_WAIT = d["max_s"], d["first_break"], d["wait"]
+    director.MIN_SECONDS = d["min_s"]
     if vals.get("pacing") == "fast":
         director.MAX_FIRST_BREAK, director.MAX_WAIT = PACING_FAST["first_break"], PACING_FAST["wait"]
         royale.update(first_break=PACING_FAST["royale_first_break"], wait=PACING_FAST["royale_wait"])
-    if vals.get("length") == "short":
-        director.MAX_SECONDS = LENGTH_SHORT["max_s"]
+    if LENGTH_SHORT_ON:
+        director.MIN_SECONDS, director.MAX_SECONDS = LENGTH_SHORT["min_s"], LENGTH_SHORT["max_s"]
         royale["max_s"] = LENGTH_SHORT["royale_max_s"]
     director.ROYALE_RULES = royale
 

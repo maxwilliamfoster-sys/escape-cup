@@ -352,9 +352,12 @@ def team_colors(a, b):
     return ca, cb
 
 
+LOOP_D = 0.5     # a looping video dissolves its last LOOP_D s into its own first frame
+
+
 def render_match(match, info, out_path, workdir):
     """info: a, b (team codes), header, result_line, next_label, next_line, cta,
-    final (bool), theme."""
+    final (bool), theme, loop (bool: end on a dissolve into frame 0 so TikTok's replay is seamless)."""
     a, b = info["a"], info["b"]
     codes = [a, b]
     flags = Flags()
@@ -388,6 +391,11 @@ def render_match(match, info, out_path, workdir):
            "-c:v", "libx264", "-preset", "slow", "-tune", "animation", "-crf", "14",
            "-pix_fmt", "yuv420p", "-g", "60",
            "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out_path]
+    loop = bool(info.get("loop"))
+    if loop:                                     # a loop mustn't sound like an ending
+        cmd[-1:-1] = ["-af", f"afade=t=out:st={total / FPS - 0.3:.3f}:d=0.3"]
+    n_loop = int(LOOP_D * FPS) if loop else 0
+    first = None
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
 
     surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H)
@@ -494,6 +502,12 @@ def render_match(match, info, out_path, workdir):
                 text.draw(cr, info["next_line"], W / 2, 1205, 60, "#FFFFFF", alpha=k2, max_w=960)
                 text.draw(cr, info["cta"], W / 2, 1282, 40, "#FFD84D", alpha=k2, max_w=940)
 
+        if loop and f == 0:
+            surf.flush()
+            first = cairo.ImageSurface.create_for_data(bytearray(surf.get_data()), cairo.FORMAT_ARGB32, W, H)
+        if first is not None and f >= total - n_loop:
+            cr.set_source_surface(first, 0, 0)
+            cr.paint_with_alpha((f - (total - n_loop) + 1) / n_loop)   # the last frame IS frame 0
         surf.flush()
         proc.stdin.write(surf.get_data())
 

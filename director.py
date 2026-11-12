@@ -55,8 +55,13 @@ def pick_royale(base_seed, tries=300, exclude=()):
     return best[1], best[2]
 
 
+SHORT_TRIES = 1200       # the 12-15 s length arm: ~0.6% of seeds land at 10.5-13.5 s (2026-11-12, 800 seeds)
+
+
 def pick(base_seed, tries=400, exclude=()):
     best = None
+    if MIN_SECONDS < 14.0:                       # short arm: same rules, a narrower window, so search further
+        tries = max(tries, SHORT_TRIES)
     for k in range(tries):
         seed = base_seed * 1000 + k
         if seed in exclude:

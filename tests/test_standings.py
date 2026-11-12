@@ -81,11 +81,12 @@ class Info(unittest.TestCase):
             main.apply_loop({})
         self.assertEqual(main.standings_info(state({A: 1}), 16, A, B, A), {})
 
-    def test_standings_lever_is_queued_right_after_pacing(self):
+    def test_standings_lever_is_queued_after_length(self):
+        # 2026-11-12: the 12-15 s looping length test went ahead of it
         import json, os
         lev = json.load(open(os.path.join(os.path.dirname(main.__file__), "levers.json"), encoding="utf-8"))
         names = [l["lever"] for l in lev["levers"]]
-        self.assertEqual(names.index("standings"), names.index("pacing") + 1)
+        self.assertEqual(names.index("standings"), names.index("length") + 1)
 
     def test_during_a_match_the_titles_table_is_on_screen(self):
         info = self._on(state({A: 1, B: 2}), 16, C, CODES[4], C)

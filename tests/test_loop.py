@@ -21,6 +21,7 @@ import director  # noqa: E402
 import experiment_loop as el  # noqa: E402
 import loop_nightly as ln  # noqa: E402
 import main  # noqa: E402
+import quality  # noqa: E402
 import render  # noqa: E402
 
 FMT = "escape-cup-format-1"
@@ -156,12 +157,14 @@ class TestRenderSide(unittest.TestCase):
     def test_apply_loop_sets_and_resets_knobs(self):
         main.apply_loop({"pacing": "fast", "length": "short", "hook_text": "Pick a country before it starts!"})
         self.assertEqual(director.MAX_FIRST_BREAK, 1.2)
-        self.assertEqual(director.MAX_SECONDS, 20.0)
+        self.assertEqual((director.MIN_SECONDS, director.MAX_SECONDS), (10.5, 13.5))
+        self.assertTrue(main.LENGTH_SHORT_ON)
         self.assertEqual(director.ROYALE_RULES["max_s"], 26.0)
         self.assertEqual(render.HOOK_TEXT, "Pick a country before it starts!")
         main.apply_loop({})                                   # next slot is control
         self.assertEqual(director.MAX_FIRST_BREAK, 2.0)
-        self.assertEqual(director.MAX_SECONDS, 28.0)
+        self.assertEqual((director.MIN_SECONDS, director.MAX_SECONDS), (14.0, 28.0))
+        self.assertFalse(main.LENGTH_SHORT_ON)
         self.assertEqual(director.ROYALE_RULES, main.LOOP_DEFAULTS["royale"])
         self.assertEqual(render.HOOK_TEXT, "Which country escapes first?")
 
@@ -174,6 +177,23 @@ class TestRenderSide(unittest.TestCase):
         seed, d = director.pick(4242)
         self.assertLessEqual(d["first_break"], 1.2)
         self.assertLessEqual(d["longest_wait"], 4.5)
+
+    def test_short_length_finds_a_12_to_15_second_match_that_loops(self):
+        main.apply_loop({"length": "short"})
+        try:
+            for base in (4242, 777, 31337, 9001, 123456):
+                seed, d = director.pick(base)
+                self.assertTrue(10.5 <= d["duration"] <= 13.5, (base, d["duration"]))
+                video = d["duration"] + render.CARD_SECONDS
+                self.assertTrue(quality.SHORT_DURATION_RANGE[0] <= video <= quality.SHORT_DURATION_RANGE[1])
+                self.assertTrue(12.0 <= video <= 15.0, video)
+        finally:
+            main.apply_loop({})
+
+    def test_length_is_the_next_test_after_pacing(self):
+        lev = el.load_json(os.path.join(ROOT, "levers.json"), {})
+        order = [l["lever"] for l in lev["levers"]]
+        self.assertEqual(order.index("length"), order.index("pacing") + 1)
 
     def test_every_lever_value_is_one_apply_loop_knows(self):
         lev = el.load_json(os.path.join(ROOT, "levers.json"), {})
