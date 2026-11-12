@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-10 15:46 UTC",
+ "updated": "2026-11-12 11:51 UTC",
  "summary": {
-  "views": 20867,
-  "retention": 0.410546875,
+  "views": 28535,
+  "retention": 0.40859375000000003,
   "swipe_away": null,
-  "posts": 21,
+  "posts": 20,
   "note": "views = latest totals of posts from the last 7 days; retention = median avg % watched; TikTok gives no swipe-away via Buffer"
  },
  "actions": [
