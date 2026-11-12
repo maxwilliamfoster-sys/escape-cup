@@ -4924,6 +4924,43 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-12T23:37:49+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m05_108279662075.mp4",
+   "sha256": "1a31ccb8add109fd25075cad39ca63b4e069ce1122a1090100d12241c4e46aa8",
+   "head": "Which country escapes first? France 🇫🇷 vs USA 🇺🇸 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.829,
+   "report": {
+    "seconds": 20.68,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4165,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
