@@ -5033,6 +5033,41 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-13T23:32:43+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m08_109583253303.mp4",
+   "sha256": "751bedd43359500c0080e8f77441e9366330c45254a2b7a94ac48f98745d3449",
+   "head": "Country ball escape - Croatia 🇭🇷 vs Germany 🇩🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.75,
+   "report": {
+    "seconds": 18.23,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4150,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
