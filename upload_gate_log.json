@@ -4961,6 +4961,78 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-13T17:13:37+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m06_73728524051.mp4",
+   "sha256": "f3005b81e08ac6382651e4d914e1d6554deef132d3b22387cf1e21095be5efe0",
+   "head": "Philippines 🇵🇭 or Colombia 🇨🇴? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.528,
+   "report": {
+    "seconds": 25.9,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4162,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-13T17:15:28+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m07_212072151191.mp4",
+   "sha256": "842b38b28fc9372d71c34793a02b440d93b44135f0cdf8d9f77148bd2c687ad1",
+   "head": "Indonesia 🇮🇩 vs Australia 🇦🇺 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.82,
+   "report": {
+    "seconds": 15.98,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4179,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
