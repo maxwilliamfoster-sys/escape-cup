@@ -71,18 +71,18 @@
    "max_n": 20,
    "metric": "avg % watched at 72h",
    "control_metrics": {
-    "n": 1,
+    "n": 3,
     "median": 41.663,
     "views72": 1832.1019
    },
    "variant_metrics": {
-    "n": 2,
-    "median": 33.3827,
-    "views72": 857.2543
+    "n": 3,
+    "median": 34.6346,
+    "views72": 843.7201
    },
    "verdict": "keep running",
-   "last_judged": "2026-11-13",
-   "result": "escape-cup-pacing-1 · avg % watched at 72h: KEEP RUNNING — treatment 0.80x control (33.4 vs 41.7; 90% CI 0.75–0.86, p=0.540), n=2 vs 1 (min 10, max 20) · guardrail worse: views@72h"
+   "last_judged": "2026-11-14",
+   "result": "escape-cup-pacing-1 · avg % watched at 72h: KEEP RUNNING — treatment 0.83x control (34.6 vs 41.7; 90% CI 0.62–1.13, p=0.383), n=3 vs 3 (min 10, max 20) · guardrail worse: views@72h"
   }
  ]
 }
