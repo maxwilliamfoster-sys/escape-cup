@@ -5068,6 +5068,41 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-14T15:48:58+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m09_80609317128.mp4",
+   "sha256": "f0b3f461d0526549564c7416d53b32f7e205299ba95538783ebc0d23782d1226",
+   "head": "Poland 🇵🇱 vs Netherlands 🇳🇱 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.558,
+   "report": {
+    "seconds": 16.75,
+    "lufs": -16.1,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4164,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
