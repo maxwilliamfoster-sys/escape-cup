@@ -95,20 +95,20 @@
    {
     "a": "gb-sct",
     "b": "ie",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "gb-sct",
+    "seed": 126440808086,
+    "melody": "sunset",
+    "posted": "2026-11-15T12:30:00+00:00",
+    "buffer_id": "6af8df88e86a5789a6d5b68b"
    },
    {
     "a": "pt",
     "b": "br",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "pt",
+    "seed": 21731163206,
+    "melody": "forest",
+    "posted": "2026-11-15T16:30:00+00:00",
+    "buffer_id": "6af8dfe9918fe79d2ea9a246"
    },
    {
     "a": "be",
@@ -194,8 +194,8 @@
     "buffer_id": null
    },
    {
-    "a": null,
-    "b": null,
+    "a": "gb-sct",
+    "b": "pt",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -296,7 +296,7 @@
   "au": 1,
   "fr": 1
  },
- "posts": 134,
+ "posts": 136,
  "log": [
   {
    "edition": 1,
@@ -4664,7 +4664,7 @@
    "theme": "neon",
    "due": "2026-11-14T16:30:00+00:00",
    "buffer_id": "6af79e5c9257ce33981a69aa",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec05_r0_m08_109583253303.mp4",
    "length": 18.2,
    "loop": {
@@ -4678,7 +4678,8 @@
    "r": 0,
    "m": 8,
    "a": "hr",
-   "b": "de"
+   "b": "de",
+   "link": "https://www.tiktok.com/@5lmvill/video/7708065693035433249?utm_campaign=tt4d_open_api&utm_source=7103819247981182978"
   },
   {
    "edition": 5,
@@ -4702,11 +4703,55 @@
    "m": 9,
    "a": "pl",
    "b": "nl"
+  },
+  {
+   "edition": 5,
+   "winner": "gb-sct",
+   "seed": 126440808086,
+   "theme": "sunset",
+   "due": "2026-11-15T12:30:00+00:00",
+   "buffer_id": "6af8df88e86a5789a6d5b68b",
+   "status": "scheduled",
+   "file": "ec05_r0_m10_126440808086.mp4",
+   "length": 23.5,
+   "loop": {
+    "escape-cup-pacing-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "b39832084f0305c03ab67aad6a32a39b34a22eb46e60f56c6543d8f4fd80ea4d",
+    "checked_at": "2026-11-14T22:23:05+00:00"
+   },
+   "r": 0,
+   "m": 10,
+   "a": "gb-sct",
+   "b": "ie"
+  },
+  {
+   "edition": 5,
+   "winner": "pt",
+   "seed": 21731163206,
+   "theme": "forest",
+   "due": "2026-11-15T16:30:00+00:00",
+   "buffer_id": "6af8dfe9918fe79d2ea9a246",
+   "status": "scheduled",
+   "file": "ec05_r0_m11_21731163206.mp4",
+   "length": 19.6,
+   "loop": {
+    "escape-cup-pacing-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "9cd273987dd67de18fa22371d3044f2ef403a281821dd18fb1d0abbdaa250294",
+    "checked_at": "2026-11-14T22:24:42+00:00"
+   },
+   "r": 0,
+   "m": 11,
+   "a": "pt",
+   "b": "br"
   }
  ],
  "recent_captions": [
-  "Which country escapes first? Italy 🇮🇹 vs Mexico 🇲🇽 ball escape\nEscape Cup 4, Round of 32\nScotland vs France is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #italy #mexico",
-  "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs France 🇫🇷 - which country escapes the rings first?\nEscape Cup 4, Round of 32\nPortugal vs Croatia is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #scotland #france",
   "Ball escape simulation: Portugal 🇵🇹 vs Croatia 🇭🇷\nRound of 32 · Escape Cup 4\nComing next: Nigeria vs Poland. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #portugal #croatia",
   "Nigeria 🇳🇬 vs Poland 🇵🇱: 12 rings, one way out. Physics simulation\nEscape Cup 4, Round of 32\nComing next: Uruguay vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #simulation #nigeria #poland",
   "Country ball escape - Uruguay 🇺🇾 vs Ireland 🇮🇪\nRound of 32 of Escape Cup 4 🏆\nMorocco vs Ukraine is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #uruguay #ireland",
@@ -4744,7 +4789,9 @@
   "Philippines 🇵🇭 or Colombia 🇨🇴? Physics decides which country breaks out first\nRound of 32 of Escape Cup 5 🏆\nNext up: Indonesia vs Australia - who's your pick? 👇\n#ballescape #physicssimulation #simulation #philippines #colombia",
   "Indonesia 🇮🇩 vs Australia 🇦🇺 in the escape rings. Who gets out first?\nEscape Cup 5, Round of 32\nNext up: Croatia vs Germany - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #indonesia #australia",
   "Country ball escape - Croatia 🇭🇷 vs Germany 🇩🇪\nEscape Cup 5, Round of 32\nPoland vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #croatia #germany",
-  "Poland 🇵🇱 vs Netherlands 🇳🇱 - which country escapes the rings first?\nRound of 32 of Escape Cup 5 🏆\nScotland vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #poland #netherlands"
+  "Poland 🇵🇱 vs Netherlands 🇳🇱 - which country escapes the rings first?\nRound of 32 of Escape Cup 5 🏆\nScotland vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #poland #netherlands",
+  "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 or Ireland 🇮🇪? Physics decides which country breaks out first\nRound of 32 · Escape Cup 5\nComing next: Portugal vs Brazil. Who takes it? 👇\n#ballescape #physicssimulation #simulation #scotland #ireland",
+  "Portugal 🇵🇹 or Brazil 🇧🇷? Physics decides which country breaks out first\nEscape Cup 5, Round of 32\nBelgium vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #portugal #brazil"
  ],
  "seen_errors": [],
  "excluded_seeds": {}

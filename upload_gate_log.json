@@ -5103,6 +5103,78 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-14T22:23:05+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m10_126440808086.mp4",
+   "sha256": "b39832084f0305c03ab67aad6a32a39b34a22eb46e60f56c6543d8f4fd80ea4d",
+   "head": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 or Ireland 🇮🇪? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.794,
+   "report": {
+    "seconds": 23.52,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4188,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-14T22:24:42+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m11_21731163206.mp4",
+   "sha256": "9cd273987dd67de18fa22371d3044f2ef403a281821dd18fb1d0abbdaa250294",
+   "head": "Portugal 🇵🇹 or Brazil 🇧🇷? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.855,
+   "report": {
+    "seconds": 19.58,
+    "lufs": -16.1,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4163,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
