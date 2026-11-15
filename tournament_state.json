@@ -113,11 +113,11 @@
    {
     "a": "be",
     "b": "gb-eng",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "gb-eng",
+    "seed": 167325677108,
+    "melody": "candy",
+    "posted": "2026-11-16T09:00:00+00:00",
+    "buffer_id": "6af9dc57b9a106584cbcf97e"
    },
    {
     "a": "ca",
@@ -203,7 +203,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "gb-eng",
     "b": null,
     "winner": null,
     "seed": null,
@@ -296,7 +296,7 @@
   "au": 1,
   "fr": 1
  },
- "posts": 136,
+ "posts": 137,
  "log": [
   {
    "edition": 1,
@@ -4688,7 +4688,7 @@
    "theme": "ocean",
    "due": "2026-11-15T09:00:00+00:00",
    "buffer_id": "6af8831fe5a113497a91337a",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec05_r0_m09_80609317128.mp4",
    "length": 16.8,
    "loop": {
@@ -4702,7 +4702,8 @@
    "r": 0,
    "m": 9,
    "a": "pl",
-   "b": "nl"
+   "b": "nl",
+   "link": "https://tiktok.com/@5lmvill/video/7708320649260879137"
   },
   {
    "edition": 5,
@@ -4711,7 +4712,7 @@
    "theme": "sunset",
    "due": "2026-11-15T12:30:00+00:00",
    "buffer_id": "6af8df88e86a5789a6d5b68b",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec05_r0_m10_126440808086.mp4",
    "length": 23.5,
    "loop": {
@@ -4725,7 +4726,8 @@
    "r": 0,
    "m": 10,
    "a": "gb-sct",
-   "b": "ie"
+   "b": "ie",
+   "link": "https://tiktok.com/@5lmvill/video/7708374734563446048"
   },
   {
    "edition": 5,
@@ -4749,10 +4751,32 @@
    "m": 11,
    "a": "pt",
    "b": "br"
+  },
+  {
+   "edition": 5,
+   "winner": "gb-eng",
+   "seed": 167325677108,
+   "theme": "candy",
+   "due": "2026-11-16T09:00:00+00:00",
+   "buffer_id": "6af9dc57b9a106584cbcf97e",
+   "status": "scheduled",
+   "file": "ec05_r0_m12_167325677108.mp4",
+   "length": 18.9,
+   "loop": {
+    "escape-cup-pacing-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "a03993d9aee994a6da8edc0be5bfe51cd87f93ec62ee732205155f35c08e34da",
+    "checked_at": "2026-11-15T16:21:22+00:00"
+   },
+   "r": 0,
+   "m": 12,
+   "a": "be",
+   "b": "gb-eng"
   }
  ],
  "recent_captions": [
-  "Ball escape simulation: Portugal 🇵🇹 vs Croatia 🇭🇷\nRound of 32 · Escape Cup 4\nComing next: Nigeria vs Poland. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #portugal #croatia",
   "Nigeria 🇳🇬 vs Poland 🇵🇱: 12 rings, one way out. Physics simulation\nEscape Cup 4, Round of 32\nComing next: Uruguay vs Ireland. Who takes it? 👇\n#ballescape #physicssimulation #simulation #nigeria #poland",
   "Country ball escape - Uruguay 🇺🇾 vs Ireland 🇮🇪\nRound of 32 of Escape Cup 4 🏆\nMorocco vs Ukraine is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #uruguay #ireland",
   "Country ball escape - Morocco 🇲🇦 vs Ukraine 🇺🇦\nRound of 32 of Escape Cup 4 🏆\nNext up: South Korea vs Turkey - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #morocco #ukraine",
@@ -4791,9 +4815,9 @@
   "Country ball escape - Croatia 🇭🇷 vs Germany 🇩🇪\nEscape Cup 5, Round of 32\nPoland vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #croatia #germany",
   "Poland 🇵🇱 vs Netherlands 🇳🇱 - which country escapes the rings first?\nRound of 32 of Escape Cup 5 🏆\nScotland vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #poland #netherlands",
   "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 or Ireland 🇮🇪? Physics decides which country breaks out first\nRound of 32 · Escape Cup 5\nComing next: Portugal vs Brazil. Who takes it? 👇\n#ballescape #physicssimulation #simulation #scotland #ireland",
-  "Portugal 🇵🇹 or Brazil 🇧🇷? Physics decides which country breaks out first\nEscape Cup 5, Round of 32\nBelgium vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #portugal #brazil"
+  "Portugal 🇵🇹 or Brazil 🇧🇷? Physics decides which country breaks out first\nEscape Cup 5, Round of 32\nBelgium vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #portugal #brazil",
+  "Belgium 🇧🇪 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿: 12 rings, one way out. Physics simulation\nRound of 32 · Escape Cup 5\nComing next: Canada vs Morocco. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #belgium #england"
  ],
  "seen_errors": [],
- "excluded_seeds": {},
- "orphans_alerted": []
+ "excluded_seeds": {}
 }
