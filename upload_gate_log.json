@@ -5210,6 +5210,79 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-15T22:48:25+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m13_246204497261.mp4",
+   "sha256": "3b9f4b8f4b903805898eae9c9c2d1d54b22d1fe78695c2c599412ad77dcc2452",
+   "head": "Canada 🇨🇦 vs Morocco 🇲🇦 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "QC true_peak (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.807,
+   "report": {
+    "seconds": 15.82,
+    "lufs": -16.1,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4166,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-15T22:49:59+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m14_89360487003.mp4",
+   "sha256": "3149f0f04e8afced6f2ac0a05b37771959481d9d180fdd7fb186bc3eca113cc0",
+   "head": "Nigeria 🇳🇬 vs Mexico 🇲🇽: 12 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.796,
+   "report": {
+    "seconds": 16.32,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "tokens": 4174,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
