@@ -5283,6 +5283,80 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-16T19:36:21+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r0_m15_89318668060.mp4",
+   "sha256": "bca2a76b6c814f0ed0c39d5d05245918e9777a87943328db11c41500d1c1e2b9",
+   "head": "Uruguay 🇺🇾 vs Turkey 🇹🇷 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.8,
+   "report": {
+    "seconds": 17.57,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4167,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-16T19:38:27+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r1_m00_223228964100.mp4",
+   "sha256": "7fa05c57282fa76e4b5f26fe048e39b2c785daa503177214e33620d7c971a374",
+   "head": "South Korea 🇰🇷 or Senegal 🇸🇳? Physics decides which country breaks out first",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.844,
+   "report": {
+    "seconds": 22.3,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4155,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
