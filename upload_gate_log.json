@@ -5357,6 +5357,41 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-17T03:52:55+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r1_m01_6631320185.mp4",
+   "sha256": "9c20f86d0bd69e1c05b584bab06b9f73896cedfa91cef7804cfd6bf00ee70d38",
+   "head": "Which country escapes first? Vietnam 🇻🇳 vs Spain 🇪🇸 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.486,
+   "report": {
+    "seconds": 19.45,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4166,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
