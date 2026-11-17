@@ -169,11 +169,11 @@
    {
     "a": "eg",
     "b": "fr",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "eg",
+    "seed": 35642585011,
+    "melody": "candy",
+    "posted": "2026-11-18T09:00:00+00:00",
+    "buffer_id": "6afc79f87a7b613f168b1111"
    },
    {
     "a": "ph",
@@ -232,7 +232,7 @@
     "buffer_id": null
    },
    {
-    "a": null,
+    "a": "eg",
     "b": null,
     "winner": null,
     "seed": null,
@@ -296,7 +296,7 @@
   "au": 1,
   "fr": 1
  },
- "posts": 142,
+ "posts": 143,
  "log": [
   {
    "edition": 1,
@@ -4832,7 +4832,7 @@
    "theme": "ocean",
    "due": "2026-11-17T09:00:00+00:00",
    "buffer_id": "6afb5b8503628cad694e65da",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec05_r0_m15_89318668060.mp4",
    "length": 17.6,
    "loop": {
@@ -4846,7 +4846,8 @@
    "r": 0,
    "m": 15,
    "a": "uy",
-   "b": "tr"
+   "b": "tr",
+   "link": "https://tiktok.com/@5lmvill/video/7709062917924146464"
   },
   {
    "edition": 5,
@@ -4855,7 +4856,7 @@
    "theme": "sunset",
    "due": "2026-11-17T12:30:00+00:00",
    "buffer_id": "6afb5bf7cb8fbe3d4456ec94",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec05_r1_m00_223228964100.mp4",
    "length": 22.3,
    "loop": {
@@ -4869,7 +4870,8 @@
    "r": 1,
    "m": 0,
    "a": "kr",
-   "b": "sn"
+   "b": "sn",
+   "link": "https://tiktok.com/@5lmvill/video/7709117151847648545"
   },
   {
    "edition": 5,
@@ -4893,10 +4895,32 @@
    "m": 1,
    "a": "vn",
    "b": "es"
+  },
+  {
+   "edition": 5,
+   "winner": "eg",
+   "seed": 35642585011,
+   "theme": "candy",
+   "due": "2026-11-18T09:00:00+00:00",
+   "buffer_id": "6afc79f87a7b613f168b1111",
+   "status": "scheduled",
+   "file": "ec05_r1_m02_35642585011.mp4",
+   "length": 18.1,
+   "loop": {
+    "escape-cup-pacing-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "fb45e92b54d0a8067ad8d0a86963e45d6a8ec8318bf4e9ca3dd07badfc528cce",
+    "checked_at": "2026-11-17T15:58:44+00:00"
+   },
+   "r": 1,
+   "m": 2,
+   "a": "eg",
+   "b": "fr"
   }
  ],
  "recent_captions": [
-  "Ball escape simulation: Spain 🇪🇸 vs Argentina 🇦🇷\nEscape Cup 4, Round of 32\nSwitzerland vs USA is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #spain #argentina",
   "Switzerland 🇨🇭 or USA 🇺🇸? Physics decides which country breaks out first\nRound of 32 · Escape Cup 4\nNext up: Colombia vs Egypt - who's your pick? 👇\n#ballescape #physicssimulation #simulation #switzerland #usa",
   "Country ball escape - Colombia 🇨🇴 vs Egypt 🇪🇬\nRound of 32 of Escape Cup 4 🏆\nComing next: Australia vs Vietnam. Who takes it? 👇\n#ballescape #physicssimulation #simulation #colombia #egypt",
   "Australia 🇦🇺 vs Vietnam 🇻🇳: 12 rings, one way out. Physics simulation\nRound of 32 · Escape Cup 4\nNext up: Indonesia vs Germany - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #australia #vietnam",
@@ -4935,7 +4959,8 @@
   "Nigeria 🇳🇬 vs Mexico 🇲🇽: 12 rings, one way out. Physics simulation\nRound of 32 · Escape Cup 5\nComing next: Uruguay vs Turkey. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #nigeria #mexico",
   "Uruguay 🇺🇾 vs Turkey 🇹🇷 - which country escapes the rings first?\nRound of 32 · Escape Cup 5\nSouth Korea vs Senegal is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #uruguay #turkey",
   "South Korea 🇰🇷 or Senegal 🇸🇳? Physics decides which country breaks out first\nRound of 16 · Escape Cup 5\nNext up: Vietnam vs Spain - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #southkorea #senegal",
-  "Which country escapes first? Vietnam 🇻🇳 vs Spain 🇪🇸 ball escape\nEscape Cup 5, Round of 16\nNext up: Egypt vs France - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #vietnam #spain"
+  "Which country escapes first? Vietnam 🇻🇳 vs Spain 🇪🇸 ball escape\nEscape Cup 5, Round of 16\nNext up: Egypt vs France - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #vietnam #spain",
+  "Ball escape simulation: Egypt 🇪🇬 vs France 🇫🇷\nEscape Cup 5, Round of 16\nPhilippines vs Indonesia is next - who are you backing? 👇\n#ballescape #physicssimulation #satisfying #egypt #france"
  ],
  "seen_errors": [],
  "excluded_seeds": {}

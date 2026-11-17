@@ -5392,6 +5392,41 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-17T15:58:44+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r1_m02_35642585011.mp4",
+   "sha256": "fb45e92b54d0a8067ad8d0a86963e45d6a8ec8318bf4e9ca3dd07badfc528cce",
+   "head": "Ball escape simulation: Egypt 🇪🇬 vs France 🇫🇷",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.579,
+   "report": {
+    "seconds": 18.05,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4160,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
