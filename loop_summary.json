@@ -1,13 +1,13 @@
 {
- "updated": "2026-11-16 17:26 UTC",
+ "updated": "2026-11-17 17:04 UTC",
  "summary": {
-  "views": 37244,
-  "retention": 0.3696808510638298,
+  "views": 35452,
+  "retention": 0.36861702127659574,
   "swipe_away": null,
-  "posts": 18,
+  "posts": 20,
   "note": "views = latest totals of posts from the last 7 days; retention = median avg % watched; TikTok gives no swipe-away via Buffer"
  },
  "actions": [
-  "escape-cup: running escape-cup-pacing-1 (escape-cup-pacing-1 · avg % watched at 72h: KEEP RUNNING — treatment 0.89x control (35.2 vs 39.4; 90% CI 0.74–1.21, p=0.575), n=6 vs 6 (min 10, max 20))"
+  "escape-cup: running escape-cup-pacing-1 (escape-cup-pacing-1 · avg % watched at 72h: KEEP RUNNING — treatment 0.95x control (35.2 vs 37.1; 90% CI 0.74–1.23, p=0.685), n=8 vs 7 (min 10, max 20))"
  ]
 }
