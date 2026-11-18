@@ -5499,6 +5499,76 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-18T20:30:32+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r1_m05_117197228171.mp4",
+   "sha256": "30c28ba34c641fec29e3b3ac5ddbfef386d02552a37daf3e5cae3a472e78fd69",
+   "head": "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 vs Portugal 🇵🇹 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.526,
+   "report": {
+    "seconds": 18.1,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4206,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-18T20:32:28+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r1_m06_145704056054.mp4",
+   "sha256": "7c8632feb2482cdd7d695d43282fa4cc2892b8b25a252278fcca81c2cd3be26a",
+   "head": "England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Morocco 🇲🇦 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.937,
+   "report": {
+    "seconds": 26.63,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
