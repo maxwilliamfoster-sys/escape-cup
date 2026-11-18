@@ -24,6 +24,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 import audio
+import music
 import sim
 import teams
 
@@ -354,6 +355,40 @@ def team_colors(a, b):
 
 LOOP_D = 0.5     # a looping video dissolves its last LOOP_D s into its own first frame
 
+# Engagement, 2026-11-18 (Max: views good, likes low). Since 3 Nov: 6.8 likes and 0.7 comments
+# per 1,000 views, and viewers stay ~8 s of ~20 s, so most never reach the end card's
+# "Comment your pick". So the ask moves into the match, on the empty line under the arena
+# (where "LAST RING" appears later), and the score swings get a callout: the moments people
+# react to. Neither is shown in the last-ring phase or on the card.
+STATUS_Y = sim.CY + sim.OUTER_R + 62
+PICK_PROMPT = "COMMENT YOUR PICK BEFORE IT ENDS"
+PICK_FROM = 1.0          # s; the first second belongs to the hook
+CALLOUT_S = 1.1          # how long a callout stays up
+CALLOUT_GAP = 1.2        # min s between callouts, so it never flickers
+
+
+def score_callouts(events, names):
+    """[(t, text, side)] for the score swings: level scores and a lead taken back.
+    side = the ball that just scored (its colour), names = the two display names."""
+    score, leader, out, last = [0, 0], None, [], -9.0
+    breaks = sorted((e for e in events if e.kind == "break"), key=lambda e: e.t)
+    final_t = breaks[-1].t if breaks else None
+    for e in breaks:
+        score[e.ball] += 1
+        if e.t == final_t:
+            break                          # the winning break: the card takes over
+        text = None
+        if score[0] == score[1]:
+            text = "ALL SQUARE!"
+        elif score[e.ball] > score[1 - e.ball]:
+            if leader is not None and leader != e.ball:
+                text = f"{names[e.ball]} TAKE THE LEAD!"
+            leader = e.ball
+        if text and e.t - last >= CALLOUT_GAP:
+            out.append((e.t, text, e.ball))
+            last = e.t
+    return out
+
 
 def render_match(match, info, out_path, workdir):
     """info: a, b (team codes), header, result_line, next_label, next_line, cta,
@@ -382,7 +417,8 @@ def render_match(match, info, out_path, workdir):
     flash = {}
 
     wav = os.path.join(workdir, "audio.wav")
-    audio.write_wav(audio.build(match, total / FPS, win_t, match.seed), wav)
+    audio.write_wav(audio.build(match, total / FPS, win_t, match.seed,
+                                music=music.bed(match.seed, total / FPS, ffmpeg_bin())), wav)
     wav = normalize_audio(wav)
 
     cmd = [ffmpeg_bin(), "-y", "-loglevel", "error",
@@ -403,6 +439,7 @@ def render_match(match, info, out_path, workdir):
     trails = [[], []]
     tcol = team_colors(a, b)
     rcol = [rgb(c) for c in tcol]
+    callouts = score_callouts(match.events, [teams.name(c).upper() for c in codes])
 
     for f in range(total):
         t = f / FPS
@@ -473,7 +510,20 @@ def render_match(match, info, out_path, workdir):
 
         if not in_card and final_phase:
             pulse = 0.55 + 0.45 * abs(math.sin(t * 6))
-            text.draw(cr, "LAST RING", W / 2, sim.CY + sim.OUTER_R + 62, 40, "#FF4D6D", alpha=pulse)
+            text.draw(cr, "LAST RING", W / 2, STATUS_Y, 40, "#FF4D6D", alpha=pulse)
+        elif not in_card:
+            live = [c for c in callouts if 0 <= t - c[0] < CALLOUT_S]
+            if live:
+                ct0, msg, side = live[-1]
+                age = t - ct0
+                pop = max(0.0, 1 - age / 0.18)
+                fade = min(1.0, (CALLOUT_S - age) / 0.2)
+                text.draw(cr, msg, W / 2, STATUS_Y + 6, 52 + 2 * round(5 * pop), tcol[side],
+                          alpha=fade, max_w=960)
+            elif t >= PICK_FROM:
+                k = min(1.0, (t - PICK_FROM) / 0.4)
+                text.draw(cr, PICK_PROMPT, W / 2, STATUS_Y, 34, "#FFD84D", bold=True,
+                          alpha=0.9 * k, max_w=960)
         if not in_card and info.get("standing"):
             text.draw(cr, info["standing"], W / 2, STANDING_Y, 34, "#FFD84D", bold=True, max_w=960)
 
@@ -576,7 +626,8 @@ def render_royale(match, info, out_path, workdir):
     leader = None
 
     wav = os.path.join(workdir, "audio.wav")
-    audio.write_wav(audio.build(match, total / FPS, win_t, match.seed), wav)
+    audio.write_wav(audio.build(match, total / FPS, win_t, match.seed,
+                                music=music.bed(match.seed, total / FPS, ffmpeg_bin())), wav)
     wav = normalize_audio(wav)
     cmd = [ffmpeg_bin(), "-y", "-loglevel", "error",
            "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",

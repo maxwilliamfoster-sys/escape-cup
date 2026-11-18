@@ -1,0 +1,111 @@
+Background music for Escape Cup (music.py), made by tools/make_music_beds.py.
+Every track is licensed by its creator under Creative Commons Attribution 3.0
+(https://creativecommons.org/licenses/by/3.0/), as shown on its SoundCloud page when checked;
+the page data at that time is saved in licences/<id>.json.
+Each video's caption credits its track (main.with_music_credit, music.credit).
+Changes made: a 40 s section, mono, low-passed, loudness-normalised, mixed under sound effects.
+
+peyruis_that_s_alright_a.mp3  (from 98 s)
+  "That's Alright" by Peyruis, CC BY 3.0
+  https://soundcloud.com/peyruis/thats-alright
+
+peyruis_that_s_alright_b.mp3  (from 32 s)
+  "That's Alright" by Peyruis, CC BY 3.0
+  https://soundcloud.com/peyruis/thats-alright
+
+peyruis_ibiza_a.mp3  (from 16 s)
+  "Ibiza" by Peyruis, CC BY 3.0
+  https://soundcloud.com/peyruis/ibiza
+
+peyruis_ibiza_b.mp3  (from 94 s)
+  "Ibiza" by Peyruis, CC BY 3.0
+  https://soundcloud.com/peyruis/ibiza
+
+cupcakes_norman_manley_a.mp3  (from 32 s)
+  "Norman Manley" by Cupcakes, CC BY 3.0
+  https://soundcloud.com/cupcakesmusic/cc004
+
+cupcakes_norman_manley_b.mp3  (from 72 s)
+  "Norman Manley" by Cupcakes, CC BY 3.0
+  https://soundcloud.com/cupcakesmusic/cc004
+
+cupcakes_baker_s_dozen_a.mp3  (from 44 s)
+  "Baker's Dozen" by Cupcakes, CC BY 3.0
+  https://soundcloud.com/cupcakesmusic/cc0013b
+
+cupcakes_baker_s_dozen_b.mp3  (from 90 s)
+  "Baker's Dozen" by Cupcakes, CC BY 3.0
+  https://soundcloud.com/cupcakesmusic/cc0013b
+
+cupcakes_short_money_a.mp3  (from 114 s)
+  "Short Money" by Cupcakes, CC BY 3.0
+  https://soundcloud.com/cupcakesmusic/cc002
+
+cupcakes_short_money_b.mp3  (from 8 s)
+  "Short Money" by Cupcakes, CC BY 3.0
+  https://soundcloud.com/cupcakesmusic/cc002
+
+archie_praise_the_sun_a.mp3  (from 190 s)
+  "Praise The Sun" by Archie, CC BY 3.0
+  https://soundcloud.com/archie-music-archive/archie-praise-the-sun-original
+
+archie_praise_the_sun_b.mp3  (from 48 s)
+  "Praise The Sun" by Archie, CC BY 3.0
+  https://soundcloud.com/archie-music-archive/archie-praise-the-sun-original
+
+archie_horizon_a.mp3  (from 282 s)
+  "Horizon" by Archie, CC BY 3.0
+  https://soundcloud.com/archie-music-archive/archie-horizon-original-mix
+
+archie_horizon_b.mp3  (from 126 s)
+  "Horizon" by Archie, CC BY 3.0
+  https://soundcloud.com/archie-music-archive/archie-horizon-original-mix
+
+imperss_autumn_a.mp3  (from 150 s)
+  "Autumn" by Imperss, CC BY 3.0
+  https://soundcloud.com/imperss/autumn-imperss-music
+
+imperss_autumn_b.mp3  (from 62 s)
+  "Autumn" by Imperss, CC BY 3.0
+  https://soundcloud.com/imperss/autumn-imperss-music
+
+dj_zakente_ma_ya_hi_a.mp3  (from 90 s)
+  "Ma Ya Hi" by DJ Zakente, CC BY 3.0
+  https://soundcloud.com/zakentemusic/dj-zakente-ma-ya-hi-original-mix-afro-house
+
+dj_zakente_ma_ya_hi_b.mp3  (from 20 s)
+  "Ma Ya Hi" by DJ Zakente, CC BY 3.0
+  https://soundcloud.com/zakentemusic/dj-zakente-ma-ya-hi-original-mix-afro-house
+
+dj_zakente_area_51_a.mp3  (from 20 s)
+  "Area 51" by DJ Zakente, CC BY 3.0
+  https://soundcloud.com/zakentemusic/dj-zakente-area-51-original-mix-afro-house
+
+dj_zakente_area_51_b.mp3  (from 172 s)
+  "Area 51" by DJ Zakente, CC BY 3.0
+  https://soundcloud.com/zakentemusic/dj-zakente-area-51-original-mix-afro-house
+
+brenticus_not_another_progressive_house_a.mp3  (from 78 s)
+  "Not Another Progressive House" by Brenticus, CC BY 3.0
+  https://soundcloud.com/brenticus/not-another-progressive-house
+
+brenticus_not_another_progressive_house_b.mp3  (from 184 s)
+  "Not Another Progressive House" by Brenticus, CC BY 3.0
+  https://soundcloud.com/brenticus/not-another-progressive-house
+
+cybersdf_realm_a.mp3  (from 108 s)
+  "Realm" by CyberSDF, CC BY 3.0
+  https://soundcloud.com/cybersdf/realm
+
+cybersdf_realm_b.mp3  (from 64 s)
+  "Realm" by CyberSDF, CC BY 3.0
+  https://soundcloud.com/cybersdf/realm
+
+kibou_jackin_house_tool_a.mp3  (from 184 s)
+  "Jackin House Tool" by KIBOU, CC BY 3.0
+  https://soundcloud.com/kibouofficial/jackin-tool-1
+
+kibou_jackin_house_tool_b.mp3  (from 92 s)
+  "Jackin House Tool" by KIBOU, CC BY 3.0
+  https://soundcloud.com/kibouofficial/jackin-tool-1
+

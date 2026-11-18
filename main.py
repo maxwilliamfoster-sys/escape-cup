@@ -36,6 +36,7 @@ from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 import director
+import music
 import app_events
 import notify
 import publish
@@ -218,6 +219,16 @@ def make_caption(state, a, b, d, preview, rng):
     return f"{head}\n{second}\n{tease}\n{' '.join(tags)}"
 
 
+def with_music_credit(caption, seed):
+    """Put the background music's CC BY 4.0 credit (music.credit) just above the hashtags.
+    render uses the same seed, so the credit always names the track that plays."""
+    line = music.credit(seed)
+    if not line:
+        return caption
+    body, tags = caption.rsplit("\n", 1)
+    return f"{body}\n{line}\n{tags}"
+
+
 CAPTION_TRIES = 6
 
 
@@ -300,7 +311,7 @@ def build_one(state, exclude_seeds=(), tries=None):
                 hook=hook_for_match(a, b), loop=LENGTH_SHORT_ON, **standings_info(state, d["size"], a, b, winner))
     fname = f"ec{state['edition']:02d}_r{r}_m{m:02d}_{seed}.mp4"
     caption, cap_fail = _pick_caption(
-        lambda g: make_caption(state, a, b, d, preview, g), seed,
+        lambda g: with_music_credit(make_caption(state, a, b, d, preview, g), seed), seed,
         lambda c: _caption_failures(c, state, a, b))
     if cap_fail:
         return _caption_only(caption, cap_fail, seed=seed, file=fname, winner=winner, r=r, m=m,
@@ -661,7 +672,7 @@ def build_royale(state, exclude_seeds=(), tries=None):
     fname = f"royale{heat:03d}_{seed}.mp4"
     heads = _recent_heads(state)
     caption, cap_fail = _pick_caption(
-        lambda g: make_royale_caption(codes, heat, g, heads), seed,
+        lambda g: with_music_credit(make_royale_caption(codes, heat, g, heads), seed), seed,
         lambda c: _caption_failures(c, state, None, None))
     if cap_fail:
         return _caption_only(caption, cap_fail, seed=seed, file=fname, winner=winner,

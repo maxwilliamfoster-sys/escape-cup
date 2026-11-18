@@ -114,7 +114,42 @@ def _energy(v, lo, hi):
     return float(np.clip((v - lo) / (hi - lo), 0, 1)) ** 0.8
 
 
-def build(match, total_seconds, win_time, rng_seed=0):
+# Background music (music.py, 2026-11-18). The marbles must stay clearly on top:
+MUSIC_DB = -7.0          # music RMS vs the marble track's RMS over the match (dB); ~9-10 LU under
+MUSIC_LOWPASS = 1800     # Hz, twice; keeps the drive (bass, drums, strings), loses sharp hi-hats
+DUCK_DB = -4.0           # extra dip under each ring break (the moments that matter)
+LAST_RING_DB = 2.5       # suspense: the music lifts once only the last ring is left
+DUCK_WIN_DB = -20.0      # and drops away at the win, so the escape lands (chime + card)
+DUCK_ATTACK, DUCK_HOLD, DUCK_RELEASE = 0.04, 0.25, 0.35
+
+
+def _music_bed(music, L, R, n, win_time, break_times):
+    """Level-set, low-passed, ducked mono music (zeros if there is none)."""
+    if music is None or not len(music):
+        return np.zeros(n)
+    m = np.zeros(n)
+    m[: min(n, len(music))] = music[:n]
+    m = _lowpass(_lowpass(m, MUSIC_LOWPASS), MUSIC_LOWPASS)
+    ref_n = max(1, min(n, int(win_time * SR)))
+    marble_rms = np.sqrt(np.mean(((L[:ref_n] + R[:ref_n]) / 2) ** 2))
+    m_rms = np.sqrt(np.mean(m[:ref_n] ** 2)) or 1.0
+    m *= marble_rms * 10 ** (MUSIC_DB / 20) / m_rms
+
+    t = np.arange(n) / SR
+    duck_db = np.zeros(n)
+    for bt in break_times:
+        a = np.clip((t - (bt - DUCK_ATTACK)) / DUCK_ATTACK, 0, 1)
+        r = np.clip(1 - (t - (bt + DUCK_HOLD)) / DUCK_RELEASE, 0, 1)
+        duck_db = np.minimum(duck_db, DUCK_DB * np.minimum(a, r))
+    bts = sorted(break_times)
+    if len(bts) >= 2:                                 # the second-last break leaves one ring
+        duck_db += LAST_RING_DB * np.clip((t - bts[-2]) / 0.5, 0, 1)
+    w = np.clip((t - win_time) / 0.3, 0, 1)
+    duck_db = np.where(t >= win_time, DUCK_WIN_DB * w, duck_db)
+    return m * 10 ** (duck_db / 20)
+
+
+def build(match, total_seconds, win_time, rng_seed=0, music=None):
     prng = random.Random(rng_seed)
     bank = Bank()
     n = int((total_seconds + 0.5) * SR)
@@ -151,6 +186,8 @@ def build(match, total_seconds, win_time, rng_seed=0):
     for j, iv in enumerate((0, 4, 7, 12)):
         _add(L, R, win_time + 0.10 + j * 0.12, bank.chime(tonic + 12 + iv), 0.16, 340 + j * 130)
 
+    bed = _music_bed(music, L, R, n, win_time, [e.t for e in match.events if e.kind == "break"])
+
     out = []
     for ch, other in ((L, R), (R, L)):
         wet = np.zeros_like(ch)
@@ -158,7 +195,7 @@ def build(match, total_seconds, win_time, rng_seed=0):
                               (0.097, 0.07, other)):
             d = int(delay * SR)
             wet[d:] += src[:-d] * g
-        mix = ch + _lowpass(wet, 2200)
+        mix = ch + _lowpass(wet, 2200) + bed
         mix = _lowpass(_lowpass(mix, 2500), 2500)    # steep: nothing sharp survives
         out.append(_highpass(mix, 150))               # no inaudible rumble eating headroom
     stereo = np.stack(out, axis=1)[: int(total_seconds * SR)]
