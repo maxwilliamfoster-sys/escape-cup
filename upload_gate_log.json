@@ -5569,6 +5569,43 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-19T02:34:04+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r1_m07_78392805040.mp4",
+   "sha256": "e801a299ad96fbcc5840d34ab2070f5d1ddf38895160454a85dee1d10bc4e375",
+   "head": "Nigeria 🇳🇬 vs Uruguay 🇺🇾: 12 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.885,
+   "report": {
+    "seconds": 15.6,
+    "lufs": -16.7,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4187,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
