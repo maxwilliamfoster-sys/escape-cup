@@ -5606,6 +5606,112 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-19T20:34:51+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r2_m00_148620450023.mp4",
+   "sha256": "e2e1d99a8a6aa9357097f2815c75fcac4c29b126182d62cbc0fc5beb24f62f25",
+   "head": "Country ball escape - Senegal 🇸🇳 vs Vietnam 🇻🇳",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.553,
+   "report": {
+    "seconds": 22.23,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4175,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-19T20:37:01+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r2_m01_39900866094.mp4",
+   "sha256": "5aeb55e0ff7d57ec286de2965400854bd9748d6ee4f1ff393b2792f55704d295",
+   "head": "Which country escapes first? Egypt 🇪🇬 vs Philippines 🇵🇭 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.845,
+   "report": {
+    "seconds": 20.47,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4189,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-19T20:39:02+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r2_m02_146472226002.mp4",
+   "sha256": "a3ed4e5f68860382435dffcaef55fb67d653f68baf272747ffd91b11154fa5e0",
+   "head": "Ball escape simulation: Germany 🇩🇪 vs Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.775,
+   "report": {
+    "seconds": 19.47,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
