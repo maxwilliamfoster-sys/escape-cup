@@ -5712,6 +5712,80 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-20T20:15:17+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r2_m03_159868569317.mp4",
+   "sha256": "d23d66ab793330d175fa1ac9bfbb5cbafdf8d1be8f36cfb7f69423a5b40ee8f9",
+   "head": "Which country escapes first? England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Nigeria 🇳🇬 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.842,
+   "report": {
+    "seconds": 19.6,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4200,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-20T20:17:18+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r3_m00_119313607005.mp4",
+   "sha256": "0898ccfeddfd5346b655166d136e6facb4cb904e614905ba5f2669fafb4ffdbc",
+   "head": "Senegal 🇸🇳 vs Philippines 🇵🇭 - which country escapes the rings first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.803,
+   "report": {
+    "seconds": 19.43,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4186,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
