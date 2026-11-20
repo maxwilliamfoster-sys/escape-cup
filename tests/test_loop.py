@@ -190,10 +190,13 @@ class TestRenderSide(unittest.TestCase):
         finally:
             main.apply_loop({})
 
-    def test_length_is_the_next_test_after_pacing(self):
+    def test_length_comes_after_standings(self):
+        # 2026-11-20: standings (stakes) goes first after pacing, so two length/pacing
+        # tests don't run back to back (stage 2: a different idea family each test).
         lev = el.load_json(os.path.join(ROOT, "levers.json"), {})
         order = [l["lever"] for l in lev["levers"]]
-        self.assertEqual(order.index("length"), order.index("pacing") + 1)
+        self.assertEqual(order.index("standings"), order.index("pacing") + 1)
+        self.assertEqual(order.index("length"), order.index("standings") + 1)
 
     def test_every_lever_value_is_one_apply_loop_knows(self):
         lev = el.load_json(os.path.join(ROOT, "levers.json"), {})
