@@ -5823,6 +5823,76 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-21T19:14:26+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r4_m00_235641504119.mp4",
+   "sha256": "63b97d9f4c8cb62fe62b370ebd99228dacf89180031861bab113dc53d0ecd1fd",
+   "head": "Escape Cup final: Philippines 🇵🇭 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿. Physics simulation decides it 🏆",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.444,
+   "report": {
+    "seconds": 18.72,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4205,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-21T19:18:28+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m00_170406251977.mp4",
+   "sha256": "bd94a922b74c04737b7f0ac4483c334f13ad7ede3500bcfaf889f5fa1dc1778a",
+   "head": "Ball escape simulation: Portugal 🇵🇹 vs Senegal 🇸🇳",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.738,
+   "report": {
+    "seconds": 17.0,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4186,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }

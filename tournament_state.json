@@ -1,288 +1,288 @@
 {
- "edition": 5,
+ "edition": 6,
  "rounds": [
   [
    {
-    "a": "kr",
-    "b": "ua",
-    "winner": "kr",
-    "seed": 205072073081,
-    "melody": "candy",
-    "posted": "2026-11-12T09:00:00+00:00",
-    "buffer_id": "6af4e509bc9f3773a1a1b78d"
-   },
-   {
-    "a": "sn",
-    "b": "jp",
-    "winner": "sn",
-    "seed": 66584706124,
-    "melody": "ember",
-    "posted": "2026-11-12T12:30:00+00:00",
-    "buffer_id": "6af4e5793d8c751bfdf8d2b9"
-   },
-   {
-    "a": "vn",
-    "b": "ch",
-    "winner": "vn",
-    "seed": 4613972001,
-    "melody": "neon",
-    "posted": "2026-11-12T16:30:00+00:00",
-    "buffer_id": "6af4e5eccb4c7286fdf7bf46"
-   },
-   {
-    "a": "it",
-    "b": "es",
-    "winner": "es",
-    "seed": 25288352019,
-    "melody": "ocean",
-    "posted": "2026-11-13T09:00:00+00:00",
-    "buffer_id": "6af5f974c35d831d4498b616"
-   },
-   {
-    "a": "eg",
-    "b": "ar",
-    "winner": "eg",
-    "seed": 121569456004,
-    "melody": "sunset",
-    "posted": "2026-11-13T12:30:00+00:00",
-    "buffer_id": "6af5f9dc11be4d91467dbfb4"
-   },
-   {
-    "a": "fr",
-    "b": "us",
-    "winner": "fr",
-    "seed": 108279662075,
-    "melody": "forest",
-    "posted": "2026-11-13T16:30:00+00:00",
-    "buffer_id": "6af64e55c1a0010a5be75f73"
-   },
-   {
-    "a": "ph",
-    "b": "co",
-    "winner": "ph",
-    "seed": 73728524051,
-    "melody": "candy",
-    "posted": "2026-11-14T09:00:00+00:00",
-    "buffer_id": "6af7458860bde15261f4c1f3"
-   },
-   {
-    "a": "id",
-    "b": "au",
-    "winner": "id",
-    "seed": 212072151191,
-    "melody": "ember",
-    "posted": "2026-11-14T12:30:00+00:00",
-    "buffer_id": "6af745f760bde15261f4f663"
-   },
-   {
-    "a": "hr",
-    "b": "de",
-    "winner": "de",
-    "seed": 109583253303,
-    "melody": "neon",
-    "posted": "2026-11-14T16:30:00+00:00",
-    "buffer_id": "6af79e5c9257ce33981a69aa"
-   },
-   {
-    "a": "pl",
-    "b": "nl",
-    "winner": "nl",
-    "seed": 80609317128,
-    "melody": "ocean",
-    "posted": "2026-11-15T09:00:00+00:00",
-    "buffer_id": "6af8831fe5a113497a91337a"
-   },
-   {
-    "a": "gb-sct",
-    "b": "ie",
-    "winner": "gb-sct",
-    "seed": 126440808086,
-    "melody": "sunset",
-    "posted": "2026-11-15T12:30:00+00:00",
-    "buffer_id": "6af8df88e86a5789a6d5b68b"
-   },
-   {
     "a": "pt",
-    "b": "br",
-    "winner": "pt",
-    "seed": 21731163206,
-    "melody": "forest",
-    "posted": "2026-11-15T16:30:00+00:00",
-    "buffer_id": "6af8dfe9918fe79d2ea9a246"
+    "b": "sn",
+    "winner": "sn",
+    "seed": 170406251977,
+    "melody": "ember",
+    "posted": "2026-11-22T12:30:00+00:00",
+    "buffer_id": "6b01eec7142c9575193a4c20"
+   },
+   {
+    "a": "jp",
+    "b": "au",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    },
    {
     "a": "be",
-    "b": "gb-eng",
-    "winner": "gb-eng",
-    "seed": 167325677108,
-    "melody": "candy",
-    "posted": "2026-11-16T09:00:00+00:00",
-    "buffer_id": "6af9dc57b9a106584cbcf97e"
+    "b": "us",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    },
    {
-    "a": "ca",
+    "a": "co",
+    "b": "ng",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "it",
     "b": "ma",
-    "winner": "ma",
-    "seed": 246204497261,
-    "melody": "ember",
-    "posted": "2026-11-16T12:30:00+00:00",
-    "buffer_id": "6afa36f906e1675856ae8631"
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    },
    {
-    "a": "ng",
-    "b": "mx",
-    "winner": "ng",
-    "seed": 89360487003,
-    "melody": "neon",
-    "posted": "2026-11-16T16:30:00+00:00",
-    "buffer_id": "6afa3758a869c35e5b9ff4e0"
+    "a": "pl",
+    "b": "id",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    },
    {
     "a": "uy",
-    "b": "tr",
-    "winner": "uy",
-    "seed": 89318668060,
-    "melody": "ocean",
-    "posted": "2026-11-17T09:00:00+00:00",
-    "buffer_id": "6afb5b8503628cad694e65da"
-   }
-  ],
-  [
+    "b": "ca",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "gb-eng",
+    "b": "de",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "tr",
+    "b": "gb-sct",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "ar",
+    "b": "eg",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "hr",
+    "b": "es",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "nl",
+    "b": "ch",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "br",
+    "b": "ie",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "ua",
+    "b": "mx",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": "ph",
+    "b": "vn",
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
    {
     "a": "kr",
-    "b": "sn",
-    "winner": "sn",
-    "seed": 223228964100,
-    "melody": "sunset",
-    "posted": "2026-11-17T12:30:00+00:00",
-    "buffer_id": "6afb5bf7cb8fbe3d4456ec94"
-   },
-   {
-    "a": "vn",
-    "b": "es",
-    "winner": "vn",
-    "seed": 6631320185,
-    "melody": "forest",
-    "posted": "2026-11-17T16:30:00+00:00",
-    "buffer_id": "6afbcfdbf83aaca8f3a8a373"
-   },
-   {
-    "a": "eg",
     "b": "fr",
-    "winner": "eg",
-    "seed": 35642585011,
-    "melody": "candy",
-    "posted": "2026-11-18T09:00:00+00:00",
-    "buffer_id": "6afc79f87a7b613f168b1111"
-   },
-   {
-    "a": "ph",
-    "b": "id",
-    "winner": "ph",
-    "seed": 129353190129,
-    "melody": "ember",
-    "posted": "2026-11-18T12:30:00+00:00",
-    "buffer_id": "6afcf82893fa11d37df75049"
-   },
-   {
-    "a": "de",
-    "b": "nl",
-    "winner": "de",
-    "seed": 122067920041,
-    "melody": "neon",
-    "posted": "2026-11-18T16:30:00+00:00",
-    "buffer_id": "6afcf8a59f3765f6ab1f8ed0"
-   },
-   {
-    "a": "gb-sct",
-    "b": "pt",
-    "winner": "gb-sct",
-    "seed": 117197228171,
-    "melody": "ocean",
-    "posted": "2026-11-19T09:00:00+00:00",
-    "buffer_id": "6afe0b1a750db4a2bff58be0"
-   },
-   {
-    "a": "gb-eng",
-    "b": "ma",
-    "winner": "gb-eng",
-    "seed": 145704056054,
-    "melody": "sunset",
-    "posted": "2026-11-19T12:30:00+00:00",
-    "buffer_id": "6afe0b9d750db4a2bff5bdc0"
-   },
-   {
-    "a": "ng",
-    "b": "uy",
-    "winner": "ng",
-    "seed": 78392805040,
-    "melody": "forest",
-    "posted": "2026-11-19T16:30:00+00:00",
-    "buffer_id": "6afe605ff6b6aa0cd49681fb"
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    }
   ],
   [
    {
     "a": "sn",
-    "b": "vn",
-    "winner": "sn",
-    "seed": 148620450023,
-    "melody": "candy",
-    "posted": "2026-11-20T09:00:00+00:00",
-    "buffer_id": "6aff5db4eda1c6ed23785859"
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    },
    {
-    "a": "eg",
-    "b": "ph",
-    "winner": "ph",
-    "seed": 39900866094,
-    "melody": "ember",
-    "posted": "2026-11-20T12:30:00+00:00",
-    "buffer_id": "6aff5e33086d64984257f7d8"
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    },
    {
-    "a": "de",
-    "b": "gb-sct",
-    "winner": "de",
-    "seed": 146472226002,
-    "melody": "neon",
-    "posted": "2026-11-20T16:30:00+00:00",
-    "buffer_id": "6aff5ea8eda1c6ed2378a9ab"
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    },
    {
-    "a": "gb-eng",
-    "b": "ng",
-    "winner": "gb-eng",
-    "seed": 159868569317,
-    "melody": "ocean",
-    "posted": "2026-11-21T09:00:00+00:00",
-    "buffer_id": "6b00aa97d425f1473a0f48d3"
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    }
   ],
   [
    {
-    "a": "sn",
-    "b": "ph",
-    "winner": "ph",
-    "seed": 119313607005,
-    "melody": "sunset",
-    "posted": "2026-11-21T12:30:00+00:00",
-    "buffer_id": "6b00ab10e3772ee0cf643011"
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    },
    {
-    "a": "de",
-    "b": "gb-eng",
-    "winner": "gb-eng",
-    "seed": 245969994149,
-    "melody": "forest",
-    "posted": "2026-11-21T16:30:00+00:00",
-    "buffer_id": "6b00fee05e993799d845ea04"
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
    }
   ],
   [
    {
-    "a": "ph",
-    "b": "gb-eng",
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   },
+   {
+    "a": null,
+    "b": null,
+    "winner": null,
+    "seed": null,
+    "melody": null,
+    "posted": null,
+    "buffer_id": null
+   }
+  ],
+  [
+   {
+    "a": null,
+    "b": null,
     "winner": null,
     "seed": null,
     "melody": null,
@@ -294,9 +294,10 @@
  "titles": {
   "ie": 2,
   "au": 1,
-  "fr": 1
+  "fr": 1,
+  "ph": 1
  },
- "posts": 154,
+ "posts": 156,
  "log": [
   {
    "edition": 1,
@@ -5144,7 +5145,7 @@
    "theme": "sunset",
    "due": "2026-11-21T12:30:00+00:00",
    "buffer_id": "6b00ab10e3772ee0cf643011",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec05_r3_m00_119313607005.mp4",
    "length": 19.4,
    "loop": {
@@ -5158,7 +5159,8 @@
    "r": 3,
    "m": 0,
    "a": "sn",
-   "b": "ph"
+   "b": "ph",
+   "link": "https://tiktok.com/@5lmvill/video/7710601216908217632"
   },
   {
    "edition": 5,
@@ -5167,7 +5169,7 @@
    "theme": "forest",
    "due": "2026-11-21T16:30:00+00:00",
    "buffer_id": "6b00fee05e993799d845ea04",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec05_r3_m01_245969994149.mp4",
    "length": 18.3,
    "loop": {
@@ -5181,12 +5183,57 @@
    "r": 3,
    "m": 1,
    "a": "de",
+   "b": "gb-eng",
+   "link": "https://tiktok.com/@5lmvill/video/7710663308130503969"
+  },
+  {
+   "edition": 5,
+   "winner": "ph",
+   "seed": 235641504119,
+   "theme": "gold",
+   "due": "2026-11-22T09:00:00+00:00",
+   "buffer_id": "6b01edd5d864a011056bf61d",
+   "status": "scheduled",
+   "file": "ec05_r4_m00_235641504119.mp4",
+   "length": 18.7,
+   "loop": {
+    "escape-cup-pacing-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "63b97d9f4c8cb62fe62b370ebd99228dacf89180031861bab113dc53d0ecd1fd",
+    "checked_at": "2026-11-21T19:14:26+00:00"
+   },
+   "r": 4,
+   "m": 0,
+   "a": "ph",
    "b": "gb-eng"
+  },
+  {
+   "edition": 6,
+   "winner": "sn",
+   "seed": 170406251977,
+   "theme": "ember",
+   "due": "2026-11-22T12:30:00+00:00",
+   "buffer_id": "6b01eec7142c9575193a4c20",
+   "status": "scheduled",
+   "file": "ec06_r0_m00_170406251977.mp4",
+   "length": 17.0,
+   "loop": {
+    "escape-cup-pacing-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "bd94a922b74c04737b7f0ac4483c334f13ad7ede3500bcfaf889f5fa1dc1778a",
+    "checked_at": "2026-11-21T19:18:28+00:00"
+   },
+   "r": 0,
+   "m": 0,
+   "a": "pt",
+   "b": "sn"
   }
  ],
  "recent_captions": [
-  "Switzerland 🇨🇭 vs Colombia 🇨🇴 in the escape rings. Who gets out first?\nRound of 16 · Escape Cup 4\nComing next: Australia vs Germany. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #switzerland #colombia",
-  "Australia 🇦🇺 or Germany 🇩🇪? Physics decides which country breaks out first\nRound of 16 · Escape Cup 4\nNext up: Netherlands vs England - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #australia #germany",
   "Which country escapes first? Netherlands 🇳🇱 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 ball escape\nEscape Cup 4, Round of 16\nNext up: Italy vs France - who's your pick? 👇\n#ballescape #physicssimulation #simulation #netherlands #england",
   "Italy 🇮🇹 vs France 🇫🇷 - which country escapes the rings first?\nEscape Cup 4, Quarter-final\nNext up: Uruguay vs South Korea - who's your pick? 👇\n#ballescape #physicssimulation #simulation #italy #france",
   "Uruguay 🇺🇾 or South Korea 🇰🇷? Physics decides which country breaks out first\nEscape Cup 4, Quarter-final\nComing next: Canada vs Switzerland. Who takes it? 👇\n#ballescape #physicssimulation #satisfying #uruguay #southkorea",
@@ -5224,13 +5271,14 @@
   "Ball escape simulation: Germany 🇩🇪 vs Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿\nQuarter-final · Escape Cup 5\nEngland vs Nigeria is next - who are you backing? 👇\nMusic: \"Autumn\" by Imperss on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #satisfying #germany #scotland",
   "Which country escapes first? England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Nigeria 🇳🇬 ball escape\nQuarter-final · Escape Cup 5\nSenegal vs Philippines is next - who are you backing? 👇\nMusic: \"That's Alright\" by Peyruis on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #england #nigeria",
   "Senegal 🇸🇳 vs Philippines 🇵🇭 - which country escapes the rings first?\nSemi-final of Escape Cup 5 🏆\nComing next: Germany vs England. Who takes it? 👇\nMusic: \"Jackin House Tool\" by KIBOU on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #senegal #philippines",
-  "Which country escapes first? Germany 🇩🇪 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 ball escape\nSemi-final of Escape Cup 5 🏆\nComing next: Philippines vs England. Who takes it? 👇\nMusic: \"Autumn\" by Imperss on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #germany #england"
+  "Which country escapes first? Germany 🇩🇪 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 ball escape\nSemi-final of Escape Cup 5 🏆\nComing next: Philippines vs England. Who takes it? 👇\nMusic: \"Autumn\" by Imperss on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #germany #england",
+  "Escape Cup final: Philippines 🇵🇭 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿. Physics simulation decides it 🏆\nEscape Cup 5\nEscape Cup 6 starts with a new draw - which country is yours? 👇\nMusic: \"Praise The Sun\" by Archie on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #philippines #england",
+  "Ball escape simulation: Portugal 🇵🇹 vs Senegal 🇸🇳\nRound of 32 · Escape Cup 6\nComing next: Japan vs Australia. Who takes it? 👇\nMusic: \"Area 51\" by DJ Zakente on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #portugal #senegal"
  ],
  "seen_errors": [],
  "excluded_seeds": {
-  "5-3-1": [
-   245969993848
+  "6-0-0": [
+   170406251422
   ]
- },
- "orphans_alerted": []
+ }
 }
