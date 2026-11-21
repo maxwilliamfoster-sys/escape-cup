@@ -5786,6 +5786,43 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-21T02:14:52+00:00",
+   "platform": "tiktok",
+   "file": "ec05_r3_m01_245969994149.mp4",
+   "sha256": "672cf4d4f935e14caaa52aba699336f7bab4f3fe1b509136e0eaa7cf1f7985d6",
+   "head": "Which country escapes first? Germany 🇩🇪 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 ball escape",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-11",
+   "head_similarity": 0.81,
+   "report": {
+    "seconds": 18.3,
+    "lufs": -16.2,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4201,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
