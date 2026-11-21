@@ -66,7 +66,9 @@ from difflib import SequenceMatcher
 #   doubled-word lint spares real doubled names (Sirhan Sirhan, Boutros Boutros-Ghali, doubled_ok).
 # 2026-11-04: check_media also runs media_qc (vendored beside this file): its new rules only warn
 #   for now, and media_qc not being able to run is a failure.
-GATE_VERSION = "2026-11-11"
+# 2026-11-17: instagram_reels platform (Gary the Bin Fox): Meta's published Reels limits, AAC audio,
+#   links in captions fail like TikTok, Instagram policy brief; BOT_PROFILES["gary"].
+GATE_VERSION = "2026-11-17"
 
 PLATFORMS = {
     "tiktok": {
@@ -92,6 +94,23 @@ PLATFORMS = {
         "description_bytes": 5000,
         "tags_chars": 500,
         "max_hashtags": 15,          # ours: YouTube ignores ALL hashtags above 60
+    },
+    # Meta, IG User Media reference, "Reel specifications" (read 2026-11-17): MOV/MP4, HEVC or H.264,
+    # 23-60 fps, max 1920 columns, 3 s - 15 min, 300 MB, AAC audio (<=48 kHz); caption <=2200 chars,
+    # <=30 hashtags, <=20 @ tags. Links in captions aren't clickable and read as spam, so they fail.
+    "instagram_reels": {
+        "name": "Instagram Reels",
+        "containers": {"mov", "mp4", "m4a", "3gp", "3g2", "mj2"},
+        "video_codecs": {"h264", "hevc"},
+        "audio_codecs": {"aac"},
+        "max_sample_rate": 48000,
+        "fps": (23.0, 60.0),
+        "px": (240, 3840),
+        "max_width": 1920,
+        "seconds": (3.0, 900.0),
+        "max_bytes": 300 * 1024 ** 2,
+        "caption_utf16": 2200,
+        "max_hashtags": 8,           # ours: Meta allows 30; 3-5 specific tags is the norm, a wall reads as spam
     },
 }
 
@@ -133,6 +152,7 @@ BOT_PROFILES = {
     "space": {"lufs": (-16.0, -12.0)},
     "quiz": {"lufs": (-16.0, -12.0)},
     "bcf": {},                               # keep the default until 3 posts are measured (ebur128)
+    "gary": {},                              # whispered voice; default window until posts are measured
 }
 
 
@@ -228,6 +248,12 @@ POLICY_BRIEF = {
         "video actually shows (no malicious clickbait or misleading metadata); no engagement "
         "manipulation; no repetitive mass-produced low-effort content; no reuploaded third-party "
         "content or watermarks; realistic AI content disclosed."),
+    "instagram_reels": (
+        "Instagram Community Guidelines + Recommendation Guidelines: no violence, gore or shocking "
+        "imagery; no nudity or sexual content; nothing that sexualises or endangers minors; no hate, "
+        "bullying or harassment; no dangerous acts; not recommendable: unoriginal or reposted content, "
+        "watermarks of other apps or creators, engagement bait (asking for likes, comments, tags or "
+        "shares in exchange for something), misleading captions; AI-generated content labelled."),
 }
 
 
@@ -332,7 +358,7 @@ def check_text(platform, *, title="", caption="", description="", tags=(), recen
         if not caption.strip():
             fail.append("empty caption")
         if _utf16_len(caption) > P["caption_utf16"]:
-            fail.append(f"caption is {_utf16_len(caption)} UTF-16 units (TikTok max 2200)")
+            fail.append(f"caption is {_utf16_len(caption)} UTF-16 units ({P['name']} max {P['caption_utf16']})")
         texts = {"caption": caption}
 
     allt = "\n".join(texts.values())
@@ -348,8 +374,8 @@ def check_text(platform, *, title="", caption="", description="", tags=(), recen
     for m in URL_RE.finditer(allt):
         url = m.group(0)
         host = re.sub(r"^(?:https?://)?(?:www\.)?", "", url.lower()).split("/")[0]
-        if platform == "tiktok":
-            fail.append(f"link in a TikTok caption ({url}) - off-platform diversion")
+        if platform in ("tiktok", "instagram_reels"):
+            fail.append(f"link in a {P['name']} caption ({url}) - off-platform diversion")
         elif not any(host == d or host.endswith("." + d) for d in allowed_domains):
             fail.append(f"link to an unapproved site ({host}) - off-platform diversion risk")
     hashtags = HASHTAG_RE.findall(allt)
@@ -440,6 +466,8 @@ def check_media(path, platform, profile):
         fail.append(f"{fps:.2f} fps outside {P['name']}'s {P['fps'][0]:.0f}-{P['fps'][1]:.0f}")
     if not (P["px"][0] <= min(w, h) and max(w, h) <= P["px"][1]):
         fail.append(f"{w}x{h} outside {P['name']}'s {P['px'][0]}-{P['px'][1]} px")
+    if P.get("max_width") and w > P["max_width"]:
+        fail.append(f"{w}x{h} wider than {P['name']}'s {P['max_width']} px")
     if h < w:
         fail.append(f"{w}x{h} is landscape - {P['name']} needs vertical")
     if not P["seconds"][0] <= dur <= P["seconds"][1]:
@@ -460,6 +488,10 @@ def check_media(path, platform, profile):
         fail.append(f"video bitrate {vkbps:.0f} kbps < {pr['min_video_kbps']} (comes out blurry after re-encode)")
     if pr.get("audio") and not a:
         fail.append("no audio stream")
+    if a and P.get("audio_codecs") and a.get("codec_name") not in P["audio_codecs"]:
+        fail.append(f"audio codec {a.get('codec_name')} not accepted by {P['name']}")
+    if a and P.get("max_sample_rate") and int(a.get("sample_rate") or 0) > P["max_sample_rate"]:
+        fail.append(f"audio sample rate {a.get('sample_rate')} Hz over {P['name']}'s {P['max_sample_rate']}")
 
     # --- one full decode: corruption, black, freeze, loudness, silence
     vf = (f"blackdetect=d={min(pr['max_black'], 0.2):.2f}:pix_th=0.05,"
@@ -720,7 +752,108 @@ def _unavailable(reason, problem, retryable=False, **extra):
             "problems": [problem], **extra}
 
 
-def ai_review(path, platform, profile, *, title="", caption="", transcript="", seconds=None):
+# Backup reviewers (2026-11-21, Max: "have fallbacks because we seem to be limited by the amount of
+# tokens"). Groq's qwen is the ONLY vision model on Groq and its 200k tokens/day are shared by every
+# bot, so on 20 Nov BCF skipped a render for want of a reviewer. When Groq gives no verdict for ANY
+# reason (no key, daily quota, this bot's cap, 413, 429/5xx, timeout, no verdict), these free vision
+# models are asked in order, each once, with the same prompt and frames. Each is used only when its
+# key is set. Free limits (checked 2026-11-21): Gemini free tier is per model per day (resets 08:00
+# UK); OpenRouter ":free" models share 50 requests a day per account (20 a minute).
+FALLBACK_REVIEWERS = (
+    ("gemini", "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", "GOOGLE_API_KEY",
+     ("gemini-flash-latest", "gemini-flash-lite-latest")),
+    ("openrouter", "https://openrouter.ai/api/v1/chat/completions", "OPENROUTER_API_KEY",
+     ("google/gemma-4-31b-it:free", "nvidia/nemotron-3.5-super-vl:free")),
+)
+GEMINI_THINKING_TOKENS = 1024      # Gemini's "low" thinking counts against max_tokens (see llm_client)
+
+
+def fallback_reviewers():
+    """[(provider, url, key, models)] for the backup reviewers whose key is set."""
+    out = []
+    for provider, url, env, models in FALLBACK_REVIEWERS:
+        key = os.environ.get(env, "").strip()
+        if key:
+            out.append((provider, url, key, models))
+    return out
+
+
+def _fallback_review(path, platform, profile, title, caption, transcript, dur, log=print):
+    """One request per backup model until one gives a verdict. None when none did."""
+    revs = fallback_reviewers()
+    if not revs:
+        return None
+    st = AI_STAGES[0]
+    geo = {k: st[k] for k in ("sheets", "cols", "rows", "tile", "first", "q")}
+    try:
+        imgs = _images_b64(path, dur, **geo)
+    except Exception as e:
+        log(f"[gate] backup reviewers skipped: {str(e)[:120]}")
+        return None
+    content = [{"type": "text", "text": _ai_prompt(platform, profile, dur, title, caption, transcript, st)}]
+    content += [{"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + b}} for b in imgs]
+    for provider, url, key, models in revs:
+        for model in models:
+            body = {"model": model, "temperature": 0, "max_tokens": 900,
+                    "messages": [{"role": "user", "content": content}]}
+            if provider == "gemini":
+                body.update(max_tokens=900 + GEMINI_THINKING_TOKENS, reasoning_effort="low",
+                            response_format={"type": "json_object"})
+            try:
+                req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={
+                    "Authorization": f"Bearer {key}", "Content-Type": "application/json",
+                    "User-Agent": "upload-gate"})
+                with urllib.request.urlopen(req, timeout=120) as resp:
+                    reply = json.load(resp)
+                out = (reply["choices"][0]["message"].get("content") or "")
+                m = re.search(r"\{.*\}", out, re.S)
+                res = json.loads(m.group(0)) if m else {}
+            except urllib.error.HTTPError as e:
+                log(f"[gate] backup reviewer {provider} {model}: HTTP {e.code} - next")
+                continue
+            except Exception as e:
+                log(f"[gate] backup reviewer {provider} {model}: {type(e).__name__} - next")
+                continue
+            if not isinstance(res, dict) or res.get("verdict") not in ("PASS", "BLOCK"):
+                log(f"[gate] backup reviewer {provider} {model}: no verdict - next")
+                continue
+            coh, qual = _score(res.get("coherence")), _score(res.get("quality"))
+            problems = [str(p) for p in (res.get("policy_issues") or []) + (res.get("quality_issues") or []) if p]
+            ok = res["verdict"] == "PASS" and coh >= 5 and qual >= 5 and not (res.get("policy_issues") or [])
+            return {"ok": ok, "available": True, "retryable": False, "reason": None, "coherence": coh,
+                    "quality": qual, "problems": problems[:6], "summary": str(res.get("summary") or "")[:300],
+                    "model": model, "provider": provider, "backup": True,
+                    "tokens": (reply.get("usage") or {}).get("total_tokens")}
+    return None
+
+
+def ai_review(path, platform, profile, *, title="", caption="", transcript="", seconds=None, groq=True):
+    """The pre-publication AI review: Groq's vision model first, then the backup reviewers
+    (FALLBACK_REVIEWERS) when Groq gives no verdict. groq=False skips Groq (this bot's daily
+    Groq cap is reached). When nobody gives a verdict, Groq's own "unavailable" answer is
+    returned unchanged, so callers' quota / retry handling still works.
+    Every reviewer gets the same prompt (_ai_prompt), so the PRIVACY rule holds for all of them:
+    a real private home or a readable vehicle number plate in any frame is always a BLOCK."""
+    first = (_groq_review(path, platform, profile, title=title, caption=caption, transcript=transcript,
+                          seconds=seconds) if groq else
+             _unavailable("cap", "AI review skipped: this bot's daily AI-review cap is reached "
+                                 "(the free AI quota is shared by 3 bots)", quota=True, cap=True))
+    if first.get("available") or not fallback_reviewers():
+        return first
+    try:
+        dur = seconds or float(probe(path)["format"]["duration"])
+    except Exception:
+        return first
+    backup = _fallback_review(path, platform, profile, title, caption, transcript, dur)
+    if backup is None:
+        return first
+    backup["groq_reason"] = first.get("reason")
+    print(f"[gate] Groq review unavailable ({first.get('reason')}); used backup "
+          f"{backup['provider']} {backup['model']}")
+    return backup
+
+
+def _groq_review(path, platform, profile, *, title="", caption="", transcript="", seconds=None):
     """Ask a free vision model to watch the video as a strict pre-publication reviewer.
     Returns {"ok": bool, "available": bool, "retryable": bool, "reason", "coherence", "quality",
     "problems": [...], "summary"}; "shrunk" when a 413 forced a smaller request.
@@ -856,7 +989,11 @@ def check(path, platform, *, profile=None, title="", caption="", description="",
         raise ValueError(f"unknown platform {platform}")
     pr = profile_for(profile)                    # DEFAULT_PROFILE <- bot window <- bot's keys
     if pr.get("ledger"):                         # headlines this gate approved before count as recent
-        recent_texts = list(recent_texts) + recent_heads(pr["ledger"], platform)
+        try:
+            own = sha256(path)
+        except OSError:
+            own = None                           # missing file: the hash stage reports it
+        recent_texts = list(recent_texts) + recent_heads(pr["ledger"], platform, exclude_sha=own)
     head = _head(platform, title, caption)
     verdict = {"ok": False, "platform": platform, "file": os.path.basename(path), "sha256": None,
                "head": head, "head_similarity": head_similarity(head, list(recent_texts)[-10:], pr["head_mask"]),
@@ -902,7 +1039,20 @@ def check(path, platform, *, profile=None, title="", caption="", description="",
 
     mode = pr.get("ai_review", "off")
     cap = pr.get("ai_daily_cap")
-    if mode != "off" and not F and cap and pr.get("ledger") and ai_reviews_today(pr["ledger"]) >= cap:
+    capped = bool(mode != "off" and not F and cap and pr.get("ledger") and ai_reviews_today(pr["ledger"]) >= cap)
+    if capped and fallback_reviewers():
+        # The cap protects Groq's shared quota only: a backup reviewer can still judge the video.
+        ai = stage("AI review", lambda: ai_review(
+            path, platform, pr, title=title, caption=caption or description, transcript=script or transcript,
+            seconds=verdict["report"].get("seconds"), groq=False))
+        if ai is not None:
+            verdict["ai"] = ai
+            if ai["available"] and not ai["ok"]:
+                F.append("AI review: " + (ai.get("summary") or "blocked") + (
+                    " | " + "; ".join(ai["problems"]) if ai["problems"] else ""))
+            elif not ai["available"]:
+                (F if mode == "required" else W).append("AI review unavailable: " + "; ".join(ai["problems"]))
+    elif capped:
         # The free AI quota is shared by 3 bots; retry loops must not let one bot spend it
         # all. Same outcome as Groq's own "per day" answer, just reached earlier.
         ai = {"ok": False, "available": False, "quota": True, "cap": True, "retryable": False, "reason": "cap",
@@ -985,11 +1135,11 @@ OTHER_WITHHELD = "[other] detail withheld from the public log"
 _PUBLIC_SAFE = re.compile(
     r"^(?:empty (?:title|caption)|title is \d+|description is \d+|'<' or '>' in the |tags total \d+|caption is \d+|"
     + "|".join(re.escape(why) for _, why in BAIT + MISLEADING) +
-    r"|email address in the text|phone number in the text|link in a TikTok caption|link to an unapproved site"
+    r"|email address in the text|phone number in the text|link in a (?:TikTok|Instagram Reels) caption|link to an unapproved site"
     r"|\d+ hashtags|generic reach hashtags|doubled word in the (?:title|caption|description)"
     r"|same (?:title|first caption line) as a recent post|near-duplicate (?:title|first caption line)"
     r"|realistic AI content without|no video stream|no audio stream|container \S+ not accepted"
-    r"|video codec \S+ not accepted|[\d.]+ fps|\d+x\d+ |-?[\d.]+s outside|file is [\d.]+ GB|pixel format"
+    r"|video codec \S+ not accepted|audio codec \S+ not accepted|audio sample rate \d+ Hz over|[\d.]+ fps|\d+x\d+ |-?[\d.]+s outside|file is [\d.]+ GB|pixel format"
     r"|resolution \d+|video bitrate(?: \d+ kbps)?|ffmpeg could not decode|\d+ decode error|[\d.]+s of black picture"
     r"|picture frozen|could not measure loudness|loudness -?[\d.]+ LUFS(?: outside \(-?[\d.]+, -?[\d.]+\))?"
     r"|true peak|[\d.]+s of dead silence"
@@ -1099,25 +1249,30 @@ def record(verdict, ledger_path, keep=300):
     if verdict.get("ai"):
         slim["ai"] = {k: verdict["ai"].get(k) for k in ("available", "ok", "coherence", "quality", "summary",
                                                          "tokens", "retryable", "reason", "too_large", "quota",
-                                                         "cap", "skipped", "model", "shrunk") if k in verdict["ai"]}
+                                                         "cap", "skipped", "model", "shrunk", "provider", "backup",
+                                                         "groq_reason") if k in verdict["ai"]}
     data.setdefault("entries", []).append(slim)
     data["entries"] = [_scrub_entry(e) for e in data["entries"][-keep:]]
     with open(ledger_path, "w", encoding="utf-8") as fh:
         json.dump(data, fh, indent=1, ensure_ascii=False)
 
 
-def recent_heads(ledger_path, platform, n=30):
-    """Headlines (title / first caption line) of the last n APPROVED videos in the ledger."""
+def recent_heads(ledger_path, platform, n=30, exclude_sha=None):
+    """Headlines (title / first caption line) of the last n APPROVED videos in the ledger.
+    exclude_sha skips the video being checked: re-checking the same file (a dry run, then the
+    real post) is not a repeat of itself (Gary ep0004 was blocked that way on 2026-11-17)."""
     try:
         with open(ledger_path, encoding="utf-8") as fh:
             entries = json.load(fh).get("entries", [])
     except (OSError, ValueError):
         return []
-    return [e["head"] for e in entries if e.get("ok") and e.get("platform") == platform and e.get("head")][-n:]
+    return [e["head"] for e in entries if e.get("ok") and e.get("platform") == platform and e.get("head")
+            and not (exclude_sha and e.get("sha256") == exclude_sha)][-n:]
 
 
 def ai_reviews_today(ledger_path, now=None):
-    """Real AI reviews (ai.available True) logged in this ledger on the current UTC day."""
+    """Real Groq AI reviews (ai.available True) logged in this ledger on the current UTC day.
+    Backup-reviewer verdicts (ai.backup) don't count: the cap guards Groq's shared quota."""
     try:
         with open(ledger_path, encoding="utf-8") as fh:
             entries = json.load(fh).get("entries", [])
@@ -1125,7 +1280,8 @@ def ai_reviews_today(ledger_path, now=None):
         return 0
     day = (now or datetime.now(timezone.utc)).date().isoformat()
     return sum(1 for e in entries
-               if (e.get("checked_at") or "")[:10] == day and (e.get("ai") or {}).get("available") is True)
+               if (e.get("checked_at") or "")[:10] == day and (e.get("ai") or {}).get("available") is True
+               and not (e.get("ai") or {}).get("backup"))
 
 
 # Failures that mean the machinery is broken (missing tool, unset secret), not the video.

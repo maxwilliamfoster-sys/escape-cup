@@ -32,7 +32,7 @@ import subprocess
 import tempfile
 import time
 
-QC_VERSION = "2026-11-04"
+QC_VERSION = "2026-11-17"
 
 # Rules that block. Empty during the warn-only period (started 2026-11-04, review about 2026-11-18).
 ENFORCED = frozenset()
@@ -59,6 +59,7 @@ BOT_RULES = {
     "quiz": {"lufs": (-16.0, -12.0)},
     "bcf": {"max_audio_short": 0.6},     # the picture runs 0.5 s past the narration by design
     "whatif": {},
+    "gary": {},                           # Gary the Bin Fox (Instagram); measure posts before tightening
 }
 
 BLACK_FILTER = "blackdetect=d=0.1:pix_th=0.05"
