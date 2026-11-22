@@ -9,6 +9,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import director  # noqa: E402
+import quality  # noqa: E402
 import render  # noqa: E402
 import sim  # noqa: E402
 
@@ -67,6 +68,35 @@ class TieBreakTests(unittest.TestCase):
         m = sim.simulate(5, record=False, **sim.ROYALE)
         self.assertEqual(len(m.rings), sim.ROYALE["n_rings"])
         self.assertIsNone(sim.tie_time(m))
+
+
+class UploadBlockTests(unittest.TestCase):
+    """quality.check_result: a level match never uploads without the tie-break (Max, 2026-11-22)."""
+
+    def test_real_matches_pass(self):
+        self.assertEqual(quality.check_result(sim.simulate(TIE_SEED)), [])
+        self.assertEqual(quality.check_result(sim.simulate(LAST_RING_LOSES, record=False)), [])
+
+    def test_director_picks_always_pass(self):
+        for base in range(1, 13):
+            seed, _ = director.pick(base)
+            self.assertEqual(quality.check_result(sim.simulate(seed, record=False)), [], seed)
+
+    def test_six_all_without_tiebreak_is_blocked(self):
+        m = sim.simulate(TIE_SEED)
+        tie_t = sim.tie_time(m)
+        m.events = [e for e in m.events if e.kind != "tie" and not (e.kind == "break" and e.t > tie_t)]
+        self.assertTrue(any("without the sudden-death tie-break" in f for f in quality.check_result(m)))
+
+    def test_gold_ring_missing_from_the_video_is_blocked(self):
+        m = sim.simulate(TIE_SEED)
+        m.frames = [(an, al[:sim.N_RINGS], b) for an, al, b in m.frames]
+        self.assertTrue(any("never appears" in f for f in quality.check_result(m)))
+
+    def test_old_rule_winner_with_fewer_rings_is_blocked(self):
+        m = sim.simulate(LAST_RING_LOSES, record=False)
+        m.winner = 1 - m.winner
+        self.assertTrue(any("fewer rings" in f for f in quality.check_result(m)))
 
 
 if __name__ == "__main__":

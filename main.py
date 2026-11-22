@@ -324,6 +324,7 @@ def build_one(state, exclude_seeds=(), tries=None):
     span = quality.SHORT_DURATION_RANGE if LENGTH_SHORT_ON else quality.DURATION_RANGE
     report, failures = quality.check_video(path, len(phys.frames) / sim.FPS, span)
     failures += quality.check_content(a, b, winner, phys.breaks)
+    failures += quality.check_result(phys)            # 6-6 must show the tie-break
     verdict = gate(path, caption, state, span) if not failures else None
     if verdict:
         failures += verdict["failures"]

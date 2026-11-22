@@ -182,6 +182,42 @@ def check_content(a, b, winner, breaks):
     return fail
 
 
+def check_result(match):
+    """The win rule (2026-11-22): most rings wins, and a 6-6 MUST go to the gold-ring
+    tie-break. Max asked that no tied match ever uploads without it, so this blocks the
+    video if the physics, a later edit or an old render ever breaks the rule."""
+    import sim
+    if getattr(match, "n_balls", 2) != 2:
+        return []
+    fail = []
+    tie_t = sim.tie_time(match)
+    breaks = [e for e in match.events if e.kind == "break"]
+    main = [0, 0]
+    for e in breaks:
+        if e.ring < sim.N_RINGS:
+            main[e.ball] += 1
+    gold = [e for e in breaks if e.ring >= sim.N_RINGS]
+    if match.winner not in (0, 1):
+        fail.append("no winner")
+        return fail
+    if sum(main) != sim.N_RINGS:
+        fail.append(f"only {sum(main)} of {sim.N_RINGS} rings broken")
+    if main[0] == main[1]:
+        if tie_t is None or len(gold) != 1:
+            fail.append(f"{main[0]}-{main[1]} without the sudden-death tie-break")
+        elif gold[0].ball != match.winner:
+            fail.append("tie-break winner is not the ball that broke the gold ring")
+        elif match.frames and not any(len(al) > sim.N_RINGS and al[sim.N_RINGS]
+                                      for _, al, _ in match.frames):
+            fail.append("the gold tie-break ring never appears on screen")
+    else:
+        if tie_t is not None or gold:
+            fail.append(f"tie-break played at {main[0]}-{main[1]} (not level)")
+        if main[match.winner] < main[1 - match.winner]:
+            fail.append(f"winner has fewer rings ({main[match.winner]}-{main[1 - match.winner]})")
+    return fail
+
+
 def check_caption(caption, a, b, recent_captions):
     """a/b = the two countries of a cup match; None for an Escape Royale heat."""
     fail = []
