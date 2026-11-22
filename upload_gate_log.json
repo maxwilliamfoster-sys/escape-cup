@@ -5893,6 +5893,41 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-22T01:18:16+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m01_223968853066.mp4",
+   "sha256": "d70809047dcf278da8df18086c2de5b79a7d969c43ba5975d5188e1c88f0d12c",
+   "head": "Japan 🇯🇵 vs Australia 🇦🇺 in the escape rings. Who gets out first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.496,
+   "report": {
+    "seconds": 22.23,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4188,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
