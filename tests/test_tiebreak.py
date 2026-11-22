@@ -14,7 +14,24 @@ import render  # noqa: E402
 import sim  # noqa: E402
 
 TIE_SEED = 1063          # director.pick(1): 6-6, then a 3.6 s sudden death -> 6-7
-LAST_RING_LOSES = 3      # 7-5: the ball on 5 broke the 12th ring, the ball on 7 wins
+
+
+def _last_ring_loses_seed():
+    """A seed with no tie where the ball that broke the 12th ring still loses (e.g. 7-5).
+
+    Found at run time, not hard-coded: the physics is chaotic, so the same seed can end
+    7-5 on Windows and 6-6 on GitHub's Linux runners (seed 3 did, 2026-11-22)."""
+    for seed in range(1, 400):
+        m = sim.simulate(seed, record=False)
+        if m.winner < 0 or sim.tie_time(m) is not None:
+            continue
+        breakers = [e.ball for e in m.events if e.kind == "break"]
+        if breakers and breakers[-1] != m.winner:
+            return seed
+    raise AssertionError("no last-ring-loses match in seeds 1-399")
+
+
+LAST_RING_LOSES = _last_ring_loses_seed()
 
 
 class TieBreakTests(unittest.TestCase):
