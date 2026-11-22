@@ -47,6 +47,7 @@ FONT_BLACK = os.path.join(ROOT, "assets", "fonts", "Montserrat-900.ttf")
 FONT_BOLD = os.path.join(ROOT, "assets", "fonts", "Montserrat-800.ttf")
 
 FINAL_RED = "#FF3355"
+TB_GOLD = "#FFD84D"         # the 6-6 sudden-death ring and its banner (sim.TIE_PAUSE)
 
 # Visual themes, rotated per video. TikTok treats automation that "sends
 # repetitive content" as spam, so consecutive videos must not look identical:
@@ -372,11 +373,13 @@ def score_callouts(events, names):
     side = the ball that just scored (its colour), names = the two display names."""
     score, leader, out, last = [0, 0], None, [], -9.0
     breaks = sorted((e for e in events if e.kind == "break"), key=lambda e: e.t)
-    final_t = breaks[-1].t if breaks else None
+    # the last main ring ends the callouts: the card (or the 6-6 tie-break banner) takes over
+    ends = [e.t for e in breaks if e.ring >= sim.N_RINGS - 1]
+    final_t = ends[0] if ends else (breaks[-1].t if breaks else None)
     for e in breaks:
         score[e.ball] += 1
-        if e.t == final_t:
-            break                          # the winning break: the card takes over
+        if e.t >= final_t:
+            break
         text = None
         if score[0] == score[1]:
             text = "ALL SQUARE!"
@@ -412,6 +415,8 @@ def render_match(match, info, out_path, workdir):
     for e in match.events:
         if e.kind == "break":
             breaks_by_frame.setdefault(int(e.t * FPS), []).append(e)
+    tie_t = sim.tie_time(match)
+    tie_f = int(tie_t * FPS) if tie_t is not None else -1
     score = [0, 0]
     bump = [-9.0, -9.0]          # time each side last scored (score pops)
     flash = {}
@@ -447,11 +452,13 @@ def render_match(match, info, out_path, workdir):
         in_card = f >= n_sim
 
         for e in breaks_by_frame.get(f, []):
-            col = ring_cols[e.ring]
+            col = ring_cols[e.ring] if e.ring < len(ring_cols) else rgb(TB_GOLD)
             parts.ring_burst(t, match.rings[e.ring], "#%02x%02x%02x" % tuple(int(c * 255) for c in col))
             score[e.ball] += 1
             bump[e.ball] = t
             flash[e.ring] = t
+        if f == tie_f:
+            trails = [[], []]                   # the balls jump back to the centre
         if f == n_sim:
             parts.confetti(t, tcol[match.winner])
 
@@ -469,14 +476,15 @@ def render_match(match, info, out_path, workdir):
             text.draw(cr, str(score[side]), x, 378, size, tcol[side])
         text.draw(cr, "-", W / 2, 372, 48, "#FFFFFF")
 
-        # --- rings: glow + core; the last ring turns red ------------------------
-        final_phase = sum(alive) == 1
+        # --- rings: glow + core; the last ring turns red, the tie-break ring is gold
+        tb_phase = len(alive) > sim.N_RINGS and alive[sim.N_RINGS]
+        final_phase = sum(alive[:sim.N_RINGS]) == 1
         for k, ring in enumerate(match.rings):
             if not alive[k]:
                 continue
             start = angles[k] + ring.gap_half
             end = angles[k] + 2 * math.pi - ring.gap_half
-            col = rgb(FINAL_RED) if final_phase else ring_cols[k]
+            col = rgb(TB_GOLD) if k >= sim.N_RINGS else rgb(FINAL_RED) if final_phase else ring_cols[k]
             for width, alpha in ((sim.RING_THICK + 12, 0.16), (sim.RING_THICK, 1.0)):
                 cr.new_sub_path()
                 cr.arc(sim.CX, sim.CY, ring.radius, start, end)
@@ -508,7 +516,22 @@ def render_match(match, info, out_path, workdir):
         for i, (x, y) in enumerate(balls):
             flags.ball(cr, codes[i], x, y, sim.BALL_R, border=3.5)
 
-        if not in_card and final_phase:
+        if tie_t is not None and 0 <= t - tie_t < 0.25:      # soft flash as the balls reset
+            cr.rectangle(0, 0, W, H)
+            cr.set_source_rgba(1, 1, 1, 0.28 * (1 - (t - tie_t) / 0.25))
+            cr.fill()
+        if not in_card and tb_phase:
+            age = t - tie_t
+            if age < sim.TIE_PAUSE + 0.4:                    # banner over the empty arena
+                pop = max(0.0, 1 - age / 0.2)
+                k = min(1.0, (sim.TIE_PAUSE + 0.4 - age) / 0.3)
+                text.draw(cr, f"{score[0]}-{score[1]}!", W / 2, sim.CY - sim.TB_RADIUS - 150,
+                          96 + 2 * round(8 * pop), "#FFFFFF", alpha=k)
+                text.draw(cr, "TIE-BREAK", W / 2, sim.CY - sim.TB_RADIUS - 60, 72, TB_GOLD, alpha=k)
+            pulse = 0.55 + 0.45 * abs(math.sin(t * 6))
+            text.draw(cr, "SUDDEN DEATH · FIRST OUT WINS", W / 2, STATUS_Y, 40, TB_GOLD,
+                      alpha=pulse, max_w=960)
+        elif not in_card and final_phase:
             pulse = 0.55 + 0.45 * abs(math.sin(t * 6))
             text.draw(cr, "LAST RING", W / 2, STATUS_Y, 40, "#FF4D6D", alpha=pulse)
         elif not in_card:
@@ -537,7 +560,8 @@ def render_match(match, info, out_path, workdir):
             parts.draw(cr, t)
             wcode = codes[match.winner]
             slide = (1 - k) ** 3 * 120
-            text.draw(cr, "CHAMPION" if info.get("final") else "ESCAPED FIRST", W / 2, 600 + slide, 44,
+            label = "CHAMPION" if info.get("final") else "WINS ON TIE-BREAK" if tie_t is not None else "WINNER"
+            text.draw(cr, label, W / 2, 600 + slide, 44,
                       "#FFD84D", alpha=k)
             flags.rect(cr, wcode, W / 2, 740 + slide, 300, 200, radius=20, border=6, alpha=k)
             text.draw(cr, teams.name(wcode).upper(), W / 2, 945 + slide, 104, "#FFFFFF",

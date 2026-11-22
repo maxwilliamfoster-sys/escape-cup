@@ -1,0 +1,73 @@
+"""Most rings wins, and 6-6 goes to a sudden-death tie-break (2026-11-22).
+
+Viewers called 6-6 endings unfair: the old rule gave the win to whoever broke the
+12th ring, so level and even losing ring counts "won"."""
+import os
+import sys
+import unittest
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import director  # noqa: E402
+import render  # noqa: E402
+import sim  # noqa: E402
+
+TIE_SEED = 1063          # director.pick(1): 6-6, then a 3.6 s sudden death -> 6-7
+LAST_RING_LOSES = 3      # 7-5: the ball on 5 broke the 12th ring, the ball on 7 wins
+
+
+class TieBreakTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.tie = sim.simulate(TIE_SEED)
+
+    def test_six_all_goes_to_sudden_death(self):
+        m = self.tie
+        tie_t = sim.tie_time(m)
+        self.assertIsNotNone(tie_t)
+        main = [e for e in m.events if e.kind == "break" and e.t <= tie_t]
+        self.assertEqual(len(main), sim.N_RINGS)
+        self.assertEqual([e.ball for e in main].count(0), [e.ball for e in main].count(1))
+        last = [e for e in m.events if e.kind == "break"][-1]
+        self.assertEqual(last.ring, sim.N_RINGS)                   # the gold ring
+        self.assertEqual(last.ball, m.winner)
+        self.assertEqual(sorted(m.breaks), [sim.N_RINGS // 2, sim.N_RINGS // 2 + 1])
+
+    def test_balls_wait_in_the_centre_during_the_pause(self):
+        m = self.tie
+        tie_t = sim.tie_time(m)
+        f0 = int(tie_t * sim.FPS) + 2
+        f1 = int((tie_t + sim.TIE_PAUSE) * sim.FPS) - 2
+        self.assertEqual(m.frames[f0][2], m.frames[f1][2])
+        for x, y in m.frames[f0][2]:
+            self.assertLess(abs(x - sim.CX), 60)
+            self.assertLess(abs(y - sim.CY), 40)
+
+    def test_most_rings_wins_even_if_the_other_ball_breaks_the_last_ring(self):
+        m = sim.simulate(LAST_RING_LOSES, record=False)
+        self.assertIsNone(sim.tie_time(m))
+        breakers = [e.ball for e in m.events if e.kind == "break"]
+        self.assertNotEqual(breakers[-1], m.winner)
+        self.assertGreater(m.breaks[m.winner], m.breaks[1 - m.winner])
+
+    def test_director_only_posts_a_tiebreak_that_is_neither_instant_nor_dragging(self):
+        d = sim.drama(self.tie)
+        self.assertTrue(director.TB_MIN <= d["tiebreak"] <= director.TB_MAX)
+        self.assertTrue(director.acceptable(d))
+        self.assertFalse(director.acceptable(dict(d, tiebreak=director.TB_MAX + 1)))
+        self.assertFalse(director.acceptable(dict(d, tiebreak=director.TB_MIN - 0.5)))
+
+    def test_no_callout_on_the_tying_break(self):
+        names = ["A", "B"]
+        out = render.score_callouts(self.tie.events, names)
+        tie_t = sim.tie_time(self.tie)
+        self.assertTrue(all(t < tie_t for t, _, _ in out))
+
+    def test_royale_keeps_its_rules(self):
+        m = sim.simulate(5, record=False, **sim.ROYALE)
+        self.assertEqual(len(m.rings), sim.ROYALE["n_rings"])
+        self.assertIsNone(sim.tie_time(m))
+
+
+if __name__ == "__main__":
+    unittest.main()

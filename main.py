@@ -144,13 +144,13 @@ RESULT_LINE = {16: "advances to the Round of 16", 8: "reaches the quarter-finals
 # spam. First line always names both countries + a niche keyword (TikTok search
 # indexes captions); no spoilers, no like/follow asks.
 HEADS = [
-    "{A} vs {B} - which country escapes the rings first?",
+    "{A} vs {B} - which country breaks the most escape rings?",
     "Ball escape simulation: {A} vs {B}",
-    "{A} or {B}? Physics decides which country breaks out first",
+    "{A} or {B}? Physics decides which country breaks more rings",
     "Country ball escape - {A} vs {B}",
-    "{A} vs {B} in the escape rings. Who gets out first?",
+    "{A} vs {B} in the escape rings. Who breaks the most?",
     "{A} vs {B}: 12 rings, one way out. Physics simulation",
-    "Which country escapes first? {A} vs {B} ball escape",
+    "Which country breaks more rings? {A} vs {B} ball escape",
 ]
 FINAL_HEADS = [
     "THE FINAL 🏆 {A} vs {B} - which country escapes with the cup?",
@@ -337,7 +337,8 @@ def build_one(state, exclude_seeds=(), tries=None):
 # quality.py; publish.host_video refuses any file it did not approve.
 GATE_LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "upload_gate_log.json")
 GATE_CONTEXT = ("Escape Cup: physics simulation. Country flag balls bounce inside rotating rings; a "
-                "ring shatters when a ball escapes through its gap; first to break out wins. Hook box "
+                "ring shatters when a ball escapes through its gap; most rings broken wins, and a 6-6 goes to a "
+                "sudden-death tie-break in one gold ring (first out wins, 7-6). Hook box "
                 "at the top; the end card names the winner and teases the NEXT match or heat "
                 "(different countries by design). No narration, soft sound effects. The physics is "
                 "real; results are not rigged.")

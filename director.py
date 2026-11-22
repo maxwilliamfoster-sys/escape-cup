@@ -14,13 +14,17 @@ MAX_SECONDS = 28.0
 MAX_FIRST_BREAK = 2.0    # a ring must pop inside the first 2 seconds
 MAX_WAIT = 6.0           # longest stretch with no ring breaking (before the final ring)
 MAX_FINAL_WAIT = 8.0     # the final ring may build tension, but not drag
+# 6-6 sudden death (2026-11-22): under ~1 s it's over before anyone reads the banner;
+# over 6 s the single ring drags (measured on 600 seeds: median 2.8 s, 10% past 9 s)
+TB_MIN, TB_MAX = 1.2, 6.0
 
 
 def acceptable(d):
     return (d["winner"] >= 0 and MIN_SECONDS <= d["duration"] <= MAX_SECONDS
             and d["first_break"] <= MAX_FIRST_BREAK and d["longest_wait"] <= MAX_WAIT
             and d["final_wait"] <= MAX_FINAL_WAIT and d["swaps"] >= 2
-            and min(d["breaks"]) >= 3)
+            and min(d["breaks"]) >= 3
+            and (d.get("tiebreak") is None or TB_MIN <= d["tiebreak"] <= TB_MAX))
 
 
 ROYALE_RULES = dict(min_s=20.0, max_s=36.0, first_break=1.5, wait=5.5, final_wait=8.0, swaps=2)

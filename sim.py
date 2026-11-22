@@ -3,7 +3,12 @@ Deterministic 2D physics for one Escape Cup match.
 
 Two balls start in the centre of N densely nested, rotating rings, each with one
 gap. When a ball pokes through the innermost live ring's gap, that ring SHATTERS
-and the ball scores it. Whoever breaks the final (outermost) ring wins.
+and the ball scores it. When all 12 are gone, MOST RINGS WINS.
+
+Tie-break (2026-11-22): viewers called 6-6 endings unfair (the old rule gave the win
+to whoever broke the last ring, so 28% of posted matches ended level and 25% went to
+the ball with FEWER rings). Now a 6-6 goes to sudden death: both balls are put back
+in the centre inside one gold ring, a short pause, and the first ball out wins (7-6).
 
 v2 (2026-10-01): 6 thick rings with tiny balls lost viewers at 0:01 (avg watch
 6-8s, <2% completion). The format that wins on TikTok is many thin rings
@@ -41,6 +46,11 @@ FPS = 60
 SUBSTEPS = 6
 DT = 1.0 / (FPS * SUBSTEPS)
 MAX_SECONDS = 60.0
+
+# Sudden-death tie-break (1v1 only): one gold ring, a pause for the "TIE-BREAK" banner.
+TB_RADIUS = 230.0
+TB_GAP_DEG = 36.0
+TIE_PAUSE = 1.0                   # s the balls wait in the centre before sudden death starts
 
 
 @dataclass
@@ -155,9 +165,16 @@ def simulate(seed, record=True, n_balls=2, ball_r=None, n_rings=None, inner_r=No
             balls.append(Ball(CX + math.cos(a0) * rad, CY + math.sin(a0) * rad,
                               math.cos(ang) * spd, math.sin(ang) * spd))
 
-    m = Match(seed=seed, rings=[Ring(r.radius, r.gap_half, r.angle, r.omega) for r in rings],
+    tb_index = None
+    if n_balls == 2:
+        # the tie-break ring exists from frame 0 but stays dead (and still) unless it's 6-6;
+        # its angle and spin are drawn only at the tie, so every seed's main match is unchanged
+        tb_index = len(rings)
+        rings.append(Ring(TB_RADIUS, math.radians(TB_GAP_DEG) / 2, 0.0, 0.0, alive=False))
+    m = Match(seed=seed, rings=[Ring(r.radius, r.gap_half, r.angle, r.omega, r.alive) for r in rings],
               breaks=[0] * n_balls, ball_r=ball_r, n_balls=n_balls)
     t = 0.0
+    resume_t = -1.0                           # balls are frozen until this time (tie-break pause)
     reach = ball_r + RING_THICK / 2
     # a ring breaks once a ball is far enough into its gap; with dense rings the next ring
     # out would push the ball back before 0.35*r, so never require more than it can reach
@@ -169,15 +186,21 @@ def simulate(seed, record=True, n_balls=2, ball_r=None, n_rings=None, inner_r=No
             t += DT
             for ring in rings:
                 ring.angle = _wrap(ring.angle + ring.omega * DT)
+            if t < resume_t:
+                continue                      # tie-break pause: the balls wait in the centre
             for i, b in enumerate(balls):
                 b.vy += GRAVITY * DT
                 b.x += b.vx * DT
                 b.y += b.vy * DT
                 # only rings within `reach` of the ball's radius can touch it (exact cull)
                 d0 = math.hypot(b.x - CX, b.y - CY)
-                lo = max(current, int((d0 - reach - inner_r) // spacing))
-                hi = min(last, int((d0 + reach - inner_r) // spacing) + 1)
-                for k in range(lo, hi + 1):
+                if current > last:                    # sudden death: only the gold ring
+                    ks = (current,)
+                else:
+                    lo = max(current, int((d0 - reach - inner_r) // spacing))
+                    hi = min(last, int((d0 + reach - inner_r) // spacing) + 1)
+                    ks = range(lo, hi + 1)
+                for k in ks:
                     ring = rings[k]
                     qx, qy = _closest_on_ring(ring, b.x, b.y)
                     nx, ny = b.x - qx, b.y - qy
@@ -237,10 +260,18 @@ def simulate(seed, record=True, n_balls=2, ball_r=None, n_rings=None, inner_r=No
                     ring.alive = False
                     m.breaks[i] += 1
                     m.events.append(Event(t, "break", i, current, b.x, b.y))
-                    if current == last:
-                        m.winner = i
+                    if current == last and tb_index is not None and m.breaks[0] == m.breaks[1]:
+                        _start_tiebreak(rng, m, t, rings[tb_index], balls)
+                        resume_t = t + TIE_PAUSE
+                        current = tb_index
+                        break
+                    if current == last or current == tb_index:
+                        # 1v1: most rings wins (the tie-break ring makes it 7-6); royale: last ring
+                        w = i if tb_index is None else max(range(2), key=lambda j: m.breaks[j])
+                        wb = balls[w]
+                        m.winner = w
                         m.duration = t
-                        m.events.append(Event(t, "win", i, current, b.x, b.y))
+                        m.events.append(Event(t, "win", w, current, wb.x, wb.y))
                     current += 1
                     break
             if m.winner >= 0:
@@ -253,6 +284,24 @@ def simulate(seed, record=True, n_balls=2, ball_r=None, n_rings=None, inner_r=No
     return m
 
 
+def _start_tiebreak(rng, m, t, tb, balls):
+    """6-6: light the gold ring and put both balls back where a match starts."""
+    m.events.append(Event(t, "tie", -1, -1, CX, CY))
+    tb.alive = True
+    tb.angle = rng.uniform(-math.pi, math.pi)
+    tb.omega = rng.choice([-1, 1]) * rng.uniform(0.8, 1.2)
+    for i, b in enumerate(balls):
+        ang = rng.uniform(0, 2 * math.pi)
+        spd = rng.uniform(520, 700)
+        b.x, b.y = CX + (-1 if i == 0 else 1) * 30, CY - 15 + rng.uniform(-6, 6)
+        b.vx, b.vy = math.cos(ang) * spd, math.sin(ang) * spd
+
+
+def tie_time(m):
+    """When the match went to the tie-break, or None."""
+    return next((e.t for e in m.events if e.kind == "tie"), None)
+
+
 def standings(m):
     """Podium order: the winner first, then by rings broken (tie: broke a ring most recently)."""
     last_t = {}
@@ -263,8 +312,11 @@ def standings(m):
 
 
 def drama(m):
-    """Summarise a match for the director."""
-    breakers = [e.ball for e in m.events if e.kind == "break"]
+    """Summarise a match for the director. The pacing numbers cover the main rings only;
+    "tiebreak" is how long sudden death took after the pause (None = no tie-break)."""
+    tie_t = tie_time(m)
+    main = [e for e in m.events if e.kind == "break" and (tie_t is None or e.t <= tie_t)]
+    breakers = [e.ball for e in main]
     if m.n_balls == 2:
         swaps = sum(1 for a, b in zip(breakers, breakers[1:]) if a != b)
         # score line after the second-to-last ring: close = both on similar counts
@@ -279,13 +331,14 @@ def drama(m):
                 swaps += leader is not None
                 leader = top
         pre = sorted(counts, reverse=True)[:2] if breakers else [0, 0]
-    times = [e.t for e in m.events if e.kind == "break"]
+    times = [e.t for e in main]
     waits = [b - a for a, b in zip([0.0] + times, times)]
     longest_wait = max(waits[:-1], default=0.0)          # excluding the final ring
     final_wait = waits[-1] if waits else 0.0             # tension on the last ring
     return {"winner": m.winner, "duration": round(m.duration, 2), "breaks": m.breaks,
             "swaps": swaps, "pre_final": pre, "longest_wait": round(longest_wait, 1),
-            "final_wait": round(final_wait, 1), "first_break": round(times[0], 2) if times else 99.0}
+            "final_wait": round(final_wait, 1), "first_break": round(times[0], 2) if times else 99.0,
+            "tiebreak": round(m.duration - tie_t - TIE_PAUSE, 2) if tie_t is not None and m.winner >= 0 else None}
 
 
 if __name__ == "__main__":
