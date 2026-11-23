@@ -5998,6 +5998,41 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-23T01:41:46+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m04_191663160069.mp4",
+   "sha256": "23d1ff3606b0d2759b88d2cde533d5de29c986347f816df804061698f00046a9",
+   "head": "Country ball escape - Italy 🇮🇹 vs Morocco 🇲🇦",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.564,
+   "report": {
+    "seconds": 19.85,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4211,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
