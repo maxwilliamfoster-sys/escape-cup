@@ -42,3 +42,11 @@ Since 2026-11-03 (3/day + flags r34 / 12 rings): median ~870 views@72h (n=10), 8
 - pacing normal vs fast: running since 2026-11-08 (avg % watched, 10-20 per arm).
 - standings off vs on: queued next (added 2026-11-09 on the owner's yes). Cup videos show a titles table and "N wins from the trophy". Was an all-or-nothing env switch (STANDINGS_TEST); now a per-post lever so it reads cleanly while the account recovers.
 - Next idea (not built): fill the empty bottom third of the frame.
+
+## H1: home-nations field (tracker test escape-home-nations), pre-registered 2026-11-23
+- **Built, OFF** (tournament.HOME_FIELD_FROM_EDITION = None, commit below). Switch on only by setting it to the number of a cup that has NOT started, and only when no other main test is running (RULES 7). Never edit tournament_state.json or reconcile().
+- **Change (one variable: who is in the field):** Wales replaces Senegal (lowest median since 3 Nov, 763 views, n=4), and England, Scotland, Wales and Ireland are drawn into four different quarters, so a home nation plays in every quarter and they can't knock each other out before the quarter-finals.
+- **Why:** since 3 Nov (3 posts a day), matches with a home nation: median 3,548 views at 72 h (n=11, 6 of 11 over 3,000) vs 928 for the rest (n=43, 2 of 43 over 3,000). Audience ~91% UK.
+- **Control:** the cup before the switch (same posting rate, slots and look). Before/after by cup, so it is weaker than a 50/50 test; the loop's per-post levers keep running inside both cups.
+- **Primary metric:** median views at 72 h of the whole cup (31 matches). **Secondary:** share of matches over 3,000 views; median of the non-home matches (does a home-heavy field lift the others or just itself?).
+- **Min n:** 20 mature matches of the new cup. **Max:** one full cup (31). Win = cup median at least 1.3x the control cup's.

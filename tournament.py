@@ -32,11 +32,36 @@ def _empty_match(a=None, b=None):
             "posted": None, "buffer_id": None}
 
 
+# Home-nations field (tracker test escape-home-nations, built 2026-11-23). None = off. Set it to the
+# number of a cup that has NOT started yet; earlier cups must keep their draw or rebuild() fails.
+HOME_FIELD_FROM_EDITION = None
+HOME_FIELD = ("gb-eng", "gb-sct", "gb-wls", "ie")
+HOME_FIELD_DROPS = "sn"   # lowest median views since 3 Nov (763, n=4); Wales takes its place
+
+
+def _home_field(rng):
+    """England, Scotland, Wales and Ireland in four different quarters (8 teams each)."""
+    codes = ["gb-wls" if c == HOME_FIELD_DROPS else c for c, _, _ in teams.TEAMS]
+    home = list(HOME_FIELD)
+    rest = [c for c in codes if c not in home]
+    rng.shuffle(home)
+    rng.shuffle(rest)
+    out = []
+    for q in range(4):
+        part = [home[q]] + rest[q * 7:(q + 1) * 7]
+        rng.shuffle(part)
+        out += part
+    return out
+
+
 def new_edition(edition, titles=None, posts=0):
     """A fresh draw. Deterministic per edition number, different every cup."""
     rng = random.Random(f"escape-cup-{edition}")
-    codes = [c for c, _, _ in teams.TEAMS]
-    rng.shuffle(codes)
+    if HOME_FIELD_FROM_EDITION is not None and edition >= HOME_FIELD_FROM_EDITION:
+        codes = _home_field(rng)
+    else:
+        codes = [c for c, _, _ in teams.TEAMS]
+        rng.shuffle(codes)
     first = [_empty_match(codes[i], codes[i + 1]) for i in range(0, 32, 2)]
     rounds = [first] + [[_empty_match() for _ in range(n)] for n in (8, 4, 2, 1)]
     return {"edition": edition, "rounds": rounds, "titles": dict(titles or {}), "posts": posts}
