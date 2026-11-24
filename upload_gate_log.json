@@ -6174,6 +6174,75 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-24T23:54:14+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m09_64867685102.mp4",
+   "sha256": "f1b4a07fb6f9e714d338f75aa98c0e50f7f00d626d217ed2c449ffba87139a95",
+   "head": "Argentina 🇦🇷 vs Egypt 🇪🇬 - which country breaks the most escape rings?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)",
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.831,
+   "report": {
+    "seconds": 22.08,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
+  },
+  {
+   "checked_at": "2026-11-24T23:56:37+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m10_205104992677.mp4",
+   "sha256": "f3652cb4e802a38a189ce4aafa691e0e9b5ac7c5aac784706e4cb2207f88a24f",
+   "head": "Croatia 🇭🇷 or Spain 🇪🇸? Physics decides which country breaks more rings",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.624,
+   "report": {
+    "seconds": 16.35,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }
