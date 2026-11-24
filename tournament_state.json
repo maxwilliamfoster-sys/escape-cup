@@ -50,29 +50,29 @@
    {
     "a": "pl",
     "b": "id",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "id",
+    "seed": 128474117141,
+    "melody": "candy",
+    "posted": "2026-11-24T09:00:00+00:00",
+    "buffer_id": "6b04f300f0d7b1e0dea451e6"
    },
    {
     "a": "uy",
     "b": "ca",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ca",
+    "seed": 161521802285,
+    "melody": "ember",
+    "posted": "2026-11-24T12:30:00+00:00",
+    "buffer_id": "6b04f378c43c1f2f5c7e6b83"
    },
    {
     "a": "gb-eng",
     "b": "de",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "de",
+    "seed": 125652532009,
+    "melody": "neon",
+    "posted": "2026-11-24T16:30:00+00:00",
+    "buffer_id": "6b04f3f6db52b449cf19bd5c"
    },
    {
     "a": "tr",
@@ -168,7 +168,7 @@
    },
    {
     "a": "it",
-    "b": null,
+    "b": "id",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -176,8 +176,8 @@
     "buffer_id": null
    },
    {
-    "a": null,
-    "b": null,
+    "a": "ca",
+    "b": "de",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -297,7 +297,7 @@
   "fr": 1,
   "ph": 1
  },
- "posts": 160,
+ "posts": 163,
  "log": [
   {
    "edition": 1,
@@ -5313,7 +5313,7 @@
    "theme": "forest",
    "due": "2026-11-23T16:30:00+00:00",
    "buffer_id": "6b039a25c72676f5e977dd77",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec06_r0_m04_191663160069.mp4",
    "length": 19.9,
    "loop": {
@@ -5327,13 +5327,80 @@
    "r": 0,
    "m": 4,
    "a": "it",
-   "b": "ma"
+   "b": "ma",
+   "link": "https://tiktok.com/@5lmvill/video/7711405466013666592"
+  },
+  {
+   "edition": 6,
+   "winner": "id",
+   "seed": 128474117141,
+   "theme": "candy",
+   "due": "2026-11-24T09:00:00+00:00",
+   "buffer_id": "6b04f300f0d7b1e0dea451e6",
+   "status": "scheduled",
+   "file": "ec06_r0_m05_128474117141.mp4",
+   "length": 22.0,
+   "loop": {
+    "escape-cup-pacing-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "579387cf3acc9c314926f0d361a7310d0add501c9e88eb0850e7c950527b9c55",
+    "checked_at": "2026-11-24T02:13:12+00:00"
+   },
+   "r": 0,
+   "m": 5,
+   "a": "pl",
+   "b": "id"
+  },
+  {
+   "edition": 6,
+   "winner": "ca",
+   "seed": 161521802285,
+   "theme": "ember",
+   "due": "2026-11-24T12:30:00+00:00",
+   "buffer_id": "6b04f378c43c1f2f5c7e6b83",
+   "status": "scheduled",
+   "file": "ec06_r0_m06_161521802285.mp4",
+   "length": 16.2,
+   "loop": {
+    "escape-cup-pacing-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "d59a73d6f0bbd431205995a518dd18b4139ca3281024ae94f94a77c7a2dd4740",
+    "checked_at": "2026-11-24T02:15:15+00:00"
+   },
+   "r": 0,
+   "m": 6,
+   "a": "uy",
+   "b": "ca"
+  },
+  {
+   "edition": 6,
+   "winner": "de",
+   "seed": 125652532009,
+   "theme": "neon",
+   "due": "2026-11-24T16:30:00+00:00",
+   "buffer_id": "6b04f3f6db52b449cf19bd5c",
+   "status": "scheduled",
+   "file": "ec06_r0_m07_125652532009.mp4",
+   "length": 22.9,
+   "loop": {
+    "escape-cup-pacing-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "5309537551d944e2a1d9c05ee113dd863b144024af638e3a18d5afd0f1de2c64",
+    "checked_at": "2026-11-24T02:17:19+00:00"
+   },
+   "r": 0,
+   "m": 7,
+   "a": "gb-eng",
+   "b": "de"
   }
  ],
  "recent_captions": [
-  "Ball escape simulation: Australia 🇦🇺 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿\nEscape Cup 4, Quarter-final\nComing next: France vs Uruguay. Who takes it? 👇\n#ballescape #physicssimulation #simulation #australia #england",
-  "Ball escape simulation: France 🇫🇷 vs Uruguay 🇺🇾\nSemi-final · Escape Cup 4\nCanada vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #france #uruguay",
-  "Canada 🇨🇦 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿: 12 rings, one way out. Physics simulation\nSemi-final · Escape Cup 4\nFrance vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #canada #england",
   "Escape Cup final: France 🇫🇷 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿. Physics simulation decides it 🏆\nEscape Cup 4\nEscape Cup 5 starts with a new draw - which country is yours? 👇\n#ballescape #physicssimulation #simulation #france #england",
   "South Korea 🇰🇷 vs Ukraine 🇺🇦 in the escape rings. Who gets out first?\nRound of 32 of Escape Cup 5 🏆\nNext up: Senegal vs Japan - who's your pick? 👇\n#ballescape #physicssimulation #satisfying #southkorea #ukraine",
   "Country ball escape - Senegal 🇸🇳 vs Japan 🇯🇵\nRound of 32 of Escape Cup 5 🏆\nVietnam vs Switzerland is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #senegal #japan",
@@ -5370,9 +5437,11 @@
   "Japan 🇯🇵 vs Australia 🇦🇺 in the escape rings. Who gets out first?\nRound of 32 · Escape Cup 6\nBelgium vs USA is next - who are you backing? 👇\nMusic: \"Ibiza\" by Peyruis on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #japan #australia",
   "Belgium 🇧🇪 vs USA 🇺🇸 - which country breaks the most escape rings?\nEscape Cup 6, Round of 32\nNext up: Colombia vs Nigeria - who's your pick? 👇\nMusic: \"Baker's Dozen\" by Cupcakes on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #satisfying #belgium #usa",
   "Colombia 🇨🇴 vs Nigeria 🇳🇬 in the escape rings. Who breaks the most?\nEscape Cup 6, Round of 32\nNext up: Italy vs Morocco - who's your pick? 👇\nMusic: \"Norman Manley\" by Cupcakes on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #colombia #nigeria",
-  "Country ball escape - Italy 🇮🇹 vs Morocco 🇲🇦\nRound of 32 of Escape Cup 6 🏆\nPoland vs Indonesia is next - who are you backing? 👇\nMusic: \"Horizon\" by Archie on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #italy #morocco"
+  "Country ball escape - Italy 🇮🇹 vs Morocco 🇲🇦\nRound of 32 of Escape Cup 6 🏆\nPoland vs Indonesia is next - who are you backing? 👇\nMusic: \"Horizon\" by Archie on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #italy #morocco",
+  "Poland 🇵🇱 vs Indonesia 🇮🇩 in the escape rings. Who breaks the most?\nEscape Cup 6, Round of 32\nUruguay vs Canada is next - who are you backing? 👇\nMusic: \"Realm\" by CyberSDF on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #poland #indonesia",
+  "Country ball escape - Uruguay 🇺🇾 vs Canada 🇨🇦\nRound of 32 · Escape Cup 6\nComing next: England vs Germany. Who takes it? 👇\nMusic: \"Short Money\" by Cupcakes on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #uruguay #canada",
+  "Country ball escape - England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Germany 🇩🇪\nEscape Cup 6, Round of 32\nComing next: Turkey vs Scotland. Who takes it? 👇\nMusic: \"Realm\" by CyberSDF on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #satisfying #england #germany"
  ],
  "seen_errors": [],
- "excluded_seeds": {},
- "orphans_alerted": []
+ "excluded_seeds": {}
 }

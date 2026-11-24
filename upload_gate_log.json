@@ -6033,6 +6033,113 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-24T02:13:12+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m05_128474117141.mp4",
+   "sha256": "579387cf3acc9c314926f0d361a7310d0add501c9e88eb0850e7c950527b9c55",
+   "head": "Poland 🇵🇱 vs Indonesia 🇮🇩 in the escape rings. Who breaks the most?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.864,
+   "report": {
+    "seconds": 22.03,
+    "lufs": -16.4,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4213,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-24T02:15:15+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m06_161521802285.mp4",
+   "sha256": "d59a73d6f0bbd431205995a518dd18b4139ca3281024ae94f94a77c7a2dd4740",
+   "head": "Country ball escape - Uruguay 🇺🇾 vs Canada 🇨🇦",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.74,
+   "report": {
+    "seconds": 16.2,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4214,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-24T02:17:19+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m07_125652532009.mp4",
+   "sha256": "5309537551d944e2a1d9c05ee113dd863b144024af638e3a18d5afd0f1de2c64",
+   "head": "Country ball escape - England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Germany 🇩🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.747,
+   "report": {
+    "seconds": 22.95,
+    "lufs": -16.3,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "tokens": 4224,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
