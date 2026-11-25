@@ -66,23 +66,40 @@
    "control": "normal",
    "variant": "fast",
    "start_date": "2026-11-08",
-   "status": "running",
+   "status": "reverted",
    "min_n": 10,
    "max_n": 20,
    "metric": "avg % watched at 72h",
    "control_metrics": {
-    "n": 18,
-    "median": 35.9213,
+    "n": 20,
+    "median": 37.034,
     "views72": 1145.6987
    },
    "variant_metrics": {
-    "n": 19,
-    "median": 34.6346,
-    "views72": 905.6672
+    "n": 20,
+    "median": 34.7949,
+    "views72": 1035.1395
    },
-   "verdict": "keep running",
-   "last_judged": "2026-11-24",
-   "result": "escape-cup-pacing-1 · avg % watched at 72h: KEEP RUNNING — treatment 0.96x control (34.6 vs 35.9; 90% CI 0.88–1.12, p=0.939), n=19 vs 18 (min 10, max 20)"
+   "verdict": "inconclusive at max n",
+   "last_judged": "2026-11-25",
+   "result": "escape-cup-pacing-1 · avg % watched at 72h: INCONCLUSIVE AT MAX N — treatment 0.94x control (34.8 vs 37; 90% CI 0.84–1.13, p=0.968), n=20 vs 20 (min 10, max 20)",
+   "ended": "2026-11-25"
+  },
+  {
+   "id": "escape-cup-standings-1",
+   "channel": "escape-cup",
+   "lever": "standings",
+   "kind": "stakes",
+   "hypothesis": "A visible titles table and an 'N wins from the trophy' line give each cup match a stake, raising avg % watched (review 2026-11-09).",
+   "control": "off",
+   "variant": "on",
+   "start_date": "2026-11-25",
+   "status": "running",
+   "min_n": 10,
+   "max_n": 20,
+   "metric": "avg % watched at 72h",
+   "control_metrics": {},
+   "variant_metrics": {}
   }
  ]
 }
