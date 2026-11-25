@@ -6243,6 +6243,76 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-25T19:15:11+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m11_216764044038.mp4",
+   "sha256": "c01b0a53e1f1c796b25711b8f3d2d320e8da3f7a376d4a8e95a0f554d107f671",
+   "head": "Country ball escape - Netherlands 🇳🇱 vs Switzerland 🇨🇭",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.786,
+   "report": {
+    "seconds": 20.7,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4218,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-25T19:16:48+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m12_211161268090.mp4",
+   "sha256": "e5e9ac29772643af721b784949cc20d7fcb560bf1a3530ce1cdbabfdfdb5c6e5",
+   "head": "Country ball escape - Brazil 🇧🇷 vs Ireland 🇮🇪",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.784,
+   "report": {
+    "seconds": 22.15,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4216,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
