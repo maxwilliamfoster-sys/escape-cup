@@ -1,14 +1,13 @@
 {
- "updated": "2026-11-25 18:11 UTC",
+ "updated": "2026-11-26 17:53 UTC",
  "summary": {
-  "views": 31638,
-  "retention": 0.40917030567685586,
+  "views": 32890,
+  "retention": 0.41411764705882353,
   "swipe_away": null,
-  "posts": 18,
+  "posts": 21,
   "note": "views = latest totals of posts from the last 7 days; retention = median avg % watched; TikTok gives no swipe-away via Buffer"
  },
  "actions": [
-  "escape-cup: REVERTED pacing to 'normal' (escape-cup-pacing-1 · avg % watched at 72h: INCONCLUSIVE AT MAX N — treatment 0.94x control (34.8 vs 37; 90% CI 0.84–1.13, p=0.968), n=20 vs 20 (min 10, max 20))",
-  "escape-cup: STARTED escape-cup-standings-1: standings 'off' -> 'on' (A visible titles table and an 'N wins from the trophy' line give each cup match a stake, raising avg % watched (review 2026-11-09).)"
+  "escape-cup: running escape-cup-standings-1 (escape-cup-standings-1 · avg % watched at 72h: KEEP RUNNING — n=0 vs 0 (min 10, max 20))"
  ]
 }
