@@ -6422,6 +6422,40 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-26T23:52:34+00:00",
+   "platform": "tiktok",
+   "file": "el01_md01_livnew_93083003005.mp4",
+   "sha256": "3b871f4b5a6552461f44a47f07e8daf9e18cbab0a28602e51e2e589b863ca615",
+   "head": "Escape League: Liverpool vs Newcastle, who scores 3 first?",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "AI review unavailable: [cap]"
+   ],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.354,
+   "report": {
+    "seconds": 22.67,
+    "lufs": -15.8,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": false,
+    "ok": false,
+    "retryable": false,
+    "quota": true,
+    "cap": true,
+    "reason": "cap"
+   }
   }
  ]
 }

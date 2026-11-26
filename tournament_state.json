@@ -5591,10 +5591,94 @@
    "m": 15,
    "a": "kr",
    "b": "fr"
+  },
+  {
+   "edition": 6,
+   "winner": "LIV",
+   "seed": 93083003005,
+   "theme": "league",
+   "due": "2026-11-27T16:30:00+00:00",
+   "buffer_id": "6b08c68670e2a88e2cdd21ef",
+   "status": "scheduled",
+   "file": "el01_md01_livnew_93083003005.mp4",
+   "length": 22.7,
+   "loop": {},
+   "gate": {
+    "ok": true,
+    "sha256": "3b871f4b5a6552461f44a47f07e8daf9e18cbab0a28602e51e2e589b863ca615",
+    "checked_at": "2026-11-26T23:52:34+00:00"
+   },
+   "series": "league",
+   "season": 1,
+   "md": 1,
+   "a": "LIV",
+   "b": "NEW",
+   "results": [
+    [
+     "LIV",
+     "NEW",
+     3,
+     2
+    ],
+    [
+     "BOU",
+     "FUL",
+     3,
+     1
+    ],
+    [
+     "COV",
+     "TOT",
+     1,
+     3
+    ],
+    [
+     "LEE",
+     "EVE",
+     3,
+     2
+    ],
+    [
+     "BRE",
+     "ARS",
+     3,
+     1
+    ],
+    [
+     "AVL",
+     "BHA",
+     2,
+     3
+    ],
+    [
+     "MUN",
+     "IPS",
+     2,
+     3
+    ],
+    [
+     "CRY",
+     "CHE",
+     2,
+     3
+    ],
+    [
+     "SUN",
+     "HUL",
+     2,
+     3
+    ],
+    [
+     "NFO",
+     "MCI",
+     3,
+     2
+    ]
+   ],
+   "champion": null
   }
  ],
  "recent_captions": [
-  "Indonesia 🇮🇩 vs Australia 🇦🇺 in the escape rings. Who gets out first?\nEscape Cup 5, Round of 32\nNext up: Croatia vs Germany - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #indonesia #australia",
   "Country ball escape - Croatia 🇭🇷 vs Germany 🇩🇪\nEscape Cup 5, Round of 32\nPoland vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #croatia #germany",
   "Poland 🇵🇱 vs Netherlands 🇳🇱 - which country escapes the rings first?\nRound of 32 of Escape Cup 5 🏆\nScotland vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #poland #netherlands",
   "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 or Ireland 🇮🇪? Physics decides which country breaks out first\nRound of 32 · Escape Cup 5\nComing next: Portugal vs Brazil. Who takes it? 👇\n#ballescape #physicssimulation #simulation #scotland #ireland",
@@ -5633,7 +5717,8 @@
   "Country ball escape - Brazil 🇧🇷 vs Ireland 🇮🇪\nRound of 32 of Escape Cup 6 🏆\nNext up: Ukraine vs Mexico - who's your pick? 👇\nMusic: \"Horizon\" by Archie on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #brazil #ireland",
   "Ukraine 🇺🇦 vs Mexico 🇲🇽: 12 rings, one way out. Physics simulation\nEscape Cup 6, Round of 32\nNext up: Philippines vs Vietnam - who's your pick? 👇\nMusic: \"Norman Manley\" by Cupcakes on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #satisfying #ukraine #mexico",
   "Philippines 🇵🇭 vs Vietnam 🇻🇳: 12 rings, one way out. Physics simulation\nEscape Cup 6, Round of 32\nSouth Korea vs France is next - who are you backing? 👇\nMusic: \"Not Another Progressive House\" by Brenticus on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #philippines #vietnam",
-  "South Korea 🇰🇷 vs France 🇫🇷 - which country breaks the most escape rings?\nRound of 32 of Escape Cup 6 🏆\nNext up: Senegal vs Australia - who's your pick? 👇\nMusic: \"Autumn\" by Imperss on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #southkorea #france"
+  "South Korea 🇰🇷 vs France 🇫🇷 - which country breaks the most escape rings?\nRound of 32 of Escape Cup 6 🏆\nNext up: Senegal vs Australia - who's your pick? 👇\nMusic: \"Autumn\" by Imperss on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #southkorea #france",
+  "Escape League: Liverpool vs Newcastle, who scores 3 first?\nEscape League season 1 · matchday 1 of 10 · table at the end\nWhere's your club in the table? 👇\nMusic: Gabriawll - Recall | Music provided by NoCopyrightSounds (NCS)\n#escapeleague #football #satisfying #liverpool #newcastle"
  ],
  "seen_errors": [],
  "excluded_seeds": {}
