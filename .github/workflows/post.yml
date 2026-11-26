@@ -45,6 +45,9 @@ jobs:
           exit 1
 
       - run: pip install -r requirements.txt
+      - name: League music (NCS "Recall", official download; never committed - the repo is public)
+        timeout-minutes: 4
+        run: python tools/make_league_music.py --download || echo "::warning::league music unavailable - league videos fall back to the built-in anthem"
 
       - name: Render and schedule
         env:

@@ -1,0 +1,14 @@
+Music for the club league (league_music.py), made by tools/make_league_music.py.
+Licence evidence at the time we checked: licences/<track>.json.
+Each video's caption credits its track (league_music.credit).
+Changes made: a 40 s section, level-set and faded; in the video it is mixed under the
+sound effects (ducked, low-passed with the whole mix).
+
+ncs_gabriawll_recall_a.mp3  (from 58 s)
+  Music: Gabriawll - Recall | Music provided by NoCopyrightSounds (NCS)
+  NCS usage policy (free for creators): https://ncs.io/recall
+
+ncs_gabriawll_recall_b.mp3  (from 14 s)
+  Music: Gabriawll - Recall | Music provided by NoCopyrightSounds (NCS)
+  NCS usage policy (free for creators): https://ncs.io/recall
+

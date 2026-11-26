@@ -1,0 +1,24 @@
+{
+ "slug": "ncs_gabriawll_recall",
+ "beds": 3,
+ "bpm": 127.0,
+ "title": "Recall",
+ "artist": "Gabriawll",
+ "label": "NCS",
+ "licence": "NCS usage policy (free for creators)",
+ "credit": "Music: Gabriawll - Recall | Music provided by NoCopyrightSounds (NCS)",
+ "source": "https://ncs.io/recall",
+ "download": "https://ncs.io/api/download/recall",
+ "youtube": "https://youtu.be/LfAd6mGd81M",
+ "proof": {
+  "policy": "https://ncs.io/usage-policy",
+  "checked": "2026-11-26",
+  "policy_said": [
+   "Free for independent creators on YouTube, Twitch, Facebook, Instagram, Snapchat, TikTok and other sites for user-made content.",
+   "Yes, you can monetise videos that use NCS music.",
+   "TikTok, Shorts and Reels need none [credit], because the sound names the track.",
+   "Not allowed: uploading the music on its own, releasing or selling it, or changing it beyond cutting it to fit."
+  ],
+  "video_description_said": "All NCS music is copyright free and safe for you to use on platforms like YouTube, TikTok and Twitch. You may not use any track for the purpose of creating a listening experience where the music is the primary focus of the video."
+ }
+}

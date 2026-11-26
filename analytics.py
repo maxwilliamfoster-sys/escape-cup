@@ -108,12 +108,15 @@ def collect(client=None):
         if "likes" not in m and "reactions" in m:      # Buffer reports TikTok likes as reactions
             m["likes"] = m["reactions"]
         royale = e.get("series") == "royale"
-        key = "" if royale else f"{e['a']}-{e['b']}"
+        league = e.get("series") == "league"         # Escape League matchday (league.py, 2026-11-26)
+        key = "" if royale or league else f"{e['a']}-{e['b']}"
         rec = data["posts"].setdefault(post["id"], {})
         rec.update({
-            "match": f"royale {e['heat']}" if royale else f"{e['a']} v {e['b']}",
-            "variant": "royale" if royale else "cup",
-            "edition": e["edition"], "round": None if royale else e["r"],
+            "match": (f"royale {e['heat']}" if royale else
+                      f"league s{e.get('season')} md{e.get('md')} {e['a']} v {e['b']}" if league else
+                      f"{e['a']} v {e['b']}"),
+            "variant": "royale" if royale else "league" if league else "cup",
+            "edition": e["edition"], "round": None if royale or league else e["r"],
             "due": e.get("due"), "theme": e.get("theme"), "seed": e.get("seed"),
             "format": "v2" if (e.get("due") or "") >= V2_FROM else "v1",
             "length": e.get("length") or rec.get("length") or BACKFILL_LEN.get(key),

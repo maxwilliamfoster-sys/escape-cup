@@ -329,18 +329,22 @@ def drama(m):
             "levels": level_after_1, "lead_changes": lead_changes}
 
 
-def acceptable(d):
-    return (d["winner"] >= 0 and 14.0 <= d["duration"] <= 30.0 and d["first_goal"] <= 4.5
+def acceptable(d, max_s=30.0):
+    return (d["winner"] >= 0 and 14.0 <= d["duration"] <= max_s and d["first_goal"] <= 4.5
             and d["longest_gap"] <= 8.0 and d["saves"] >= 2 and min(d["goals"]) >= 1)
 
 
-def pick(base_seed, home, away, tries=300):
-    """Seed with the closest scoreline (3-2 beats 3-1), then the most comebacks and saves."""
+def pick(base_seed, home, away, tries=300, exclude=(), max_s=30.0):
+    """Seed with the closest scoreline (3-2 beats 3-1), then the most comebacks and saves.
+    exclude: seeds whose videos failed a check or were vetoed (never reused)."""
     best = None
+    exclude = set(exclude)
     for k in range(tries):
         seed = base_seed * 1000 + k
+        if seed in exclude:
+            continue
         d = drama(simulate(seed, home, away, record=False))
-        if not acceptable(d):
+        if not acceptable(d, max_s):
             continue
         score = (min(d["goals"]), d["levels"] + d["lead_changes"], min(d["saves"], 5))
         if best is None or score > best[0]:

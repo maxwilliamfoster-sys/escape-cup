@@ -29,6 +29,7 @@ import html
 import json
 import os
 import random
+import re
 import sys
 import time
 import traceback
@@ -36,6 +37,9 @@ from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 import director
+import keeper
+import league
+import league_music
 import music
 import app_events
 import notify
@@ -345,17 +349,17 @@ GATE_CONTEXT = ("Escape Cup: physics simulation. Country flag balls bounce insid
                 "real; results are not rigged.")
 
 
-def gate_profile(seconds):
+def gate_profile(seconds, context=None):
     """The escape BOT_PROFILES window (-17..-15 LUFS) applies now that render.py normalises
     to -16 (MASTER_PLAN #13). quality.LUFS_RANGE stays the wide backstop, so no "lufs" here."""
     return upload_gate.bot_profile(
         "escape", fps=60, seconds=seconds, min_video_kbps=quality.MIN_VIDEO_KBPS,
-        ai_review="if_available", ai_daily_cap=AI_DAILY_CAP, ai_context=GATE_CONTEXT,
+        ai_review="if_available", ai_daily_cap=AI_DAILY_CAP, ai_context=context or GATE_CONTEXT,
         ledger=GATE_LEDGER)
 
 
-def gate(path, caption, state, seconds):
-    return upload_gate.check(path, "tiktok", profile=gate_profile(seconds), caption=caption,
+def gate(path, caption, state, seconds, context=None):
+    return upload_gate.check(path, "tiktok", profile=gate_profile(seconds, context), caption=caption,
                              ai_label=False, recent_texts=_recent_heads(state))
 
 
@@ -388,8 +392,7 @@ def prune_excluded(state):
     for e in state.get("log", []):
         if e.get("status") != "published":
             continue
-        done.add(f"royale-{e['heat']}" if e.get("series") == "royale"
-                 else f"{e.get('edition')}-{e.get('r')}-{e.get('m')}")
+        done.add(seed_key(e))
     ex = state.get("excluded_seeds", {})
     for k in [k for k in ex if k in done]:
         del ex[k]
@@ -519,7 +522,9 @@ def loop_for(slot, state):
     try:
         import experiment_loop
         led, _, cfg = experiment_loop.load_repo(ROOT)
-        arm = ("control", "variant")[_slot_parity(slot, state)]
+        # with the league alternating, arms alternate per cup post (slot parity would put
+        # every cup post in one arm: cup posts land on every other slot)
+        arm = ("control", "variant")[_cup_parity(state) if league_on() else _slot_parity(slot, state)]
         return experiment_loop.values_for_post(led, cfg, force_arm=arm)
     except Exception as e:
         print(f"[loop] off ({e})")
@@ -702,6 +707,164 @@ def build_passing_royale(state):
                                wide_tries=WIDE_TRIES_ROYALE)
 
 
+# ------------------------------------------------------ Escape League -----
+# Max, 2026-11-26: the club league (Beat The Keeper, keeper.py) as a weekly points league
+# (league.py), posting ALTERNATELY with the country cup: one cup match, one league
+# matchday, one cup match... At the 3-a-day cap that is ~1.5 matchdays a day, so a
+# 10-matchday season lasts about a week and its last video crowns the champions.
+# Switch: posting.json "league_alternate" (false = cup only, as before).
+LEAGUE_MAX_S = 26.0                 # featured match length (sim s): video stays under the 40 s music bed
+WIDE_TRIES_LEAGUE = 900
+LEAGUE_GATE_CONTEXT = (
+    "Escape League: physics simulation in an unofficial football style. Two club-coloured balls "
+    "(three-letter code + kit colours only, no crests or logos, no real competition name) drop "
+    "through rows of cones towards a goal guarded by a sliding keeper; a ball that gets past "
+    "the keeper scores and is dropped in again; first to 3 goals wins 3 points. The end cards "
+    "show FULL TIME, the league table of 20 clubs (every result is a real simulation; only "
+    "the featured match is shown) and on the last matchday the season's champions. Gold "
+    "ribbon hook at the top. No narration; soft taps over licensed NCS music (credited in "
+    "the caption). The physics is real; results are not rigged.")
+LEAGUE_HEADS = ["{A} vs {B} · Escape League matchday {md}",
+                "{A} v {B}: first to 3 goals in the Escape League",
+                "Escape League: {A} vs {B}, who scores 3 first?",
+                "{A} or {B}? First club to 3 goals ⚽"]     # not "beat the keeper": the spoiler check bans "beat(s)"
+LEAGUE_FINAL_HEADS = ["Final day of Escape League season {s}: {A} vs {B}",
+                      "Title decider day in the Escape League: {A} vs {B}"]
+LEAGUE_TEASES = ["Next up: {C} vs {D} - who's your pick? 👇", "Where's your club in the table? 👇",
+                 "Coming next: {C} vs {D}. Who takes it? 👇"]
+LEAGUE_TAGS = ["#escapeleague", "#football"]
+
+
+def league_on(path=POSTING_CONFIG):
+    """posting.json "league_alternate": true -> league matchdays alternate with cup posts."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f).get("league_alternate") is True
+    except Exception:
+        return False
+
+
+def next_series(state):
+    """'league' or 'cup' for the next post: the opposite of the last one in the log."""
+    if not league_on():
+        return "cup"
+    log = state.get("log", [])
+    return "cup" if log and log[-1].get("series") == league.SERIES else "league"
+
+
+def _cup_parity(state):
+    """0/1 alternating per CUP post (league posts don't count). With the league taking every
+    other slot, slot parity would give every cup post the same experiment arm."""
+    return sum(1 for e in state.get("log", []) if e.get("series") != league.SERIES) % 2
+
+
+def make_league_caption(day, h, a, rng):
+    s, md = day["season"], day["md"]
+    fa, fb = keeper.name(h), keeper.name(a)
+    last = md == league.MATCHDAYS
+    head = rng.choice(LEAGUE_FINAL_HEADS if last else LEAGUE_HEADS).format(A=fa, B=fb, md=md, s=s)
+    if last:
+        second = f"Matchday {md} of {league.MATCHDAYS}: the season {s} champions are crowned at the end 🏆"
+        tease = f"Season {s + 1} starts next - which club is yours? 👇"
+    else:
+        second = f"Escape League season {s} · matchday {md} of {league.MATCHDAYS} · table at the end"
+        c, d = day["next_fixture"]
+        tease = rng.choice(LEAGUE_TEASES).format(C=keeper.name(c), D=keeper.name(d))
+    tags = LEAGUE_TAGS + [rng.choice(ROTATING_TAG), league.hashtag(h), league.hashtag(a)]
+    return f"{head}\n{second}\n{tease}\n{' '.join(tags)}"
+
+
+def with_league_credit(caption, seed):
+    """The NCS track's credit (league_music.credit, same seed as the render) above the hashtags."""
+    line = league_music.credit(seed)
+    if not line:
+        return caption
+    body, tags = caption.rsplit("\n", 1)
+    return f"{body}\n{line}\n{tags}"
+
+
+def _league_caption_failures(caption, state, h, a):
+    fails = quality.check_caption(caption, h, a, state.get("recent_captions", []), name=keeper.name)
+    fails += [f"forbidden name /{p}/" for p in quality.LEAGUE_FORBIDDEN
+              if re.search(p, caption.lower())]
+    return fails + upload_gate.check_text("tiktok", caption=caption, recent_texts=_recent_heads(state))[0]
+
+
+def check_league_day(day, h, a, winner):
+    """The matchday is a real, complete round: 10 results, all 20 clubs once, a winner each."""
+    fail = []
+    clubs = [c for r in day["results"] for c in r[:2]]
+    if len(day["results"]) != 10 or sorted(clubs) != sorted(keeper.BY_CODE):
+        fail.append("league: matchday is not 10 fixtures covering all 20 clubs")
+    if any(max(r[2:]) != keeper.GOALS_TO_WIN or min(r[2:]) >= keeper.GOALS_TO_WIN for r in day["results"]):
+        fail.append("league: a result is not first-to-3")
+    if winner not in (h, a) or tuple(day["results"][0][:2]) != (h, a):
+        fail.append("league: featured result does not match the video")
+    if sum(r["p"] for r in day["table"]) != 20 * day["md"]:
+        fail.append("league: table does not add up")
+    return fail
+
+
+def build_league(state, exclude_seeds=(), tries=None):
+    """Render + gate the next Escape League matchday (its featured match)."""
+    log = state.get("log", [])
+    season, md = league.position(log)
+    h, a = league.featured(season, md, league.season_results(log, season))
+    seed, drama = keeper.pick(league.base_seed(season, md), h, a, tries=tries or 300,
+                              exclude=exclude_seeds, max_s=LEAGUE_MAX_S)
+    match = keeper.simulate(seed, h, a)
+    winner = (h, a)[match.winner]
+    day = league.matchday(log, (h, a, match.goals[0], match.goals[1]))
+    last = md == league.MATCHDAYS
+    nh, na = day["next_fixture"]
+    info = dict(header=f"ESCAPE LEAGUE · SEASON {season} · MATCHDAY {md} OF {league.MATCHDAYS}",
+                result_line="", next_label=f"SEASON {season + 1} OPENER" if last else "NEXT MATCH",
+                next_line=f"{keeper.name(nh).upper()} vs {keeper.name(na).upper()}",
+                cta="Who wins? Comment your pick", table=day["table"], highlight=(h, a),
+                table_sub=(f"SEASON {season} · ALL {league.MATCHDAYS} MATCHDAYS PLAYED" if last
+                           else f"SEASON {season} · AFTER MATCHDAY {md} OF {league.MATCHDAYS}"))
+    if last:
+        info.update(champion=day["champion"], champ_sub=f"ESCAPE LEAGUE · SEASON {season}",
+                    champ_next=f"SEASON {season + 1} KICKS OFF NEXT")
+    fname = f"el{season:02d}_md{md:02d}_{h}{a}_{seed}.mp4".lower()
+    rnd = f"Escape League S{season} matchday {md}"
+    fields = dict(seed=seed, file=fname, winner=winner, a=h, b=a, series=league.SERIES, season=season,
+                  md=md, results=day["results"], champion=day["champion"], round=rnd, theme="league",
+                  drama=drama, winner_name=keeper.name(winner))
+    caption, cap_fail = _pick_caption(lambda g: with_league_credit(make_league_caption(day, h, a, g), seed),
+                                      seed, lambda c: _league_caption_failures(c, state, h, a))
+    if cap_fail:
+        return _caption_only(caption, cap_fail, **fields)
+    os.makedirs(OUT, exist_ok=True)
+    os.makedirs(WORK, exist_ok=True)
+    path = os.path.join(OUT, fname)
+    import keeper_render
+    keeper_render.render(match, info, path, WORK)
+    report, failures = quality.check_video(path, info["match_seconds"], quality.LEAGUE_DURATION_RANGE,
+                                           hook="gold")
+    failures += check_league_day(day, h, a, winner)
+    verdict = gate(path, caption, state, quality.LEAGUE_DURATION_RANGE,
+                   context=LEAGUE_GATE_CONTEXT) if not failures else None
+    if verdict:
+        failures += verdict["failures"]
+    return {"path": path, "caption": caption, "report": report, "failures": failures, "gate": verdict,
+            **fields}
+
+
+def build_passing_league(state):
+    season, md = league.position(state.get("log", []))
+    return _build_with_retries(state, f"league-{season}-{md}", build_league, wide_tries=WIDE_TRIES_LEAGUE)
+
+
+def seed_key(e):
+    """excluded_seeds key of a log entry (or build result)."""
+    if e.get("series") == "royale":
+        return f"royale-{e['heat']}"
+    if e.get("series") == league.SERIES:
+        return f"league-{e['season']}-{e['md']}"
+    return f"{e.get('edition')}-{e.get('r')}-{e.get('m')}"
+
+
 def _app(kind, severity, title, body="", **data):
     """Also tell Bot HQ (the phone app). Telegram alerts are unchanged."""
     try:
@@ -716,6 +879,9 @@ def label(e):
     """Human name of a log entry, for alerts."""
     if e.get("series") == "royale":
         return f"Escape Royale heat {e['heat']}"
+    if e.get("series") == league.SERIES:
+        return (f"Escape League S{e['season']} matchday {e['md']} "
+                f"({keeper.name(e['a'])} v {keeper.name(e['b'])})")
     return f"{teams.name(e['a'])} v {teams.name(e['b'])}"
 
 
@@ -812,8 +978,7 @@ def reconcile(state, org, channel):
         if e.get("buffer_id") in pending_ids:
             publish.delete_post(e["buffer_id"])
             cancelled.append(label(e))
-    key = (f"royale-{dropped['heat']}" if dropped.get("series") == "royale"
-           else f"{dropped['edition']}-{dropped['r']}-{dropped['m']}")
+    key = seed_key(dropped)
     state.setdefault("excluded_seeds", {}).setdefault(key, []).append(dropped["seed"])
     state = tournament.truncate(state, drop_at)
     _app("post_rewound", "warn", f"Escape Cup: {title} was not published",
@@ -907,7 +1072,7 @@ def post_now():
         raise RuntimeError(f"post ended as {final['status']}: {err}")
 
 
-def run(sample=False, local=False, royale=False):
+def run(sample=False, local=False, royale=False, league_sample=False):
     global GATE_LEDGER
     state = tournament.load()
     if sample:
@@ -915,9 +1080,13 @@ def run(sample=False, local=False, royale=False):
         # LOOP_FORCE_VALUES (JSON): preview a queued lever value before the loop uses it
         apply_loop(json.loads(os.environ.get("LOOP_FORCE_VALUES") or "{}"))
         work = copy.deepcopy(state)
-        v = build_royale(work) if royale else build_one(work)
+        if league_sample:
+            v = build_league(work)
+        else:
+            v = build_royale(work) if royale else build_one(work)
         print(json.dumps({k: v.get(k) for k in ("file", "round", "a", "b", "codes", "winner", "theme",
-                                                "drama", "report", "failures")}, indent=1))
+                                                "drama", "results", "champion", "report", "failures")},
+                         indent=1))
         print(v["caption"])
         if not local:
             verdict = ("✅ passed quality gate\n" + qc_line(v["report"]) + "\n"
@@ -939,12 +1108,18 @@ def run(sample=False, local=False, royale=False):
         return
 
     for slot in slots:
-        loop_vals, loop_arms = loop_for(slot, state)
-        apply_loop(loop_vals)
-        if loop_vals or loop_arms:
-            print(f"[loop] arms {loop_arms} values {loop_vals}")
-        arm = arm_for(slot, state, loop_vals)
-        v, reasons = build_passing_royale(state) if arm == "royale" else build_passing(state)
+        if next_series(state) == league.SERIES:
+            # league matchdays are not in the cup's experiments: default knobs, no arms
+            loop_vals, loop_arms = {}, {}
+            apply_loop({})
+            v, reasons = build_passing_league(state)
+        else:
+            loop_vals, loop_arms = loop_for(slot, state)
+            apply_loop(loop_vals)
+            if loop_vals or loop_arms:
+                print(f"[loop] arms {loop_arms} values {loop_vals}")
+            arm = arm_for(slot, state, loop_vals)
+            v, reasons = build_passing_royale(state) if arm == "royale" else build_passing(state)
         when = slot.astimezone(LONDON).strftime("%a %d %b %H:%M UK")
         if v is None:
             # Stop here: filling a LATER slot with this match's successor would
@@ -974,6 +1149,9 @@ def run(sample=False, local=False, royale=False):
                      "loop": loop_arms, "gate": _gate_record(v)}
             if v.get("series") == "royale":
                 entry.update(series="royale", heat=v["heat"], codes=v["codes"], podium=v["podium"])
+            elif v.get("series") == league.SERIES:
+                entry.update(series=league.SERIES, season=v["season"], md=v["md"], a=v["a"], b=v["b"],
+                             results=v["results"], champion=v["champion"])
             else:
                 entry.update(r=v["r"], m=v["m"], a=v["a"], b=v["b"])
             state = tournament.append(state, entry)
@@ -982,8 +1160,11 @@ def run(sample=False, local=False, royale=False):
             # A Buffer post the log doesn't know about would be posted twice later.
             publish.delete_post(post["id"])
             raise
-        notify.send_video(v["path"], f"🎾 <b>Escape Cup scheduled</b> for {when}\n"
-                                     f"{html.escape(v['round'])}: winner {html.escape(teams.name(v['winner']))} "
+        champ = (f"🏆 Season {v['season']} champions: {html.escape(keeper.name(v['champion']))}\n"
+                 if v.get("champion") else "")
+        notify.send_video(v["path"], f"🎾 <b>Escape Cup scheduled</b> for {when}\n{champ}"
+                                     f"{html.escape(v['round'])}: winner "
+                                     f"{html.escape(v.get('winner_name') or teams.name(v['winner']))} "
                                      f"(don't spoil it 🤫)\n✅ {qc_line(v['report'])}\n"
                                      f"{upload_gate.summary(v['gate'])}\n"
                                      f"Don't like it? Delete it in Buffer before then - the bracket "
@@ -995,6 +1176,7 @@ def main():
     ap.add_argument("--sample", action="store_true", help="render the next match, don't post")
     ap.add_argument("--local", action="store_true", help="with --sample: no Telegram")
     ap.add_argument("--royale", action="store_true", help="with --sample: an Escape Royale heat")
+    ap.add_argument("--league", action="store_true", help="with --sample: the next Escape League matchday")
     ap.add_argument("--post-now", action="store_true",
                     help="publish the earliest pending post immediately and wait for TikTok")
     ap.add_argument("--requeue", action="store_true",
@@ -1010,7 +1192,7 @@ def main():
         elif args.requeue:
             requeue_unpublished()
         else:
-            run(sample=args.sample, local=args.local, royale=args.royale)
+            run(sample=args.sample, local=args.local, royale=args.royale, league_sample=args.league)
     except Exception as e:
         traceback.print_exc()
         if not args.local:

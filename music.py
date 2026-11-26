@@ -70,9 +70,10 @@ def credit(seed):
     return f"Music: \"{c['title']}\" by {c['artist']} on SoundCloud, {c['licence']}"
 
 
-def bed(seed, seconds, ffmpeg):
-    """Mono float32 array of `seconds` of music at SR, RMS-normalised to 1.0, or None."""
-    path = pick(seed)
+def bed(seed, seconds, ffmpeg, path=None):
+    """Mono float32 array of `seconds` of music at SR, RMS-normalised to 1.0, or None.
+    path: a specific clip (the club league passes its own, league_music.py)."""
+    path = path or pick(seed)
     if not path:
         print("[music] no music clips found; video made without music")
         return None

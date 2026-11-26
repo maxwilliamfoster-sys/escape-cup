@@ -3,3 +3,6 @@ work/
 __pycache__/
 .env
 *.pyc
+# NCS music beds: cut at run time from the official download (tools/make_league_music.py --download);
+# never commit them, the repo is public and NCS forbids uploading the music on its own
+assets/league_music/*.mp3

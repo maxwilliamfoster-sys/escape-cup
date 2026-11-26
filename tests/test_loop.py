@@ -140,7 +140,10 @@ class TestRenderSide(unittest.TestCase):
         state = {"log": [{"due": "2026-10-02T18:30:00+00:00"}]}
         led = {"experiments": [{"id": FMT, "lever": "format", "control": "cup",
                                 "variant": "royale", "status": "running"}]}
-        with mock.patch.object(el, "load_repo", return_value=(led, {}, {"values": {}})):
+        # slot-parity arms are the cup-only mode; with the Escape League alternating (posting.json
+        # league_alternate) arms go by cup-post parity instead (tests/test_league.py)
+        with mock.patch.object(el, "load_repo", return_value=(led, {}, {"values": {}})), \
+                mock.patch.object(main, "league_on", return_value=False):
             for day in range(20, 24):
                 d = datetime(2026, 10, day).date()
                 for h, mi in main.slots_for_day(d, main.first_post_day(state, d)):

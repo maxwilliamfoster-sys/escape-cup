@@ -113,7 +113,7 @@ def rebuild(log, extra=None):
     """Replay the log from Escape Cup 1. Raises if the log is inconsistent."""
     state = new_edition(1)
     for i, e in enumerate(log):
-        if e.get("series") == "royale":      # Escape Royale heats share the log, not the bracket
+        if e.get("series") in ("royale", "league"):   # Royale heats and Escape League matchdays share the log, not the bracket
             continue
         state = roll_over_if_done(state)
         if state["edition"] != e["edition"] or next_match(state) != (e["r"], e["m"]):
@@ -188,7 +188,7 @@ def title_race(state, new_champion=None, top=3):
 
 def reigning(state):
     """The winner of the last Final in the log, or None before the first one."""
-    finals = [e for e in state.get("log", []) if e.get("r") == 4 and e.get("series") != "royale"]
+    finals = [e for e in state.get("log", []) if e.get("r") == 4 and e.get("series") not in ("royale", "league")]
     return finals[-1]["winner"] if finals else None
 
 

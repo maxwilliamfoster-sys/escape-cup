@@ -1,0 +1,28 @@
+{
+ "ncs_gabriawll_recall_a.mp3": {
+  "title": "Recall",
+  "artist": "Gabriawll",
+  "label": "NCS",
+  "licence": "NCS usage policy (free for creators)",
+  "credit": "Music: Gabriawll - Recall | Music provided by NoCopyrightSounds (NCS)",
+  "source": "https://ncs.io/recall",
+  "from_s": 58,
+  "key_pc": 5,
+  "mode": "major",
+  "key_conf": 0.733,
+  "bpm": 127.0
+ },
+ "ncs_gabriawll_recall_b.mp3": {
+  "title": "Recall",
+  "artist": "Gabriawll",
+  "label": "NCS",
+  "licence": "NCS usage policy (free for creators)",
+  "credit": "Music: Gabriawll - Recall | Music provided by NoCopyrightSounds (NCS)",
+  "source": "https://ncs.io/recall",
+  "from_s": 14,
+  "key_pc": 5,
+  "mode": "major",
+  "key_conf": 0.768,
+  "bpm": 127.0
+ }
+}

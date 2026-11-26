@@ -41,6 +41,8 @@ MAX_BYTES = 90 * 1024 * 1024                       # GitHub Pages file limit is 
 DURATION_RANGE = (15.0, 32.0)
 SHORT_DURATION_RANGE = (11.5, 16.0)                  # the length lever's 'short' arm: 10.5-13.5 s match + 1.5 s card
 ROYALE_DURATION_RANGE = (20.0, 42.0)                # director: 20-36s heat + 2.0s card (3.4 before 2026-10-23)
+LEAGUE_DURATION_RANGE = (17.0, 44.0)                # league.py: 14-26 s match retimed 0.8-1.25x + 2.2 s FULL TIME + 3.2 s table (+3.2 s champions)
+LEAGUE_FORBIDDEN = [r"premier\s*league", r"\bepl\b", r"#pl\b", r"#premierleague"]   # our own "Escape League" only (keeper.py IP note)
 BAIT = [r"\bfollow\b", r"\blike\s*(for|4)\s*like\b", r"\bl4l\b", r"\bf4f\b", r"\blike if\b",
         r"\bgift", r"\bshare (this|if)\b", r"\bsubscribe\b", r"#fyp", r"#foryou", r"#viral",
         r"\b\d+%\s*(of people|can't|cannot|can not|fail)", r"\bnobody can\b", r"\bonly \d+%"]
@@ -92,8 +94,9 @@ def _audio_bands(path):
             100 * spec[f > 400].sum() / tot)
 
 
-def check_video(path, match_seconds, duration_range=DURATION_RANGE):
-    """Returns (report, failures). match_seconds = length before the winner card."""
+def check_video(path, match_seconds, duration_range=DURATION_RANGE, hook="white"):
+    """Returns (report, failures). match_seconds = length before the winner card.
+    hook: "white" = the cup's white caption box, "gold" = the league's gold ribbon."""
     rep, fail = {}, []
     info = probe(path)
     v = next((s for s in info["streams"] if s["codec_type"] == "video"), None)
@@ -130,10 +133,16 @@ def check_video(path, match_seconds, duration_range=DURATION_RANGE):
         fail.append(f"frozen picture during match ({', '.join(frz)}s)")
     rep["black_frames"], rep["freezes"] = len(blk), len(frz)
 
-    # first frame must carry the white hook box ("Which country escapes first?")
+    # first frame must carry the hook ("Which country escapes first?" white box, or the
+    # league's gold ribbon "WHICH CLUB SCORES 3 FIRST?", keeper_render.py)
     f0 = _frame(path, 0.0)
-    band = f0[190:275, 60:1020]
-    white = int(((band[..., 0] > 235) & (band[..., 1] > 235) & (band[..., 2] > 235)).sum())
+    if hook == "gold":
+        band = f0[155:240, 60:1020]
+        white = int(((band[..., 0] > 225) & (band[..., 1] > 180) & (band[..., 1] < 245)
+                     & (band[..., 2] < 130)).sum())
+    else:
+        band = f0[190:275, 60:1020]
+        white = int(((band[..., 0] > 235) & (band[..., 1] > 235) & (band[..., 2] > 235)).sum())
     dark_text = int(((band[..., 0] < 60) & (band[..., 1] < 60) & (band[..., 2] < 60)).sum())
     rep["hook_px"] = white
     if white < 25000 or dark_text < 1500:
@@ -218,8 +227,10 @@ def check_result(match):
     return fail
 
 
-def check_caption(caption, a, b, recent_captions):
-    """a/b = the two countries of a cup match; None for an Escape Royale heat."""
+def check_caption(caption, a, b, recent_captions, name=None):
+    """a/b = the two countries of a cup match; None for an Escape Royale heat.
+    name: code -> display name (default teams.name; the club league passes keeper.name)."""
+    name = name or teams.name
     fail = []
     tags = re.findall(r"#\w+", caption)
     if not 3 <= len(tags) <= 5:
@@ -234,8 +245,8 @@ def check_caption(caption, a, b, recent_captions):
     for pat in SPOILERS:
         if re.search(pat, low):
             fail.append(f"possible spoiler /{pat}/")
-    if a and b and (teams.name(a).lower() not in first.lower() or teams.name(b).lower() not in first.lower()):
-        fail.append("first line must name both countries (search keywords)")
+    if a and b and (name(a).lower() not in first.lower() or name(b).lower() not in first.lower()):
+        fail.append("first line must name both teams (search keywords)")
     if not any(k in low for k in KEYWORDS):
         fail.append("no niche keyword in caption")
     if len(first) > 110:

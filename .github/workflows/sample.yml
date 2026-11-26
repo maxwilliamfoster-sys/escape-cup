@@ -9,6 +9,10 @@ on:
         description: "Escape Royale heat (16 countries) instead of the next cup match"
         type: boolean
         default: false
+      league:
+        description: "Escape League matchday (club league, table at the end) instead of the next cup match"
+        type: boolean
+        default: false
       loop_values:
         description: 'Experiment-loop lever values to preview, JSON (e.g. {"pacing": "fast"})'
         required: false
@@ -33,6 +37,9 @@ jobs:
           done
           exit 1
       - run: pip install -r requirements.txt
+      - name: League music (NCS "Recall", official download; never committed - the repo is public)
+        timeout-minutes: 4
+        run: python tools/make_league_music.py --download || echo "::warning::league music unavailable - league videos fall back to the built-in anthem"
       - env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -40,4 +47,4 @@ jobs:
           APP_EVENTS_TOKEN: ${{ secrets.APP_EVENTS_TOKEN }}
           LOOP_FORCE_VALUES: ${{ inputs.loop_values }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python main.py --sample ${{ inputs.royale && '--royale' || '' }}
+        run: python main.py --sample ${{ inputs.royale && '--royale' || '' }} ${{ inputs.league && '--league' || '' }}
