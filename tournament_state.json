@@ -122,11 +122,11 @@
    {
     "a": "ua",
     "b": "mx",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "ua",
+    "seed": 132150648008,
+    "melody": "neon",
+    "posted": "2026-11-26T16:30:00+00:00",
+    "buffer_id": "6b07a8c207071a60674f6276"
    },
    {
     "a": "ph",
@@ -204,7 +204,7 @@
    },
    {
     "a": "br",
-    "b": null,
+    "b": "ua",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -297,7 +297,7 @@
   "fr": 1,
   "ph": 1
  },
- "posts": 168,
+ "posts": 169,
  "log": [
   {
    "edition": 1,
@@ -5519,10 +5519,32 @@
    "m": 12,
    "a": "br",
    "b": "ie"
+  },
+  {
+   "edition": 6,
+   "winner": "ua",
+   "seed": 132150648008,
+   "theme": "neon",
+   "due": "2026-11-26T16:30:00+00:00",
+   "buffer_id": "6b07a8c207071a60674f6276",
+   "status": "scheduled",
+   "file": "ec06_r0_m13_132150648008.mp4",
+   "length": 18.8,
+   "loop": {
+    "escape-cup-standings-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "dc9380da87050dd6c9fbd3b5730e316e86e0b539628196ca5950a6dc37ddd8d7",
+    "checked_at": "2026-11-26T03:33:21+00:00"
+   },
+   "r": 0,
+   "m": 13,
+   "a": "ua",
+   "b": "mx"
   }
  ],
  "recent_captions": [
-  "Which country escapes first? Egypt 🇪🇬 vs Argentina 🇦🇷 ball escape\nEscape Cup 5, Round of 32\nNext up: France vs USA - who's your pick? 👇\n#ballescape #physicssimulation #simulation #egypt #argentina",
   "Which country escapes first? France 🇫🇷 vs USA 🇺🇸 ball escape\nRound of 32 of Escape Cup 5 🏆\nComing next: Philippines vs Colombia. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #france #usa",
   "Philippines 🇵🇭 or Colombia 🇨🇴? Physics decides which country breaks out first\nRound of 32 of Escape Cup 5 🏆\nNext up: Indonesia vs Australia - who's your pick? 👇\n#ballescape #physicssimulation #simulation #philippines #colombia",
   "Indonesia 🇮🇩 vs Australia 🇦🇺 in the escape rings. Who gets out first?\nEscape Cup 5, Round of 32\nNext up: Croatia vs Germany - who's your pick? 👇\n#ballescape #physicssimulation #oddlysatisfying #indonesia #australia",
@@ -5561,7 +5583,8 @@
   "Argentina 🇦🇷 vs Egypt 🇪🇬 - which country breaks the most escape rings?\nRound of 32 · Escape Cup 6\nComing next: Croatia vs Spain. Who takes it? 👇\nMusic: \"Autumn\" by Imperss on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #satisfying #argentina #egypt",
   "Croatia 🇭🇷 or Spain 🇪🇸? Physics decides which country breaks more rings\nRound of 32 of Escape Cup 6 🏆\nNetherlands vs Switzerland is next - who are you backing? 👇\nMusic: \"Area 51\" by DJ Zakente on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #croatia #spain",
   "Country ball escape - Netherlands 🇳🇱 vs Switzerland 🇨🇭\nEscape Cup 6, Round of 32\nBrazil vs Ireland is next - who are you backing? 👇\nMusic: \"That's Alright\" by Peyruis on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #satisfying #netherlands #switzerland",
-  "Country ball escape - Brazil 🇧🇷 vs Ireland 🇮🇪\nRound of 32 of Escape Cup 6 🏆\nNext up: Ukraine vs Mexico - who's your pick? 👇\nMusic: \"Horizon\" by Archie on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #brazil #ireland"
+  "Country ball escape - Brazil 🇧🇷 vs Ireland 🇮🇪\nRound of 32 of Escape Cup 6 🏆\nNext up: Ukraine vs Mexico - who's your pick? 👇\nMusic: \"Horizon\" by Archie on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #brazil #ireland",
+  "Ukraine 🇺🇦 vs Mexico 🇲🇽: 12 rings, one way out. Physics simulation\nEscape Cup 6, Round of 32\nNext up: Philippines vs Vietnam - who's your pick? 👇\nMusic: \"Norman Manley\" by Cupcakes on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #satisfying #ukraine #mexico"
  ],
  "seen_errors": [],
  "excluded_seeds": {}

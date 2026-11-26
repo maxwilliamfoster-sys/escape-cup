@@ -6313,6 +6313,41 @@
     "model": "qwen/qwen3.8-27b",
     "summary": "[ai_pass]"
    }
+  },
+  {
+   "checked_at": "2026-11-26T03:33:21+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r0_m13_132150648008.mp4",
+   "sha256": "dc9380da87050dd6c9fbd3b5730e316e86e0b539628196ca5950a6dc37ddd8d7",
+   "head": "Ukraine 🇺🇦 vs Mexico 🇲🇽: 12 rings, one way out. Physics simulation",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.365,
+   "report": {
+    "seconds": 18.78,
+    "lufs": -16.6,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 10,
+    "tokens": 4230,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
