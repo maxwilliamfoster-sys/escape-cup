@@ -166,7 +166,7 @@ class TestRenderSide(unittest.TestCase):
         self.assertEqual((director.MIN_SECONDS, director.MAX_SECONDS), (14.0, 28.0))
         self.assertFalse(main.LENGTH_SHORT_ON)
         self.assertEqual(director.ROYALE_RULES, main.LOOP_DEFAULTS["royale"])
-        self.assertEqual(render.HOOK_TEXT, "Which country escapes first?")
+        self.assertEqual(render.HOOK_TEXT, "Which country breaks more rings?")
 
     def test_broken_loop_files_render_as_before(self):
         with mock.patch.object(el, "load_repo", side_effect=ValueError("bad json")):

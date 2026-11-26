@@ -3,7 +3,7 @@
  "paused": false,
  "values": {
   "format": "cup",
-  "hook_text": "Which country escapes first?",
+  "hook_text": "Which country breaks more rings?",
   "pacing": "normal"
  }
 }

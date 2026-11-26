@@ -9,7 +9,7 @@
  "levers": [
   {"lever": "format", "kind": "hook style", "control": "cup", "variants": ["royale"], "primary": "views72",
    "hypothesis": "A 16-country royale heat gives a 91%-UK audience a stake (find your country), raising avg % watched over a 1-v-1 cup match."},
-  {"lever": "hook_text", "kind": "hook style", "control": "Which country escapes first?",
+  {"lever": "hook_text", "kind": "hook style", "control": "Which country breaks more rings?",
    "variants": ["Pick a country before it starts!"],
    "hypothesis": "Asking viewers to commit to a country before the first ring breaks makes them stay to see it through, raising avg % watched."},
   {"lever": "pacing", "kind": "hook style", "control": "normal", "variants": ["fast"],

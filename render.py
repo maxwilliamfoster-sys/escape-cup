@@ -63,7 +63,8 @@ THEMES = {
 }
 FINAL_THEME = "gold"
 THEMES[FINAL_THEME] = ("#140F02", "#2A2006", "#6B5410", ["#FFF6CC", "#FFE9A0", "#FFD966", "#FFC933", "#FFB300", "#FF9900"])
-HOOK_TEXT = "Which country escapes first?"      # on-screen text is indexed by TikTok search
+HOOK_TEXT = "Which country breaks more rings?"  # on-screen text is indexed by TikTok search.
+# 2026-11-26 (autopilot): was "Which country escapes first?", wrong since most rings wins (22 Nov).
 
 
 def ffmpeg_bin():
