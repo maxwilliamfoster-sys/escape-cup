@@ -7,16 +7,55 @@
  "max_days": 42,
  "not_before": "2026-10-28",
  "levers": [
-  {"lever": "format", "kind": "hook style", "control": "cup", "variants": ["royale"], "primary": "views72",
-   "hypothesis": "A 16-country royale heat gives a 91%-UK audience a stake (find your country), raising avg % watched over a 1-v-1 cup match."},
-  {"lever": "hook_text", "kind": "hook style", "control": "Which country breaks more rings?",
-   "variants": ["Pick a country before it starts!"],
-   "hypothesis": "Asking viewers to commit to a country before the first ring breaks makes them stay to see it through, raising avg % watched."},
-  {"lever": "pacing", "kind": "hook style", "control": "normal", "variants": ["fast"],
-   "hypothesis": "A first ring inside ~1s and no lull over 4.5s (vs 2s / 6s) removes the early dead moments where viewers swipe."},
-  {"lever": "standings", "kind": "stakes", "control": "off", "variants": ["on"],
-   "hypothesis": "A visible titles table and an 'N wins from the trophy' line give each cup match a stake, raising avg % watched (review 2026-11-09)."},
-  {"lever": "length", "kind": "length", "control": "normal", "variants": ["short"], "primary": "views72",
-   "hypothesis": "12-15 s matches whose end dissolves back into the first frame get watched through and replayed (views track % watched, r=0.7 in Nov), which TikTok rewards with more views."}
+  {
+   "lever": "format",
+   "kind": "hook style",
+   "control": "cup",
+   "variants": [
+    "royale"
+   ],
+   "primary": "views72",
+   "hypothesis": "A 16-country royale heat gives a 91%-UK audience a stake (find your country), raising avg % watched over a 1-v-1 cup match."
+  },
+  {
+   "lever": "hook_text",
+   "kind": "hook style",
+   "control": "Which country breaks more rings?",
+   "variants": [
+    "Pick a country before it starts!"
+   ],
+   "hypothesis": "Asking viewers to commit to a country before the first ring breaks makes them stay to see it through, raising avg % watched."
+  },
+  {
+   "lever": "pacing",
+   "kind": "hook style",
+   "control": "normal",
+   "variants": [
+    "fast"
+   ],
+   "hypothesis": "A first ring inside ~1s and no lull over 4.5s (vs 2s / 6s) removes the early dead moments where viewers swipe."
+  },
+  {
+   "lever": "standings",
+   "kind": "stakes",
+   "control": "off",
+   "variants": [
+    "on"
+   ],
+   "hypothesis": "A visible titles table and an 'N wins from the trophy' line give each cup match a stake, raising avg % watched (review 2026-11-09)."
+  }
+ ],
+ "parked_levers_doc": "2026-11-26 (autopilot, stage 2): the 12-15 s length test is parked (the loop ignores this list). It is the same idea family as the pacing test that just ended with no winner, so the next test after standings is the home-nations cup (subject choice, tracker escape-home-nations, pre-registered H1: 3,712 vs 926 median views, n=14/49). When standings ends the loop goes idle; the review then sets tournament.HOME_FIELD_FROM_EDITION to the next cup that hasn't started. Move length back into 'levers' after that test is decided.",
+ "parked_levers": [
+  {
+   "lever": "length",
+   "kind": "length",
+   "control": "normal",
+   "variants": [
+    "short"
+   ],
+   "primary": "views72",
+   "hypothesis": "12-15 s matches whose end dissolves back into the first frame get watched through and replayed (views track % watched, r=0.7 in Nov), which TikTok rewards with more views."
+  }
  ]
 }
