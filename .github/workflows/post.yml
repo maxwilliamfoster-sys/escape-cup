@@ -82,7 +82,9 @@ jobs:
           # analytics.yml also pushes to main; a rejected push used to be hidden by
           # "|| true" and the bracket state was lost. Rebase and retry, else fail loudly.
           for i in 1 2 3; do
-            if git pull --rebase -q; then
+            # --autostash: the league-music step rewrites assets/league_music/credits.json etc.
+            # (unstaged); without it the rebase refused and the state was lost (2026-11-26)
+            if git pull --rebase --autostash -q; then
               git push && exit 0
             else
               git rebase --abort 2>/dev/null || true
