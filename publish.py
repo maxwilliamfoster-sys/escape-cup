@@ -258,7 +258,13 @@ def _create_post(query, variables):
         time.sleep(CREATE_RETRY_WAITS[attempt])
 
 
-def schedule_tiktok(channel_id, video_url, caption, due_at, thumb_ms=2500):
+def schedule_tiktok(channel_id, video_url, caption, due_at, thumb_ms=2500, pending=None):
+    # 26 Nov 2026: a run scheduled a match and then lost its state; the next run scheduled the same match again.
+    # A pending post with the same caption is that match: reuse it instead of creating a second one.
+    for p in pending or []:
+        if (p.get("text") or "").strip() == caption.strip():
+            print(f"[buffer] same caption already scheduled ({p['id']}, due {p.get('dueAt')}): reusing it")
+            return {"id": p["id"], "status": "scheduled", "dueAt": p.get("dueAt"), "reused": True}
     now = datetime.now(timezone.utc)
     mode = "customScheduled" if (due_at - now).total_seconds() > 300 else "shareNow"
     inp = {

@@ -1136,8 +1136,15 @@ def run(sample=False, local=False, royale=False, league_sample=False):
                         + html.escape("\n".join(reasons))[:3000])
             break
         protect = {e.get("file") for e in state.get("log", []) if e.get("status") == "scheduled"}
-        url = publish.host_video(v["path"], v["file"], protect=protect)
-        post = publish.schedule_tiktok(channel, url, v["caption"], slot)
+        pending_now = publish.pending_posts(org, channel)
+        if any((p.get("text") or "").strip() == v["caption"].strip() for p in pending_now):
+            url = None                                    # already in Buffer: schedule_tiktok reuses it
+        else:
+            url = publish.host_video(v["path"], v["file"], protect=protect)
+        post = publish.schedule_tiktok(channel, url, v["caption"], slot, pending=pending_now)
+        if post.get("reused") and post.get("dueAt"):
+            slot = datetime.fromisoformat(post["dueAt"].replace("Z", "+00:00"))
+            when = slot.astimezone(LONDON).strftime("%a %d %b %H:%M UK")
         try:
             state["recent_captions"] = (state.get("recent_captions", []) + [v["caption"]])[-40:]
             entry = {"edition": state["edition"], "winner": v["winner"], "seed": v["seed"],

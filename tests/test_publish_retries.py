@@ -76,6 +76,26 @@ class CreatePostRetries(unittest.TestCase):
         self.assertEqual(calls, n)
 
 
+class NoDoubleSchedule(unittest.TestCase):
+    """26 Nov 2026: a run scheduled a match, then lost its state; the next run scheduled the same match
+    again for the same slot. A pending post with the same caption is now reused, never created twice."""
+    def test_same_caption_already_pending_is_reused(self):
+        pending = [{"id": "old1", "dueAt": "2026-11-27T16:30:00.000Z", "text": "Liverpool v Newcastle"}]
+        with mock.patch.object(pub, "_create_post") as create:
+            post = pub.schedule_tiktok("ch", "https://x/v.mp4", "Liverpool v Newcastle",
+                                       pub.datetime(2026, 11, 28, 9, tzinfo=pub.timezone.utc), pending=pending)
+        create.assert_not_called()
+        self.assertEqual(post["id"], "old1")
+        self.assertTrue(post.get("reused"))
+
+    def test_a_new_caption_is_scheduled(self):
+        pending = [{"id": "old1", "dueAt": "2026-11-27T16:30:00.000Z", "text": "Spain v Brazil"}]
+        with mock.patch.object(pub, "_create_post", return_value={"post": {"id": "p2", "status": "scheduled"}}):
+            post = pub.schedule_tiktok("ch", "https://x/v.mp4", "Liverpool v Newcastle",
+                                       pub.datetime(2026, 11, 28, 9, tzinfo=pub.timezone.utc), pending=pending)
+        self.assertEqual(post["id"], "p2")
+
+
 class RawFallback(unittest.TestCase):
     """Pages down: the branch copy is used, but only when it is the whole file."""
 
