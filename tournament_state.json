@@ -151,20 +151,20 @@
    {
     "a": "sn",
     "b": "au",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "au",
+    "seed": 117893101177,
+    "melody": "forest",
+    "posted": "2026-11-28T09:00:00+00:00",
+    "buffer_id": "6b09f46b71e8cc12a6cfb611"
    },
    {
     "a": "be",
     "b": "co",
-    "winner": null,
-    "seed": null,
-    "melody": null,
-    "posted": null,
-    "buffer_id": null
+    "winner": "co",
+    "seed": 30050055027,
+    "melody": "candy",
+    "posted": "2026-11-28T16:30:00+00:00",
+    "buffer_id": "6b09f55471e8cc12a6d01188"
    },
    {
     "a": "it",
@@ -223,8 +223,8 @@
   ],
   [
    {
-    "a": null,
-    "b": null,
+    "a": "au",
+    "b": "co",
     "winner": null,
     "seed": null,
     "melody": null,
@@ -297,7 +297,7 @@
   "fr": 1,
   "ph": 1
  },
- "posts": 171,
+ "posts": 173,
  "log": [
   {
    "edition": 1,
@@ -5577,7 +5577,7 @@
    "theme": "sunset",
    "due": "2026-11-27T12:30:00+00:00",
    "buffer_id": "6b0864aa44b7a2afa8af9f30",
-   "status": "scheduled",
+   "status": "published",
    "file": "ec06_r0_m15_4587952061.mp4",
    "length": 24.1,
    "loop": {
@@ -5591,7 +5591,8 @@
    "r": 0,
    "m": 15,
    "a": "kr",
-   "b": "fr"
+   "b": "fr",
+   "link": "https://tiktok.com/@5lmvill/video/7712827733646036263"
   },
   {
    "edition": 6,
@@ -5600,7 +5601,7 @@
    "theme": "league",
    "due": "2026-11-27T16:30:00+00:00",
    "buffer_id": "6b08c68670e2a88e2cdd21ef",
-   "status": "scheduled",
+   "status": "published",
    "file": "el01_md01_livnew_93083003005.mp4",
    "length": 22.7,
    "loop": {},
@@ -5676,13 +5677,142 @@
      2
     ]
    ],
+   "champion": null,
+   "link": "https://tiktok.com/@5lmvill/video/7712889700884679969"
+  },
+  {
+   "edition": 6,
+   "winner": "au",
+   "seed": 117893101177,
+   "theme": "forest",
+   "due": "2026-11-28T09:00:00+00:00",
+   "buffer_id": "6b09f46b71e8cc12a6cfb611",
+   "status": "scheduled",
+   "file": "ec06_r1_m00_117893101177.mp4",
+   "length": 15.6,
+   "loop": {
+    "escape-cup-standings-1": "control"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "26374cb4fc98d58f573d31df0381434e97f40fc0042c53764d7dd4f8f0683c74",
+    "checked_at": "2026-11-27T21:20:39+00:00"
+   },
+   "r": 1,
+   "m": 0,
+   "a": "sn",
+   "b": "au"
+  },
+  {
+   "edition": 6,
+   "winner": "TOT",
+   "seed": 153561461001,
+   "theme": "league",
+   "due": "2026-11-28T12:30:00+00:00",
+   "buffer_id": "6b09f4ddb5cd052fe2917556",
+   "status": "scheduled",
+   "file": "el01_md02_totbou_153561461001.mp4",
+   "length": 20.4,
+   "loop": {},
+   "gate": {
+    "ok": true,
+    "sha256": "38ea7eb6baca93df651e0496497b02d4f84fb615a2704ee527c3e9592795e031",
+    "checked_at": "2026-11-27T21:22:26+00:00"
+   },
+   "series": "league",
+   "season": 1,
+   "md": 2,
+   "a": "TOT",
+   "b": "BOU",
+   "results": [
+    [
+     "TOT",
+     "BOU",
+     3,
+     2
+    ],
+    [
+     "EVE",
+     "FUL",
+     2,
+     3
+    ],
+    [
+     "NEW",
+     "COV",
+     3,
+     2
+    ],
+    [
+     "ARS",
+     "LEE",
+     3,
+     2
+    ],
+    [
+     "BHA",
+     "LIV",
+     3,
+     2
+    ],
+    [
+     "IPS",
+     "BRE",
+     3,
+     2
+    ],
+    [
+     "CHE",
+     "AVL",
+     2,
+     3
+    ],
+    [
+     "HUL",
+     "MUN",
+     2,
+     3
+    ],
+    [
+     "MCI",
+     "CRY",
+     2,
+     3
+    ],
+    [
+     "NFO",
+     "SUN",
+     3,
+     2
+    ]
+   ],
    "champion": null
+  },
+  {
+   "edition": 6,
+   "winner": "co",
+   "seed": 30050055027,
+   "theme": "candy",
+   "due": "2026-11-28T16:30:00+00:00",
+   "buffer_id": "6b09f55471e8cc12a6d01188",
+   "status": "scheduled",
+   "file": "ec06_r1_m01_30050055027.mp4",
+   "length": 28.5,
+   "loop": {
+    "escape-cup-standings-1": "variant"
+   },
+   "gate": {
+    "ok": true,
+    "sha256": "48af134e6b66d752e1f1e5adb41cc7687ee065a040f1ea5a61de68261be4eca6",
+    "checked_at": "2026-11-27T21:24:30+00:00"
+   },
+   "r": 1,
+   "m": 1,
+   "a": "be",
+   "b": "co"
   }
  ],
  "recent_captions": [
-  "Country ball escape - Croatia 🇭🇷 vs Germany 🇩🇪\nEscape Cup 5, Round of 32\nPoland vs Netherlands is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #croatia #germany",
-  "Poland 🇵🇱 vs Netherlands 🇳🇱 - which country escapes the rings first?\nRound of 32 of Escape Cup 5 🏆\nScotland vs Ireland is next - who are you backing? 👇\n#ballescape #physicssimulation #simulation #poland #netherlands",
-  "Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿 or Ireland 🇮🇪? Physics decides which country breaks out first\nRound of 32 · Escape Cup 5\nComing next: Portugal vs Brazil. Who takes it? 👇\n#ballescape #physicssimulation #simulation #scotland #ireland",
   "Portugal 🇵🇹 or Brazil 🇧🇷? Physics decides which country breaks out first\nEscape Cup 5, Round of 32\nBelgium vs England is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #portugal #brazil",
   "Belgium 🇧🇪 vs England 🏴󠁧󠁢󠁥󠁮󠁧󠁿: 12 rings, one way out. Physics simulation\nRound of 32 · Escape Cup 5\nComing next: Canada vs Morocco. Who takes it? 👇\n#ballescape #physicssimulation #oddlysatisfying #belgium #england",
   "Canada 🇨🇦 vs Morocco 🇲🇦 - which country escapes the rings first?\nRound of 32 of Escape Cup 5 🏆\nNigeria vs Mexico is next - who are you backing? 👇\n#ballescape #physicssimulation #oddlysatisfying #canada #morocco",
@@ -5719,9 +5849,11 @@
   "Ukraine 🇺🇦 vs Mexico 🇲🇽: 12 rings, one way out. Physics simulation\nEscape Cup 6, Round of 32\nNext up: Philippines vs Vietnam - who's your pick? 👇\nMusic: \"Norman Manley\" by Cupcakes on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #satisfying #ukraine #mexico",
   "Philippines 🇵🇭 vs Vietnam 🇻🇳: 12 rings, one way out. Physics simulation\nEscape Cup 6, Round of 32\nSouth Korea vs France is next - who are you backing? 👇\nMusic: \"Not Another Progressive House\" by Brenticus on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #philippines #vietnam",
   "South Korea 🇰🇷 vs France 🇫🇷 - which country breaks the most escape rings?\nRound of 32 of Escape Cup 6 🏆\nNext up: Senegal vs Australia - who's your pick? 👇\nMusic: \"Autumn\" by Imperss on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #simulation #southkorea #france",
-  "Escape League: Liverpool vs Newcastle, who scores 3 first?\nEscape League season 1 · matchday 1 of 10 · table at the end\nWhere's your club in the table? 👇\nMusic: Gabriawll - Recall | Music provided by NoCopyrightSounds (NCS)\n#escapeleague #football #satisfying #liverpool #newcastle"
+  "Escape League: Liverpool vs Newcastle, who scores 3 first?\nEscape League season 1 · matchday 1 of 10 · table at the end\nWhere's your club in the table? 👇\nMusic: Gabriawll - Recall | Music provided by NoCopyrightSounds (NCS)\n#escapeleague #football #satisfying #liverpool #newcastle",
+  "Senegal 🇸🇳 or Australia 🇦🇺? Physics decides which country breaks more rings\nRound of 16 of Escape Cup 6 🏆\nNext up: Belgium vs Colombia - who's your pick? 👇\nMusic: \"Ma Ya Hi\" by DJ Zakente on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #senegal #australia",
+  "Tottenham vs Bournemouth · Escape League matchday 2\nEscape League season 1 · matchday 2 of 10 · table at the end\nWhere's your club in the table? 👇\nMusic: Gabriawll - Recall | Music provided by NoCopyrightSounds (NCS)\n#escapeleague #football #satisfying #tottenham #bournemouth",
+  "Ball escape simulation: Belgium 🇧🇪 vs Colombia 🇨🇴\nRound of 16 · Escape Cup 6\nNext up: Italy vs Indonesia - who's your pick? 👇\nMusic: \"Not Another Progressive House\" by Brenticus on SoundCloud, CC BY 3.0\n#ballescape #physicssimulation #oddlysatisfying #belgium #colombia"
  ],
  "seen_errors": [],
- "excluded_seeds": {},
- "orphans_alerted": []
+ "excluded_seeds": {}
 }

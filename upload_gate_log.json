@@ -6456,6 +6456,113 @@
     "cap": true,
     "reason": "cap"
    }
+  },
+  {
+   "checked_at": "2026-11-27T21:20:39+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r1_m00_117893101177.mp4",
+   "sha256": "26374cb4fc98d58f573d31df0381434e97f40fc0042c53764d7dd4f8f0683c74",
+   "head": "Senegal 🇸🇳 or Australia 🇦🇺? Physics decides which country breaks more rings",
+   "ok": true,
+   "failures": [],
+   "warnings": [
+    "near-duplicate first caption line (…)"
+   ],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.833,
+   "report": {
+    "seconds": 15.57,
+    "lufs": -16.8,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4218,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-27T21:22:26+00:00",
+   "platform": "tiktok",
+   "file": "el01_md02_totbou_153561461001.mp4",
+   "sha256": "38ea7eb6baca93df651e0496497b02d4f84fb615a2704ee527c3e9592795e031",
+   "head": "Tottenham vs Bournemouth · Escape League matchday 2",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.425,
+   "report": {
+    "seconds": 20.38,
+    "lufs": -15.8,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 10,
+    "quality": 9,
+    "tokens": 4243,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
+  },
+  {
+   "checked_at": "2026-11-27T21:24:30+00:00",
+   "platform": "tiktok",
+   "file": "ec06_r1_m01_30050055027.mp4",
+   "sha256": "48af134e6b66d752e1f1e5adb41cc7687ee065a040f1ea5a61de68261be4eca6",
+   "head": "Ball escape simulation: Belgium 🇧🇪 vs Colombia 🇨🇴",
+   "ok": true,
+   "failures": [],
+   "warnings": [],
+   "gate_version": "2026-11-17",
+   "head_similarity": 0.506,
+   "report": {
+    "seconds": 28.5,
+    "lufs": -16.5,
+    "speech_match": null,
+    "longest_freeze": 0.0,
+    "true_peak": null,
+    "qc_flash_est": null,
+    "qc_sample_rate": null,
+    "qc_audio_short": null,
+    "qc_clipped_runs": null,
+    "qc_seconds": null
+   },
+   "ai": {
+    "available": true,
+    "ok": true,
+    "coherence": 9,
+    "quality": 9,
+    "tokens": 4212,
+    "retryable": false,
+    "reason": null,
+    "model": "qwen/qwen3.8-27b",
+    "summary": "[ai_pass]"
+   }
   }
  ]
 }
